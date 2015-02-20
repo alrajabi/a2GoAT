@@ -149,6 +149,87 @@ void PPhysics::FillTimeCut(const GTreeParticle& tree, Int_t particle_index, TH1*
 	}
 }
 
+/*** 
+
+if(trigger->GetHelicity()>0)
+	{
+		
+		Int_t Ntot = protons->GetNParticles();
+		for (Int_t i = 0; i < Ntot; i++)
+   		 {
+			if (TMath::Abs(protons->Particle(i).CosTheta())<TMath::Abs( TMath::Cos(20*TMath::Pi()/180)))
+			{	NC++;
+			 } 
+			
+		}
+		cout << "NC_prime is:" << NC << endl;	
+		cout << "NC Total is:" << Ntot << endl;
+		cout << "-------------" << endl;
+	}
+
+
+void PPhysics::Efficiency(const GTreeParticle& tree, TH2F* Hist1, Float_t angle )
+{
+	Int_t NC = 0;
+	//Double_t EC;
+    for (Int_t i = 0; i < tree.GetNParticles(); i++)
+	{
+		if ((TMath::Abs(tree.Particle(i).CosTheta())<TMath::Abs(TMath::Cos(angle*TMath::Pi()/180)) )& (tree.GetNParticles() != 0))
+			{	NC++;
+				Hist1->Fill((Float_t)NC/(Float_t)tree.GetNParticles(),tree.Particle(i).E());
+				cout << "NC_prime is:" << NC << endl;	
+				cout << "NC Total is:" << (Float_t)NC/(Float_t)tree.GetNParticles() << endl;
+				cout << "e is" << tree.Particle(i).E() << endl;
+			 } 		
+		
+		
+	}
+	
+}
+ 
+//AR's Edit startes here:
+void PPhysics::NC_prime(const GTreeParticle& tree, TH2* Hist1, Float_t angle )
+{
+	Int_t N_c = 0;
+	Float_t E_rec = 0;
+	for (Int_t i = 0; i < tree.GetNParticles(); i++)
+	{
+		if ((TMath::Abs(tree.Particle(i).CosTheta())<TMath::Abs(TMath::Cos(angle*TMath::Pi()/180)) )& (tree.GetNParticles() != 0))
+			{	
+				N_c++;
+				E_rec += tree.Particle(i).E()-tree.Particle(i).M();				
+			 } 		
+	}
+	Hist1->Fill(E_rec,N_c);
+}
+void PPhysics::NC(const GTreeParticle& tree, TH2* Hist1)
+{
+	Int_t N_c = 0;
+	Float_t E_rec = 0;
+	for (Int_t i = 0; i < tree.GetNParticles(); i++)
+	{
+		if ((tree.GetNParticles() != 0))
+			{	
+				N_c++;
+				E_rec += tree.Particle(i).E()-tree.Particle(i).M();				
+			 } 		
+	}
+	Hist1->Fill(E_rec,N_c);
+}
+void PPhysics::NM(const GTreeParticle& tree, GH1* Hist1)()
+{
+	Int_t N_c = 0;
+	
+	if ((tree.GetNParticles() == 0))
+		{	
+			N_c++;
+								
+		 } 		
+	
+	Hist1->Fill(N_c);
+}
+****/
+//AR's Edit ends.
 void PPhysics::FillMass(const GTreeParticle& tree, TH1* Hist)
 {
     for (Int_t i = 0; i < tree.GetNParticles(); i++)

@@ -92,7 +92,12 @@ public:
 	void FillTime(const GTreeParticle& tree, Int_t particle_index, TH1* Hist);
 	void FillTimeCut(const GTreeParticle& tree, TH1* Hist);
 	void FillTimeCut(const GTreeParticle& tree, Int_t particle_index, TH1* Hist);
-
+	/*** //AR's Function list starts:
+	//void Efficiency(const GTreeParticle& tree, TH2F* Hist1, Float_t angle );
+	void NC_prime(const GTreeParticle& tree, TH2* Hist1, Float_t angle );
+	void NC(const GTreeParticle& tree, TH2* Hist1);
+	void NM(const GTreeParticle& tree, GH1* Hist1);
+	****/ //AR's Function list ends.
 	void FillMass(const GTreeParticle& tree, TH1* Hist);
 	void FillMass(const GTreeParticle& tree, Int_t particle_index, TH1* Hist);
 
