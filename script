@@ -1,0 +1,14 @@
+#!/bin/bash
+#cd build/
+#make -j4
+#cd ../
+./build/bin/goat -d ~/output/ -D ~/a2GoAT/1st_step -p Acqu_CBTaggTAPS -P GoATTrees configfiles/GoAT-Pi0.dat 
+#./build/bin/goat -f ~/output/Acqu_CBTaggTAPS_3681.root -D ~/analysis/1st_step -p Acqu_CBTaggTAPS -P GoATTrees configfiles/GoAT-Pi0.dat 
+./build/bin/AR_Class  -d /home/al/a2GoAT/1st_step -p GoATTrees -P MainGoAT -D /home/al/a2GoAT/2nd_step configfiles/Physics-Pi0.dat
+#./build/bin/AR_Class  -f /home/al/analysis/1st_step/GoATTrees_3681.root -P MainGoAT -D /home/al/analysis/2nd_step configfiles/Physics-Pi0.dat
+
+cd /home/al/a2GoAT/2nd_step
+
+$ROOTSYS/bin/hadd MainGoAT.root *.root
+#MainGoAT_3680.root MainGoAT_3681.root MainGoAT_3683.root MainGoAT_3684.root MainGoAT_3685.root 
+#MainGoAT_3699.root MainGoAT_3692.root MainGoAT_3694.root MainGoAT_3684.root MainGoAT_3683.root MainGoAT_3697.root MainGoAT_3696.root MainGoAT_3695.root MainGoAT_3685.root MainGoAT_3681.root MainGoAT_3691.root

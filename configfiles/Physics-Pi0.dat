@@ -14,4 +14,4 @@ Target-Mass: 938.272
 Tagger-Channel-Cut: 200 300
 
 # where are the tagger scalers?
-Tagger-Scalers: 268 619
+Tagger-Scalers: 0 271
