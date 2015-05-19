@@ -1,0 +1,140 @@
+Script started on Thu 14 May 2015 07:06:04 PM EDT
+]0;al@emporium: ~/analysis/a2GoATal@emporium:~/analysis/a2GoAT$ sl[K[Knano script
+[?1049h[1;39r(B[m[4l[?7h[?12l[?25h[?1h=[?1h=[?1h=[39;49m[39;49m(B[m[H[2J(B[0;7m  GNU nano 2.2.6                                   File: script                                                                             [3;1H(B[0m[36m#!/bin/bash[4d#cd build/[5d#make -j4[6d#cd ../[7d[39m(B[m./build/bin/goat [32m-d[39m(B[m ~/output/ -D ~/a2GoAT/1st_step -p Acqu_CBTaggTAPS -P GoATTrees configfiles/GoAT-Pi0.dat[42m [8d[49m[36m#./build/bin/goat -f ~/output/Acqu_CBTaggTAPS_3681.root -D ~/analysis/1st_step -p Acqu_CBTaggTAPS -P GoATTrees configfiles/GoAT-Pi0.dat[39m[42m [9d[49m(B[m./build/bin/AR_Class  [32m-d[39m(B[m /home/al/a2GoAT/1st_step -p GoATTrees -P MainGoAT -D /home/al/a2GoAT/2nd_step configfiles/Physics-Pi0.dat[10d[36m#./build/bin/AR_Class  -f /home/al/analysis/1st_step/GoATTrees_3681.root -P MainGoAT -D /home/al/analysis/2nd_step configfiles/Physics-Pi0.[39m(B[m$[12;1H(B[0;1m[34mcd[39m(B[m /home/al/a2GoAT/2nd_step[14d(B[0;1m[31m$ROOTSYS[39m(B[m/bin/hadd MainGoAT.root *.root[15d[36m#MainGoAT_3680.root MainGoAT_3681.root MainGoAT_3683.root MainGoAT_3684.root MainGoAT_3685.root[39m[42m [16d[49m[36m#MainGoAT_3699.root MainGoAT_3692.root MainGoAT_3694.root MainGoAT_3684.root MainGoAT_3683.root MainGoAT_3697.root MainGoAT_3696.root MainG[39m(B[m$[37;62H(B[0;7m[ Read 14 lines ][38d^G(B[m Get Help[38;24H(B[0;7m^O(B[m WriteOut[38;47H(B[0;7m^R(B[m Read File[38;70H(B[0;7m^Y(B[m Prev Page[38;93H(B[0;7m^K(B[m Cut Text[38;116H(B[0;7m^C(B[m Cur Pos[39d(B[0;7m^X(B[m Exit[39;24H(B[0;7m^J(B[m Justify[39;47H(B[0;7m^W(B[m Where Is[39;70H(B[0;7m^V(B[m Next Page[39;93H(B[0;7m^U(B[m UnCut Text[39;116H(B[0;7m^T(B[m To Spell[3d[4d[5d[6d[7d[38d[J[39;140H[39;1H[?1049l[?1l>]0;al@emporium: ~/analysis/a2GoATal@emporium:~/analysis/a2GoAT$ nohup ./script &
+[1] 21723
+]0;al@emporium: ~/analysis/a2GoATal@emporium:~/analysis/a2GoAT$ nohup: ignoring input and appending output to ‘nohup.out’
+
+]0;al@emporium: ~/analysis/a2GoATal@emporium:~/analysis/a2GoAT$ tail -f nohup.out 
+Error in <TTree::SetBranchAddress>: unknown branch -> pseudoVertexY
+Error in <TTree::SetBranchAddress>: unknown branch -> pseudoVertexZ
+SysError in <TFile::TFile>: file /home/al/a2GoAT/1st_step/GoATTrees_3420.root can not be opened (No such file or directory)
+#ERROR: Can not create output file /home/al/a2GoAT/1st_step/GoATTrees_3420.root!
+ERROR: Failed on file /home/al/output/Acqu_CBTaggTAPS_3420.root!
+Opened input file /home/al/output/Acqu_CBTaggTAPS_3421.root!
+Error in <TTree::SetBranchAddress>: unknown branch -> shortEnergy
+Error in <TTree::SetBranchAddress>: unknown branch -> pseudoVertexX
+Error in <TTree::SetBranchAddress>: unknown branch -> pseudoVertexY
+Error in <TTree::SetBranchAddress>: unknown branch -> pseudoVertexZ
+SysError in <TFile::TFile>: file /home/al/a2GoAT/1st_step/GoATTrees_3421.root can not be opened (No such file or directory)
+#ERROR: Can not create output file /home/al/a2GoAT/1st_step/GoATTrees_3421.root!
+ERROR: Failed on file /home/al/output/Acqu_CBTaggTAPS_3421.root!
+Opened input file /home/al/output/Acqu_CBTaggTAPS_3422.root!
+Error in <TTree::SetBranchAddress>: unknown branch -> shortEnergy
+Error in <TTree::SetBranchAddress>: unknown branch -> pseudoVertexX
+Error in <TTree::SetBranchAddress>: unknown branch -> pseudoVertexY
+Error in <TTree::SetBranchAddress>: unknown branch -> pseudoVertexZ
+SysError in <TFile::TFile>: file /home/al/a2GoAT/1st_step/GoATTrees_3422.root can not be opened (No such file or directory)
+#ERROR: Can not create output file /home/al/a2GoAT/1st_step/GoATTrees_3422.root!
+ERROR: Failed on file /home/al/output/Acqu_CBTaggTAPS_3422.root!
+Opened input file /home/al/output/Acqu_CBTaggTAPS_3423.root!
+Error in <TTree::SetBranchAddress>: unknown branch -> shortEnergy
+Error in <TTree::SetBranchAddress>: unknown branch -> pseudoVertexX
+Error in <TTree::SetBranchAddress>: unknown branch -> pseudoVertexY
+Error in <TTree::SetBranchAddress>: unknown branch -> pseudoVertexZ
+SysError in <TFile::TFile>: file /home/al/a2GoAT/1st_step/GoATTrees_3423.root can not be opened (No such file or directory)
+#ERROR: Can not create output file /home/al/a2GoAT/1st_step/GoATTrees_3423.root!
+ERROR: Failed on file /home/al/output/Acqu_CBTaggTAPS_3423.root!
+Opened input file /home/al/output/Acqu_CBTaggTAPS_3431.root!
+Error in <TTree::SetBranchAddress>: unknown branch -> shortEnergy
+Error in <TTree::SetBranchAddress>: unknown branch -> pseudoVertexX
+Error in <TTree::SetBranchAddress>: unknown branch -> pseudoVertexY
+Error in <TTree::SetBranchAddress>: unknown branch -> pseudoVertexZ
+SysError in <TFile::TFile>: file /home/al/a2GoAT/1st_step/GoATTrees_3431.root can not be opened (No such file or directory)
+#ERROR: Can not create output file /home/al/a2GoAT/1st_step/GoATTrees_3431.root!
+ERROR: Failed on file /home/al/output/Acqu_CBTaggTAPS_3431.root!
+Opened input file /home/al/output/Acqu_CBTaggTAPS_3432.root!
+Error in <TTree::SetBranchAddress>: unknown branch -> shortEnergy
+Error in <TTree::SetBranchAddress>: unknown branch -> pseudoVertexX
+Error in <TTree::SetBranchAddress>: unknown branch -> pseudoVertexY
+Error in <TTree::SetBranchAddress>: unknown branch -> pseudoVertexZ
+SysError in <TFile::TFile>: file /home/al/a2GoAT/1st_step/GoATTrees_3432.root can not be opened (No such file or directory)
+#ERROR: Can not create output file /home/al/a2GoAT/1st_step/GoATTrees_3432.root!
+ERROR: Failed on file /home/al/output/Acqu_CBTaggTAPS_3432.root!
+Opened input file /home/al/output/Acqu_CBTaggTAPS_3433.root!
+Error in <TTree::SetBranchAddress>: unknown branch -> shortEnergy
+Error in <TTree::SetBranchAddress>: unknown branch -> pseudoVertexX
+Error in <TTree::SetBranchAddress>: unknown branch -> pseudoVertexY
+Error in <TTree::SetBranchAddress>: unknown branch -> pseudoVertexZ
+SysError in <TFile::TFile>: file /home/al/a2GoAT/1st_step/GoATTrees_3433.root can not be opened (No such file or directory)
+#ERROR: Can not create output file /home/al/a2GoAT/1st_step/GoATTrees_3433.root!
+ERROR: Failed on file /home/al/output/Acqu_CBTaggTAPS_3433.root!
+Opened input file /home/al/output/Acqu_CBTaggTAPS_3434.root!
+Error in <TTree::SetBranchAddress>: unknown branch -> shortEnergy
+Error in <TTree::SetBranchAddress>: unknown branch -> pseudoVertexX
+Error in <TTree::SetBranchAddress>: unknown branch -> pseudoVertexY
+Error in <TTree::SetBranchAddress>: unknown branch -> pseudoVertexZ
+SysError in <TFile::TFile>: file /home/al/a2GoAT/1st_step/GoATTrees_3434.root can not be opened (No such file or directory)
+#ERROR: Can not create output file /home/al/a2GoAT/1st_step/GoATTrees_3434.root!
+ERROR: Failed on file /home/al/output/Acqu_CBTaggTAPS_3434.root!
+Opened input file /home/al/output/Acqu_CBTaggTAPS_3435.root!
+Error in <TTree::SetBranchAddress>: unknown branch -> shortEnergy
+Error in <TTree::SetBranchAddress>: unknown branch -> pseudoVertexX
+Error in <TTree::SetBranchAddress>: unknown branch -> pseudoVertexY
+Error in <TTree::SetBranchAddress>: unknown branch -> pseudoVertexZ
+SysError in <TFile::TFile>: file /home/al/a2GoAT/1st_step/GoATTrees_3435.root can not be opened (No such file or directory)
+#ERROR: Can not create output file /home/al/a2GoAT/1st_step/GoATTrees_3435.root!
+ERROR: Failed on file /home/al/output/Acqu_CBTaggTAPS_3435.root!
+Opened input file /home/al/output/Acqu_CBTaggTAPS_3436.root!
+Error in <TTree::SetBranchAddress>: unknown branch -> shortEnergy
+Error in <TTree::SetBranchAddress>: unknown branch -> pseudoVertexX
+Error in <TTree::SetBranchAddress>: unknown branch -> pseudoVertexY
+Error in <TTree::SetBranchAddress>: unknown branch -> pseudoVertexZ
+SysError in <TFile::TFile>: file /home/al/a2GoAT/1st_step/GoATTrees_3436.root can not be opened (No such file or directory)
+#ERROR: Can not create output file /home/al/a2GoAT/1st_step/GoATTrees_3436.root!
+ERROR: Failed on file /home/al/output/Acqu_CBTaggTAPS_3436.root!
+Opened input file /home/al/output/Acqu_CBTaggTAPS_3437.root!
+Error in <TTree::SetBranchAddress>: unknown branch -> shortEnergy
+Error in <TTree::SetBranchAddress>: unknown branch -> pseudoVertexX
+Error in <TTree::SetBranchAddress>: unknown branch -> pseudoVertexY
+Error in <TTree::SetBranchAddress>: unknown branch -> pseudoVertexZ
+^C
+]0;al@emporium: ~/analysis/a2GoATal@emporium:~/analysis/a2GoAT$ ps aux | grep nohup
+al       21729  0.0  0.0  15936   940 pts/24   S+   19:06   0:00 grep --color=auto [01;31m[Knohup[m[K
+]0;al@emporium: ~/analysis/a2GoATal@emporium:~/analysis/a2GoAT$ ps aux | grep nohup[K[K[K[K[Kscript
+al       21612  0.0  0.0  21872   904 pts/12   S+   19:06   0:00 [01;31m[Kscript[m[K
+al       21613  0.0  0.0  21876   400 pts/12   S+   19:06   0:00 [01;31m[Kscript[m[K
+al       21723  0.0  0.0  16620  1404 pts/24   S    19:06   0:00 /bin/bash ./[01;31m[Kscript[m[K
+al       21733  0.0  0.0  15936   940 pts/24   S+   19:06   0:00 grep --color=auto [01;31m[Kscript[m[K
+]0;al@emporium: ~/analysis/a2GoATal@emporium:~/analysis/a2GoAT$ kill -9 [K[K[K[K[K[K[K[Kps aux | grep script[K[K[K[K[K[Kgoat
+al       21724 11.4  1.6 351656 132360 pts/24  D    19:06   0:05 ./build/bin/[01;31m[Kgoat[m[K -d /home/al/output/ -D /home/al/a2GoAT/1st_step -p Acqu_CBTaggTAPS -P GoATTrees configfiles/GoAT-Pi0.dat
+al       21735  0.0  0.0  15936   940 pts/24   S+   19:07   0:00 grep --color=auto [01;31m[Kgoat[m[K
+]0;al@emporium: ~/analysis/a2GoATal@emporium:~/analysis/a2GoAT$ top
+[?1h=[?25l[H[2J(B[mtop - 19:07:11 up 9 days, 23:03,  4 users,  load average: 0.62, 0.33, 0.30(B[m[39;49m(B[m[39;49m[K
+Tasks:(B[m[39;49m[1m 303 (B[m[39;49mtotal,(B[m[39;49m[1m   1 (B[m[39;49mrunning,(B[m[39;49m[1m 302 (B[m[39;49msleeping,(B[m[39;49m[1m   0 (B[m[39;49mstopped,(B[m[39;49m[1m   0 (B[m[39;49mzombie(B[m[39;49m(B[m[39;49m[K
+%Cpu(s):(B[m[39;49m[1m 14.5 (B[m[39;49mus,(B[m[39;49m[1m  1.5 (B[m[39;49msy,(B[m[39;49m[1m  0.0 (B[m[39;49mni,(B[m[39;49m[1m 83.6 (B[m[39;49mid,(B[m[39;49m[1m  0.3 (B[m[39;49mwa,(B[m[39;49m[1m  0.0 (B[m[39;49mhi,(B[m[39;49m[1m  0.0 (B[m[39;49msi,(B[m[39;49m[1m  0.0 (B[m[39;49mst(B[m[39;49m(B[m[39;49m[K
+KiB Mem: (B[m[39;49m[1m  8095908 (B[m[39;49mtotal,(B[m[39;49m[1m  7513396 (B[m[39;49mused,(B[m[39;49m[1m   582512 (B[m[39;49mfree,(B[m[39;49m[1m   143756 (B[m[39;49mbuffers(B[m[39;49m(B[m[39;49m[K
+KiB Swap:(B[m[39;49m[1m  8307708 (B[m[39;49mtotal,(B[m[39;49m[1m    55100 (B[m[39;49mused,(B[m[39;49m[1m  8252608 (B[m[39;49mfree.(B[m[39;49m[1m  2215492 (B[m[39;49mcached Mem(B[m[39;49m(B[m[39;49m[K
+[K
+[7m  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND                                                                 (B[m[39;49m[K
+(B[m21724 al        20   0  351876 123520  15200 D  51.3  1.5   0:05.56 goat                                                                    (B[m[39;49m[K
+(B[m 3428 al        20   0  661676  20788   8188 S   6.4  0.3   1:23.87 gnome-terminal                                                          (B[m[39;49m[K
+(B[m[1m21736 al        20   0   29272   1708   1088 R   6.4  0.0   0:00.01 top                                                                     (B[m[39;49m[K
+(B[m    1 root      20   0   33764   2720   1328 S   0.0  0.0   0:04.05 init                                                                    (B[m[39;49m[K
+(B[m    2 root      20   0       0      0      0 S   0.0  0.0   0:00.11 kthreadd                                                                (B[m[39;49m[K
+(B[m    3 root      20   0       0      0      0 S   0.0  0.0   0:31.74 ksoftirqd/0                                                             (B[m[39;49m[K
+(B[m    5 root       0 -20       0      0      0 S   0.0  0.0   0:00.00 kworker/0:0H                                                            (B[m[39;49m[K
+(B[m    7 root      20   0       0      0      0 S   0.0  0.0   2:10.98 rcu_sched                                                               (B[m[39;49m[K
+(B[m    8 root      20   0       0      0      0 S   0.0  0.0   1:31.45 rcuos/0                                                                 (B[m[39;49m[K
+(B[m    9 root      20   0       0      0      0 S   0.0  0.0   0:16.59 rcuos/1                                                                 (B[m[39;49m[K
+(B[m   10 root      20   0       0      0      0 S   0.0  0.0   0:34.92 rcuos/2                                                                 (B[m[39;49m[K
+(B[m   11 root      20   0       0      0      0 S   0.0  0.0   0:15.05 rcuos/3                                                                 (B[m[39;49m[K
+(B[m   12 root      20   0       0      0      0 S   0.0  0.0   0:31.34 rcuos/4                                                                 (B[m[39;49m[K
+(B[m   13 root      20   0       0      0      0 S   0.0  0.0   0:14.59 rcuos/5                                                                 (B[m[39;49m[K
+(B[m   14 root      20   0       0      0      0 S   0.0  0.0   0:32.97 rcuos/6                                                                 (B[m[39;49m[K
+(B[m   15 root      20   0       0      0      0 S   0.0  0.0   0:15.35 rcuos/7                                                                 (B[m[39;49m[K
+(B[m   16 root      20   0       0      0      0 S   0.0  0.0   0:00.00 rcu_bh                                                                  (B[m[39;49m[K
+(B[m   17 root      20   0       0      0      0 S   0.0  0.0   0:00.00 rcuob/0                                                                 (B[m[39;49m[K
+(B[m   18 root      20   0       0      0      0 S   0.0  0.0   0:00.00 rcuob/1                                                                 (B[m[39;49m[K
+(B[m   19 root      20   0       0      0      0 S   0.0  0.0   0:00.00 rcuob/2                                                                 (B[m[39;49m[K
+(B[m   20 root      20   0       0      0      0 S   0.0  0.0   0:00.00 rcuob/3                                                                 (B[m[39;49m[K
+(B[m   21 root      20   0       0      0      0 S   0.0  0.0   0:00.00 rcuob/4                                                                 (B[m[39;49m[K
+(B[m   22 root      20   0       0      0      0 S   0.0  0.0   0:00.00 rcuob/5                                                                 (B[m[39;49m[K
+(B[m   23 root      20   0       0      0      0 S   0.0  0.0   0:00.00 rcuob/6                                                                 (B[m[39;49m[K
+(B[m   24 root      20   0       0      0      0 S   0.0  0.0   0:00.00 rcuob/7                                                                 (B[m[39;49m[K
+(B[m   25 root      rt   0       0      0      0 S   0.0  0.0   0:01.70 migration/0                                                             (B[m[39;49m[K
+(B[m   26 root      rt   0       0      0      0 S   0.0  0.0   0:01.37 watchdog/0                                                              (B[m[39;49m[K
+(B[m   27 root      rt   0       0      0      0 S   0.0  0.0   0:01.45 watchdog/1                                                              (B[m[39;49m[K
+(B[m   28 root      rt   0       0      0      0 S   0.0  0.0   0:00.94 migration/1                                                             (B[m[39;49m[K
+(B[m   29 root      20   0       0      0      0 S   0.0  0.0   0:07.86 ksoftirqd/1                                                             (B[m[39;49m[K
+(B[m   31 root       0 -20       0      0      0 S   0.0  0.0   0:00.00 kworker/1:0H                                                            (B[m[39;49m[K
+(B[m   32 root      rt   0       0      0      0 S   0.0  0.0   0:01.48 watchdog/2             

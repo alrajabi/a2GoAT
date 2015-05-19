@@ -134,6 +134,7 @@ add_executable(pi0-example
    )
 target_link_libraries(pi0-example goatbase ghist ${LIBS} ${ROOT_LIBRARIES})
 
+
 add_executable(TaggEff
    inc/PPhysics.h
    src/PPhysics.cc
@@ -142,6 +143,16 @@ add_executable(TaggEff
    src/TaggEff_main.cc
    )
 target_link_libraries(TaggEff goatbase ghist ${LIBS} ${ROOT_LIBRARIES})
+
+add_executable(AR_Class
+   inc/PPhysics.h
+   src/PPhysics.cc
+   inc/PAR_Class.h
+   src/PAR_Class.cc
+   src/AR_Class_main.cc
+   )
+target_link_libraries(AR_Class goatbase ghist ${LIBS} ${ROOT_LIBRARIES})
+
 
 # install some scripts to the bin directory
 # by creating symlinks

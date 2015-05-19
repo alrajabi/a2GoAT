@@ -11,7 +11,7 @@ Add-Random-Cut: 10 500
 Target-Mass: 938.272
 
 # cut on the tagger channel (for standard physics library)
-Tagger-Channel-Cut: 200 300
+#Tagger-Channel-Cut: 200 300
 
 # where are the tagger scalers?
-Tagger-Scalers: 0 271
+Tagger-Scalers: 400 751
