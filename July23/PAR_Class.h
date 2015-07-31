@@ -12,7 +12,6 @@
 class	PAR_Class  : public PPhysics
 {
 private:
-	
     GH1*	time;
     GH1*	time_cut;
     GH1*	time_2g;      
@@ -23,23 +22,17 @@ private:
 
     GH1*	MM;
     GH1*	MM_2g;
+
     TH1*	TaggerAccScal;
-   /***
     GH1*	NChargedOA;
     GH1*	NCharged;
     GH1*	NMissing;
     GH1*	MissMass;
     GH1*	OA;
-    GH1*	gHist1;	***/
-     
-    GH1*	Theta1;
-    GH1*	Theta0;
-    GH1*	Phi1;
-    GH1*	Phi0;
+    GH1*	gHist1;	
 protected:
     virtual Bool_t  Start();
     virtual void Eff(const GTreeParticle& tree1,const GTreeMeson& tree2, GH1* Hist1,GH1* Hist2, GH1* Hist3, GH1* Hist4,GH1* Hist5,GH1* gHist,Float_t angle );	
-    virtual void Test_Asym(const GTreeParticle& tree1,const GTreeTrigger& tree2,const GTreeTagger& tree3,const GTreeMeson& tree4,GH1* gHist1,GH1* gHist2,GH1* gHist3,GH1* gHist4);
     virtual Double_t myOA_Calculator(const TLorentzVector& t1, const TLorentzVector& t2 );
     virtual void    ProcessEvent();
     virtual void	ProcessScalerRead();

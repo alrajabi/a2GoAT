@@ -13,20 +13,13 @@ PAR_Class::PAR_Class()
   
     MM		= new GH1("MM", 	"MM", 	 	400,   800, 1200);     
     MM_2g	= new GH1("MM_2g", 	"MM_2g", 	400,   800, 1200);
-    TaggerAccScal = new TH1D("TaggerAccScal","TaggerAccScal",352,0,352);
-    /***NChargedOA	= new GH1("NChargedOA",	"NC Prime at OA" ,300,0, 300);
+    NChargedOA	= new GH1("NChargedOA",	"NC Prime at OA" ,300,0, 300);
     NCharged	= new GH1("NCharged",	"NC " ,300,0, 300);
     NMissing	= new GH1("NMissing",	"NM " ,300,0, 300);
     OA		= new GH1("OA",	"Opening Angle " ,180,0, 180);
     MissMass	= new GH1("MissMass",	"Proton MissMass " ,1000,300, 1300);
-    
-    gHist1	= new GH1("gHist",	"Test MissMass"    , 500,0,500);	
-***/
-   
-   Theta1 = new GH1("Theta1",	"Theta Dist. Helicity=1"    , 180,0,180);	
-   Theta0 = new GH1("Theta0",	"Theta Dist. Helicity=0 "    , 180,0,180);
-   Phi1 = new GH1("Phi1",	"Phi Dist. Helicity=1"    , 360,-180,180);	
-   Phi0 = new GH1("Phi0",	"Phi Dist. Helicity=0 "    , 360,-180,180);
+    TaggerAccScal = new TH1D("TaggerAccScal","TaggerAccScal",352,0,352);
+    gHist1	= new GH1("gHist",	"Test MissMass"    , 500,700,1200);	
 }
 
 PAR_Class::~PAR_Class()
@@ -127,54 +120,8 @@ void PAR_Class::Eff(const GTreeParticle& tree1,const GTreeMeson& tree2, GH1* His
 			}	
 		}
 	}
+	
 
-}
-
-//Asymmetry block:
-
-void PAR_Class::Test_Asym(const GTreeParticle& tree1,const GTreeTrigger& tree2,const GTreeTagger& tree3,const GTreeMeson& tree4,GH1* gHist1,GH1* gHist2,GH1* gHist3,GH1* gHist4)
-//,const GTreeMeson& tree2, GH1* Hist1,GH1* Hist2,GH1* Hist3,GH1* Hist4,GH1* Hist5,GH1* gHist, Float_t angle )
-{
-	for (Int_t j = 0; j < GetTagger()->GetNTagged(); j++)
-	{
-		for (Int_t k = 0; k < tree4.GetNParticles(); k++) //pi0 events:
-   			{
-     				if ((tree4.GetNSubParticles(k) == 2) && (tree4.GetNSubPhotons(k) == 2))
-       				{		
-					if (TMath::Abs(CalcMissingMass(tree4,0,j)-938.2)<50)//Select events based on MissMass.
-					{
-						if ((tree1.GetNParticles() != 0) )//check if there is a photon detected:
-						{ 
-							for (Int_t i = 0; i < tree1.GetNParticles(); i++) //photon is detected, lets sum over:
-   							{
-								//gHist2->Fill(tree3.GetTaggedEnergy(j)); //plot energy of photons
-								if ((tree3.GetTaggedEnergy(j)>280)&&( tree3.GetTaggedEnergy(j)<300))
-								{
-									//cout << "energy is:" << tree3.GetTaggedEnergy(j) << "\n";
-									if(tree2.GetNErrors()==0)
-									{
-										if (tree2.GetHelicity() ) // now if the helicity is 1
-										{
-											gHist1->Fill(tree4.GetTheta(i));
-											gHist3->Fill(tree4.GetPhi(i));
-										}
-										if (!tree2.GetHelicity() ) // now if the helicity is 1
-										{
-											gHist2->Fill(tree4.GetTheta(i));
-											gHist4->Fill(tree4.GetPhi(i));
-										} 	
-									
-									}
-								}						
-							}
-						}
-
-					}
-				}
-
-
-			}		
-	}	
 }
 //AR's edit ends.
 void	PAR_Class::ProcessEvent()
@@ -184,7 +131,7 @@ void	PAR_Class::ProcessEvent()
     FillTimeCut(*GetNeutralPions(),time_cut);
 	
 	// fill missing mass, all pi0
-     FillMissingMass(*GetNeutralPions(),MM);
+    FillMissingMass(*GetNeutralPions(),MM);
 	
 	// fill invariant mass, all pi0
     FillMass(*GetNeutralPions(),IM);
@@ -208,9 +155,8 @@ void	PAR_Class::ProcessEvent()
 
     }
 
-      //  Eff(*GetRootinos(),*GetNeutralPions(),NChargedOA,NCharged,NMissing,OA,MissMass,gHist1,15);
+        Eff(*GetRootinos(),*GetNeutralPions(),NChargedOA,NCharged,NMissing,OA,MissMass,gHist1,15);
 	//Eff(*GetChargedPions(),*GetNeutralPions(),Test1,Test2,Test3,OA,MissMass,gHist1,180);
-	Test_Asym(*GetPhotons(),*GetTrigger(),*GetTagger(),*GetNeutralPions(),Theta1,Theta0,Phi1,Phi0);
 }
 
 void	PAR_Class::ProcessScalerRead()

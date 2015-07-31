@@ -1,0 +1,13 @@
+{
+TFile *f1 = new TFile("Butanol_Final_June8.root");
+TH1D *h1 = (TH1D*)f1.Get("TaggerAccScal");
+TFile *f2 = new TFile("Carbon_Final_June8.root");
+TH1D *h2 = (TH1D*)f2.Get("TaggerAccScal");
+TH1F *hist1 = new TH1F("division","",352,0,352);
+hist1->Divide(h1,h2,1.,1.,"b");
+hist1->Draw();
+
+
+}
+
+
