@@ -1,14 +1,43 @@
 #!/bin/bash
-cd build/
-make -j4
-cd ../
+S1='build'
+S2='goat'
+S3='AR'
+S4='sum'
+S5=''
+args=("$@")
+
+echo "now lets take care of $i .............................."
+    #if [ "${args[$i]}" = "$S1" ];then
+if [ "$1" = "$S1" ];then
+    cd build/
+    make -j4
+    cd ../
+fi  
+if [ "$1" = "$S2" ];then
+    #./build/bin/goat -d /media/external/output/ -D ~/analysis/1st_step -p Acqu_CBTaggTAPS -P GoATTrees configfiles/GoAT-Pi0.dat 
+    #./build/bin/goat -f ~/output/Acqu_CBTaggTAPS_3681.root -D ~/analysis/1st_step -p Acqu_CBTaggTAPS -P GoATTrees configfiles/GoAT-Pi0.dat
+    echo "kashti maaro?"
+fi 
+if [ "$1" = "$S3" ];then
+    #./build/bin/AR_Class  -d ~/analaysis/1st_step -p GoATTrees -P MainGoAT -D ~/analysis/2nd_step configfiles/Physics-Pi0.dat
+    #./build/bin/AR_Class  -f /home/al/analysis/1st_step/GoATTrees_3410.root -P MainGoAT -D /home/al/analysis/3rd_step configfiles/Physics-Pi0.dat
+    echo "kooshi paa?"
+fi  
+if [ "$1" = "$S4" ];then
+    #cd /home/al/analysis/2nd_step/"$2"
+    #$ROOTSYS/bin/hadd MainGoAT_"$3".root *.root
+    ls /home/al/analysis/1st_step/"$2"/
+fi  
+    
+
+
 #./build/bin/goat -d /media/external/output/ -D ~/analysis/1st_step -p Acqu_CBTaggTAPS -P GoATTrees configfiles/GoAT-Pi0.dat 
 #./build/bin/goat -f ~/output/Acqu_CBTaggTAPS_3681.root -D ~/analysis/1st_step -p Acqu_CBTaggTAPS -P GoATTrees configfiles/GoAT-Pi0.dat 
 #./build/bin/AR_Class  -d ~/analaysis/1st_step -p GoATTrees -P MainGoAT -D ~/analysis/2nd_step configfiles/Physics-Pi0.dat
 #./build/bin/AR_Class  -f /home/al/analysis/1st_step/GoATTrees_3410.root -P MainGoAT -D /home/al/analysis/3rd_step configfiles/Physics-Pi0.dat
 
-cd /home/al/analysis/2nd_step
+#cd /home/al/analysis/2nd_step
 
-$ROOTSYS/bin/hadd Carbon_MainGoAT.root *.root
+#$ROOTSYS/bin/hadd Carbon_MainGoAT.root *.root
 #MainGoAT_3680.root MainGoAT_3681.root MainGoAT_3683.root MainGoAT_3684.root MainGoAT_3685.root 
 #MainGoAT_3699.root MainGoAT_3692.root MainGoAT_3694.root MainGoAT_3684.root MainGoAT_3683.root MainGoAT_3697.root MainGoAT_3696.root MainGoAT_3695.root MainGoAT_3685.root MainGoAT_3681.root MainGoAT_3691.root
