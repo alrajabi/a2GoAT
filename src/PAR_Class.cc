@@ -14,14 +14,14 @@ PAR_Class::PAR_Class()
     MM		= new GH1("MM", 	"MM", 	 	400,   800, 1200);     
     MM_2g	= new GH1("MM_2g", 	"MM_2g", 	400,   800, 1200);
     TaggerAccScal = new TH1D("TaggerAccScal","TaggerAccScal",352,0,352);
-    /***NChargedOA	= new GH1("NChargedOA",	"NC Prime at OA" ,300,0, 300);
+    NChargedOA	= new GH1("NChargedOA",	"NC Prime at OA" ,300,0, 300);
     NCharged	= new GH1("NCharged",	"NC " ,300,0, 300);
     NMissing	= new GH1("NMissing",	"NM " ,300,0, 300);
     OA		= new GH1("OA",	"Opening Angle " ,180,0, 180);
     MissMass	= new GH1("MissMass",	"Proton MissMass " ,1000,300, 1300);
     
     gHist1	= new GH1("gHist",	"Test MissMass"    , 500,0,500);	
-***/
+
    
    Theta1 = new GH1("Theta1",	"Theta Dist. Helicity=1"    , 180,0,180);	
    Theta0 = new GH1("Theta0",	"Theta Dist. Helicity=0 "    , 180,0,180);
@@ -153,12 +153,12 @@ void PAR_Class::Test_Asym(const GTreeParticle& tree1,const GTreeTrigger& tree2,c
 									//cout << "energy is:" << tree3.GetTaggedEnergy(j) << "\n";
 									if(tree2.GetNErrors()==0)
 									{
-										if (tree2.GetHelicity() ) // now if the helicity is 1
+										if ((tree2.GetHelicity()) && (tree4.GetTheta(i)>100) && (tree4.GetTheta(i)<120)  ) // now if the helicity is 1
 										{
 											gHist1->Fill(tree4.GetTheta(i));
 											gHist3->Fill(tree4.GetPhi(i));
 										}
-										if (!tree2.GetHelicity() ) // now if the helicity is 1
+										if ((!tree2.GetHelicity()) && (tree4.GetTheta(i)>100) && (tree4.GetTheta(i)<120) ) // now if the helicity is 1
 										{
 											gHist2->Fill(tree4.GetTheta(i));
 											gHist4->Fill(tree4.GetPhi(i));
@@ -208,7 +208,7 @@ void	PAR_Class::ProcessEvent()
 
     }
 
-      //  Eff(*GetRootinos(),*GetNeutralPions(),NChargedOA,NCharged,NMissing,OA,MissMass,gHist1,15);
+        Eff(*GetRootinos(),*GetNeutralPions(),NChargedOA,NCharged,NMissing,OA,MissMass,gHist1,15);
 	//Eff(*GetChargedPions(),*GetNeutralPions(),Test1,Test2,Test3,OA,MissMass,gHist1,180);
 	Test_Asym(*GetPhotons(),*GetTrigger(),*GetTagger(),*GetNeutralPions(),Theta1,Theta0,Phi1,Phi0);
 }

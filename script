@@ -24,9 +24,10 @@ if [ "$1" = "$S3" ];then
     echo "kooshi paa?"
 fi  
 if [ "$1" = "$S4" ];then
-    #cd /home/al/analysis/2nd_step/"$2"
-    #$ROOTSYS/bin/hadd MainGoAT_"$3".root *.root
-    ls /home/al/analysis/1st_step/"$2"/
+    cd /home/al/analysis/2nd_step/"$2"
+    $ROOTSYS/bin/hadd MainGoAT_"$3".root *.root
+    #ls /home/al/analysis/1st_step/"$2"/
+	mv /home/al/analysis/2nd_step/"$2"/MainGoAT_"$3".root ./
 fi  
     
 

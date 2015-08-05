@@ -24,14 +24,13 @@ private:
     GH1*	MM;
     GH1*	MM_2g;
     TH1*	TaggerAccScal;
-   /***
+   
     GH1*	NChargedOA;
     GH1*	NCharged;
     GH1*	NMissing;
     GH1*	MissMass;
     GH1*	OA;
-    GH1*	gHist1;	***/
-     
+    GH1*	gHist1;	
     GH1*	Theta1;
     GH1*	Theta0;
     GH1*	Phi1;
