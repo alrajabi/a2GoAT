@@ -17,10 +17,11 @@ PAR_Class::PAR_Class()
     NChargedOA	= new GH1("NChargedOA",	"NC Prime at OA" ,300,0, 300);
     NCharged	= new GH1("NCharged",	"NC " ,300,0, 300);
     NMissing	= new GH1("NMissing",	"NM " ,300,0, 300);
+    NChecked	= new GH1("NChecked",	"NM " ,300,0, 300); 	
     OA		= new GH1("OA",	"Opening Angle " ,180,0, 180);
     MissMass	= new GH1("MissMass",	"Proton MissMass " ,1000,300, 1300);
     
-    gHist1	= new GH1("gHist",	"Test MissMass"    , 500,0,1000);	
+    gHist1	= new GH1("gHist",	"Test MissMass"    , 250,700,1200);	
 
    
    Theta1 = new GH1("Theta1",	"Theta Dist. Helicity=1"    , 18,0,180);	
@@ -68,7 +69,7 @@ Double_t PAR_Class::myOA_Calculator(const TLorentzVector& t1, const TLorentzVect
 	//return cosinoos;
 	return p1.Angle(p2);
 }
-void PAR_Class::Eff(const GTreeParticle& tree1,const GTreeMeson& tree2, GH1* Hist1,GH1* Hist2,GH1* Hist3,GH1* Hist4,GH1* Hist5,GH1* gHist, Float_t angle )
+void PAR_Class::Eff(const GTreeParticle& tree1,const GTreeMeson& tree2, GH1* Hist1,GH1* Hist2,GH1* Hist3,GH1* Hist4,GH1* Hist5,GH1* gHist,GH1* NMCheck, Float_t angle )
 {
 	//Int_t N_c_prime = 0;
 	//Int_t N_c = 0;
@@ -97,8 +98,12 @@ void PAR_Class::Eff(const GTreeParticle& tree1,const GTreeMeson& tree2, GH1* His
 							if  (myOA_Calculator(CalcMissingP4(tree2,0,j),tree1.Particle(0))<angle*TMath::Pi()/180)
 							{
 								Hist1->Fill(CalcMissingEnergy(tree2,0,j)-CalcMissingMass(tree2, 0,j));
-								cout << "angle is  " << myOA_Calculator(CalcMissingP4(tree2,0,j),tree1.Particle(0))*180/TMath::Pi() << "\n";
+								//cout << "angle is  " << myOA_Calculator(CalcMissingP4(tree2,0,j),tree1.Particle(0))*180/TMath::Pi() << "\n";
 							}
+							else
+							{
+								Hist3->Fill(CalcMissingEnergy(tree2,0,j)-CalcMissingMass(tree2, 0,j));
+							}	
 						}
 
 					 }	
@@ -111,12 +116,15 @@ void PAR_Class::Eff(const GTreeParticle& tree1,const GTreeMeson& tree2, GH1* His
 	{ //here there is no proton detected, so it counts the missing energy of undetected protons.
 		for (Int_t j = 0; j < GetTagger()->GetNTagged(); j++)
 		{	
+					
 			for (Int_t i = 0; i < tree2.GetNParticles(); i++)
    			{
+				NMCheck->Fill(CalcMissingEnergy(tree2,0,j)-CalcMissingMass(tree2, 0,j));	
 				if((CalcMissingP4(tree2,0,j).Theta()>35*TMath::Pi()/180) && (CalcMissingP4(tree2,0,j).Theta()<40*TMath::Pi()/180))
 				{
 					if ((tree2.GetNSubParticles(i) == 2) && (tree2.GetNSubPhotons(i) == 2))
-       					{		
+       					{	
+						NMCheck->Fill(CalcMissingEnergy(tree2,0,j)-CalcMissingMass(tree2, 0,j));	
 						if (TMath::Abs(CalcMissingMass(tree2,0,j)-938.2)<50)//Select events based on MissMass.
 						{
 							Hist3->Fill(CalcMissingEnergy(tree2,0,j)-CalcMissingMass(tree2, 0,j));
@@ -148,15 +156,15 @@ void PAR_Class::Test_Asym(const GTreeTrigger& triggertree,const GTreeTagger& tag
 							//cout << "energy is:" << tree3.GetTaggedEnergy(j) << "\n";
 							if(triggertree.GetNErrors()==0)
 							{
-								if ((triggertree.GetHelicity()) && (pi0tree.GetTheta(0)>100) && (pi0tree.GetTheta(0)<120)  ) // now if the helicity is 1
+								if (triggertree.GetHelicity() ) // now if the helicity is 1
 								{
-									gHist1->Fill(pi0tree.GetTheta(0));
-									gHist3->Fill(pi0tree.GetPhi(0));
+									gHist1->Fill(pi0tree.GetTheta(k));
+									gHist3->Fill(pi0tree.GetPhi(k));
 								}
-								if ((!triggertree.GetHelicity()) && (pi0tree.GetTheta(0)>100) && (pi0tree.GetTheta(0)<120) ) // now if the helicity is 1
+								if (!triggertree.GetHelicity() ) // now if the helicity is 1
 								{
-									gHist2->Fill(pi0tree.GetTheta(0));
-									gHist4->Fill(pi0tree.GetPhi(0));
+									gHist2->Fill(pi0tree.GetTheta(k));
+									gHist4->Fill(pi0tree.GetPhi(k));
 								} 	
 									
 							}
@@ -201,7 +209,7 @@ void	PAR_Class::ProcessEvent()
 
     }
 
-        Eff(*GetRootinos(),*GetNeutralPions(),NChargedOA,NCharged,NMissing,OA,MissMass,gHist1,15);
+        Eff(*GetRootinos(),*GetNeutralPions(),NChargedOA,NCharged,NMissing,OA,MissMass,gHist1,NChecked,15);
 	//Eff(*GetChargedPions(),*GetNeutralPions(),Test1,Test2,Test3,OA,MissMass,gHist1,180);
 	Test_Asym(*GetTrigger(),*GetTagger(),*GetNeutralPions(),Theta1,Theta0,Phi1,Phi0);
 }

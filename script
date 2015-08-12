@@ -3,7 +3,8 @@ S1='build'
 S2='goat'
 S3='AR'
 S4='sum'
-S5=''
+S5='butanol'
+S6='carbon'
 args=("$@")
 
 echo "now lets take care of $i .............................."
@@ -24,10 +25,20 @@ if [ "$1" = "$S3" ];then
     echo "kooshi paa?"
 fi  
 if [ "$1" = "$S4" ];then
-    cd /home/al/analysis/2nd_step/"$2"
-    $ROOTSYS/bin/hadd MainGoAT_"$3".root *.root
+	if [ "$2" = "$S5" ];then
+	        cd /home/al/analysis/2nd_step/oneH/
+    		$ROOTSYS/bin/hadd MainGoAT_oneH.root *.root
     #ls /home/al/analysis/1st_step/"$2"/
-	mv /home/al/analysis/2nd_step/"$2"/MainGoAT_"$3".root ./
+  		mv MainGoAT_oneH.root ../a2GoAT/
+		cd /home/al/analysis/2nd_step/zeroH/
+                $ROOTSYS/bin/hadd MainGoAT_zeroH.root *.root
+		 mv MainGoAT_zeroH.root /home/al/analysis/a2GoAT/
+	fi
+	if [ "$2" = "$S6" ];then
+                cd /home/al/analysis/2nd_step/archive/
+                $ROOTSYS/bin/hadd MainGoAT_carbon.root *.root
+                mv MainGoAT_carbon.root /home/al/analysis/a2GoAT/
+	fi
 fi  
     
 
