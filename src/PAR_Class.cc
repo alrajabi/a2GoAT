@@ -17,7 +17,7 @@ PAR_Class::PAR_Class()
     NChargedOA	= new GH1("NChargedOA",	"NC Prime at OA" ,300,0, 300);
     NCharged	= new GH1("NCharged",	"NC " ,300,0, 300);
     NMissing	= new GH1("NMissing",	"NM " ,300,0, 300);
-    NChecked	= new GH1("NChecked",	"Denom " ,40,800, 1000); 	
+    NChecked	= new GH2("NChecked",	"Denom " ,300,0,300,40,800, 1000); 	
     OA		= new GH1("OA",	"Opening Angle " ,180,0, 180);
     MissMass	= new GH1("MissMass",	"Proton MissMass " ,1000,300, 1300);
     
@@ -70,7 +70,7 @@ Double_t PAR_Class::myOA_Calculator(const TLorentzVector& t1, const TLorentzVect
 	//return cosinoos;
 	return p1.Angle(p2);
 }
-void PAR_Class::Eff(const GTreeParticle& tree1,const GTreeMeson& tree2, GH1* Hist1,GH1* Hist2,GH1* Hist3,GH1* Hist4,GH1* Hist5,GH1* gHist,GH1* NMCheck, Float_t angle )
+void PAR_Class::Eff(const GTreeParticle& tree1,const GTreeMeson& tree2, GH1* Hist1,GH1* Hist2,GH1* Hist3,GH1* Hist4,GH1* Hist5,GH1* gHist,GH2* NMCheck, Float_t angle )
 {
 	//Int_t N_c_prime = 0;
 	//Int_t N_c = 0;
@@ -86,7 +86,7 @@ void PAR_Class::Eff(const GTreeParticle& tree1,const GTreeMeson& tree2, GH1* His
      					   // Fill MM for 2 photon decay
 			if (TMath::Abs(CalcMissingMass(tree2,0,j)-938.2)<50)//Select events based on MissMass.
 			{
-				NMCheck->Fill(CalcMissingMass(tree2, 0,j));//find the denominator-Rory suggested on August19th-4:30PM
+				NMCheck->Fill(CalcMissingEnergy(tree2,0,j)-CalcMissingMass(tree2, 0,j),CalcMissingMass(tree2, 0,j));//find the denominator-Rory suggested on August19th-4:30PM
 			}	
 			if((CalcMissingP4(tree2,0,j).Theta()>35*TMath::Pi()/180) && (CalcMissingP4(tree2,0,j).Theta()<40*TMath::Pi()/180))
 			{
