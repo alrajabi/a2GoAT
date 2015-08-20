@@ -29,7 +29,7 @@ if [ "$1" = "$S4" ];then
 	        cd /home/al/analysis/2nd_step/oneH/
     		$ROOTSYS/bin/hadd MainGoAT_oneH.root *.root
     #ls /home/al/analysis/1st_step/"$2"/
-  		mv MainGoAT_oneH.root ../a2GoAT/
+  		mv MainGoAT_oneH.root /home/al/analysis/a2GoAT/
 		cd /home/al/analysis/2nd_step/zeroH/
                 $ROOTSYS/bin/hadd MainGoAT_zeroH.root *.root
 		 mv MainGoAT_zeroH.root /home/al/analysis/a2GoAT/

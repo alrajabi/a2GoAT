@@ -17,7 +17,7 @@ PAR_Class::PAR_Class()
     NChargedOA	= new GH1("NChargedOA",	"NC Prime at OA" ,300,0, 300);
     NCharged	= new GH1("NCharged",	"NC " ,300,0, 300);
     NMissing	= new GH1("NMissing",	"NM " ,300,0, 300);
-    NChecked	= new GH1("NChecked",	"NM " ,300,0, 300); 	
+    NChecked	= new GH1("NChecked",	"Denom " ,40,800, 1000); 	
     OA		= new GH1("OA",	"Opening Angle " ,180,0, 180);
     MissMass	= new GH1("MissMass",	"Proton MissMass " ,1000,300, 1300);
     
@@ -84,6 +84,10 @@ void PAR_Class::Eff(const GTreeParticle& tree1,const GTreeMeson& tree2, GH1* His
 		for (Int_t i = 0; i < tree2.GetNParticles(); i++)
    		{
      					   // Fill MM for 2 photon decay
+			if (TMath::Abs(CalcMissingMass(tree2,0,j)-938.2)<50)//Select events based on MissMass.
+			{
+				NMCheck->Fill(CalcMissingMass(tree2, 0,j));//find the denominator-Rory suggested on August19th-4:30PM
+			}	
 			if((CalcMissingP4(tree2,0,j).Theta()>35*TMath::Pi()/180) && (CalcMissingP4(tree2,0,j).Theta()<40*TMath::Pi()/180))
 			{
         			if ((tree2.GetNSubParticles(i) == 2) && (tree2.GetNSubPhotons(i) == 2))
@@ -170,7 +174,7 @@ void PAR_Class::Test_Asym(const GTreeTrigger& triggertree,const GTreeTagger& tag
 									gHist3->Fill(pi0tree.GetPhi(k));
 									thvsmm1->Fill(pi0tree.GetTheta(k),CalcMissingMass(pi0tree,0,j));
 								}
-								if (!triggertree.GetHelicity() ) // now if the helicity is 1
+								if (!triggertree.GetHelicity() ) // now if the helicity is 
 								{
 									gHist2->Fill(pi0tree.GetTheta(k));
 									gHist4->Fill(pi0tree.GetPhi(k));
