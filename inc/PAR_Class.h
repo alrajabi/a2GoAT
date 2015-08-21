@@ -38,9 +38,10 @@ private:
     GH1*	Phi0;
     GH2*	ThMM1;
     GH2*	ThMM0;
+    GH1*	pi0checker;	
 protected:
     virtual Bool_t  Start();
-    virtual void Eff(const GTreeParticle& tree1,const GTreeMeson& tree2, GH1* Hist1,GH1* Hist2, GH1* Hist3, GH1* Hist4,GH1* Hist5,GH1* gHist,GH2* NMCheck,Float_t angle );	
+    virtual void Eff(const GTreeParticle& tree1,const GTreeMeson& tree2, GH1* Hist1,GH1* Hist2, GH1* Hist3, GH1* Hist4,GH1* Hist5,GH1* gHist,GH2* NMCheck,GH1* pi0check,Float_t angle );	
     virtual void Test_Asym(const GTreeTrigger& triggertree,const GTreeTagger& taggertree,const GTreeMeson& pi0tree,GH1* gHist1,GH1* gHist2,GH1* gHist3,GH1* gHist4,GH2* thvsmm1,GH2* thvsmm0);
     virtual Double_t myOA_Calculator(const TLorentzVector& t1, const TLorentzVector& t2 );
     virtual void    ProcessEvent();
