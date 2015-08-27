@@ -17,12 +17,17 @@ PAR_Class::PAR_Class()
     NChargedOA	= new GH1("NChargedOA",	"NC Prime at OA" ,300,0, 300);
     NCharged	= new GH1("NCharged",	"NC " ,300,0, 300);
     NMissing	= new GH1("NMissing",	"NM " ,300,0, 300);
-    NChecked	= new GH2("NChecked",	"Denom " ,300,0,300,40,800, 1000); 	
+    MM_after_cut	= new GH2("MM_after_cut",	"Missing Mass after cut" ,300,0,300,40,800, 1000); 	
     OA		= new GH1("OA",	"Opening Angle " ,180,0, 180);
-    MissMass	= new GH1("MissMass",	"Proton MissMass " ,1000,300, 1300);
-    pi0checker	= new GH1("pi0checker", "Check pi0 events",250,700,1200);
-    gHist1	= new GH1("gHist",	"Test MissMass"    , 250,700,1200);	
+    MissingM	= new GH1("MissingMass",	"Proton Missing Mass " ,1000,300, 1300);
+    pi0checker	= new GH1("pi0checker", "No-2g subs pi0 events",250,700,1200);
+    Denom_incsv	=new GH1("Denom_incsv","Inclusive Denominator", 300,0,300);
+    MM_before_cut	=new GH2("MM_before_cut","MissingM before cut",300,0,300,40,800, 1000);
+    MM_failed_cut	= new GH1("MM_failed_cut",	"Events Failed Missing Mass cut" ,1300,0, 1300);
 
+
+
+   gHist1	= new GH1("gHist",	"Test MissMass"    , 250,700,1200);	
    ThMM1	  = new GH2("Theta_vs_MM1","Theta vs. MissMass1", 18,0,180,500,700,1200);
    ThMM0	  = new GH2("Theta_vs_MM0","Theta vs. MissMass0", 18,0,180,500,700,1200);
    Theta1 = new GH1("Theta1",	"Theta Dist. Helicity=1"    , 18,0,180);	
@@ -70,15 +75,9 @@ Double_t PAR_Class::myOA_Calculator(const TLorentzVector& t1, const TLorentzVect
 	//return cosinoos;
 	return p1.Angle(p2);
 }
-void PAR_Class::Eff(const GTreeParticle& tree1,const GTreeMeson& tree2, GH1* Hist1,GH1* Hist2,GH1* Hist3,GH1* Hist4,GH1* Hist5,GH1* gHist,GH2* NMCheck,GH1* pi0check, Float_t angle )
+void PAR_Class::Eff(const GTreeParticle& tree1,const GTreeMeson& tree2, GH1* Hist1,GH1* Hist2,GH1* Hist3,GH1* Hist4,GH1* mm_b4cut,GH1* gHist,GH2* mm_aftercut,GH2* mm_b4cut_2d,GH1* pi0check,GH1* inclusive_denom, GH1* mm_failedcut, Float_t angle )
 {
-	//Int_t N_c_prime = 0;
-	//Int_t N_c = 0;
-	//Int_t N_m = 0;
-	
-	//if ((tree1.GetNParticles() != 0) ) // check if a rootino(proton or charged pion) was detected
-	//{
-				
+			
 	for (Int_t j = 0; j < GetTagger()->GetNTagged(); j++)
 	{
 		for (Int_t i = 0; i < tree2.GetNParticles(); i++)
@@ -87,14 +86,16 @@ void PAR_Class::Eff(const GTreeParticle& tree1,const GTreeMeson& tree2, GH1* His
 			{
         			if ((tree2.GetNSubParticles(i) == 2) && (tree2.GetNSubPhotons(i) == 2))
        				{		
-					Hist5->Fill(CalcMissingMass(tree2,0,j));//2nd criterion, to check the MM distribution.
-					FillMissingMass(tree2, 0,j, gHist);
+					mm_b4cut->Fill(CalcMissingMass(tree2,0,j));//2nd criterion, to check the MM distribution before cut.
+					mm_b4cut_2d->Fill(CalcMissingEnergy(tree2,0,j)-CalcMissingMass(tree2, 0,j),CalcMissingMass(tree2, 0,j));//Checkpoint before applying mm-cut-Rory suggested on August27th-3:30PM
+
 					if (TMath::Abs(CalcMissingMass(tree2,0,j)-938.2)<50)//Select events based on MissMass.
 					{
-						NMCheck->Fill(CalcMissingEnergy(tree2,0,j)-CalcMissingMass(tree2, 0,j),CalcMissingMass(tree2, 0,j));//find the denominator-Rory suggested on August21st-10:30AM
+						mm_aftercut->Fill(CalcMissingEnergy(tree2,0,j)-CalcMissingMass(tree2, 0,j),CalcMissingMass(tree2, 0,j));//find the denominator-Rory suggested on August21st-10:30AM
+						inclusive_denom->Fill(CalcMissingEnergy(tree2,0,j)-CalcMissingMass(tree2, 0,j));//inclusive denominator, we need to see if it is equal to the sum of nm and nc.
 						if ((tree1.GetNParticles() != 0) ) // check if a rootino(proton or charged pion) was detected
 						{
-							Hist2->Fill(CalcMissingEnergy(tree2,0,j)-CalcMissingMass(tree2, 0,j));	
+							Hist2->Fill(CalcMissingEnergy(tree2,0,j)-CalcMissingMass(tree2, 0,j));	//NC calculated.
 							Hist4->Fill(myOA_Calculator(CalcMissingP4(tree2,0,j),tree1.Particle(0))*180/TMath::Pi());
 						
 							if  (myOA_Calculator(CalcMissingP4(tree2,0,j),tree1.Particle(0))<angle*TMath::Pi()/180)
@@ -102,16 +103,17 @@ void PAR_Class::Eff(const GTreeParticle& tree1,const GTreeMeson& tree2, GH1* His
 								Hist1->Fill(CalcMissingEnergy(tree2,0,j)-CalcMissingMass(tree2, 0,j));
 							
 							}
-							/**else
-							{
-								Hist3->Fill(CalcMissingEnergy(tree2,0,j)-CalcMissingMass(tree2, 0,j));
-							}***/	
+								
 						}
-						else  //Select events based on MissMass.
+						else  //NM calculation:
 						{
 							Hist3->Fill(CalcMissingEnergy(tree2,0,j)-CalcMissingMass(tree2, 0,j));
 						}
 
+					}
+					else // see how many events don't pass the mm-cut.
+					{
+						mm_failedcut->Fill(CalcMissingMass(tree2,0,j)); //events that failed mm-cut.
 					}
 
 				 }
@@ -123,30 +125,7 @@ void PAR_Class::Eff(const GTreeParticle& tree1,const GTreeMeson& tree2, GH1* His
 		}
 	}
 					
-	/***}
-	else 
-	{ //here there is no proton detected, so it counts the missing energy of undetected protons.
-		for (Int_t j = 0; j < GetTagger()->GetNTagged(); j++)
-		{	
-					
-			for (Int_t i = 0; i < tree2.GetNParticles(); i++)
-   			{
-				NMCheck->Fill(CalcMissingEnergy(tree2,0,j)-CalcMissingMass(tree2, 0,j));	
-				if((CalcMissingP4(tree2,0,j).Theta()>35*TMath::Pi()/180) && (CalcMissingP4(tree2,0,j).Theta()<40*TMath::Pi()/180))
-				{
-					if ((tree2.GetNSubParticles(i) == 2) && (tree2.GetNSubPhotons(i) == 2))
-       					{	
-						NMCheck->Fill(CalcMissingEnergy(tree2,0,j)-CalcMissingMass(tree2, 0,j));	
-						if (TMath::Abs(CalcMissingMass(tree2,0,j)-938.2)<50)//Select events based on MissMass.
-						{
-							Hist3->Fill(CalcMissingEnergy(tree2,0,j)-CalcMissingMass(tree2, 0,j));
-			
-						}
-					}	
-				}
-			}	
-		}
-	}***/
+	
 
 }
 
@@ -197,7 +176,7 @@ void	PAR_Class::ProcessEvent()
 	// fill time diff (tagger - pi0), all pi0
     FillTime(*GetNeutralPions(),time);
     FillTimeCut(*GetNeutralPions(),time_cut);
-	
+	/*** Not necessary part
 	// fill missing mass, all pi0
      FillMissingMass(*GetNeutralPions(),MM);
 	
@@ -221,9 +200,9 @@ void	PAR_Class::ProcessEvent()
             FillMass(*GetNeutralPions(),i,IM_2g);
         }
 
-    }
+    }***/
 
-        Eff(*GetRootinos(),*GetNeutralPions(),NChargedOA,NCharged,NMissing,OA,MissMass,gHist1,NChecked,pi0checker,15);
+        Eff(*GetRootinos(),*GetNeutralPions(),NChargedOA,NCharged,NMissing,OA,MissingM,gHist1,MM_after_cut,MM_before_cut,pi0checker,Denom_incsv,MM_failed_cut,15);
 	//Eff(*GetChargedPions(),*GetNeutralPions(),Test1,Test2,Test3,OA,MissMass,gHist1,180);
 	Test_Asym(*GetTrigger(),*GetTagger(),*GetNeutralPions(),Theta1,Theta0,Phi1,Phi0,ThMM1,ThMM0);
 }

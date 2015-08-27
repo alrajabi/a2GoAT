@@ -37,7 +37,7 @@ if [ "$1" = "$S4" ];then
 	if [ "$2" = "$S6" ];then
                 cd /home/al/analysis/2nd_step/archive/
                 $ROOTSYS/bin/hadd MainGoAT_carbon.root *.root
-                mv MainGoAT_carbon.root /home/al/analysis/a2GoAT/
+                mv MainGoAT_carbon.root /home/al/analysis/TestEnv/
 	fi
 fi  
     
