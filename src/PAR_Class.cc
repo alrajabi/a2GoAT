@@ -34,6 +34,7 @@ PAR_Class::PAR_Class()
    Theta0 = new GH1("Theta0",	"Theta Dist. Helicity=0 "    , 18,0,180);
    Phi1 = new GH1("Phi1",	"Phi Dist. Helicity=1"    , 36,-180,180);	
    Phi0 = new GH1("Phi0",	"Phi Dist. Helicity=0 "    , 36,-180,180);
+   MissingM_asym	=new GH1("MissingMassAsymm",	"Missing Mass Asym Analysis" ,1000,300, 1300);
 }
 
 PAR_Class::~PAR_Class()
@@ -131,7 +132,7 @@ void PAR_Class::Eff(const GTreeParticle& tree1,const GTreeMeson& tree2, GH1* His
 
 //Asymmetry block:
 
-void PAR_Class::Test_Asym(const GTreeTrigger& triggertree,const GTreeTagger& taggertree,const GTreeMeson& pi0tree,GH1* gHist1,GH1* gHist2,GH1* gHist3,GH1* gHist4,GH2* thvsmm1,GH2* thvsmm0)
+void PAR_Class::Test_Asym(const GTreeTrigger& triggertree,const GTreeTagger& taggertree,const GTreeMeson& pi0tree,GH1* gHist1,GH1* gHist2,GH1* gHist3,GH1* gHist4,GH2* thvsmm1,GH2* thvsmm0,GH1* MM_dist_b4_1)
 //,const GTreeMeson& tree2, GH1* Hist1,GH1* Hist2,GH1* Hist3,GH1* Hist4,GH1* Hist5,GH1* gHist, Float_t angle )
 {
 	for (Int_t j = 0; j < GetTagger()->GetNTagged(); j++)
@@ -140,10 +141,12 @@ void PAR_Class::Test_Asym(const GTreeTrigger& triggertree,const GTreeTagger& tag
    			{
      				if ((pi0tree.GetNSubParticles(k) == 2) && (pi0tree.GetNSubPhotons(k) == 2))
        				{		
-					//if (TMath::Abs(CalcMissingMass(pi0tree,0,j)-938.2)<50)//Select events based on MissMass.
-					//{
-						if ((taggertree.GetTaggedEnergy(j)>280)&&( taggertree.GetTaggedEnergy(j)<300))
-						{
+				
+					if ((taggertree.GetTaggedEnergy(j)>280)&&( taggertree.GetTaggedEnergy(j)<300))
+					{
+						MM_dist_b4_1->Fill(CalcMissingMass(pi0tree,0,j));					
+						if (TMath::Abs(CalcMissingMass(pi0tree,0,j)-938.2)<50)//Select events based on MissMass.
+						{							
 							//cout << "energy is:" << tree3.GetTaggedEnergy(j) << "\n";
 							if(triggertree.GetNErrors()==0)
 							{
@@ -163,7 +166,7 @@ void PAR_Class::Test_Asym(const GTreeTrigger& triggertree,const GTreeTagger& tag
 							}
 						}						
 											
-					//}
+					}
 				}
 
 
@@ -204,7 +207,7 @@ void	PAR_Class::ProcessEvent()
 
         Eff(*GetRootinos(),*GetNeutralPions(),NChargedOA,NCharged,NMissing,OA,MissingM,gHist1,MM_after_cut,MM_before_cut,pi0checker,Denom_incsv,MM_failed_cut,15);
 	//Eff(*GetChargedPions(),*GetNeutralPions(),Test1,Test2,Test3,OA,MissMass,gHist1,180);
-	Test_Asym(*GetTrigger(),*GetTagger(),*GetNeutralPions(),Theta1,Theta0,Phi1,Phi0,ThMM1,ThMM0);
+	Test_Asym(*GetTrigger(),*GetTagger(),*GetNeutralPions(),Theta1,Theta0,Phi1,Phi0,ThMM1,ThMM0,MissingM_asym);
 }
 
 void	PAR_Class::ProcessScalerRead()
