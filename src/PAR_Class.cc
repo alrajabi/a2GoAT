@@ -14,6 +14,7 @@ PAR_Class::PAR_Class()
     MM		= new GH1("MM", 	"MM", 	 	400,   800, 1200);     
     MM_2g	= new GH1("MM_2g", 	"MM_2g", 	400,   800, 1200);
     TaggerAccScal = new TH1D("TaggerAccScal","TaggerAccScal",352,0,352);/***
+	//--------------------------------original eff analysis histos here:-------------------------------------------
     NChargedOA	= new GH1("NChargedOA",	"NC Prime at OA" ,300,0, 300);
     NCharged	= new GH1("NCharged",	"NC " ,300,0, 300);
     NMissing	= new GH1("NMissing",	"NM " ,300,0, 300);
@@ -26,20 +27,35 @@ PAR_Class::PAR_Class()
     MM_failed_cut	= new GH1("MM_failed_cut",	"Events Failed Missing Mass cut" ,1300,0, 1300);
 
 
-
+	//---------------------------original asym analysis histos here:----------------------------------------------
    gHist1	= new GH1("gHist",	"Test MissMass"    , 250,700,1200);	
    ThMM1	  = new GH2("Theta_vs_MM1","Theta vs. MissMass1", 18,0,180,500,700,1200);
    ThMM0	  = new GH2("Theta_vs_MM0","Theta vs. MissMass0", 18,0,180,500,700,1200);
    Phi1 = new GH1("Phi1",	"Phi Dist. Helicity=1"    , 36,-180,180);	
    Phi0 = new GH1("Phi0",	"Phi Dist. Helicity=0 "    , 36,-180,180);***/
+	//------------------------test asym histos here:--------------------------------------------------------------
    Theta1 = new GH1("Theta1",	"Theta Dist. Helicity=1"    , 18,0,180);	
    Theta0 = new GH1("Theta0",	"Theta Dist. Helicity=0 "    , 18,0,180);
    MissingM_asym	=new GH1("MissingMassAsymm",	"Missing Mass Asym Analysis" ,1000,300, 1300);
    Asym_MM_before_mmcut =new GH1("Asymm_b4cut",	"Missing Mass Asym b4 cut" ,1000,300, 1300);
+   Asym_MM_trigerror_check =new GH1("Asymm_trigerror_check",	"Missing Mass Asym no trigger error" ,1000,300, 1300);
+   Asymm_MM_40	=new GH1("Asymm_MM_40",	"Missing Mass, Theta=40-50" ,1000,300, 1300);
+   Asymm_MM_50	=new GH1("Asymm_MM_50",	"Missing Mass, Theta=50-60" ,1000,300, 1300);
+   Asymm_MM_60	=new GH1("Asymm_MM_60",	"Missing Mass, Theta=60-70" ,1000,300, 1300);
+   Asymm_MM_70	=new GH1("Asymm_MM_70",	"Missing Mass, Theta=70-80" ,1000,300, 1300);
+   Asymm_MM_80	=new GH1("Asymm_MM_80",	"Missing Mass, Theta=80-90" ,1000,300, 1300);
+   Asymm_MM_90	=new GH1("Asymm_MM_90",	"Missing Mass, Theta=90-100" ,1000,300, 1300);
+	//----------------------pi0 study histos ------------------------------------------------------------------------
    Mi_Mass1 	= new GH1("Mi_M1", 	"MM Before any requirement", 	1000,   600, 1600);
    Mi_Mass2 	= new GH1("Mi_M2", 	"MM after 2 photon-subparticles requirement", 	1000,   600, 1600);
    Mi_Mass3		= new GH1("Mi_M3", 	"MM after Rootino detection requirement", 	 	1000,   600, 1600); 
    Mi_Mass4		= new GH1("Mi_M4", 	"MM after Rootino not being detected", 	 	1000,   600, 1600);
+  //-------------test eff histos here:----------------------------------------------------------
+   eff_MM	=new GH1("MissingMassEff",	"Missing Mass RDE Analysis" ,700,600, 1300);
+   NC_with_OA	= new GH1("NC_OA",	"NC Prime at OA=15 degrees" ,300,0, 300);
+   NC_general	= new GH1("NC_general",	"NC " ,300,0, 300);
+   eff_newdenom	=new GH1("eff_new_denom","Inclusive Denominator", 300,0,300);
+
 }
 
 PAR_Class::~PAR_Class()
@@ -135,7 +151,41 @@ void PAR_Class::Eff(const GTreeParticle& tree1,const GTreeMeson& tree2, GH1* His
 	
 
 }
+//-----------------------------------
 
+void PAR_Class::Test_Eff(const GTreeParticle& rootinotree,const GTreeMeson& pi0tree,GH1* eff_mm_b4cut,GH1* ncoa,GH1* nc, GH1* inclusive_denom,Float_t angle )
+{
+			
+	for (Int_t j = 0; j < GetTagger()->GetNTagged(); j++)
+	{
+		if((CalcMissingP4(pi0tree,0,j).Theta()>35*TMath::Pi()/180) && (CalcMissingP4(pi0tree,0,j).Theta()<40*TMath::Pi()/180))
+		{
+        		if ((pi0tree.GetNSubParticles(0) == 2) && (pi0tree.GetNSubPhotons(0) == 2))
+       			{	
+				FillMissingMass(pi0tree, 0, j, eff_mm_b4cut,1);
+				if ((CalcMissingMass(pi0tree,0,j)<970)&&(CalcMissingMass(pi0tree,0,j)>910))//Select events based on MissMass.
+				{
+						
+					inclusive_denom->Fill(CalcMissingEnergy(pi0tree,0,j)-CalcMissingMass(pi0tree, 0,j));//inclusive denominator, we need to see if it is equal to the sum of nm and nc.
+					if ((rootinotree.GetNParticles() != 0) ) // check if a rootino(proton or charged pion) was detected
+					{
+						nc->Fill(CalcMissingEnergy(pi0tree,0,j)-CalcMissingMass(pi0tree, 0,j));	//NC calculated.
+						
+						if  (myOA_Calculator(CalcMissingP4(pi0tree,0,j),rootinotree.Particle(0))<angle*TMath::Pi()/180)
+						{
+							ncoa->Fill(CalcMissingEnergy(pi0tree,0,j)-CalcMissingMass(pi0tree, 0,j));
+							
+						}
+								
+					}
+						
+				}
+					
+			 }
+				
+		}
+	}
+}
 //Asymmetry block:
 
 void PAR_Class::Test_Asym(const GTreeTrigger& triggertree,const GTreeTagger& taggertree,const GTreeMeson& pi0tree,GH1* gHist1,GH1* gHist2,GH1* gHist3,GH1* gHist4,GH2* thvsmm1,GH2* thvsmm0,GH1* MM_dist_b4_1)
@@ -180,7 +230,7 @@ void PAR_Class::Test_Asym(const GTreeTrigger& triggertree,const GTreeTagger& tag
 	}	
 }
 //------------duplicate of pi0 asymmetry below:---------------------------------
-void PAR_Class::Test2_Asym(const GTreeTrigger& triggertree,const GTreeTagger& taggertree,const GTreeMeson& pi0tree,GH1* gHist1,GH1* gHist2,GH1* MM_dist_b4_1,GH1* asym_mm_b4_cut)
+void PAR_Class::Test2_Asym(const GTreeTrigger& triggertree,const GTreeTagger& taggertree,const GTreeMeson& pi0tree,GH1* gHist1,GH1* gHist2,GH1* MM_dist_b4_1,GH1* asym_mm_b4_cut,GH1* asym_mm_40,GH1* asym_mm_50,GH1* asym_mm_60,GH1* asym_mm_70,GH1* asym_mm_80,GH1* asym_mm_90,GH1* asym_mm_noerror)
 //,const GTreeMeson& tree2, GH1* Hist1,GH1* Hist2,GH1* Hist3,GH1* Hist4,GH1* Hist5,GH1* gHist, Float_t angle )
 {
 	if ((pi0tree.GetNSubParticles(0) == 2) && (pi0tree.GetNSubPhotons(0) == 2))
@@ -188,14 +238,38 @@ void PAR_Class::Test2_Asym(const GTreeTrigger& triggertree,const GTreeTagger& ta
 		FillMissingMass(pi0tree,MM_dist_b4_1);	
 		for (Int_t j = 0; j < GetTagger()->GetNTagged(); j++)
 		{		
-			if ((taggertree.GetTaggedEnergy(j)>280)&&( taggertree.GetTaggedEnergy(j)<300))
+			if ((taggertree.GetTaggedEnergy(j)>285)&&( taggertree.GetTaggedEnergy(j)<295))
 			{	
 				FillMissingMass(pi0tree, 0, j, asym_mm_b4_cut,1);	
-				if (TMath::Abs(CalcMissingMass(pi0tree,0,j)-938.2)<50)//Select events based on MissMass.
+				if ((CalcMissingMass(pi0tree,0,j)<970)&&(CalcMissingMass(pi0tree,0,j)>910))//Select events based on MissMass.
 				{							
 				//cout << "energy is:" << tree3.GetTaggedEnergy(j) << "\n";
 					if(triggertree.GetNErrors()==0)
 					{
+						if ((pi0tree.GetTheta(0)>=40)&&(pi0tree.GetTheta(0)<50))
+						{
+							FillMissingMass(pi0tree, 0, j, asym_mm_40,1);
+						}
+						else if ((pi0tree.GetTheta(0)>=50)&&(pi0tree.GetTheta(0)<60))
+						{
+							FillMissingMass(pi0tree, 0, j, asym_mm_50,1);
+						}
+						else if ((pi0tree.GetTheta(0)>=60)&&(pi0tree.GetTheta(0)<70))
+						{
+							FillMissingMass(pi0tree, 0, j, asym_mm_60,1);
+						}	
+						else if ((pi0tree.GetTheta(0)>=70)&&(pi0tree.GetTheta(0)<80))
+						{
+							FillMissingMass(pi0tree, 0, j, asym_mm_70,1);
+						}
+						else if ((pi0tree.GetTheta(0)>=80)&&(pi0tree.GetTheta(0)<90))
+						{
+							FillMissingMass(pi0tree, 0, j, asym_mm_80,1);
+						}
+						else if ((pi0tree.GetTheta(0)>=90)&&(pi0tree.GetTheta(0)<100))
+						{
+							FillMissingMass(pi0tree, 0, j, asym_mm_90,1);
+						}
 						if (triggertree.GetHelicity() ) // now if the helicity is 1
 						{
 							gHist1->Fill(pi0tree.GetTheta(0));
@@ -272,8 +346,9 @@ void	PAR_Class::ProcessEvent()
         //Eff(*GetRootinos(),*GetNeutralPions(),NChargedOA,NCharged,NMissing,OA,MissingM,gHist1,MM_after_cut,MM_before_cut,pi0checker,Denom_incsv,MM_failed_cut,15);
 	//Eff(*GetChargedPions(),*GetNeutralPions(),Test1,Test2,Test3,OA,MissMass,gHist1,180);
 	//Test_Asym(*GetTrigger(),*GetTagger(),*GetNeutralPions(),Theta1,Theta0,Phi1,Phi0,ThMM1,ThMM0,MissingM_asym);
-	Test2_Asym(*GetTrigger(),*GetTagger(),*GetNeutralPions(),Theta1,Theta0,MissingM_asym,Asym_MM_before_mmcut);
+	Test2_Asym(*GetTrigger(),*GetTagger(),*GetNeutralPions(),Theta1,Theta0,MissingM_asym,Asym_MM_before_mmcut,Asymm_MM_40,Asymm_MM_50,Asymm_MM_60,Asymm_MM_70,Asymm_MM_80,Asymm_MM_90,Asym_MM_trigerror_check);
 	Pi0_Study(*GetRootinos(),*GetNeutralPions(),Mi_Mass1,Mi_Mass2,Mi_Mass3,Mi_Mass4);
+	Test_Eff(*GetRootinos(),*GetNeutralPions(),eff_MM,NC_with_OA,NC_general,eff_newdenom,15);
 }
 
 void	PAR_Class::ProcessScalerRead()
