@@ -45,6 +45,8 @@ PAR_Class::PAR_Class()
    Asymm_MM_70	=new GH1("Asymm_MM_70",	"Missing Mass, Theta=70-80" ,1000,300, 1300);
    Asymm_MM_80	=new GH1("Asymm_MM_80",	"Missing Mass, Theta=80-90" ,1000,300, 1300);
    Asymm_MM_90	=new GH1("Asymm_MM_90",	"Missing Mass, Theta=90-100" ,1000,300, 1300);
+   pi0_Inv_M1	=new GH1("Inv_M1", 	"Pi0 Invariant Mass before", 		400,   0, 400);
+   pi0_Inv_M2	=new GH1("Inv_M2", 	"Pi0 Invariant Mass before", 		400,   0, 400);
 	//----------------------pi0 study histos ------------------------------------------------------------------------
    Mi_Mass1 	= new GH1("Mi_M1", 	"MM Before any requirement", 	1000,   600, 1600);
    Mi_Mass2 	= new GH1("Mi_M2", 	"MM after 2 photon-subparticles requirement", 	1000,   600, 1600);
@@ -230,11 +232,13 @@ void PAR_Class::Test_Asym(const GTreeTrigger& triggertree,const GTreeTagger& tag
 	}	
 }
 //------------duplicate of pi0 asymmetry below:---------------------------------
-void PAR_Class::Test2_Asym(const GTreeTrigger& triggertree,const GTreeTagger& taggertree,const GTreeMeson& pi0tree,GH1* gHist1,GH1* gHist2,GH1* MM_dist_b4_1,GH1* asym_mm_b4_cut,GH1* asym_mm_40,GH1* asym_mm_50,GH1* asym_mm_60,GH1* asym_mm_70,GH1* asym_mm_80,GH1* asym_mm_90,GH1* asym_mm_noerror)
+void PAR_Class::Test2_Asym(const GTreeTrigger& triggertree,const GTreeTagger& taggertree,const GTreeMeson& pi0tree,GH1* gHist1,GH1* gHist2,GH1* MM_dist_b4_1,GH1* asym_mm_b4_cut,GH1* asym_mm_40,GH1* asym_mm_50,GH1* asym_mm_60,GH1* asym_mm_70,GH1* asym_mm_80,GH1* asym_mm_90,GH1* asym_mm_noerror,GH1* IM1,GH1* IM2)
 //,const GTreeMeson& tree2, GH1* Hist1,GH1* Hist2,GH1* Hist3,GH1* Hist4,GH1* Hist5,GH1* gHist, Float_t angle )
 {
+	FillMass(pi0tree,IM1);
 	if ((pi0tree.GetNSubParticles(0) == 2) && (pi0tree.GetNSubPhotons(0) == 2))
        	{		
+		FillMass(pi0tree,IM2);
 		FillMissingMass(pi0tree,MM_dist_b4_1);	
 		for (Int_t j = 0; j < GetTagger()->GetNTagged(); j++)
 		{		
@@ -246,6 +250,7 @@ void PAR_Class::Test2_Asym(const GTreeTrigger& triggertree,const GTreeTagger& ta
 				//cout << "energy is:" << tree3.GetTaggedEnergy(j) << "\n";
 					if(triggertree.GetNErrors()==0)
 					{
+						FillMissingMass(pi0tree, 0, j, asym_mm_noerror,1);
 						if ((pi0tree.GetTheta(0)>=40)&&(pi0tree.GetTheta(0)<50))
 						{
 							FillMissingMass(pi0tree, 0, j, asym_mm_40,1);
@@ -346,7 +351,7 @@ void	PAR_Class::ProcessEvent()
         //Eff(*GetRootinos(),*GetNeutralPions(),NChargedOA,NCharged,NMissing,OA,MissingM,gHist1,MM_after_cut,MM_before_cut,pi0checker,Denom_incsv,MM_failed_cut,15);
 	//Eff(*GetChargedPions(),*GetNeutralPions(),Test1,Test2,Test3,OA,MissMass,gHist1,180);
 	//Test_Asym(*GetTrigger(),*GetTagger(),*GetNeutralPions(),Theta1,Theta0,Phi1,Phi0,ThMM1,ThMM0,MissingM_asym);
-	Test2_Asym(*GetTrigger(),*GetTagger(),*GetNeutralPions(),Theta1,Theta0,MissingM_asym,Asym_MM_before_mmcut,Asymm_MM_40,Asymm_MM_50,Asymm_MM_60,Asymm_MM_70,Asymm_MM_80,Asymm_MM_90,Asym_MM_trigerror_check);
+	Test2_Asym(*GetTrigger(),*GetTagger(),*GetNeutralPions(),Theta1,Theta0,MissingM_asym,Asym_MM_before_mmcut,Asymm_MM_40,Asymm_MM_50,Asymm_MM_60,Asymm_MM_70,Asymm_MM_80,Asymm_MM_90,Asym_MM_trigerror_check,pi0_Inv_M1,pi0_Inv_M2);
 	Pi0_Study(*GetRootinos(),*GetNeutralPions(),Mi_Mass1,Mi_Mass2,Mi_Mass3,Mi_Mass4);
 	Test_Eff(*GetRootinos(),*GetNeutralPions(),eff_MM,NC_with_OA,NC_general,eff_newdenom,15);
 }
