@@ -106,7 +106,7 @@ void PAR_Class::Eff(const GTreeParticle& tree1,const GTreeMeson& tree2, GH1* His
 	{
 		for (Int_t i = 0; i < tree2.GetNParticles(); i++)
    		{
-			if((CalcMissingP4(tree2,0,j).Theta()>35*TMath::Pi()/180) && (CalcMissingP4(tree2,0,j).Theta()<40*TMath::Pi()/180))
+			if((CalcMissingP4(tree2,0,j).Theta()>45*TMath::Pi()/180) && (CalcMissingP4(tree2,0,j).Theta()<50*TMath::Pi()/180))
 			{
         			if ((tree2.GetNSubParticles(i) == 2) && (tree2.GetNSubPhotons(i) == 2))
        				{	
