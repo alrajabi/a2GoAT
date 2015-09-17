@@ -40,10 +40,9 @@ if [ "$1" = "$S2" ];then
 fi
 if [ "$1" = "$S3" ];then
 	if [ "$2" = "$S5" ];then
-		./runGoAT.sh /home/al/analysis/1st_step &
-	fi
-	if [ "$2" = "$S4" ];then
-		./runGoAT.sh "$3" "$4" &
+		./runGoat.sh /home/al/output /home/al/analysis/1st_step &
+	elif [ "$2" = "$S4" ];then
+		./runGoat.sh "$3" "$4" &
 	fi
 fi
 

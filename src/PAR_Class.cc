@@ -48,11 +48,18 @@ PAR_Class::PAR_Class()
    pi0_Inv_M1	=new GH1("Inv_M1", 	"Pi0 Invariant Mass before", 		400,   0, 400);
    pi0_Inv_M2	=new GH1("Inv_M2", 	"Pi0 Invariant Mass before", 		400,   0, 400);
 	//----------------------pi0 study histos ------------------------------------------------------------------------
-   Mi_Mass1 	= new GH1("Mi_M1", 	"MM Before any requirement", 	1000,   600, 1600);
+ //  Mi_Mass1 	= new GH1("Mi_M1", 	"MM Before any requirement", 	1000,   600, 1600);
    Mi_Mass2 	= new GH1("Mi_M2", 	"MM after 2 photon-subparticles requirement", 	1000,   600, 1600);
-   Mi_Mass3		= new GH1("Mi_M3", 	"MM after Rootino detection requirement", 	 	1000,   600, 1600); 
-   Mi_Mass4		= new GH1("Mi_M4", 	"MM after Rootino not being detected", 	 	1000,   600, 1600);
-  //-------------test eff histos here:----------------------------------------------------------
+  // Mi_Mass3		= new GH1("Mi_M3", 	"MM after Rootino detection requirement", 	 	1000,   600, 1600); 
+  // Mi_Mass4		= new GH1("Mi_M4", 	"MM after Rootino not being detected", 	 	1000,   600, 1600);
+   pi0_MM_40  =new GH1("pi0_MM_40", "Missing Mass, Theta=40-50" ,1000,300, 1300);
+   pi0_MM_50  =new GH1("pi0_MM_50", "Missing Mass, Theta=50-60" ,1000,300, 1300);
+   pi0_MM_60  =new GH1("pi0_MM_60", "Missing Mass, Theta=60-70" ,1000,300, 1300);
+   pi0_MM_70  =new GH1("pi0_MM_70", "Missing Mass, Theta=70-80" ,1000,300, 1300);
+   pi0_MM_80  =new GH1("pi0_MM_80", "Missing Mass, Theta=80-90" ,1000,300, 1300);
+   pi0_MM_90  =new GH1("pi0_MM_90", "Missing Mass, Theta=90-100" ,1000,300, 1300); 
+   Mgg_vs_MM  =new GH2("Mgg_vs_MM","Mgg vs Missing Mass",250,0,250,500,700, 1200);
+//-------------test eff histos here:----------------------------------------------------------
    eff_MM	=new GH1("MissingMassEff",	"Missing Mass RDE Analysis" ,700,600, 1300);
    NC_with_OA	= new GH1("NC_OA",	"NC Prime at OA=15 degrees" ,300,0, 300);
    NC_general	= new GH1("NC_general",	"NC " ,300,0, 300);
@@ -160,7 +167,7 @@ void PAR_Class::Test_Eff(const GTreeParticle& rootinotree,const GTreeMeson& pi0t
 			
 	for (Int_t j = 0; j < GetTagger()->GetNTagged(); j++)
 	{
-		if((CalcMissingP4(pi0tree,0,j).Theta()>35*TMath::Pi()/180) && (CalcMissingP4(pi0tree,0,j).Theta()<40*TMath::Pi()/180))
+		if((CalcMissingP4(pi0tree,0,j).Theta()>45*TMath::Pi()/180) && (CalcMissingP4(pi0tree,0,j).Theta()<50*TMath::Pi()/180))
 		{
         		if ((pi0tree.GetNSubParticles(0) == 2) && (pi0tree.GetNSubPhotons(0) == 2))
        			{	
@@ -297,14 +304,17 @@ void PAR_Class::Test2_Asym(const GTreeTrigger& triggertree,const GTreeTagger& ta
 
 //------------end of pi0 asymmetry block----------------------------------------
 
-void PAR_Class::Pi0_Study(const GTreeParticle& rootino_tree,const GTreeMeson& pi0tree,GH1* M_Mass1,GH1* M_Mass2, GH1* M_Mass3,GH1* M_Mass4)
+void PAR_Class::Pi0_Study(const GTreeParticle& rootino_tree,const GTreeMeson& pi0tree,GH1* M_Mass2, GH2* mgg_mm,GH1* pi0_mm_40,GH1* pi0_mm_50,GH1* pi0_mm_60,GH1* pi0_mm_70,GH1* pi0_mm_80,GH1* pi0_mm_90)
 {
-	FillMissingMass(pi0tree,M_Mass1);	
+	//FillMissingMass(pi0tree,M_Mass1);	
 	if ((pi0tree.GetNSubParticles(0) == 2) && (pi0tree.GetNSubPhotons(0) == 2))
        	{
-		FillMissingMass(pi0tree,M_Mass2);		
+		for (Int_t j = 0; j < GetTagger()->GetNTagged(); j++)
+		{
+			mgg_mm->Fill(pi0tree.GetMass(0),CalcMissingMass(pi0tree, 0, j));
+			FillMissingMass(pi0tree,M_Mass2);		
 		//Inv_M1->Fill(pi0tree.Particle(k).M());
-		if((rootino_tree.GetNParticles() !=0))
+	/***	if((rootino_tree.GetNParticles() !=0))
 		{					
 			FillMissingMass(pi0tree,M_Mass3);
 			
@@ -312,6 +322,32 @@ void PAR_Class::Pi0_Study(const GTreeParticle& rootino_tree,const GTreeMeson& pi
 		else
 		{
 			FillMissingMass(pi0tree,M_Mass4);
+		}***/
+		if((pi0tree.GetTheta(0)>=40)&&(pi0tree.GetTheta(0)<50))
+                {
+	        	FillMissingMass(pi0tree, 0, j, pi0_mm_40,1);
+                }
+                else if ((pi0tree.GetTheta(0)>=50)&&(pi0tree.GetTheta(0)<60))
+                {
+                        FillMissingMass(pi0tree, 0, j, pi0_mm_50,1);
+                }
+                else if ((pi0tree.GetTheta(0)>=60)&&(pi0tree.GetTheta(0)<70))
+                {
+                        FillMissingMass(pi0tree, 0, j, pi0_mm_60,1);
+                }       
+                else if ((pi0tree.GetTheta(0)>=70)&&(pi0tree.GetTheta(0)<80))
+                {
+                        FillMissingMass(pi0tree, 0, j, pi0_mm_70,1);
+                }
+                else if ((pi0tree.GetTheta(0)>=80)&&(pi0tree.GetTheta(0)<90))
+                {
+                        FillMissingMass(pi0tree, 0, j, pi0_mm_80,1);
+                }
+                else if ((pi0tree.GetTheta(0)>=90)&&(pi0tree.GetTheta(0)<100))
+                {
+                        FillMissingMass(pi0tree, 0, j, pi0_mm_90,1);
+                }
+
 		}
 	}
 
@@ -352,7 +388,7 @@ void	PAR_Class::ProcessEvent()
 	//Eff(*GetChargedPions(),*GetNeutralPions(),Test1,Test2,Test3,OA,MissMass,gHist1,180);
 	//Test_Asym(*GetTrigger(),*GetTagger(),*GetNeutralPions(),Theta1,Theta0,Phi1,Phi0,ThMM1,ThMM0,MissingM_asym);
 	Test2_Asym(*GetTrigger(),*GetTagger(),*GetNeutralPions(),Theta1,Theta0,MissingM_asym,Asym_MM_before_mmcut,Asymm_MM_40,Asymm_MM_50,Asymm_MM_60,Asymm_MM_70,Asymm_MM_80,Asymm_MM_90,Asym_MM_trigerror_check,pi0_Inv_M1,pi0_Inv_M2);
-	Pi0_Study(*GetRootinos(),*GetNeutralPions(),Mi_Mass1,Mi_Mass2,Mi_Mass3,Mi_Mass4);
+	Pi0_Study(*GetRootinos(),*GetNeutralPions(),Mi_Mass2,Mgg_vs_MM,pi0_MM_40,pi0_MM_50,pi0_MM_60,pi0_MM_70,pi0_MM_80,pi0_MM_90);
 	Test_Eff(*GetRootinos(),*GetNeutralPions(),eff_MM,NC_with_OA,NC_general,eff_newdenom,15);
 }
 
