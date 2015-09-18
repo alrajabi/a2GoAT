@@ -12,7 +12,7 @@
 class	PAR_Class  : public PPhysics
 {
 private:
-	
+ /***	
     GH1*	time;
     GH1*	time_cut;
     GH1*	time_2g;      
@@ -24,7 +24,7 @@ private:
     GH1*	MM;
     GH1*	MM_2g;
     TH1*	TaggerAccScal;
-   /***
+  
     GH1*	NChargedOA;
     GH1*	NCharged;
     GH1*	NMissing;
@@ -39,7 +39,7 @@ private:
     GH1*	pi0checker;	
     GH1*	Denom_incsv;
     GH2*	MM_before_cut;
-    GH1*	MM_failed_cut;***/
+    GH1*	MM_failed_cut;
     GH1*	MissingM_asym;	
     GH1*	Theta1;
     GH1*	Theta0;
@@ -50,7 +50,7 @@ private:
     GH1*	Asymm_MM_60;
     GH1*	Asymm_MM_70;
     GH1*	Asymm_MM_80;
-    GH1*	Asymm_MM_90;
+    GH1*	Asymm_MM_90;***/
     GH1*        pi0_MM_40;
     GH1*        pi0_MM_50;
     GH1*        pi0_MM_60;

@@ -40,9 +40,17 @@ if [ "$1" = "$S2" ];then
 fi
 if [ "$1" = "$S3" ];then
 	if [ "$2" = "$S5" ];then
-		./runGoat.sh /home/al/output /home/al/analysis/1st_step &
+		./runGoat.sh /home/al/output/split1 /home/al/analysis/1st_step/1 &
+		./runGoat.sh /home/al/output/split2 /home/al/analysis/1st_step/2 &
+		./runGoat.sh /home/al/output/split3 /home/al/analysis/1st_step/3 &
+		./runGoat.sh /home/al/output/split4 /home/al/analysis/1st_step/4 &
+		./runGoat.sh /home/al/output/split5 /home/al/analysis/1st_step/5 &
+		./runGoat.sh /home/al/output/split6 /home/al/analysis/1st_step/6 &
 	elif [ "$2" = "$S4" ];then
-		./runGoat.sh "$3" "$4" &
+		./runGoat.sh /media/al/MainzBackup/output/split1 /home/al/analysis/1st_step/1 &
+		./runGoat.sh /media/al/MainzBackup/output/split2 /home/al/analysis/1st_step/2 &
+		./runGoat.sh /media/al/MainzBackup/output/split3 /home/al/analysis/1st_step/3 &
+	
 	fi
 fi
 

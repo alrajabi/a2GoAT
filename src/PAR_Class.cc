@@ -2,7 +2,7 @@
 
 PAR_Class::PAR_Class()
 { 
-    time 	= new GH1("time", 	"time", 	1400, -700, 700);
+   /*** time 	= new GH1("time", 	"time", 	1400, -700, 700);
     time_cut 	= new GH1("time_cut", 	"time_cut", 	1400, -700, 700);
 
     time_2g 	= new GH1("time_2g",	"time_2g", 	1400, -700, 700);
@@ -13,7 +13,9 @@ PAR_Class::PAR_Class()
   
     MM		= new GH1("MM", 	"MM", 	 	400,   800, 1200);     
     MM_2g	= new GH1("MM_2g", 	"MM_2g", 	400,   800, 1200);
-    TaggerAccScal = new TH1D("TaggerAccScal","TaggerAccScal",352,0,352);/***
+    TaggerAccScal = new TH1D("TaggerAccScal","TaggerAccScal",352,0,352);***/
+
+/***
 	//--------------------------------original eff analysis histos here:-------------------------------------------
     NChargedOA	= new GH1("NChargedOA",	"NC Prime at OA" ,300,0, 300);
     NCharged	= new GH1("NCharged",	"NC " ,300,0, 300);
@@ -34,7 +36,7 @@ PAR_Class::PAR_Class()
    Phi1 = new GH1("Phi1",	"Phi Dist. Helicity=1"    , 36,-180,180);	
    Phi0 = new GH1("Phi0",	"Phi Dist. Helicity=0 "    , 36,-180,180);***/
 	//------------------------test asym histos here:--------------------------------------------------------------
-   Theta1 = new GH1("Theta1",	"Theta Dist. Helicity=1"    , 18,0,180);	
+ /***  Theta1 = new GH1("Theta1",	"Theta Dist. Helicity=1"    , 18,0,180);	
    Theta0 = new GH1("Theta0",	"Theta Dist. Helicity=0 "    , 18,0,180);
    MissingM_asym	=new GH1("MissingMassAsymm",	"Missing Mass Asym Analysis" ,1000,300, 1300);
    Asym_MM_before_mmcut =new GH1("Asymm_b4cut",	"Missing Mass Asym b4 cut" ,1000,300, 1300);
@@ -46,7 +48,7 @@ PAR_Class::PAR_Class()
    Asymm_MM_80	=new GH1("Asymm_MM_80",	"Missing Mass, Theta=80-90" ,1000,300, 1300);
    Asymm_MM_90	=new GH1("Asymm_MM_90",	"Missing Mass, Theta=90-100" ,1000,300, 1300);
    pi0_Inv_M1	=new GH1("Inv_M1", 	"Pi0 Invariant Mass before", 		400,   0, 400);
-   pi0_Inv_M2	=new GH1("Inv_M2", 	"Pi0 Invariant Mass before", 		400,   0, 400);
+   pi0_Inv_M2	=new GH1("Inv_M2", 	"Pi0 Invariant Mass before", 		400,   0, 400);***/
 	//----------------------pi0 study histos ------------------------------------------------------------------------
  //  Mi_Mass1 	= new GH1("Mi_M1", 	"MM Before any requirement", 	1000,   600, 1600);
    Mi_Mass2 	= new GH1("Mi_M2", 	"MM after 2 photon-subparticles requirement", 	1000,   600, 1600);
@@ -355,7 +357,7 @@ void PAR_Class::Pi0_Study(const GTreeParticle& rootino_tree,const GTreeMeson& pi
 //AR's edit ends.
 void	PAR_Class::ProcessEvent()
 {
-	// fill time diff (tagger - pi0), all pi0
+/***	// fill time diff (tagger - pi0), all pi0
     FillTime(*GetNeutralPions(),time);
     FillTimeCut(*GetNeutralPions(),time_cut);
 	// Not necessary part
@@ -382,12 +384,12 @@ void	PAR_Class::ProcessEvent()
             FillMass(*GetNeutralPions(),i,IM_2g);
         }
 
-    }
+    }***/
 
         //Eff(*GetRootinos(),*GetNeutralPions(),NChargedOA,NCharged,NMissing,OA,MissingM,gHist1,MM_after_cut,MM_before_cut,pi0checker,Denom_incsv,MM_failed_cut,15);
 	//Eff(*GetChargedPions(),*GetNeutralPions(),Test1,Test2,Test3,OA,MissMass,gHist1,180);
 	//Test_Asym(*GetTrigger(),*GetTagger(),*GetNeutralPions(),Theta1,Theta0,Phi1,Phi0,ThMM1,ThMM0,MissingM_asym);
-	Test2_Asym(*GetTrigger(),*GetTagger(),*GetNeutralPions(),Theta1,Theta0,MissingM_asym,Asym_MM_before_mmcut,Asymm_MM_40,Asymm_MM_50,Asymm_MM_60,Asymm_MM_70,Asymm_MM_80,Asymm_MM_90,Asym_MM_trigerror_check,pi0_Inv_M1,pi0_Inv_M2);
+	//Test2_Asym(*GetTrigger(),*GetTagger(),*GetNeutralPions(),Theta1,Theta0,MissingM_asym,Asym_MM_before_mmcut,Asymm_MM_40,Asymm_MM_50,Asymm_MM_60,Asymm_MM_70,Asymm_MM_80,Asymm_MM_90,Asym_MM_trigerror_check,pi0_Inv_M1,pi0_Inv_M2);
 	Pi0_Study(*GetRootinos(),*GetNeutralPions(),Mi_Mass2,Mgg_vs_MM,pi0_MM_40,pi0_MM_50,pi0_MM_60,pi0_MM_70,pi0_MM_80,pi0_MM_90);
 	Test_Eff(*GetRootinos(),*GetNeutralPions(),eff_MM,NC_with_OA,NC_general,eff_newdenom,15);
 }
@@ -395,13 +397,13 @@ void	PAR_Class::ProcessEvent()
 void	PAR_Class::ProcessScalerRead()
 {
 	// Fill Tagger Scalers
-	FillScalers(GetTC_scaler_min(),GetTC_scaler_max(),TaggerAccScal);
+	//FillScalers(GetTC_scaler_min(),GetTC_scaler_max(),TaggerAccScal);
 }
 
 Bool_t	PAR_Class::Write()
 {
 	// Write some TH1s
-	GTreeManager::Write(TaggerAccScal);
+	//GTreeManager::Write(TaggerAccScal);
 	//GTreeManager::Write(Test1);
 	//GTreeManager::Write(Test2);
 	//GTreeManager::Write(Test3);
