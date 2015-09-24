@@ -76,8 +76,8 @@ private:
     GH1*	Denom_incsv_65_85;
     GH1*	Mgg_HPlus;
     GH1*	Mgg_HMinus;
-    GH1*	Mgg_35_40_MM;
-    GH1*	Mgg_40_45_MM;
+    GH1*	Mgg_45_65_MM;
+    GH1*	Mgg_65_85_MM;
 protected:
     virtual Bool_t  Start();
     virtual void Eff(const GTreeParticle& tree1,const GTreeMeson& tree2, GH1* Hist1,GH1* Hist2,GH1* Hist3,GH1* Hist4,GH1* mm_b4cut,GH1* gHist,GH2* NMCheck,GH2* mm_b4cut_2d,GH1* pi0check,GH1* inclusive_denom, GH1* mm_failedcut, Float_t angle  );	
