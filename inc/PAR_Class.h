@@ -58,9 +58,9 @@ private:
     GH1*        pi0_MM_80;
     GH1*        pi0_MM_90;***/
     //GH1*	Mi_Mass1;
-    //GH1*	Mi_Mass2;
+    GH1*	Mi_Mass2;
     //GH1*	Mi_Mass3;
-   // GH1*	Mgg_vs_MM;
+    GH1*	Mgg_vs_MM;
     //GH1*	Mi_Mass4;
     GH1*	eff_MM;
     /***GH1*	NC_with_OA;
@@ -68,12 +68,12 @@ private:
     GH1*	eff_newdenom;
     GH1*	pi0_Inv_M1;
     GH1*	pi0_Inv_M2;***/
-    GH1*	NChargedOA_35_40;
-    GH1*	NCharged_35_40;
-    GH1*	Denom_incsv_35_40;
-    GH1*	NChargedOA_40_45;
-    GH1*	NCharged_40_45;
-    GH1*	Denom_incsv_40_45;
+    GH1*	NChargedOA_45_65;
+    GH1*	NCharged_45_65;
+    GH1*	Denom_incsv_45_65;
+    GH1*	NChargedOA_65_85;
+    GH1*	NCharged_65_85;
+    GH1*	Denom_incsv_65_85;
     GH1*	Mgg_HPlus;
     GH1*	Mgg_HMinus;
     GH1*	Mgg_35_40_MM;
