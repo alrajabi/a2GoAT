@@ -12,53 +12,72 @@
 class	PAR_Class  : public PPhysics
 {
 private:
- 	
+ //pi0 Eff hists:	
+
     GH1*	incDenom;
-    GH1*	Mgg_40; 
-    GH1*	NChargedOA_40;
-    GH1*	NCharged_40;
-    GH1*	Denom_40;
-    GH1*	Mgg_50; 
-    GH1*	NChargedOA_50;
-    GH1*	NCharged_50;
-    GH1*	Denom_50;
-    GH1*	Mgg_60; 
-    GH1*	NChargedOA_60;
-    GH1*	NCharged_60;
-    GH1*	Denom_60;
-    GH1*	Mgg_70; 
-    GH1*	NChargedOA_70;
-    GH1*	NCharged_70;
-    GH1*	Denom_70;
-    GH1*	Mgg_80; 
-    GH1*	NChargedOA_80;
-    GH1*	NCharged_80;
-    GH1*	Denom_80;
-    GH1*	Mgg_90; 
-    GH1*	NChargedOA_90;
-    GH1*	NCharged_90;
-    GH1*	Denom_90;
-    GH1*	Mgg_100; 
-    GH1*	NChargedOA_100;
-    GH1*	NCharged_100;
-    GH1*	Denom_100;
-    GH1*	Mgg_110; 
-    GH1*	NChargedOA_110;
-    GH1*	NCharged_110;
-    GH1*	Denom_110;
-    GH1*	Mgg_120; 
-    GH1*	NChargedOA_120;
-    GH1*	NCharged_120;
-    GH1*	Denom_120;
-    GH1*	Mgg_130; 
-    GH1*	NChargedOA_130;
-    GH1*	NCharged_130;
-    GH1*	Denom_130;
-    
+    GH1*	NChargedOA;
+    GH1*	NCharged;
+    GH1*	Denom;
+    GH1*   	Mgg_40;
+    GH1*   	Mgg_50;
+    GH1*        Mgg_60;
+    GH1*        Mgg_70;
+    GH1*   	Mgg_80;
+    GH1*        Mgg_90;
+    GH1*        Mgg_100;
+    GH1*   	Mgg_110;
+    GH1*   	Mgg_120;
+    GH1*   	Mgg_130;
+//pi0 Asym. hists:
+
+    GH1*	Theta_hp;
+    GH1*        Theta_hm;
+    GH1*	Mgg_hp_0;
+    GH1*	Mgg_hm_0;
+    GH1*	Mgg_hp_10;
+    GH1*	Mgg_hm_10;
+    GH1*	Mgg_hp_20;
+    GH1*	Mgg_hm_20;
+    GH1*	Mgg_hp_30;
+    GH1*	Mgg_hm_30;
+    GH1*	Mgg_hp_40;
+    GH1*	Mgg_hm_40;
+    GH1*	Mgg_hp_50;
+    GH1*	Mgg_hm_50;
+    GH1*	Mgg_hp_60;
+    GH1*	Mgg_hm_60;
+    GH1*	Mgg_hp_70;
+    GH1*	Mgg_hm_70;
+    GH1*	Mgg_hp_80;
+    GH1*	Mgg_hm_80;
+    GH1*	Mgg_hp_90;
+    GH1*	Mgg_hm_90;
+    GH1*	Mgg_hp_100;
+    GH1*	Mgg_hm_100;
+    GH1*	Mgg_hp_110;
+    GH1*	Mgg_hm_110;
+    GH1*	Mgg_hp_120;
+    GH1*	Mgg_hm_120;
+    GH1*	Mgg_hp_130;
+    GH1*	Mgg_hm_130;
+    GH1*	Mgg_hp_140;
+    GH1*	Mgg_hm_140;
+    GH1*	Mgg_hp_150;
+    GH1*	Mgg_hm_150;
+    GH1*	Mgg_hp_160;
+    GH1*	Mgg_hm_160;
+    GH1*	Mgg_hp_170;
+    GH1*	Mgg_hm_170;
+//Compton Hists: 
+/***
+    GH1*	Com_MM;
+    GH1*	Com_pMass;
+    GH1*	Com_MM_OA;***/
 protected:
     virtual Bool_t  Start();
-    virtual void Eff(const GTreeParticle& rootinotree,const GTreeMeson& pi0tree, Int_t theta0, Int_t theta1, Float_t angle,GH1* inclusive_denom,GH1* mgg_40,GH1* denom_40,GH1* nc_40,GH1* ncoa_40,GH1* mgg_50,GH1* denom_50,GH1* nc_50,GH1* ncoa_50,GH1* mgg_60,GH1* denom_60,GH1* nc_60,GH1* ncoa_60,GH1* mgg_70,GH1* denom_70,GH1* nc_70,GH1* ncoa_70,GH1* mgg_80,GH1* denom_80,GH1* nc_80,GH1* ncoa_80,GH1* mgg_90,GH1* denom_90,GH1* nc_90,GH1* ncoa_90,GH1* mgg_100,GH1* denom_100,GH1* nc_100,GH1* ncoa_100,GH1* mgg_110,GH1* denom_110,GH1* nc_110,GH1* ncoa_110,GH1* mgg_120,GH1* denom_120,GH1* nc_120,GH1* ncoa_120,GH1* mgg_130,GH1* denom_130,GH1* nc_130,GH1* ncoa_130) ;	
-   
+    virtual void Eff(const GTreeParticle& rootinotree,const GTreeMeson& pi0tree, Int_t theta0, Int_t theta1, Float_t angle,GH1* inclusive_denom,GH1* denom,GH1* nc,GH1* ncoa,GH1* mgg_40, GH1* mgg_50, GH1* mgg_60, GH1* mgg_70, GH1* mgg_80, GH1* mgg_90, GH1* mgg_100, GH1* mgg_110, GH1* mgg_120, GH1* mgg_130) ;	
+    virtual void Pi0_Asym(const GTreeTrigger& triggertree,const GTreeTagger& taggertree,const GTreeMeson& pi0tree,Int_t en_low,Int_t en_high,GH1* theta_hp,GH1* theta_hm,GH1* mgg_hp_0,GH1* mgg_hm_0, GH1* mgg_hp_10,GH1* mgg_hm_10, GH1* mgg_hp_20,GH1* mgg_hm_20, GH1* mgg_hp_30,GH1* mgg_hm_30, GH1* mgg_hp_40,GH1* mgg_hm_40, GH1* mgg_hp_50,GH1* mgg_hm_50, GH1* mgg_hp_60,GH1* mgg_hm_60, GH1* mgg_hp_70,GH1* mgg_hm_70, GH1* mgg_hp_80,GH1* mgg_hm_80, GH1* mgg_hp_90,GH1* mgg_hm_90, GH1* mgg_hp_100,GH1* mgg_hm_100, GH1* mgg_hp_110,GH1* mgg_hm_110, GH1* mgg_hp_120,GH1* mgg_hm_120, GH1* mgg_hp_130,GH1* mgg_hm_130, GH1* mgg_hp_140,GH1* mgg_hm_140, GH1* mgg_hp_150,GH1* mgg_hm_150, GH1* mgg_hp_160,GH1* mgg_hm_160, GH1* mgg_hp_170,GH1* mgg_hm_170); 
+    virtual void Test_Compton(const GTreeParticle& rootinotree, const GTreeParticle& photontree,Int_t angle,GH1* com_MM,GH1* com_pMass,GH1* com_MM_OA);	
     virtual Double_t myOA_Calculator(const TLorentzVector& t1, const TLorentzVector& t2 );
     virtual void    ProcessEvent();
     virtual void	ProcessScalerRead();
