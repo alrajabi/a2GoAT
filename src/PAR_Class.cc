@@ -3,7 +3,7 @@
 PAR_Class::PAR_Class()
 { 
    //pi0 Eff hists:
-
+/***
     incDenom	= new GH1("incDenom","Inclusive Denominator,35 <Proton.Theta < 40", 30,0,300);
     Mgg_40  =new GH1("Mgg_40","Mgg for 35 <Theta < 40 with cut on MM",250,0,250);
     NChargedOA	= new GH1("NChargedOA",	"NC Prime at OA,35 <Proton.Theta < 40" ,30,0, 300);
@@ -75,10 +75,13 @@ PAR_Class::PAR_Class()
     Theta_hp = new GH1("Theta_hp","Yield for 0<Theta<180-Helicity=+1",18,0,180);
     Theta_hm = new GH1("Theta_hm","Yield for 0<Theta<180-Helicity=-1",18,0,180);
   //Compton Hists:
-/***
-    Com_MM = new GH1("Com_MM","Rootino Missing Mass", 1200,600,1800);
-    Com_pMass = new GH1("Com_pMass","Rootino Mass",180,0,180);  	
-    Com_MM_OA = new GH1("Com_MM_OA","Rootino Missing Mass After OA-cut", 1200,600,1800);	***/	
+***/
+    Com_MM_hp = new GH1("Com_MM_hp","Rootino Missing Mass-Helicity = +1", 1200,600,1800);
+    //Com_pMass = new GH1("Com_pMass","Rootino Mass",180,0,180);  	
+    Com_MM_OA_hp = new GH1("Com_MM_OA_hp","Rootino Missing Mass After OA-cut-Helicity = +1", 1200,600,1800);
+    Com_MM_hm = new GH1("Com_MM_hm","Rootino Missing Mass-Helicity = -1", 1200,600,1800);
+    //Com_pMass = new GH1("Com_pMass","Rootino Mass",180,0,180);  	
+    Com_MM_OA_hm = new GH1("Com_MM_OA_hm","Rootino Missing Mass After OA-cut-Helicity = -1", 1200,600,1800);	
 }
 
 PAR_Class::~PAR_Class()
@@ -460,17 +463,37 @@ void PAR_Class::Pi0_Asym(const GTreeTrigger& triggertree,const GTreeTagger& tagg
 
 //--------------------------------Compton Analysis Functions starts here:-----------------------------------------
 
-void PAR_Class::Test_Compton(const GTreeParticle& rootinotree, const GTreeParticle& photontree,Int_t angle,GH1* com_MM,GH1* com_pMass,GH1* com_MM_OA)
+void PAR_Class::Test_Compton(const GTreeTrigger& triggertree,const GTreeTagger& taggertree,const GTreeParticle& rootinotree, const GTreeParticle& photontree,Int_t angle,Int_t en_low, Int_t en_high,GH1* com_MM_hp,GH1* com_MM_hm,GH1* com_MM_OA_hp,GH1* com_MM_OA_hm)
 {
 	for (Int_t j = 0; j < GetTagger()->GetNTagged(); j++)
 	{
 		for (Int_t i = 0; i < photontree.GetNParticles(); i++)
 		{
-        		com_MM->Fill(CalcMissingMass(photontree, i,j));
-			FillBeamAsymmetry(photontree,i,j,com_pMass,0);
-			if  (myOA_Calculator(CalcMissingP4(photontree,i,j),rootinotree.Particle(0))<angle*TMath::Pi()/180)
-			{
-				com_MM_OA->Fill(CalcMissingMass(photontree, i,j));
+			if ((taggertree.GetTaggedEnergy(j)>=en_low)&&( taggertree.GetTaggedEnergy(j)<en_high))
+			{	
+				if(triggertree.GetNErrors()==0)
+				{
+						if (triggertree.GetHelicity() ) // now if the helicity is 1
+						{
+        						com_MM_hp->Fill(CalcMissingMass(photontree, i,j));
+							//FillBeamAsymmetry(photontree,i,j,com_pMass,0);
+							if  (myOA_Calculator(CalcMissingP4(photontree,i,j),rootinotree.Particle(0))<angle*TMath::Pi()/180)
+							{
+								com_MM_OA_hp->Fill(CalcMissingMass(photontree, i,j));
+
+							}
+						}
+						else if (!triggertree.GetHelicity() ) // now if the helicity is 0
+						{
+							com_MM_hm->Fill(CalcMissingMass(photontree, i,j));
+							//FillBeamAsymmetry(photontree,i,j,com_pMass,0);
+							if  (myOA_Calculator(CalcMissingP4(photontree,i,j),rootinotree.Particle(0))<angle*TMath::Pi()/180)
+							{
+								com_MM_OA_hm->Fill(CalcMissingMass(photontree, i,j));
+
+							}
+						}
+				}	
 
 			}
 		}
@@ -518,9 +541,9 @@ void	PAR_Class::ProcessEvent()
         }
 
     }***/
-	Eff(*GetRootinos(),*GetNeutralPions(), 35,40, 15, incDenom,Denom,NCharged,NChargedOA,Mgg_40, Mgg_50, Mgg_60, Mgg_70, Mgg_80, Mgg_90, Mgg_100, Mgg_110, Mgg_120, Mgg_130);
-        Pi0_Asym(*GetTrigger(),*GetTagger(),*GetNeutralPions(),195,205,Theta_hp,Theta_hm,Mgg_hp_0,Mgg_hm_0, Mgg_hp_10,Mgg_hm_10, Mgg_hp_20,Mgg_hm_20,Mgg_hp_30,Mgg_hm_30,Mgg_hp_40,Mgg_hm_40,Mgg_hp_50,Mgg_hm_50,Mgg_hp_60,Mgg_hm_60, Mgg_hp_70,Mgg_hm_70,Mgg_hp_80,Mgg_hm_80, Mgg_hp_90,Mgg_hm_90,Mgg_hp_100,Mgg_hm_100,Mgg_hp_110,Mgg_hm_110,Mgg_hp_120,Mgg_hm_120,Mgg_hp_130,Mgg_hm_130,Mgg_hp_140,Mgg_hm_140, Mgg_hp_150,Mgg_hm_150,Mgg_hp_160,Mgg_hm_160,Mgg_hp_170,Mgg_hm_170);
-	//Test_Compton(*GetRootinos(),*GetPhotons(),15,Com_MM,Com_pMass,Com_MM_OA);	
+	//Eff(*GetRootinos(),*GetNeutralPions(), 35,40, 15, incDenom,Denom,NCharged,NChargedOA,Mgg_40, Mgg_50, Mgg_60, Mgg_70, Mgg_80, Mgg_90, Mgg_100, Mgg_110, Mgg_120, Mgg_130);
+        //Pi0_Asym(*GetTrigger(),*GetTagger(),*GetNeutralPions(),195,205,Theta_hp,Theta_hm,Mgg_hp_0,Mgg_hm_0, Mgg_hp_10,Mgg_hm_10, Mgg_hp_20,Mgg_hm_20,Mgg_hp_30,Mgg_hm_30,Mgg_hp_40,Mgg_hm_40,Mgg_hp_50,Mgg_hm_50,Mgg_hp_60,Mgg_hm_60, Mgg_hp_70,Mgg_hm_70,Mgg_hp_80,Mgg_hm_80, Mgg_hp_90,Mgg_hm_90,Mgg_hp_100,Mgg_hm_100,Mgg_hp_110,Mgg_hm_110,Mgg_hp_120,Mgg_hm_120,Mgg_hp_130,Mgg_hm_130,Mgg_hp_140,Mgg_hm_140, Mgg_hp_150,Mgg_hm_150,Mgg_hp_160,Mgg_hm_160,Mgg_hp_170,Mgg_hm_170);
+	Test_Compton(*GetTrigger(),*GetTagger(),*GetRootinos(),*GetPhotons(),15,285,295,Com_MM_hp,Com_MM_hm,Com_MM_OA_hp,Com_MM_OA_hm);	
 	
 }
 

@@ -6,8 +6,9 @@ S4='sum'
 S5='butanol'
 S6='carbon'
 args=("$@")
-
-echo "now lets take care of $i .............................."
+S7='pi0'
+S8='compton'
+echo "now lets take care of "$1"ing for you, your Magesty.............................."
     #if [ "${args[$i]}" = "$S1" ];then
 if [ "$1" = "$S1" ];then
     cd build/
@@ -26,18 +27,34 @@ if [ "$1" = "$S3" ];then
 fi  
 if [ "$1" = "$S4" ];then
 	if [ "$2" = "$S5" ];then
-	        cd /home/al/analysis/2nd_step/oneH/
-    		$ROOTSYS/bin/hadd MainGoAT_oneH.root *.root
-    #ls /home/al/analysis/1st_step/"$2"/
-  		mv MainGoAT_oneH.root /home/al/analysis/a2GoAT/
-		cd /home/al/analysis/2nd_step/zeroH/
-                $ROOTSYS/bin/hadd MainGoAT_zeroH.root *.root
-		 mv MainGoAT_zeroH.root /home/al/analysis/a2GoAT/
+		if [ "$3"= "$S7"];then
+		    	cd /home/al/analysis/2nd_step/oneH/
+    			$ROOTSYS/bin/hadd MainGoAT_oneH.root *.root
+			#ls /home/al/analysis/1st_step/"$2"/
+  			mv MainGoAT_oneH.root /home/al/analysis/a2GoAT/
+			cd /home/al/analysis/2nd_step/zeroH/
+        	        $ROOTSYS/bin/hadd MainGoAT_zeroH.root *.root
+			 mv MainGoAT_zeroH.root /home/al/analysis/a2GoAT/
+		elif [ "$3" = "$S8" ];then 
+			 cd /home/al/analysis/compton/2nd_step/oneH/
+    			$ROOTSYS/bin/hadd MainGoAT_comp_oneH.root *.root
+			#ls /home/al/analysis/1st_step/"$2"/
+  			mv MainGoAT_comp_oneH.root /home/al/analysis/a2GoAT/
+			cd /home/al/analysis/compton/2nd_step/zeroH/
+        	        $ROOTSYS/bin/hadd MainGoAT_comp_zeroH.root *.root
+	    		 mv MainGoAT_comp_zeroH.root /home/al/analysis/a2GoAT/
+        	fi	
 	fi
 	if [ "$2" = "$S6" ];then
-                cd /home/al/analysis/2nd_step/archive/
-                $ROOTSYS/bin/hadd MainGoAT_carbon.root *.root
-                mv MainGoAT_carbon.root /home/al/analysis/TestEnv/"$3"
+		if [ "$3"= "$S7"];then
+	                cd /home/al/analysis/2nd_step/archive/
+	                $ROOTSYS/bin/hadd MainGoAT_carbon.root *.root
+	                mv MainGoAT_carbon.root /home/al/analysis/TestEnv/"$3"
+		elif [ "$3"= "$S8"];then
+			cd /home/al/analysis/compton/2nd_step/archive/
+	                $ROOTSYS/bin/hadd MainGoAT_comp_carbon.root *.root
+	                mv MainGoAT_comp_carbon.root /home/al/analysis/TestEnv/"$3"
+		fi
 	fi
 fi  
     

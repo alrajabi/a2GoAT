@@ -74,6 +74,12 @@ if [ "$1" = "$S2" ];then
 fi
 if [ "$1" = "$S3" ];then
 	if [ "$2" = "$S5" ];then
+		mv /home/al/output/split1/archive/*.root /home/al/output/split1
+		mv /home/al/output/split2/archive/*.root /home/al/output/split2
+		mv /home/al/output/split3/archive/*.root /home/al/output/split3
+		mv /home/al/output/split4/archive/*.root /home/al/output/split4
+		mv /home/al/output/split5/archive/*.root /home/al/output/split5
+		mv /home/al/output/split6/archive/*.root /home/al/output/split6
 		if [ "$3" = "$S6" ];then
 			./runGoat.sh /home/al/output/split1 /home/al/analysis/1st_step/1 &
 			./runGoat.sh /home/al/output/split2 /home/al/analysis/1st_step/2 &
@@ -90,6 +96,9 @@ if [ "$1" = "$S3" ];then
 			./runGoat.sh /home/al/output/split6 /home/al/analysis/compton/1st_step/6 &
 		fi
 	elif [ "$2" = "$S4" ];then
+		mv /media/al/MainzBackup/output/split1/archive/*.root /media/al/MainzBackup/output/split1
+		mv /media/al/MainzBackup/output/split2/archive/*.root /media/al/MainzBackup/output/split2
+		mv /media/al/MainzBackup/output/split3/archive/*.root /media/al/MainzBackup/output/split3
 		if [ "$3" = "$S6" ];then
 			./runGoat.sh /media/al/MainzBackup/output/split1 /media/al/MainzBackup/output/1st_step/1 &
 			./runGoat.sh /media/al/MainzBackup/output/split2  /media/al/MainzBackup/output/1st_step/2 &
