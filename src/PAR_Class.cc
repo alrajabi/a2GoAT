@@ -465,34 +465,34 @@ void PAR_Class::Pi0_Asym(const GTreeTrigger& triggertree,const GTreeTagger& tagg
 
 void PAR_Class::Test_Compton(const GTreeTrigger& triggertree,const GTreeTagger& taggertree,const GTreeParticle& rootinotree, const GTreeParticle& photontree,Int_t angle,Int_t en_low, Int_t en_high,GH1* com_MM_hp,GH1* com_MM_hm,GH1* com_MM_OA_hp,GH1* com_MM_OA_hm)
 {
-	for (Int_t j = 0; j < GetTagger()->GetNTagged(); j++)
+	if(triggertree.GetNErrors()==0)
 	{
-		for (Int_t i = 0; i < photontree.GetNParticles(); i++)
+		for (Int_t j = 0; j < GetTagger()->GetNTagged(); j++)
 		{
-			if ((taggertree.GetTaggedEnergy(j)>=en_low)&&( taggertree.GetTaggedEnergy(j)<en_high))
-			{	
-				if(triggertree.GetNErrors()==0)
-				{
-						if (triggertree.GetHelicity() ) // now if the helicity is 1
+			for (Int_t i = 0; i < photontree.GetNParticles(); i++)
+			{
+				if ((taggertree.GetTaggedEnergy(j)>=en_low)&&( taggertree.GetTaggedEnergy(j)<en_high))
+				{	
+					if (triggertree.GetHelicity() ) // now if the helicity is 1
+					{
+        					com_MM_hp->Fill(CalcMissingMass(photontree, i,j));
+						//FillBeamAsymmetry(photontree,i,j,com_pMass,0);
+						if  (myOA_Calculator(CalcMissingP4(photontree,i,j),rootinotree.Particle(0))<angle*TMath::Pi()/180)
 						{
-        						com_MM_hp->Fill(CalcMissingMass(photontree, i,j));
-							//FillBeamAsymmetry(photontree,i,j,com_pMass,0);
-							if  (myOA_Calculator(CalcMissingP4(photontree,i,j),rootinotree.Particle(0))<angle*TMath::Pi()/180)
-							{
-								com_MM_OA_hp->Fill(CalcMissingMass(photontree, i,j));
+							com_MM_OA_hp->Fill(CalcMissingMass(photontree, i,j));
 
-							}
-						}
-						else if (!triggertree.GetHelicity() ) // now if the helicity is 0
+						}		
+					}
+					else if (!triggertree.GetHelicity() ) // now if the helicity is 0
+					{
+						com_MM_hm->Fill(CalcMissingMass(photontree, i,j));
+						//FillBeamAsymmetry(photontree,i,j,com_pMass,0);
+						if  (myOA_Calculator(CalcMissingP4(photontree,i,j),rootinotree.Particle(0))<angle*TMath::Pi()/180)
 						{
-							com_MM_hm->Fill(CalcMissingMass(photontree, i,j));
-							//FillBeamAsymmetry(photontree,i,j,com_pMass,0);
-							if  (myOA_Calculator(CalcMissingP4(photontree,i,j),rootinotree.Particle(0))<angle*TMath::Pi()/180)
-							{
-								com_MM_OA_hm->Fill(CalcMissingMass(photontree, i,j));
+							com_MM_OA_hm->Fill(CalcMissingMass(photontree, i,j));
 
-							}
 						}
+					}
 				}	
 
 			}

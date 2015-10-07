@@ -27,7 +27,7 @@ if [ "$1" = "$S3" ];then
 fi  
 if [ "$1" = "$S4" ];then
 	if [ "$2" = "$S5" ];then
-		if [ "$3"= "$S7"];then
+		if [ "$3" = "$S7"];then
 		    	cd /home/al/analysis/2nd_step/oneH/
     			$ROOTSYS/bin/hadd MainGoAT_oneH.root *.root
 			#ls /home/al/analysis/1st_step/"$2"/
@@ -44,16 +44,16 @@ if [ "$1" = "$S4" ];then
         	        $ROOTSYS/bin/hadd MainGoAT_comp_zeroH.root *.root
 	    		 mv MainGoAT_comp_zeroH.root /home/al/analysis/a2GoAT/
         	fi	
-	fi
-	if [ "$2" = "$S6" ];then
-		if [ "$3"= "$S7"];then
+	
+	elif [ "$2" = "$S6" ];then
+		if [ "$3" = "$S7" ];then
 	                cd /home/al/analysis/2nd_step/archive/
 	                $ROOTSYS/bin/hadd MainGoAT_carbon.root *.root
-	                mv MainGoAT_carbon.root /home/al/analysis/TestEnv/"$3"
-		elif [ "$3"= "$S8"];then
+	                mv MainGoAT_carbon.root /home/al/analysis/TestEnv/"$4"
+		elif [ "$3" = "$S8" ];then
 			cd /home/al/analysis/compton/2nd_step/archive/
 	                $ROOTSYS/bin/hadd MainGoAT_comp_carbon.root *.root
-	                mv MainGoAT_comp_carbon.root /home/al/analysis/TestEnv/"$3"
+	                mv MainGoAT_comp_carbon.root /home/al/analysis/TestEnv/"$4"
 		fi
 	fi
 fi  
