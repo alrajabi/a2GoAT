@@ -134,6 +134,15 @@ add_executable(pi0-example
    )
 target_link_libraries(pi0-example goatbase ghist ${LIBS} ${ROOT_LIBRARIES})
 
+add_executable(AR_Compton
+   inc/PPhysics.h
+   src/PPhysics.cc
+   inc/PAR_Compton.h
+   src/PAR_Compton.cc
+   src/AR_Compton_main.cc
+   )
+target_link_libraries(AR_Compton goatbase ghist ${LIBS} ${ROOT_LIBRARIES})
+
 
 add_executable(TaggEff
    inc/PPhysics.h

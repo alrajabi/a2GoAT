@@ -46,29 +46,29 @@ fi
 if [ "$1" = "$S2" ];then
 	if [ "$2" = "$S5" ];then
 		if [ "$3" = "$S6" ];then
-			./runMyClass.sh ../1st_step/1 ../2nd_step/oneH ../1st_step/oneH/1&
-			./runMyClass.sh ../1st_step/2 ../2nd_step/oneH ../1st_step/oneH/2&
-			./runMyClass.sh ../1st_step/3 ../2nd_step/oneH ../1st_step/oneH/3&
-			./runMyClass.sh ../1st_step/4 ../2nd_step/oneH ../1st_step/oneH/4&
-			./runMyClass.sh ../1st_step/5 ../2nd_step/zeroH ../1st_step/zeroH/5&
-                	./runMyClass.sh ../1st_step/6 ../2nd_step/zeroH ../1st_step/zeroH/6&
+			./runMyClass.sh ../1st_step/1 ../2nd_step/oneH ../1st_step/oneH/1 AR_Class&
+			./runMyClass.sh ../1st_step/2 ../2nd_step/oneH ../1st_step/oneH/2 AR_Class&
+			./runMyClass.sh ../1st_step/3 ../2nd_step/oneH ../1st_step/oneH/3 AR_Class&
+			./runMyClass.sh ../1st_step/4 ../2nd_step/oneH ../1st_step/oneH/4 AR_Class&
+			./runMyClass.sh ../1st_step/5 ../2nd_step/zeroH ../1st_step/zeroH/5 AR_Class&
+                	./runMyClass.sh ../1st_step/6 ../2nd_step/zeroH ../1st_step/zeroH/6 AR_Class&
 		elif [ "$3" = "$S7" ];then	
-			./runMyClass.sh ../compton/1st_step/1 ../compton/2nd_step/oneH ../compton/1st_step/oneH/1&
-			./runMyClass.sh ../compton/1st_step/2 ../compton/2nd_step/oneH ../compton/1st_step/oneH/2&
-			./runMyClass.sh ../compton/1st_step/3 ../compton/2nd_step/oneH ../compton/1st_step/oneH/3&
-			./runMyClass.sh ../compton/1st_step/4 ../compton/2nd_step/oneH ../compton/1st_step/oneH/4&
-			./runMyClass.sh ../compton/1st_step/5 ../compton/2nd_step/zeroH ../compton/1st_step/zeroH/5&
-                	./runMyClass.sh ../compton/1st_step/6 ../compton/2nd_step/zeroH ../compton/1st_step/zeroH/6&
+			./runMyClass.sh ../compton/1st_step/1 ../compton/2nd_step/oneH ../compton/1st_step/oneH/1 AR_Compton&
+			./runMyClass.sh ../compton/1st_step/2 ../compton/2nd_step/oneH ../compton/1st_step/oneH/2 AR_Compton&
+			./runMyClass.sh ../compton/1st_step/3 ../compton/2nd_step/oneH ../compton/1st_step/oneH/3 AR_Compton&
+			./runMyClass.sh ../compton/1st_step/4 ../compton/2nd_step/oneH ../compton/1st_step/oneH/4 AR_Compton& 
+			./runMyClass.sh ../compton/1st_step/5 ../compton/2nd_step/zeroH ../compton/1st_step/zeroH/5 AR_Compton&
+                	./runMyClass.sh ../compton/1st_step/6 ../compton/2nd_step/zeroH ../compton/1st_step/zeroH/6 AR_Compton&
 		fi
 	elif [ "$2" = "$S4" ];then
 		if [ "$3" = "$S6" ];then
-			./runMyClass.sh ../1st_step/1 ../2nd_step/archive ../1st_step/archive/1&
-			./runMyClass.sh ../1st_step/2 ../2nd_step/archive ../1st_step/archive/2&
-			./runMyClass.sh ../1st_step/3 ../2nd_step/archive ../1st_step/archive/3&
+			./runMyClass.sh ../1st_step/1 ../2nd_step/archive ../1st_step/archive/1 AR_Class&
+			./runMyClass.sh ../1st_step/2 ../2nd_step/archive ../1st_step/archive/2 AR_Class&
+			./runMyClass.sh ../1st_step/3 ../2nd_step/archive ../1st_step/archive/3 AR_Class&
 		elif [ "$3" = "$S7" ];then
-			./runMyClass.sh ../compton/1st_step/1 ../compton/2nd_step/archive ../compton/1st_step/archive/1&
-			./runMyClass.sh ../compton/1st_step/2 ../compton/2nd_step/archive ../compton/1st_step/archive/2&
-			./runMyClass.sh ../compton/1st_step/3 ../compton/2nd_step/archive ../compton/1st_step/archive/3&
+			./runMyClass.sh ../compton/1st_step/1 ../compton/2nd_step/archive ../compton/1st_step/archive/1 AR_Compton&
+			./runMyClass.sh ../compton/1st_step/2 ../compton/2nd_step/archive ../compton/1st_step/archive/2 AR_Compton&
+			./runMyClass.sh ../compton/1st_step/3 ../compton/2nd_step/archive ../compton/1st_step/archive/3 AR_Compton&
 		fi		
 	fi
 fi
@@ -81,6 +81,12 @@ if [ "$1" = "$S3" ];then
 		mv /home/al/output/split5/archive/*.root /home/al/output/split5
 		mv /home/al/output/split6/archive/*.root /home/al/output/split6
 		if [ "$3" = "$S6" ];then
+			rm /home/al/analysis/1st_step/oneH/1/*.root
+			rm /home/al/analysis/1st_step/oneH/2/*.root
+			rm /home/al/analysis/1st_step/oneH/3/*.root
+			rm /home/al/analysis/1st_step/oneH/4/*.root
+			rm /home/al/analysis/1st_step/zeroH/5/*.root
+			rm /home/al/analysis/1st_step/zeroH/6/*.root	
 			./runGoat.sh /home/al/output/split1 /home/al/analysis/1st_step/1 &
 			./runGoat.sh /home/al/output/split2 /home/al/analysis/1st_step/2 &
 			./runGoat.sh /home/al/output/split3 /home/al/analysis/1st_step/3 &
@@ -88,6 +94,12 @@ if [ "$1" = "$S3" ];then
 			./runGoat.sh /home/al/output/split5 /home/al/analysis/1st_step/5 &
 			./runGoat.sh /home/al/output/split6 /home/al/analysis/1st_step/6 &
 		elif [ "$3" = "$S7" ];then
+			rm /home/al/analysis/compton/1st_step/oneH/1/*.root
+			rm /home/al/analysis/compton/1st_step/oneH/2/*.root
+			rm /home/al/analysis/compton/1st_step/oneH/3/*.root
+			rm /home/al/analysis/compton/1st_step/oneH/4/*.root
+			rm /home/al/analysis/compton/1st_step/zeroH/5/*.root
+			rm /home/al/analysis/compton/1st_step/zeroH/6/*.root
 			./runGoat.sh /home/al/output/split1 /home/al/analysis/compton/1st_step/1 &
 			./runGoat.sh /home/al/output/split2 /home/al/analysis/compton/1st_step/2 &
 			./runGoat.sh /home/al/output/split3 /home/al/analysis/compton/1st_step/3 &
@@ -100,10 +112,16 @@ if [ "$1" = "$S3" ];then
 		mv /media/al/MainzBackup/output/split2/archive/*.root /media/al/MainzBackup/output/split2
 		mv /media/al/MainzBackup/output/split3/archive/*.root /media/al/MainzBackup/output/split3
 		if [ "$3" = "$S6" ];then
+			rm /home/al/analysis/1st_step/archive/1/*.root
+			rm /home/al/analysis/1st_step/archive/2/*.root
+			rm /home/al/analysis/1st_step/archive/3/*.root
 			./runGoat.sh /media/al/MainzBackup/output/split1 /media/al/MainzBackup/output/1st_step/1 &
 			./runGoat.sh /media/al/MainzBackup/output/split2  /media/al/MainzBackup/output/1st_step/2 &
 			./runGoat.sh /media/al/MainzBackup/output/split3 /media/al/MainzBackup/output/1st_step/3 &
 		elif [ "$3" = "$S7" ];then
+			rm /home/al/analysis/compton/1st_step/archive/1/*.root
+			rm /home/al/analysis/compton/1st_step/archive/2/*.root
+			rm /home/al/analysis/compton/1st_step/archive/3/*.root
 			./runGoat.sh /media/al/MainzBackup/output/split1 ../compton/1st_step/1 &
 			./runGoat.sh /media/al/MainzBackup/output/split2  ../compton/1st_step/2 &
 			./runGoat.sh /media/al/MainzBackup/output/split3 ../compton/1st_step/3 &
