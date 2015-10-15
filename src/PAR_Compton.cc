@@ -9,6 +9,8 @@ PAR_Compton::PAR_Compton()
     Com_MM_hm = new GH1("Com_MM_hm","Rootino Missing Mass-Helicity = -1", 1200,600,1800);
     //Com_pMass = new GH1("Com_pMass","Rootino Mass",180,0,180);  	
     	
+	Theta_hp = new GH1("Theta_hp","Yield for 0<Photon.Theta<180-Helicity=+1",18,0,180);
+    	Theta_hm = new GH1("Theta_hm","Yield for 0<Photon.Theta<180-Helicity=-1",18,0,180);
 
 	Com_MM_OA_hp_0 = new GH1("Com_MM_OA_hp_0","Rootino Missing Mass 0<Theta<1,After OA-cut-Helicity = +1", 1200,600,1800);
 	Com_MM_OA_hm_0 = new GH1("Com_MM_OA_hm_0","Rootino Missing Mass 0<Theta<1,After OA-cut-Helicity = -1", 1200,600,1800);
@@ -58,11 +60,6 @@ PAR_Compton::PAR_Compton()
 	Com_MM_OA_hp_150 = new GH1("Com_MM_OA_hp_150","Rootino Missing Mass 150<Theta<151,After OA-cut-Helicity = +1", 1200,600,1800);
 	Com_MM_OA_hm_150 = new GH1("Com_MM_OA_hm_150","Rootino Missing Mass 150<Theta<151,After OA-cut-Helicity = -1", 1200,600,1800);
 
-	Com_MM_OA_hp_160 = new GH1("Com_MM_OA_hp_160","Rootino Missing Mass 160<Theta<161,After OA-cut-Helicity = +1", 1200,600,1800);
-	Com_MM_OA_hm_160 = new GH1("Com_MM_OA_hm_160","Rootino Missing Mass 160<Theta<161,After OA-cut-Helicity = -1", 1200,600,1800);
-
-	Com_MM_OA_hp_170 = new GH1("Com_MM_OA_hp_170","Rootino Missing Mass 170<Theta<171,After OA-cut-Helicity = +1", 1200,600,1800);
-	Com_MM_OA_hm_170 = new GH1("Com_MM_OA_hm_170","Rootino Missing Mass 170<Theta<171,After OA-cut-Helicity = -1", 1200,600,1800);
 }
 
 PAR_Compton::~PAR_Compton()
@@ -92,7 +89,7 @@ Double_t PAR_Compton::myOA_Calculator(const TLorentzVector& t1, const TLorentzVe
 }
 //--------------------------------Compton Analysis Functions starts here:-----------------------------------------
 
-void PAR_Compton::Test_Compton(const GTreeTrigger& triggertree,const GTreeTagger& taggertree,const GTreeParticle& rootinotree, const GTreeParticle& photontree,Int_t angle,Int_t en_low, Int_t en_high,GH1* com_MM_hp,GH1* com_MM_hm,GH1* com_MM_OA_hp_0,GH1* com_MM_OA_hm_0, GH1* com_MM_OA_hp_10,GH1* com_MM_OA_hm_10, GH1* com_MM_OA_hp_20,GH1* com_MM_OA_hm_20, GH1* com_MM_OA_hp_30,GH1* com_MM_OA_hm_30, GH1* com_MM_OA_hp_40,GH1* com_MM_OA_hm_40, GH1* com_MM_OA_hp_50,GH1* com_MM_OA_hm_50, GH1* com_MM_OA_hp_60,GH1* com_MM_OA_hm_60, GH1* com_MM_OA_hp_70,GH1* com_MM_OA_hm_70, GH1* com_MM_OA_hp_80,GH1* com_MM_OA_hm_80, GH1* com_MM_OA_hp_90,GH1* com_MM_OA_hm_90, GH1* com_MM_OA_hp_100,GH1* com_MM_OA_hm_100, GH1* com_MM_OA_hp_110,GH1* com_MM_OA_hm_110, GH1* com_MM_OA_hp_120,GH1* com_MM_OA_hm_120, GH1* com_MM_OA_hp_130,GH1* com_MM_OA_hm_130, GH1* com_MM_OA_hp_140,GH1* com_MM_OA_hm_140, GH1* com_MM_OA_hp_150,GH1* com_MM_OA_hm_150, GH1* com_MM_OA_hp_160,GH1* com_MM_OA_hm_160, GH1* com_MM_OA_hp_170,GH1* com_MM_OA_hm_170)
+void PAR_Compton::Test_Compton(const GTreeTrigger& triggertree,const GTreeTagger& taggertree,const GTreeParticle& rootinotree, const GTreeParticle& photontree,Int_t angle,Int_t en_low, Int_t en_high,GH1* com_MM_hp,GH1* com_MM_hm,GH1* com_MM_OA_hp_0,GH1* com_MM_OA_hm_0, GH1* com_MM_OA_hp_10,GH1* com_MM_OA_hm_10, GH1* com_MM_OA_hp_20,GH1* com_MM_OA_hm_20, GH1* com_MM_OA_hp_30,GH1* com_MM_OA_hm_30, GH1* com_MM_OA_hp_40,GH1* com_MM_OA_hm_40, GH1* com_MM_OA_hp_50,GH1* com_MM_OA_hm_50, GH1* com_MM_OA_hp_60,GH1* com_MM_OA_hm_60, GH1* com_MM_OA_hp_70,GH1* com_MM_OA_hm_70, GH1* com_MM_OA_hp_80,GH1* com_MM_OA_hm_80, GH1* com_MM_OA_hp_90,GH1* com_MM_OA_hm_90, GH1* com_MM_OA_hp_100,GH1* com_MM_OA_hm_100, GH1* com_MM_OA_hp_110,GH1* com_MM_OA_hm_110, GH1* com_MM_OA_hp_120,GH1* com_MM_OA_hm_120, GH1* com_MM_OA_hp_130,GH1* com_MM_OA_hm_130, GH1* com_MM_OA_hp_140,GH1* com_MM_OA_hm_140, GH1* com_MM_OA_hp_150,GH1* com_MM_OA_hm_150,GH1* theta_hp,GH1* theta_hm)
 {
 	if(triggertree.GetNErrors()==0)
 	{
@@ -104,6 +101,10 @@ void PAR_Compton::Test_Compton(const GTreeTrigger& triggertree,const GTreeTagger
 				{	
 					if (triggertree.GetHelicity() ) // now if the helicity is 1
 					{
+						if ((CalcMissingMass(photontree,0,j)<938)&&(CalcMissingMass(photontree,0,j)>850))
+						{
+							theta_hp->Fill(photontree.GetTheta(0));
+						}
         					com_MM_hp->Fill(CalcMissingMass(photontree, i,j));
 						//FillBeamAsymmetry(photontree,i,j,com_pMass,0);
 						if  (myOA_Calculator(CalcMissingP4(photontree,i,j),rootinotree.Particle(0))<angle*TMath::Pi()/180)
@@ -172,18 +173,15 @@ void PAR_Compton::Test_Compton(const GTreeTrigger& triggertree,const GTreeTagger
 							{
 								com_MM_OA_hp_150->Fill(CalcMissingMass(photontree, i,j));
 							}
-							else if ((photontree.GetTheta(0)>=160)&&(photontree.GetTheta(0)<170))
-							{
-								com_MM_OA_hp_160->Fill(CalcMissingMass(photontree, i,j));
-							}
-							else if ((photontree.GetTheta(0)>=170)&&(photontree.GetTheta(0)<180))
-							{
-								com_MM_OA_hp_170->Fill(CalcMissingMass(photontree, i,j));
-							}
+							
 						}		
 					}
 					else if (!triggertree.GetHelicity() ) // now if the helicity is 0
 					{
+						if ((CalcMissingMass(photontree,0,j)<938)&&(CalcMissingMass(photontree,0,j)>850))
+						{
+							theta_hm->Fill(photontree.GetTheta(0));
+						}
 						com_MM_hm->Fill(CalcMissingMass(photontree, i,j));
 						//FillBeamAsymmetry(photontree,i,j,com_pMass,0);
 						if  (myOA_Calculator(CalcMissingP4(photontree,i,j),rootinotree.Particle(0))<angle*TMath::Pi()/180)
@@ -252,14 +250,7 @@ void PAR_Compton::Test_Compton(const GTreeTrigger& triggertree,const GTreeTagger
 							{
 								com_MM_OA_hm_150->Fill(CalcMissingMass(photontree, i,j));
 							}
-							else if ((photontree.GetTheta(0)>=160)&&(photontree.GetTheta(0)<170))
-							{
-								com_MM_OA_hm_160->Fill(CalcMissingMass(photontree, i,j));
-							}
-							else if ((photontree.GetTheta(0)>=170)&&(photontree.GetTheta(0)<180))
-							{
-								com_MM_OA_hm_170->Fill(CalcMissingMass(photontree, i,j));
-							}
+							
 
 						}
 					}
@@ -321,7 +312,7 @@ void	PAR_Compton::ProcessEvent()
         }
 
     }***/
-	Test_Compton(*GetTrigger(),*GetTagger(),*GetRootinos(),*GetPhotons(),15,285,295,Com_MM_hp,Com_MM_hm,Com_MM_OA_hp_0,Com_MM_OA_hm_0, Com_MM_OA_hp_10,Com_MM_OA_hm_10, Com_MM_OA_hp_20,Com_MM_OA_hm_20, Com_MM_OA_hp_30,Com_MM_OA_hm_30, Com_MM_OA_hp_40,Com_MM_OA_hm_40, Com_MM_OA_hp_50,Com_MM_OA_hm_50, Com_MM_OA_hp_60,Com_MM_OA_hm_60, Com_MM_OA_hp_70,Com_MM_OA_hm_70, Com_MM_OA_hp_80,Com_MM_OA_hm_80, Com_MM_OA_hp_90,Com_MM_OA_hm_90, Com_MM_OA_hp_100,Com_MM_OA_hm_100, Com_MM_OA_hp_110,Com_MM_OA_hm_110, Com_MM_OA_hp_120,Com_MM_OA_hm_120, Com_MM_OA_hp_130,Com_MM_OA_hm_130, Com_MM_OA_hp_140,Com_MM_OA_hm_140, Com_MM_OA_hp_150,Com_MM_OA_hm_150, Com_MM_OA_hp_160,Com_MM_OA_hm_160, Com_MM_OA_hp_170,Com_MM_OA_hm_170);	
+	Test_Compton(*GetTrigger(),*GetTagger(),*GetRootinos(),*GetPhotons(),15,285,295,Com_MM_hp,Com_MM_hm,Com_MM_OA_hp_0,Com_MM_OA_hm_0, Com_MM_OA_hp_10,Com_MM_OA_hm_10, Com_MM_OA_hp_20,Com_MM_OA_hm_20, Com_MM_OA_hp_30,Com_MM_OA_hm_30, Com_MM_OA_hp_40,Com_MM_OA_hm_40, Com_MM_OA_hp_50,Com_MM_OA_hm_50, Com_MM_OA_hp_60,Com_MM_OA_hm_60, Com_MM_OA_hp_70,Com_MM_OA_hm_70, Com_MM_OA_hp_80,Com_MM_OA_hm_80, Com_MM_OA_hp_90,Com_MM_OA_hm_90, Com_MM_OA_hp_100,Com_MM_OA_hm_100, Com_MM_OA_hp_110,Com_MM_OA_hm_110, Com_MM_OA_hp_120,Com_MM_OA_hm_120, Com_MM_OA_hp_130,Com_MM_OA_hm_130, Com_MM_OA_hp_140,Com_MM_OA_hm_140, Com_MM_OA_hp_150,Com_MM_OA_hm_150,Theta_hp,Theta_hm);	
 }
 
 void	PAR_Compton::ProcessScalerRead()
