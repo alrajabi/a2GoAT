@@ -9,16 +9,20 @@ PAR_Class::PAR_Class()
     NChargedOA	= new GH1("NChargedOA",	"NC Prime at OA,35 <Proton.Theta < 40" ,30,0, 300);
     NCharged	= new GH1("NCharged",	"NC, 35 <Proton.Theta < 40 " ,30,0, 300);
     Denom 	= new GH1("Denom",	"Denom, 35 <Proton.Theta < 40 " ,30,0, 300);
-    Mgg_40  =new GH1("Mgg_40","Mgg for 35 <Theta < 40 with cut on MM",250,0,250);
-    Mgg_50  =new GH1("Mgg_50","Mgg for 35 <Theta < 40 with cut on MM",250,0,250);
-    Mgg_60  =new GH1("Mgg_60","Mgg for 35 <Theta < 40 with cut on MM",250,0,250);
-    Mgg_70  =new GH1("Mgg_70","Mgg for 35 <Theta < 40 with cut on MM",250,0,250);
-    Mgg_80  =new GH1("Mgg_80","Mgg for 35 <Theta < 40 with cut on MM",250,0,250);
-    Mgg_90  =new GH1("Mgg_90","Mgg for 35 <Theta < 40 with cut on MM",250,0,250);
-    Mgg_100  =new GH1("Mgg_100","Mgg for 35 <Theta < 40 with cut on MM",250,0,250);
-    Mgg_110  =new GH1("Mgg_110","Mgg for 35 <Theta < 40 with cut on MM",250,0,250);
-    Mgg_120  =new GH1("Mgg_120","Mgg for 35 <Theta < 40 with cut on MM",250,0,250);
-    Mgg_130  =new GH1("Mgg_130","Mgg for 35 <Theta < 40 with cut on MM",250,0,250);
+    Mgg_0  =new GH1("Mgg_0","Mgg for 35 <Theta < 40 with cut on MM",250,0,250);
+    Mgg_10  =new GH1("Mgg_10","Mgg for 0 <Ek < 10 with cut on MM",250,0,250);
+    Mgg_20  =new GH1("Mgg_20","Mgg for 10 <Ek < 20 with cut on MM",250,0,250);
+    Mgg_30  =new GH1("Mgg_30","Mgg for 20 <Ek < 30 with cut on MM",250,0,250);	
+    Mgg_40  =new GH1("Mgg_40","Mgg for 30 <Ek < 40 with cut on MM",250,0,250);
+    Mgg_50  =new GH1("Mgg_50","Mgg for 40 <Ek < 50 with cut on MM",250,0,250);
+    Mgg_60  =new GH1("Mgg_60","Mgg for 50 <Ek < 60 with cut on MM",250,0,250);
+    Mgg_70  =new GH1("Mgg_70","Mgg for 60 <Ek < 70 with cut on MM",250,0,250);
+    Mgg_80  =new GH1("Mgg_80","Mgg for 70 <Ek < 80 with cut on MM",250,0,250);
+    Mgg_90  =new GH1("Mgg_90","Mgg for 80 <Ek < 90 with cut on MM",250,0,250);
+    Mgg_100  =new GH1("Mgg_100","Mgg for 90 <Ek < 100 with cut on MM",250,0,250);
+    Mgg_110  =new GH1("Mgg_110","Mgg for 100 <Ek < 110 with cut on MM",250,0,250);
+    Mgg_120  =new GH1("Mgg_120","Mgg for 110 <Ek < 120 with cut on MM",250,0,250);
+    Mgg_130  =new GH1("Mgg_130","Mgg for 120 <Ek < 130 with cut on MM",250,0,250);
 //pi0 Asym. hists:
     Mgg_hp_0 = new GH1("Mgg_hp_0","Mgg for 0 <Theta < 10 -Helicity=+1",250,0,250);
     Mgg_hm_0 = new GH1("Mgg_hm_0","Mgg for 0 <Theta < 10 -Helicity=-1",250,0,250);	
@@ -118,7 +122,7 @@ Double_t PAR_Class::myOA_Calculator(const TLorentzVector& t1, const TLorentzVect
 	//return cosinoos;
 	return p1.Angle(p2);
 }
-void PAR_Class::Eff(const GTreeParticle& rootinotree,const GTreeMeson& pi0tree, Int_t theta0, Int_t theta1, Float_t angle,GH1* inclusive_denom,GH1* denom,GH1* nc,GH1* ncoa,GH1* mgg_all_theta,GH1* mgg_40, GH1* mgg_50, GH1* mgg_60, GH1* mgg_70, GH1* mgg_80, GH1* mgg_90, GH1* mgg_100, GH1* mgg_110, GH1* mgg_120, GH1* mgg_130) //GH1* MM_b4_cut )
+void PAR_Class::Eff(const GTreeParticle& rootinotree,const GTreeMeson& pi0tree, Int_t theta0, Int_t theta1, Float_t angle,GH1* inclusive_denom,GH1* denom,GH1* nc,GH1* ncoa,GH1* mgg_all_theta,GH1* mgg_0,GH1* mgg_10,GH1* mgg_20,GH1* mgg_30,GH1* mgg_40, GH1* mgg_50, GH1* mgg_60, GH1* mgg_70, GH1* mgg_80, GH1* mgg_90, GH1* mgg_100, GH1* mgg_110, GH1* mgg_120, GH1* mgg_130) //GH1* MM_b4_cut )
 {
 			
 	for (Int_t j = 0; j < GetTagger()->GetNTagged(); j++)
@@ -143,8 +147,28 @@ void PAR_Class::Eff(const GTreeParticle& rootinotree,const GTreeMeson& pi0tree, 
 							ncoa->Fill(E_k);
 						}	
 							
+					}
+					if ((E_k>0)&&(E_k<10))
+					{
+						FillMass(pi0tree,0,mgg_0);
+						
+					}
+					else if ((E_k>=10)&&(E_k<20))
+					{
+						FillMass(pi0tree,0,mgg_10);
+						
+					}
+					else if ((E_k>=20)&&(E_k<30))
+					{
+						FillMass(pi0tree,0,mgg_20);
+						
+					}
+					else if ((E_k>=30)&&(E_k<40))
+					{
+						FillMass(pi0tree,0,mgg_30);
+						
 					}					
-					if ((E_k>=40)&&(E_k<50))
+					else if ((E_k>=40)&&(E_k<50))
 					{
 						FillMass(pi0tree,0,mgg_40);
 						
@@ -417,8 +441,8 @@ void	PAR_Class::ProcessEvent()
         }
 
     }***/
-	Eff(*GetRootinos(),*GetNeutralPions(), 40,45, 15, incDenom,Denom,NCharged,NChargedOA,Mgg_all_theta,Mgg_40, Mgg_50, Mgg_60, Mgg_70, Mgg_80, Mgg_90, Mgg_100, Mgg_110, Mgg_120, Mgg_130);
-        Pi0_Asym(*GetTrigger(),*GetTagger(),*GetNeutralPions(),205,215,Theta_hp,Theta_hm,Mgg_hp_0,Mgg_hm_0, Mgg_hp_10,Mgg_hm_10, Mgg_hp_20,Mgg_hm_20,Mgg_hp_30,Mgg_hm_30,Mgg_hp_40,Mgg_hm_40,Mgg_hp_50,Mgg_hm_50,Mgg_hp_60,Mgg_hm_60, Mgg_hp_70,Mgg_hm_70,Mgg_hp_80,Mgg_hm_80, Mgg_hp_90,Mgg_hm_90,Mgg_hp_100,Mgg_hm_100,Mgg_hp_110,Mgg_hm_110,Mgg_hp_120,Mgg_hm_120,Mgg_hp_130,Mgg_hm_130,Mgg_hp_140,Mgg_hm_140, Mgg_hp_150,Mgg_hm_150,Mgg_hp_160,Mgg_hm_160,Mgg_hp_170,Mgg_hm_170);
+	Eff(*GetRootinos(),*GetNeutralPions(), 40,45, 15, incDenom,Denom,NCharged,NChargedOA,Mgg_all_theta,Mgg_0, Mgg_10, Mgg_20, Mgg_30,Mgg_40, Mgg_50, Mgg_60, Mgg_70, Mgg_80, Mgg_90, Mgg_100, Mgg_110, Mgg_120, Mgg_130);
+        Pi0_Asym(*GetTrigger(),*GetTagger(),*GetNeutralPions(),215,225,Theta_hp,Theta_hm,Mgg_hp_0,Mgg_hm_0, Mgg_hp_10,Mgg_hm_10, Mgg_hp_20,Mgg_hm_20,Mgg_hp_30,Mgg_hm_30,Mgg_hp_40,Mgg_hm_40,Mgg_hp_50,Mgg_hm_50,Mgg_hp_60,Mgg_hm_60, Mgg_hp_70,Mgg_hm_70,Mgg_hp_80,Mgg_hm_80, Mgg_hp_90,Mgg_hm_90,Mgg_hp_100,Mgg_hm_100,Mgg_hp_110,Mgg_hm_110,Mgg_hp_120,Mgg_hm_120,Mgg_hp_130,Mgg_hm_130,Mgg_hp_140,Mgg_hm_140, Mgg_hp_150,Mgg_hm_150,Mgg_hp_160,Mgg_hm_160,Mgg_hp_170,Mgg_hm_170);
 	
 	
 }
