@@ -12,53 +12,53 @@ PAR_Compton::PAR_Compton()
 	Theta_hp = new GH1("Theta_hp","Yield for 0<Photon.Theta<180-Helicity=+1",18,0,180);
     	Theta_hm = new GH1("Theta_hm","Yield for 0<Photon.Theta<180-Helicity=-1",18,0,180);
 
-	Com_MM_OA_hp_0 = new GH1("Com_MM_OA_hp_0","Rootino Missing Mass 0<Theta<1,After OA-cut-Helicity = +1", 1200,600,1800);
-	Com_MM_OA_hm_0 = new GH1("Com_MM_OA_hm_0","Rootino Missing Mass 0<Theta<1,After OA-cut-Helicity = -1", 1200,600,1800);
+	Com_MM_OA_hp_0 = new GH1("Com_MM_OA_hp_0","Rootino Missing Mass 0<Theta<10,After OA-cut-Helicity = +1", 700,600,1300);
+	Com_MM_OA_hm_0 = new GH1("Com_MM_OA_hm_0","Rootino Missing Mass 0<Theta<10,After OA-cut-Helicity = -1", 700,600,1300);
 
-	Com_MM_OA_hp_10 = new GH1("Com_MM_OA_hp_10","Rootino Missing Mass 10<Theta<11,After OA-cut-Helicity = +1", 1200,600,1800);
-	Com_MM_OA_hm_10 = new GH1("Com_MM_OA_hm_10","Rootino Missing Mass 10<Theta<11,After OA-cut-Helicity = -1", 1200,600,1800);
+	Com_MM_OA_hp_10 = new GH1("Com_MM_OA_hp_10","Rootino Missing Mass 10<Theta<20,After OA-cut-Helicity = +1", 700,600,1300);
+	Com_MM_OA_hm_10 = new GH1("Com_MM_OA_hm_10","Rootino Missing Mass 10<Theta<20,After OA-cut-Helicity = -1", 700,600,1300);
 
-	Com_MM_OA_hp_20 = new GH1("Com_MM_OA_hp_20","Rootino Missing Mass 20<Theta<21,After OA-cut-Helicity = +1", 1200,600,1800);
-	Com_MM_OA_hm_20 = new GH1("Com_MM_OA_hm_20","Rootino Missing Mass 20<Theta<21,After OA-cut-Helicity = -1", 1200,600,1800);
+	Com_MM_OA_hp_20 = new GH1("Com_MM_OA_hp_20","Rootino Missing Mass 20<Theta<30,After OA-cut-Helicity = +1", 700,600,1300);
+	Com_MM_OA_hm_20 = new GH1("Com_MM_OA_hm_20","Rootino Missing Mass 20<Theta<30,After OA-cut-Helicity = -1", 700,600,1300);
 
-	Com_MM_OA_hp_30 = new GH1("Com_MM_OA_hp_30","Rootino Missing Mass 30<Theta<31,After OA-cut-Helicity = +1", 1200,600,1800);
-	Com_MM_OA_hm_30 = new GH1("Com_MM_OA_hm_30","Rootino Missing Mass 30<Theta<31,After OA-cut-Helicity = -1", 1200,600,1800);
+	Com_MM_OA_hp_30 = new GH1("Com_MM_OA_hp_30","Rootino Missing Mass 30<Theta<40,After OA-cut-Helicity = +1", 700,600,1300);
+	Com_MM_OA_hm_30 = new GH1("Com_MM_OA_hm_30","Rootino Missing Mass 30<Theta<40,After OA-cut-Helicity = -1", 700,600,1300);
 
-	Com_MM_OA_hp_40 = new GH1("Com_MM_OA_hp_40","Rootino Missing Mass 40<Theta<41,After OA-cut-Helicity = +1", 1200,600,1800);
-	Com_MM_OA_hm_40 = new GH1("Com_MM_OA_hm_40","Rootino Missing Mass 40<Theta<41,After OA-cut-Helicity = -1", 1200,600,1800);
+	Com_MM_OA_hp_40 = new GH1("Com_MM_OA_hp_40","Rootino Missing Mass 40<Theta<50,After OA-cut-Helicity = +1", 700,600,1300);
+	Com_MM_OA_hm_40 = new GH1("Com_MM_OA_hm_40","Rootino Missing Mass 40<Theta<50,After OA-cut-Helicity = -1", 700,600,1300);
 
-	Com_MM_OA_hp_50 = new GH1("Com_MM_OA_hp_50","Rootino Missing Mass 50<Theta<51,After OA-cut-Helicity = +1", 1200,600,1800);
-	Com_MM_OA_hm_50 = new GH1("Com_MM_OA_hm_50","Rootino Missing Mass 50<Theta<51,After OA-cut-Helicity = -1", 1200,600,1800);
+	Com_MM_OA_hp_50 = new GH1("Com_MM_OA_hp_50","Rootino Missing Mass 50<Theta<60,After OA-cut-Helicity = +1", 700,600,1300);
+	Com_MM_OA_hm_50 = new GH1("Com_MM_OA_hm_50","Rootino Missing Mass 50<Theta<60,After OA-cut-Helicity = -1", 700,600,1300);
 
-	Com_MM_OA_hp_60 = new GH1("Com_MM_OA_hp_60","Rootino Missing Mass 60<Theta<61,After OA-cut-Helicity = +1", 1200,600,1800);
-	Com_MM_OA_hm_60 = new GH1("Com_MM_OA_hm_60","Rootino Missing Mass 60<Theta<61,After OA-cut-Helicity = -1", 1200,600,1800);
+	Com_MM_OA_hp_60 = new GH1("Com_MM_OA_hp_60","Rootino Missing Mass 60<Theta<70,After OA-cut-Helicity = +1", 700,600,1300);
+	Com_MM_OA_hm_60 = new GH1("Com_MM_OA_hm_60","Rootino Missing Mass 60<Theta<70,After OA-cut-Helicity = -1", 700,600,1300);
 
-	Com_MM_OA_hp_70 = new GH1("Com_MM_OA_hp_70","Rootino Missing Mass 70<Theta<71,After OA-cut-Helicity = +1", 1200,600,1800);
-	Com_MM_OA_hm_70 = new GH1("Com_MM_OA_hm_70","Rootino Missing Mass 70<Theta<71,After OA-cut-Helicity = -1", 1200,600,1800);
+	Com_MM_OA_hp_70 = new GH1("Com_MM_OA_hp_70","Rootino Missing Mass 70<Theta<80,After OA-cut-Helicity = +1", 700,600,1300);
+	Com_MM_OA_hm_70 = new GH1("Com_MM_OA_hm_70","Rootino Missing Mass 70<Theta<80,After OA-cut-Helicity = -1", 700,600,1300);
 
-	Com_MM_OA_hp_80 = new GH1("Com_MM_OA_hp_80","Rootino Missing Mass 80<Theta<81,After OA-cut-Helicity = +1", 1200,600,1800);
-	Com_MM_OA_hm_80 = new GH1("Com_MM_OA_hm_80","Rootino Missing Mass 80<Theta<81,After OA-cut-Helicity = -1", 1200,600,1800);
+	Com_MM_OA_hp_80 = new GH1("Com_MM_OA_hp_80","Rootino Missing Mass 80<Theta<90,After OA-cut-Helicity = +1", 700,600,1300);
+	Com_MM_OA_hm_80 = new GH1("Com_MM_OA_hm_80","Rootino Missing Mass 80<Theta<90,After OA-cut-Helicity = -1", 700,600,1300);
 
-	Com_MM_OA_hp_90 = new GH1("Com_MM_OA_hp_90","Rootino Missing Mass 90<Theta<91,After OA-cut-Helicity = +1", 1200,600,1800);
-	Com_MM_OA_hm_90 = new GH1("Com_MM_OA_hm_90","Rootino Missing Mass 90<Theta<91,After OA-cut-Helicity = -1", 1200,600,1800);
+	Com_MM_OA_hp_90 = new GH1("Com_MM_OA_hp_90","Rootino Missing Mass 90<Theta<100,After OA-cut-Helicity = +1", 700,600,1300);
+	Com_MM_OA_hm_90 = new GH1("Com_MM_OA_hm_90","Rootino Missing Mass 90<Theta<100,After OA-cut-Helicity = -1", 700,600,1300);
 
-	Com_MM_OA_hp_100 = new GH1("Com_MM_OA_hp_100","Rootino Missing Mass 100<Theta<101,After OA-cut-Helicity = +1", 1200,600,1800);
-	Com_MM_OA_hm_100 = new GH1("Com_MM_OA_hm_100","Rootino Missing Mass 100<Theta<101,After OA-cut-Helicity = -1", 1200,600,1800);
+	Com_MM_OA_hp_100 = new GH1("Com_MM_OA_hp_100","Rootino Missing Mass 100<Theta<110,After OA-cut-Helicity = +1", 700,600,1300);
+	Com_MM_OA_hm_100 = new GH1("Com_MM_OA_hm_100","Rootino Missing Mass 100<Theta<110,After OA-cut-Helicity = -1", 700,600,1300);
 
-	Com_MM_OA_hp_110 = new GH1("Com_MM_OA_hp_110","Rootino Missing Mass 110<Theta<111,After OA-cut-Helicity = +1", 1200,600,1800);
-	Com_MM_OA_hm_110 = new GH1("Com_MM_OA_hm_110","Rootino Missing Mass 110<Theta<111,After OA-cut-Helicity = -1", 1200,600,1800);
+	Com_MM_OA_hp_110 = new GH1("Com_MM_OA_hp_110","Rootino Missing Mass 110<Theta<120,After OA-cut-Helicity = +1", 700,600,1300);
+	Com_MM_OA_hm_110 = new GH1("Com_MM_OA_hm_110","Rootino Missing Mass 110<Theta<120,After OA-cut-Helicity = -1", 700,600,1300);
 
-	Com_MM_OA_hp_120 = new GH1("Com_MM_OA_hp_120","Rootino Missing Mass 120<Theta<121,After OA-cut-Helicity = +1", 1200,600,1800);
-	Com_MM_OA_hm_120 = new GH1("Com_MM_OA_hm_120","Rootino Missing Mass 120<Theta<121,After OA-cut-Helicity = -1", 1200,600,1800);
+	Com_MM_OA_hp_120 = new GH1("Com_MM_OA_hp_120","Rootino Missing Mass 120<Theta<130,After OA-cut-Helicity = +1", 700,600,1300);
+	Com_MM_OA_hm_120 = new GH1("Com_MM_OA_hm_120","Rootino Missing Mass 120<Theta<130,After OA-cut-Helicity = -1", 700,600,1300);
 
-	Com_MM_OA_hp_130 = new GH1("Com_MM_OA_hp_130","Rootino Missing Mass 130<Theta<131,After OA-cut-Helicity = +1", 1200,600,1800);
-	Com_MM_OA_hm_130 = new GH1("Com_MM_OA_hm_130","Rootino Missing Mass 130<Theta<131,After OA-cut-Helicity = -1", 1200,600,1800);
+	Com_MM_OA_hp_130 = new GH1("Com_MM_OA_hp_130","Rootino Missing Mass 130<Theta<140,After OA-cut-Helicity = +1", 700,600,1300);
+	Com_MM_OA_hm_130 = new GH1("Com_MM_OA_hm_130","Rootino Missing Mass 130<Theta<140,After OA-cut-Helicity = -1", 700,600,1300);
 
-	Com_MM_OA_hp_140 = new GH1("Com_MM_OA_hp_140","Rootino Missing Mass 140<Theta<141,After OA-cut-Helicity = +1", 1200,600,1800);
-	Com_MM_OA_hm_140 = new GH1("Com_MM_OA_hm_140","Rootino Missing Mass 140<Theta<141,After OA-cut-Helicity = -1", 1200,600,1800);
+	Com_MM_OA_hp_140 = new GH1("Com_MM_OA_hp_140","Rootino Missing Mass 140<Theta<150,After OA-cut-Helicity = +1", 700,600,1300);
+	Com_MM_OA_hm_140 = new GH1("Com_MM_OA_hm_140","Rootino Missing Mass 140<Theta<150,After OA-cut-Helicity = -1", 700,600,1300);
 
-	Com_MM_OA_hp_150 = new GH1("Com_MM_OA_hp_150","Rootino Missing Mass 150<Theta<151,After OA-cut-Helicity = +1", 1200,600,1800);
-	Com_MM_OA_hm_150 = new GH1("Com_MM_OA_hm_150","Rootino Missing Mass 150<Theta<151,After OA-cut-Helicity = -1", 1200,600,1800);
+	Com_MM_OA_hp_150 = new GH1("Com_MM_OA_hp_150","Rootino Missing Mass 150<Theta<160,After OA-cut-Helicity = +1", 700,600,1300);
+	Com_MM_OA_hm_150 = new GH1("Com_MM_OA_hm_150","Rootino Missing Mass 150<Theta<160,After OA-cut-Helicity = -1", 700,600,1300);
 
 }
 
@@ -101,7 +101,7 @@ void PAR_Compton::Test_Compton(const GTreeTrigger& triggertree,const GTreeTagger
 				{	
 					if (triggertree.GetHelicity() ) // now if the helicity is 1
 					{
-						if ((CalcMissingMass(photontree,0,j)<938)&&(CalcMissingMass(photontree,0,j)>850))
+						if ((CalcMissingMass(photontree,0,j)<940)&&(CalcMissingMass(photontree,0,j)>850))
 						{
 							theta_hp->Fill(photontree.GetTheta(0));
 						}
@@ -178,7 +178,7 @@ void PAR_Compton::Test_Compton(const GTreeTrigger& triggertree,const GTreeTagger
 					}
 					else if (!triggertree.GetHelicity() ) // now if the helicity is 0
 					{
-						if ((CalcMissingMass(photontree,0,j)<938)&&(CalcMissingMass(photontree,0,j)>850))
+						if ((CalcMissingMass(photontree,0,j)<940)&&(CalcMissingMass(photontree,0,j)>850))
 						{
 							theta_hm->Fill(photontree.GetTheta(0));
 						}

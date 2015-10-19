@@ -4,11 +4,11 @@ PAR_Class::PAR_Class()
 { 
    //pi0 Eff hists:
 
-    incDenom	= new GH1("incDenom","Inclusive Denominator,35 <Proton.Theta < 40", 30,0,300);
+    incDenom	= new GH1("incDenom","Inclusive Denominator,35 <Proton.Theta < 40", 15,0, 150);
     Mgg_all_theta = new GH1("Mgg_all_theta","Mgg for 0 <Theta < 180 with cut on MM",250,0,250);
-    NChargedOA	= new GH1("NChargedOA",	"NC Prime at OA,35 <Proton.Theta < 40" ,30,0, 300);
-    NCharged	= new GH1("NCharged",	"NC, 35 <Proton.Theta < 40 " ,30,0, 300);
-    Denom 	= new GH1("Denom",	"Denom, 35 <Proton.Theta < 40 " ,30,0, 300);
+    NChargedOA	= new GH1("NChargedOA",	"NC Prime at OA,35 <Proton.Theta < 40" ,15,0, 150);
+    NCharged	= new GH1("NCharged",	"NC, 35 <Proton.Theta < 40 " ,15,0, 150);
+    Denom 	= new GH1("Denom",	"Denom, 35 <Proton.Theta < 40 " ,15,0, 150);
     Mgg_0  =new GH1("Mgg_0","Mgg for 35 <Theta < 40 with cut on MM",250,0,250);
     Mgg_10  =new GH1("Mgg_10","Mgg for 0 <Ek < 10 with cut on MM",250,0,250);
     Mgg_20  =new GH1("Mgg_20","Mgg for 10 <Ek < 20 with cut on MM",250,0,250);
@@ -441,8 +441,8 @@ void	PAR_Class::ProcessEvent()
         }
 
     }***/
-	Eff(*GetRootinos(),*GetNeutralPions(), 40,45, 15, incDenom,Denom,NCharged,NChargedOA,Mgg_all_theta,Mgg_0, Mgg_10, Mgg_20, Mgg_30,Mgg_40, Mgg_50, Mgg_60, Mgg_70, Mgg_80, Mgg_90, Mgg_100, Mgg_110, Mgg_120, Mgg_130);
-        Pi0_Asym(*GetTrigger(),*GetTagger(),*GetNeutralPions(),215,225,Theta_hp,Theta_hm,Mgg_hp_0,Mgg_hm_0, Mgg_hp_10,Mgg_hm_10, Mgg_hp_20,Mgg_hm_20,Mgg_hp_30,Mgg_hm_30,Mgg_hp_40,Mgg_hm_40,Mgg_hp_50,Mgg_hm_50,Mgg_hp_60,Mgg_hm_60, Mgg_hp_70,Mgg_hm_70,Mgg_hp_80,Mgg_hm_80, Mgg_hp_90,Mgg_hm_90,Mgg_hp_100,Mgg_hm_100,Mgg_hp_110,Mgg_hm_110,Mgg_hp_120,Mgg_hm_120,Mgg_hp_130,Mgg_hm_130,Mgg_hp_140,Mgg_hm_140, Mgg_hp_150,Mgg_hm_150,Mgg_hp_160,Mgg_hm_160,Mgg_hp_170,Mgg_hm_170);
+	Eff(*GetRootinos(),*GetNeutralPions(), 45,50, 15, incDenom,Denom,NCharged,NChargedOA,Mgg_all_theta,Mgg_0, Mgg_10, Mgg_20, Mgg_30,Mgg_40, Mgg_50, Mgg_60, Mgg_70, Mgg_80, Mgg_90, Mgg_100, Mgg_110, Mgg_120, Mgg_130);
+        Pi0_Asym(*GetTrigger(),*GetTagger(),*GetNeutralPions(),225,235,Theta_hp,Theta_hm,Mgg_hp_0,Mgg_hm_0, Mgg_hp_10,Mgg_hm_10, Mgg_hp_20,Mgg_hm_20,Mgg_hp_30,Mgg_hm_30,Mgg_hp_40,Mgg_hm_40,Mgg_hp_50,Mgg_hm_50,Mgg_hp_60,Mgg_hm_60, Mgg_hp_70,Mgg_hm_70,Mgg_hp_80,Mgg_hm_80, Mgg_hp_90,Mgg_hm_90,Mgg_hp_100,Mgg_hm_100,Mgg_hp_110,Mgg_hm_110,Mgg_hp_120,Mgg_hm_120,Mgg_hp_130,Mgg_hm_130,Mgg_hp_140,Mgg_hm_140, Mgg_hp_150,Mgg_hm_150,Mgg_hp_160,Mgg_hm_160,Mgg_hp_170,Mgg_hm_170);
 	
 	
 }
