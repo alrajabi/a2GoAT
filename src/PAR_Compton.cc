@@ -105,10 +105,11 @@ void PAR_Compton::Test_Compton(const GTreeTrigger& triggertree,const GTreeTagger
 						{
 							theta_hp->Fill(photontree.GetTheta(0));
 						}
-        					com_MM_hp->Fill(CalcMissingMass(photontree, i,j));
+        					
 						//FillBeamAsymmetry(photontree,i,j,com_pMass,0);
 						if  (myOA_Calculator(CalcMissingP4(photontree,i,j),rootinotree.Particle(0))<angle*TMath::Pi()/180)
 						{
+							com_MM_hp->Fill(CalcMissingMass(photontree, i,j));
 							if ((photontree.GetTheta(0)>=0)&&(photontree.GetTheta(0)<10))
 							{
 								com_MM_OA_hp_0->Fill(CalcMissingMass(photontree, i,j));
@@ -182,10 +183,11 @@ void PAR_Compton::Test_Compton(const GTreeTrigger& triggertree,const GTreeTagger
 						{
 							theta_hm->Fill(photontree.GetTheta(0));
 						}
-						com_MM_hm->Fill(CalcMissingMass(photontree, i,j));
+						
 						//FillBeamAsymmetry(photontree,i,j,com_pMass,0);
 						if  (myOA_Calculator(CalcMissingP4(photontree,i,j),rootinotree.Particle(0))<angle*TMath::Pi()/180)
 						{
+							com_MM_hm->Fill(CalcMissingMass(photontree, i,j));
 							if ((photontree.GetTheta(0)>=0)&&(photontree.GetTheta(0)<10))
 							{
 								com_MM_OA_hm_0->Fill(CalcMissingMass(photontree, i,j));

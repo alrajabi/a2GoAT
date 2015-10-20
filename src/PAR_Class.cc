@@ -441,8 +441,8 @@ void	PAR_Class::ProcessEvent()
         }
 
     }***/
-	Eff(*GetRootinos(),*GetNeutralPions(), 45,50, 15, incDenom,Denom,NCharged,NChargedOA,Mgg_all_theta,Mgg_0, Mgg_10, Mgg_20, Mgg_30,Mgg_40, Mgg_50, Mgg_60, Mgg_70, Mgg_80, Mgg_90, Mgg_100, Mgg_110, Mgg_120, Mgg_130);
-        Pi0_Asym(*GetTrigger(),*GetTagger(),*GetNeutralPions(),225,235,Theta_hp,Theta_hm,Mgg_hp_0,Mgg_hm_0, Mgg_hp_10,Mgg_hm_10, Mgg_hp_20,Mgg_hm_20,Mgg_hp_30,Mgg_hm_30,Mgg_hp_40,Mgg_hm_40,Mgg_hp_50,Mgg_hm_50,Mgg_hp_60,Mgg_hm_60, Mgg_hp_70,Mgg_hm_70,Mgg_hp_80,Mgg_hm_80, Mgg_hp_90,Mgg_hm_90,Mgg_hp_100,Mgg_hm_100,Mgg_hp_110,Mgg_hm_110,Mgg_hp_120,Mgg_hm_120,Mgg_hp_130,Mgg_hm_130,Mgg_hp_140,Mgg_hm_140, Mgg_hp_150,Mgg_hm_150,Mgg_hp_160,Mgg_hm_160,Mgg_hp_170,Mgg_hm_170);
+	Eff(*GetRootinos(),*GetNeutralPions(), 50,55, 15, incDenom,Denom,NCharged,NChargedOA,Mgg_all_theta,Mgg_0, Mgg_10, Mgg_20, Mgg_30,Mgg_40, Mgg_50, Mgg_60, Mgg_70, Mgg_80, Mgg_90, Mgg_100, Mgg_110, Mgg_120, Mgg_130);
+        Pi0_Asym(*GetTrigger(),*GetTagger(),*GetNeutralPions(),235,245,Theta_hp,Theta_hm,Mgg_hp_0,Mgg_hm_0, Mgg_hp_10,Mgg_hm_10, Mgg_hp_20,Mgg_hm_20,Mgg_hp_30,Mgg_hm_30,Mgg_hp_40,Mgg_hm_40,Mgg_hp_50,Mgg_hm_50,Mgg_hp_60,Mgg_hm_60, Mgg_hp_70,Mgg_hm_70,Mgg_hp_80,Mgg_hm_80, Mgg_hp_90,Mgg_hm_90,Mgg_hp_100,Mgg_hm_100,Mgg_hp_110,Mgg_hm_110,Mgg_hp_120,Mgg_hm_120,Mgg_hp_130,Mgg_hm_130,Mgg_hp_140,Mgg_hm_140, Mgg_hp_150,Mgg_hm_150,Mgg_hp_160,Mgg_hm_160,Mgg_hp_170,Mgg_hm_170);
 	
 	
 }
