@@ -91,6 +91,7 @@ Double_t PAR_Compton::myOA_Calculator(const TLorentzVector& t1, const TLorentzVe
 
 void PAR_Compton::Test_Compton(const GTreeTrigger& triggertree,const GTreeTagger& taggertree,const GTreeParticle& rootinotree, const GTreeParticle& photontree,Int_t angle,Int_t en_low, Int_t en_high,GH1* com_MM_hp,GH1* com_MM_hm,GH1* com_MM_OA_hp_0,GH1* com_MM_OA_hm_0, GH1* com_MM_OA_hp_10,GH1* com_MM_OA_hm_10, GH1* com_MM_OA_hp_20,GH1* com_MM_OA_hm_20, GH1* com_MM_OA_hp_30,GH1* com_MM_OA_hm_30, GH1* com_MM_OA_hp_40,GH1* com_MM_OA_hm_40, GH1* com_MM_OA_hp_50,GH1* com_MM_OA_hm_50, GH1* com_MM_OA_hp_60,GH1* com_MM_OA_hm_60, GH1* com_MM_OA_hp_70,GH1* com_MM_OA_hm_70, GH1* com_MM_OA_hp_80,GH1* com_MM_OA_hm_80, GH1* com_MM_OA_hp_90,GH1* com_MM_OA_hm_90, GH1* com_MM_OA_hp_100,GH1* com_MM_OA_hm_100, GH1* com_MM_OA_hp_110,GH1* com_MM_OA_hm_110, GH1* com_MM_OA_hp_120,GH1* com_MM_OA_hm_120, GH1* com_MM_OA_hp_130,GH1* com_MM_OA_hm_130, GH1* com_MM_OA_hp_140,GH1* com_MM_OA_hm_140, GH1* com_MM_OA_hp_150,GH1* com_MM_OA_hm_150,GH1* theta_hp,GH1* theta_hm)
 {
+	Double_t Mytime;	
 	if(triggertree.GetNErrors()==0)
 	{
 		for (Int_t j = 0; j < GetTagger()->GetNTagged(); j++)
@@ -99,11 +100,12 @@ void PAR_Compton::Test_Compton(const GTreeTrigger& triggertree,const GTreeTagger
 			{
 				if ((taggertree.GetTaggedEnergy(j)>=en_low)&&( taggertree.GetTaggedEnergy(j)<en_high))
 				{	
+					Mytime=GetTagger()->GetTaggedTime(j)-photontree.GetTime(i);	
 					if (triggertree.GetHelicity() ) // now if the helicity is 1
-					{
+					{	
 						if ((CalcMissingMass(photontree,0,j)<940)&&(CalcMissingMass(photontree,0,j)>850))
 						{
-							theta_hp->Fill(photontree.GetTheta(0));
+							theta_hp->Fill(photontree.GetTheta(0),Mytime);
 						}
         					
 						//FillBeamAsymmetry(photontree,i,j,com_pMass,0);
@@ -112,67 +114,67 @@ void PAR_Compton::Test_Compton(const GTreeTrigger& triggertree,const GTreeTagger
 							com_MM_hp->Fill(CalcMissingMass(photontree, i,j));
 							if ((photontree.GetTheta(0)>=0)&&(photontree.GetTheta(0)<10))
 							{
-								com_MM_OA_hp_0->Fill(CalcMissingMass(photontree, i,j));
+								FillMissingMass(photontree,i,j,com_MM_OA_hp_0);
 							}
 							else if ((photontree.GetTheta(0)>=10)&&(photontree.GetTheta(0)<20))
 							{
-								com_MM_OA_hp_10->Fill(CalcMissingMass(photontree, i,j));
+								FillMissingMass(photontree,i,j,com_MM_OA_hp_10);
 							}
 							else if ((photontree.GetTheta(0)>=20)&&(photontree.GetTheta(0)<30))
 							{
-								com_MM_OA_hp_20->Fill(CalcMissingMass(photontree, i,j));
+								FillMissingMass(photontree,i,j,com_MM_OA_hp_20);
 							}
 							else if ((photontree.GetTheta(0)>=30)&&(photontree.GetTheta(0)<40))
 							{
-								com_MM_OA_hp_30->Fill(CalcMissingMass(photontree, i,j));
+								FillMissingMass(photontree,i,j,com_MM_OA_hp_30);
 							}
 							else if ((photontree.GetTheta(0)>=40)&&(photontree.GetTheta(0)<50))
 							{
-								com_MM_OA_hp_40->Fill(CalcMissingMass(photontree, i,j));
+								FillMissingMass(photontree,i,j,com_MM_OA_hp_40);
 							}
 							else if ((photontree.GetTheta(0)>=50)&&(photontree.GetTheta(0)<60))
 							{
-								com_MM_OA_hp_50->Fill(CalcMissingMass(photontree, i,j));
+								FillMissingMass(photontree,i,j,com_MM_OA_hp_50);
 							}
 							else if ((photontree.GetTheta(0)>=60)&&(photontree.GetTheta(0)<70))
 							{
-								com_MM_OA_hp_60->Fill(CalcMissingMass(photontree, i,j));
+								FillMissingMass(photontree,i,j,com_MM_OA_hp_60);
 							}
 							else if ((photontree.GetTheta(0)>=70)&&(photontree.GetTheta(0)<80))
 							{
-								com_MM_OA_hp_70->Fill(CalcMissingMass(photontree, i,j));
+								FillMissingMass(photontree,i,j,com_MM_OA_hp_70);
 							}
 							else if ((photontree.GetTheta(0)>=80)&&(photontree.GetTheta(0)<90))
 							{
-								com_MM_OA_hp_80->Fill(CalcMissingMass(photontree, i,j));
+								FillMissingMass(photontree,i,j,com_MM_OA_hp_80);
 							}
 							else if ((photontree.GetTheta(0)>=90)&&(photontree.GetTheta(0)<100))
 							{
-								com_MM_OA_hp_90->Fill(CalcMissingMass(photontree, i,j));
+								FillMissingMass(photontree,i,j,com_MM_OA_hp_90);
 							}
 							else if ((photontree.GetTheta(0)>=100)&&(photontree.GetTheta(0)<110))
 							{
-								com_MM_OA_hp_100->Fill(CalcMissingMass(photontree, i,j));
+								FillMissingMass(photontree,i,j,com_MM_OA_hp_100);
 							}
 							else if ((photontree.GetTheta(0)>=110)&&(photontree.GetTheta(0)<120))
 							{
-								com_MM_OA_hp_110->Fill(CalcMissingMass(photontree, i,j));
+								FillMissingMass(photontree,i,j,com_MM_OA_hp_110);
 							}
 							else if ((photontree.GetTheta(0)>=120)&&(photontree.GetTheta(0)<130))
 							{
-								com_MM_OA_hp_120->Fill(CalcMissingMass(photontree, i,j));
+								FillMissingMass(photontree,i,j,com_MM_OA_hp_120);
 							}
 							else if ((photontree.GetTheta(0)>=130)&&(photontree.GetTheta(0)<140))
 							{
-								com_MM_OA_hp_130->Fill(CalcMissingMass(photontree, i,j));
+								FillMissingMass(photontree,i,j,com_MM_OA_hp_130);
 							}
 							else if ((photontree.GetTheta(0)>=140)&&(photontree.GetTheta(0)<150))
 							{
-								com_MM_OA_hp_140->Fill(CalcMissingMass(photontree, i,j));
+								FillMissingMass(photontree,i,j,com_MM_OA_hp_140);
 							}
 							else if ((photontree.GetTheta(0)>=150)&&(photontree.GetTheta(0)<160))
 							{
-								com_MM_OA_hp_150->Fill(CalcMissingMass(photontree, i,j));
+								FillMissingMass(photontree,i,j,com_MM_OA_hp_150);
 							}
 							
 						}		
@@ -181,7 +183,7 @@ void PAR_Compton::Test_Compton(const GTreeTrigger& triggertree,const GTreeTagger
 					{
 						if ((CalcMissingMass(photontree,0,j)<940)&&(CalcMissingMass(photontree,0,j)>850))
 						{
-							theta_hm->Fill(photontree.GetTheta(0));
+							theta_hm->Fill(photontree.GetTheta(0),Mytime);
 						}
 						
 						//FillBeamAsymmetry(photontree,i,j,com_pMass,0);
@@ -190,67 +192,67 @@ void PAR_Compton::Test_Compton(const GTreeTrigger& triggertree,const GTreeTagger
 							com_MM_hm->Fill(CalcMissingMass(photontree, i,j));
 							if ((photontree.GetTheta(0)>=0)&&(photontree.GetTheta(0)<10))
 							{
-								com_MM_OA_hm_0->Fill(CalcMissingMass(photontree, i,j));
+								FillMissingMass(photontree,i,j,com_MM_OA_hm_0);
 							}
 							else if ((photontree.GetTheta(0)>=10)&&(photontree.GetTheta(0)<20))
 							{
-								com_MM_OA_hm_10->Fill(CalcMissingMass(photontree, i,j));
+								FillMissingMass(photontree,i,j,com_MM_OA_hm_10);
 							}
 							else if ((photontree.GetTheta(0)>=20)&&(photontree.GetTheta(0)<30))
 							{
-								com_MM_OA_hm_20->Fill(CalcMissingMass(photontree, i,j));
+								FillMissingMass(photontree,i,j,com_MM_OA_hm_20);
 							}
 							else if ((photontree.GetTheta(0)>=30)&&(photontree.GetTheta(0)<40))
 							{
-								com_MM_OA_hm_30->Fill(CalcMissingMass(photontree, i,j));
+								FillMissingMass(photontree,i,j,com_MM_OA_hm_30);
 							}
 							else if ((photontree.GetTheta(0)>=40)&&(photontree.GetTheta(0)<50))
 							{
-								com_MM_OA_hm_40->Fill(CalcMissingMass(photontree, i,j));
+								FillMissingMass(photontree,i,j,com_MM_OA_hm_40);
 							}
 							else if ((photontree.GetTheta(0)>=50)&&(photontree.GetTheta(0)<60))
 							{
-								com_MM_OA_hm_50->Fill(CalcMissingMass(photontree, i,j));
+								FillMissingMass(photontree,i,j,com_MM_OA_hm_50);
 							}
 							else if ((photontree.GetTheta(0)>=60)&&(photontree.GetTheta(0)<70))
 							{
-								com_MM_OA_hm_60->Fill(CalcMissingMass(photontree, i,j));
+								FillMissingMass(photontree,i,j,com_MM_OA_hm_60);
 							}
 							else if ((photontree.GetTheta(0)>=70)&&(photontree.GetTheta(0)<80))
 							{
-								com_MM_OA_hm_70->Fill(CalcMissingMass(photontree, i,j));
+								FillMissingMass(photontree,i,j,com_MM_OA_hm_70);
 							}
 							else if ((photontree.GetTheta(0)>=80)&&(photontree.GetTheta(0)<90))
 							{
-								com_MM_OA_hm_80->Fill(CalcMissingMass(photontree, i,j));
+								FillMissingMass(photontree,i,j,com_MM_OA_hm_80);
 							}
 							else if ((photontree.GetTheta(0)>=90)&&(photontree.GetTheta(0)<100))
 							{
-								com_MM_OA_hm_90->Fill(CalcMissingMass(photontree, i,j));
+								FillMissingMass(photontree,i,j,com_MM_OA_hm_90);
 							}
 							else if ((photontree.GetTheta(0)>=100)&&(photontree.GetTheta(0)<110))
 							{
-								com_MM_OA_hm_100->Fill(CalcMissingMass(photontree, i,j));
+								FillMissingMass(photontree,i,j,com_MM_OA_hm_100);
 							}
 							else if ((photontree.GetTheta(0)>=110)&&(photontree.GetTheta(0)<120))
 							{
-								com_MM_OA_hm_110->Fill(CalcMissingMass(photontree, i,j));
+								FillMissingMass(photontree,i,j,com_MM_OA_hm_110);
 							}
 							else if ((photontree.GetTheta(0)>=120)&&(photontree.GetTheta(0)<130))
 							{
-								com_MM_OA_hm_120->Fill(CalcMissingMass(photontree, i,j));
+								FillMissingMass(photontree,i,j,com_MM_OA_hm_120);
 							}
 							else if ((photontree.GetTheta(0)>=130)&&(photontree.GetTheta(0)<140))
 							{
-								com_MM_OA_hm_130->Fill(CalcMissingMass(photontree, i,j));
+								FillMissingMass(photontree,i,j,com_MM_OA_hm_130);
 							}
 							else if ((photontree.GetTheta(0)>=140)&&(photontree.GetTheta(0)<150))
 							{
-								com_MM_OA_hm_140->Fill(CalcMissingMass(photontree, i,j));
+								FillMissingMass(photontree,i,j,com_MM_OA_hm_140);
 							}
 							else if ((photontree.GetTheta(0)>=150)&&(photontree.GetTheta(0)<160))
 							{
-								com_MM_OA_hm_150->Fill(CalcMissingMass(photontree, i,j));
+								FillMissingMass(photontree,i,j,com_MM_OA_hm_150);
 							}
 							
 

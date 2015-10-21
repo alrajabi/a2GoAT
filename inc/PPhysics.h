@@ -83,7 +83,7 @@ public:
 
 	void 	FillMass(const GTreeParticle& tree, GH1* gHist);
 	void 	FillMass(const GTreeParticle& tree, Int_t particle_index, GH1* gHist);
-				
+	void 	FillMass(const GTreeParticle& tree, Int_t particle_index, Int_t tagger_index, GH1* gHist);			
 	void	SetTarget(Double_t mass) {target = TLorentzVector(0.,0.,0.,mass);}
 	TLorentzVector GetTarget() {return target;}
 

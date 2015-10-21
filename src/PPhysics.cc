@@ -443,7 +443,16 @@ void PPhysics::FillMass(const GTreeParticle& tree, Int_t particle_index, GH1* gH
 {
     gHist->Fill(tree.GetMass(particle_index));
 }
+void PPhysics::FillMass(const GTreeParticle& tree, Int_t particle_index,  Int_t tagger_index, GH1* gHist)
+{
+	if(RejectTagged(tagger_index)) return;
 
+    // calc particle time diff
+    time = GetTagger()->GetTaggedTime(tagger_index) - tree.GetTime(particle_index);
+    
+    // calc IM 
+   gHist->Fill(tree.GetMass(particle_index),time);
+}
 Bool_t 	PPhysics::Write()
 {
     return kTRUE;

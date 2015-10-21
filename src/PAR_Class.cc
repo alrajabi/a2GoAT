@@ -124,10 +124,11 @@ Double_t PAR_Class::myOA_Calculator(const TLorentzVector& t1, const TLorentzVect
 }
 void PAR_Class::Eff(const GTreeParticle& rootinotree,const GTreeMeson& pi0tree, Int_t theta0, Int_t theta1, Float_t angle,GH1* inclusive_denom,GH1* denom,GH1* nc,GH1* ncoa,GH1* mgg_all_theta,GH1* mgg_0,GH1* mgg_10,GH1* mgg_20,GH1* mgg_30,GH1* mgg_40, GH1* mgg_50, GH1* mgg_60, GH1* mgg_70, GH1* mgg_80, GH1* mgg_90, GH1* mgg_100, GH1* mgg_110, GH1* mgg_120, GH1* mgg_130) //GH1* MM_b4_cut )
 {
-			
+	Double_t Mytime;		
 	for (Int_t j = 0; j < GetTagger()->GetNTagged(); j++)
 	{
 		Float_t E_k=0;
+		
 		if((CalcMissingP4(pi0tree,0,j).Theta()>theta0*TMath::Pi()/180) && (CalcMissingP4(pi0tree,0,j).Theta()<theta1*TMath::Pi()/180))
 		{
         		if ((pi0tree.GetNSubParticles(0) == 2) && (pi0tree.GetNSubPhotons(0) == 2))
@@ -135,87 +136,88 @@ void PAR_Class::Eff(const GTreeParticle& rootinotree,const GTreeMeson& pi0tree, 
 				//MM_b4_cut->Fill(CalcMissingMass(pi0tree, 0,j));	//Not done now for saving time.
 				if ((CalcMissingMass(pi0tree,0,j)<970)&&(CalcMissingMass(pi0tree,0,j)>910))//Select events based on MissMass.
 				{
+					Mytime=GetTagger()->GetTaggedTime(j)-pi0tree.GetTime(0);	
 					E_k = CalcMissingEnergy(pi0tree,0,j)-CalcMissingMass(pi0tree, 0,j);
-					inclusive_denom->Fill(CalcMissingEnergy(pi0tree,0,j)-CalcMissingMass(pi0tree, 0,j));//inc. denominator
-					denom->Fill(E_k);
-					FillMass(pi0tree,0,mgg_all_theta);
+					inclusive_denom->Fill(CalcMissingEnergy(pi0tree,0,j)-CalcMissingMass(pi0tree, 0,j),Mytime);//inc. denominator
+					denom->Fill(E_k,Mytime);
+					FillMass(pi0tree,0,j,mgg_all_theta);
 					if ((rootinotree.GetNParticles() != 0) )//if a rootino(proton or charged pion) was detected
 					{
-						nc->Fill(E_k);//NC 
+						nc->Fill(E_k,Mytime);//NC 
 						if  (myOA_Calculator(CalcMissingP4(pi0tree,0,j),rootinotree.Particle(0))<angle*TMath::Pi()/180)
 						{
-							ncoa->Fill(E_k);
+							ncoa->Fill(E_k,Mytime);
 						}	
 							
 					}
 					if ((E_k>0)&&(E_k<10))
 					{
-						FillMass(pi0tree,0,mgg_0);
+						FillMass(pi0tree,0,j,mgg_0);
 						
 					}
 					else if ((E_k>=10)&&(E_k<20))
 					{
-						FillMass(pi0tree,0,mgg_10);
+						FillMass(pi0tree,0,j,mgg_10);
 						
 					}
 					else if ((E_k>=20)&&(E_k<30))
 					{
-						FillMass(pi0tree,0,mgg_20);
+						FillMass(pi0tree,0,j,mgg_20);
 						
 					}
 					else if ((E_k>=30)&&(E_k<40))
 					{
-						FillMass(pi0tree,0,mgg_30);
+						FillMass(pi0tree,0,j,mgg_30);
 						
 					}					
 					else if ((E_k>=40)&&(E_k<50))
 					{
-						FillMass(pi0tree,0,mgg_40);
+						FillMass(pi0tree,0,j,mgg_40);
 						
 					}
 					else if ((E_k>=50)&&(E_k<60))
 					{
-						FillMass(pi0tree,0,mgg_50);
+						FillMass(pi0tree,0,j,mgg_50);
 						
 					}
 					else if ((E_k>=60)&&(E_k<70))
 					{
-						FillMass(pi0tree,0,mgg_60);
+						FillMass(pi0tree,0,j,mgg_60);
 						
 					}
 					else if ((E_k>=70)&&(E_k<80))
 					{
-						FillMass(pi0tree,0,mgg_70);
+						FillMass(pi0tree,0,j,mgg_70);
 						
 					}
 					else if ((E_k>=80)&&(E_k<90))
 					{
-						FillMass(pi0tree,0,mgg_80);
+						FillMass(pi0tree,0,j,mgg_80);
 						
 					}
 					else if ((E_k>=90)&&(E_k<100))
 					{
-						FillMass(pi0tree,0,mgg_90);
+						FillMass(pi0tree,0,j,mgg_90);
 						
 					}
 					else if ((E_k>=100)&&(E_k<110))
 					{
-						FillMass(pi0tree,0,mgg_100);
+						FillMass(pi0tree,0,j,mgg_100);
 						
 					}
 					else if ((E_k>=110)&&(E_k<120))
 					{
-						FillMass(pi0tree,0,mgg_110);
+						FillMass(pi0tree,0,j,mgg_110);
 						
 					}
 					else if ((E_k>=120)&&(E_k<130))
 					{
-						FillMass(pi0tree,0,mgg_120);
+						FillMass(pi0tree,0,j,mgg_120);
 							
 					}
 					else if ((E_k>=130)&&(E_k<140))
 					{
-						FillMass(pi0tree,0,mgg_130);
+						FillMass(pi0tree,0,j,mgg_130);
 						
 					}
 
@@ -233,6 +235,7 @@ void PAR_Class::Eff(const GTreeParticle& rootinotree,const GTreeMeson& pi0tree, 
 
 void PAR_Class::Pi0_Asym(const GTreeTrigger& triggertree,const GTreeTagger& taggertree,const GTreeMeson& pi0tree,Int_t en_low,Int_t en_high,GH1* theta_hp,GH1* theta_hm,GH1* mgg_hp_0,GH1* mgg_hm_0, GH1* mgg_hp_10,GH1* mgg_hm_10, GH1* mgg_hp_20,GH1* mgg_hm_20, GH1* mgg_hp_30,GH1* mgg_hm_30, GH1* mgg_hp_40,GH1* mgg_hm_40, GH1* mgg_hp_50,GH1* mgg_hm_50, GH1* mgg_hp_60,GH1* mgg_hm_60, GH1* mgg_hp_70,GH1* mgg_hm_70, GH1* mgg_hp_80,GH1* mgg_hm_80, GH1* mgg_hp_90,GH1* mgg_hm_90, GH1* mgg_hp_100,GH1* mgg_hm_100, GH1* mgg_hp_110,GH1* mgg_hm_110, GH1* mgg_hp_120,GH1* mgg_hm_120, GH1* mgg_hp_130,GH1* mgg_hm_130, GH1* mgg_hp_140,GH1* mgg_hm_140, GH1* mgg_hp_150,GH1* mgg_hm_150, GH1* mgg_hp_160,GH1* mgg_hm_160, GH1* mgg_hp_170, GH1* mgg_hm_170) 
 {
+	Double_t Mytime;
 	if ((pi0tree.GetNSubParticles(0) == 2) && (pi0tree.GetNSubPhotons(0) == 2))
        	{		
 		for (Int_t j = 0; j < GetTagger()->GetNTagged(); j++)
@@ -240,164 +243,165 @@ void PAR_Class::Pi0_Asym(const GTreeTrigger& triggertree,const GTreeTagger& tagg
 			if ((taggertree.GetTaggedEnergy(j)>=en_low)&&( taggertree.GetTaggedEnergy(j)<en_high))
 			{	
 				if ((CalcMissingMass(pi0tree,0,j)<970)&&(CalcMissingMass(pi0tree,0,j)>910))//Select events based on MissMass.
-				{							
+				{	
+					Mytime=GetTagger()->GetTaggedTime(j)-pi0tree.GetTime(0);						
 					if(triggertree.GetNErrors()==0)
 					{
 						if (triggertree.GetHelicity() ) // now if the helicity is 1
 						{	if ((pi0tree.GetMass(0)<150)&&(pi0tree.GetMass(0)>=120))
 							{
-								theta_hp->Fill(pi0tree.GetTheta(0));
+								theta_hp->Fill(pi0tree.GetTheta(0),Mytime);
 							}
 							if ((pi0tree.GetTheta(0)>=0)&&(pi0tree.GetTheta(0)<10))
 							{
-								FillMass(pi0tree,0,mgg_hp_0);
+								FillMass(pi0tree,0,j,mgg_hp_0);
 							}
 							else if ((pi0tree.GetTheta(0)>=10)&&(pi0tree.GetTheta(0)<20))
 							{
-								FillMass(pi0tree,0,mgg_hp_10);
+								FillMass(pi0tree,0,j,mgg_hp_10);
 							}
 							else if ((pi0tree.GetTheta(0)>=20)&&(pi0tree.GetTheta(0)<30))
 							{
-								FillMass(pi0tree,0,mgg_hp_20);
+								FillMass(pi0tree,0,j,mgg_hp_20);
 							}
 							else if ((pi0tree.GetTheta(0)>=30)&&(pi0tree.GetTheta(0)<40))
 							{
-								FillMass(pi0tree,0,mgg_hp_30);
+								FillMass(pi0tree,0,j,mgg_hp_30);
 							}
 							else if ((pi0tree.GetTheta(0)>=40)&&(pi0tree.GetTheta(0)<50))
 							{
-								FillMass(pi0tree,0,mgg_hp_40);
+								FillMass(pi0tree,0,j,mgg_hp_40);
 							}
 							else if ((pi0tree.GetTheta(0)>=50)&&(pi0tree.GetTheta(0)<60))
 							{
-								FillMass(pi0tree,0,mgg_hp_50);
+								FillMass(pi0tree,0,j,mgg_hp_50);
 							}
 							else if ((pi0tree.GetTheta(0)>=60)&&(pi0tree.GetTheta(0)<70))
 							{
-								FillMass(pi0tree,0,mgg_hp_60);
+								FillMass(pi0tree,0,j,mgg_hp_60);
 							}
 							else if ((pi0tree.GetTheta(0)>=70)&&(pi0tree.GetTheta(0)<80))
 							{
-								FillMass(pi0tree,0,mgg_hp_70);
+								FillMass(pi0tree,0,j,mgg_hp_70);
 							}
 							else if ((pi0tree.GetTheta(0)>=80)&&(pi0tree.GetTheta(0)<90))
 							{
-								FillMass(pi0tree,0,mgg_hp_80);
+								FillMass(pi0tree,0,j,mgg_hp_80);
 							}
 							else if ((pi0tree.GetTheta(0)>=90)&&(pi0tree.GetTheta(0)<100))
 							{
-								FillMass(pi0tree,0,mgg_hp_90);
+								FillMass(pi0tree,0,j,mgg_hp_90);
 							}
 							else if ((pi0tree.GetTheta(0)>=100)&&(pi0tree.GetTheta(0)<110))
 							{
-								FillMass(pi0tree,0,mgg_hp_100);
+								FillMass(pi0tree,0,j,mgg_hp_100);
 							}
 							else if ((pi0tree.GetTheta(0)>=110)&&(pi0tree.GetTheta(0)<120))
 							{
-								FillMass(pi0tree,0,mgg_hp_110);
+								FillMass(pi0tree,0,j,mgg_hp_110);
 							}
 							else if ((pi0tree.GetTheta(0)>=120)&&(pi0tree.GetTheta(0)<130))
 							{
-								FillMass(pi0tree,0,mgg_hp_120);
+								FillMass(pi0tree,0,j,mgg_hp_120);
 							}
 							else if ((pi0tree.GetTheta(0)>=130)&&(pi0tree.GetTheta(0)<140))
 							{
-								FillMass(pi0tree,0,mgg_hp_130);
+								FillMass(pi0tree,0,j,mgg_hp_130);
 							}
 							else if ((pi0tree.GetTheta(0)>=140)&&(pi0tree.GetTheta(0)<150))
 							{
-								FillMass(pi0tree,0,mgg_hp_140);
+								FillMass(pi0tree,0,j,mgg_hp_140);
 							}
 							else if ((pi0tree.GetTheta(0)>=150)&&(pi0tree.GetTheta(0)<160))
 							{
-								FillMass(pi0tree,0,mgg_hp_150);
+								FillMass(pi0tree,0,j,mgg_hp_150);
 							}
 							else if ((pi0tree.GetTheta(0)>=160)&&(pi0tree.GetTheta(0)<170))
 							{
-								FillMass(pi0tree,0,mgg_hp_160);
+								FillMass(pi0tree,0,j,mgg_hp_160);
 							}
 							else if ((pi0tree.GetTheta(0)>=170)&&(pi0tree.GetTheta(0)<180))
 							{
-								FillMass(pi0tree,0,mgg_hp_170);
+								FillMass(pi0tree,0,j,mgg_hp_170);
 							}
 						}
 						else if (!triggertree.GetHelicity() ) // now if the helicity is 0
 						{
 							if ((pi0tree.GetMass(0)<150)&&(pi0tree.GetMass(0)>=120))
 							{
-								theta_hm->Fill(pi0tree.GetTheta(0));
+								theta_hm->Fill(pi0tree.GetTheta(0),Mytime);
 							}							
 							if ((pi0tree.GetTheta(0)>=0)&&(pi0tree.GetTheta(0)<10))
 							{
-								FillMass(pi0tree,0,mgg_hm_0);
+								FillMass(pi0tree,0,j,mgg_hm_0);
 							}
 							else if ((pi0tree.GetTheta(0)>=10)&&(pi0tree.GetTheta(0)<20))
 							{
-								FillMass(pi0tree,0,mgg_hm_10);
+								FillMass(pi0tree,0,j,mgg_hm_10);
 							}
 							else if ((pi0tree.GetTheta(0)>=20)&&(pi0tree.GetTheta(0)<30))
 							{
-								FillMass(pi0tree,0,mgg_hm_20);
+								FillMass(pi0tree,0,j,mgg_hm_20);
 							}
 							else if ((pi0tree.GetTheta(0)>=30)&&(pi0tree.GetTheta(0)<40))
 							{
-								FillMass(pi0tree,0,mgg_hm_30);
+								FillMass(pi0tree,0,j,mgg_hm_30);
 							}
 							else if ((pi0tree.GetTheta(0)>=40)&&(pi0tree.GetTheta(0)<50))
 							{
-								FillMass(pi0tree,0,mgg_hm_40);
+								FillMass(pi0tree,0,j,mgg_hm_40);
 							}
 							else if ((pi0tree.GetTheta(0)>=50)&&(pi0tree.GetTheta(0)<60))
 							{
-								FillMass(pi0tree,0,mgg_hm_50);
+								FillMass(pi0tree,0,j,mgg_hm_50);
 							}
 							else if ((pi0tree.GetTheta(0)>=60)&&(pi0tree.GetTheta(0)<70))
 							{
-								FillMass(pi0tree,0,mgg_hm_60);
+								FillMass(pi0tree,0,j,mgg_hm_60);
 							}
 							else if ((pi0tree.GetTheta(0)>=70)&&(pi0tree.GetTheta(0)<80))
 							{
-								FillMass(pi0tree,0,mgg_hm_70);
+								FillMass(pi0tree,0,j,mgg_hm_70);
 							}
 							else if ((pi0tree.GetTheta(0)>=80)&&(pi0tree.GetTheta(0)<90))
 							{
-								FillMass(pi0tree,0,mgg_hm_80);
+								FillMass(pi0tree,0,j,mgg_hm_80);
 							}
 							else if ((pi0tree.GetTheta(0)>=90)&&(pi0tree.GetTheta(0)<100))
 							{
-								FillMass(pi0tree,0,mgg_hm_90);
+								FillMass(pi0tree,0,j,mgg_hm_90);
 							}
 							else if ((pi0tree.GetTheta(0)>=100)&&(pi0tree.GetTheta(0)<110))
 							{
-								FillMass(pi0tree,0,mgg_hm_100);
+								FillMass(pi0tree,0,j,mgg_hm_100);
 							}
 							else if ((pi0tree.GetTheta(0)>=110)&&(pi0tree.GetTheta(0)<120))
 							{
-								FillMass(pi0tree,0,mgg_hm_110);
+								FillMass(pi0tree,0,j,mgg_hm_110);
 							}
 							else if ((pi0tree.GetTheta(0)>=120)&&(pi0tree.GetTheta(0)<130))
 							{
-								FillMass(pi0tree,0,mgg_hm_120);
+								FillMass(pi0tree,0,j,mgg_hm_120);
 							}
 							else if ((pi0tree.GetTheta(0)>=130)&&(pi0tree.GetTheta(0)<140))
 							{
-								FillMass(pi0tree,0,mgg_hm_130);
+								FillMass(pi0tree,0,j,mgg_hm_130);
 							}
 							else if ((pi0tree.GetTheta(0)>=140)&&(pi0tree.GetTheta(0)<150))
 							{
-								FillMass(pi0tree,0,mgg_hm_140);
+								FillMass(pi0tree,0,j,mgg_hm_140);
 							}
 							else if ((pi0tree.GetTheta(0)>=150)&&(pi0tree.GetTheta(0)<160))
 							{
-								FillMass(pi0tree,0,mgg_hm_150);
+								FillMass(pi0tree,0,j,mgg_hm_150);
 							}
 							else if ((pi0tree.GetTheta(0)>=160)&&(pi0tree.GetTheta(0)<170))
 							{
-								FillMass(pi0tree,0,mgg_hm_160);
+								FillMass(pi0tree,0,j,mgg_hm_160);
 							}
 							else if ((pi0tree.GetTheta(0)>=170)&&(pi0tree.GetTheta(0)<180))
 							{
-								FillMass(pi0tree,0,mgg_hm_170);
+								FillMass(pi0tree,0,j,mgg_hm_170);
 							}
 						
 						} 
