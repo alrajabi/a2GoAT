@@ -98,7 +98,7 @@ void PAR_Compton::Test_Compton(const GTreeTrigger& triggertree,const GTreeTagger
 		{
 			for (Int_t i = 0; i < photontree.GetNParticles(); i++)
 			{
-				if ((taggertree.GetTaggedEnergy(j)>=en_low)&&( taggertree.GetTaggedEnergy(j)<en_high))
+				if ((taggertree.GetTaggedEnergy(j)>=en_low)&&( taggertree.GetTaggedEnergy(j)<en_high)&&(photontree.GetNParticles()==1))
 				{	
 					Mytime=GetTagger()->GetTaggedTime(j)-photontree.GetTime(i);	
 					if (triggertree.GetHelicity() ) // now if the helicity is 1
@@ -111,7 +111,7 @@ void PAR_Compton::Test_Compton(const GTreeTrigger& triggertree,const GTreeTagger
 						//FillBeamAsymmetry(photontree,i,j,com_pMass,0);
 						if  (myOA_Calculator(CalcMissingP4(photontree,i,j),rootinotree.Particle(0))<angle*TMath::Pi()/180)
 						{
-							com_MM_hp->Fill(CalcMissingMass(photontree, i,j));
+							FillMissingMass(photontree,i,j,com_MM_hp);
 							if ((photontree.GetTheta(0)>=0)&&(photontree.GetTheta(0)<10))
 							{
 								FillMissingMass(photontree,i,j,com_MM_OA_hp_0);
@@ -189,7 +189,7 @@ void PAR_Compton::Test_Compton(const GTreeTrigger& triggertree,const GTreeTagger
 						//FillBeamAsymmetry(photontree,i,j,com_pMass,0);
 						if  (myOA_Calculator(CalcMissingP4(photontree,i,j),rootinotree.Particle(0))<angle*TMath::Pi()/180)
 						{
-							com_MM_hm->Fill(CalcMissingMass(photontree, i,j));
+							FillMissingMass(photontree,i,j,com_MM_hm);
 							if ((photontree.GetTheta(0)>=0)&&(photontree.GetTheta(0)<10))
 							{
 								FillMissingMass(photontree,i,j,com_MM_OA_hm_0);
