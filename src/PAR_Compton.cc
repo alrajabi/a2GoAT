@@ -87,7 +87,39 @@ Double_t PAR_Compton::myOA_Calculator(const TLorentzVector& t1, const TLorentzVe
 	//return cosinoos;
 	return p1.Angle(p2);
 }
+Double_t PAR_Compton::theta_C(Double_t theta )
+{
+	 Double_t cos1 = 1+TMath::Cos(160*TMath::Pi()/180);
+	 Double_t acos1 = TMath::ACos(TMath::Cos(theta)-cos1);
+	Double_t thetaC = theta - acos1;
+	return thetaC;
+}
 //--------------------------------Compton Analysis Functions starts here:-----------------------------------------
+void PAR_Compton::Ring_Analysis(const GTreeTrigger& triggertree,const GTreeTagger& taggertree,const GTreeParticle& rootinotree, const GTreeParticle& photontree,const GTreeMeson& pi0tree,Int_t en_low, Int_t en_high)
+{
+	if(triggertree.GetNErrors()==0)
+	{
+		for (Int_t j = 0; j < GetTagger()->GetNTagged(); j++)
+		{
+			if ((taggertree.GetTaggedEnergy(j)>=en_low)&&( taggertree.GetTaggedEnergy(j)<en_high))
+			{
+				if ((pi0tree.GetNParticles() != 0) ) // check if a pi0 was detected
+				{
+					if ((pi0tree.GetNSubParticles(0) == 2) && (pi0tree.GetNSubPhotons(0) == 2))
+       					{
+						if ( ((pi0tree.Particle(0).Theta()>= 160*TMath::Pi()/180 )&&(pi0tree.Particle(0).Theta()<=TMath::Pi())) ||((pi0tree.Particle(1).Theta()>= 160*TMath::Pi()/180 )&&(pi0tree.Particle(1).Theta()<=TMath::Pi())) ) // if one photon goes into CBHole.
+						{
+							cout << "Photons have:" << pi0tree.Particle(0).Theta()*180/TMath::Pi()<< "and \t" << pi0tree.Particle(1).Theta()*180/TMath::Pi() <<" respectively \n" << endl;
+						}
+						
+					}
+				}	
+			}
+		}
+	}
+}
+
+
 
 void PAR_Compton::Test_Compton(const GTreeTrigger& triggertree,const GTreeTagger& taggertree,const GTreeParticle& rootinotree, const GTreeParticle& photontree,Int_t angle,Int_t en_low, Int_t en_high,GH1* com_MM_hp,GH1* com_MM_hm,GH1* com_MM_OA_hp_0,GH1* com_MM_OA_hm_0, GH1* com_MM_OA_hp_10,GH1* com_MM_OA_hm_10, GH1* com_MM_OA_hp_20,GH1* com_MM_OA_hm_20, GH1* com_MM_OA_hp_30,GH1* com_MM_OA_hm_30, GH1* com_MM_OA_hp_40,GH1* com_MM_OA_hm_40, GH1* com_MM_OA_hp_50,GH1* com_MM_OA_hm_50, GH1* com_MM_OA_hp_60,GH1* com_MM_OA_hm_60, GH1* com_MM_OA_hp_70,GH1* com_MM_OA_hm_70, GH1* com_MM_OA_hp_80,GH1* com_MM_OA_hm_80, GH1* com_MM_OA_hp_90,GH1* com_MM_OA_hm_90, GH1* com_MM_OA_hp_100,GH1* com_MM_OA_hm_100, GH1* com_MM_OA_hp_110,GH1* com_MM_OA_hm_110, GH1* com_MM_OA_hp_120,GH1* com_MM_OA_hm_120, GH1* com_MM_OA_hp_130,GH1* com_MM_OA_hm_130, GH1* com_MM_OA_hp_140,GH1* com_MM_OA_hm_140, GH1* com_MM_OA_hp_150,GH1* com_MM_OA_hm_150,GH1* theta_hp,GH1* theta_hm)
 {
@@ -316,7 +348,8 @@ void	PAR_Compton::ProcessEvent()
         }
 
     }***/
-	Test_Compton(*GetTrigger(),*GetTagger(),*GetRootinos(),*GetPhotons(),15,295,305,Com_MM_hp,Com_MM_hm,Com_MM_OA_hp_0,Com_MM_OA_hm_0, Com_MM_OA_hp_10,Com_MM_OA_hm_10, Com_MM_OA_hp_20,Com_MM_OA_hm_20, Com_MM_OA_hp_30,Com_MM_OA_hm_30, Com_MM_OA_hp_40,Com_MM_OA_hm_40, Com_MM_OA_hp_50,Com_MM_OA_hm_50, Com_MM_OA_hp_60,Com_MM_OA_hm_60, Com_MM_OA_hp_70,Com_MM_OA_hm_70, Com_MM_OA_hp_80,Com_MM_OA_hm_80, Com_MM_OA_hp_90,Com_MM_OA_hm_90, Com_MM_OA_hp_100,Com_MM_OA_hm_100, Com_MM_OA_hp_110,Com_MM_OA_hm_110, Com_MM_OA_hp_120,Com_MM_OA_hm_120, Com_MM_OA_hp_130,Com_MM_OA_hm_130, Com_MM_OA_hp_140,Com_MM_OA_hm_140, Com_MM_OA_hp_150,Com_MM_OA_hm_150,Theta_hp,Theta_hm);	
+	Test_Compton(*GetTrigger(),*GetTagger(),*GetRootinos(),*GetPhotons(),15,295,305,Com_MM_hp,Com_MM_hm,Com_MM_OA_hp_0,Com_MM_OA_hm_0, Com_MM_OA_hp_10,Com_MM_OA_hm_10, Com_MM_OA_hp_20,Com_MM_OA_hm_20, Com_MM_OA_hp_30,Com_MM_OA_hm_30, Com_MM_OA_hp_40,Com_MM_OA_hm_40, Com_MM_OA_hp_50,Com_MM_OA_hm_50, Com_MM_OA_hp_60,Com_MM_OA_hm_60, Com_MM_OA_hp_70,Com_MM_OA_hm_70, Com_MM_OA_hp_80,Com_MM_OA_hm_80, Com_MM_OA_hp_90,Com_MM_OA_hm_90, Com_MM_OA_hp_100,Com_MM_OA_hm_100, Com_MM_OA_hp_110,Com_MM_OA_hm_110, Com_MM_OA_hp_120,Com_MM_OA_hm_120, Com_MM_OA_hp_130,Com_MM_OA_hm_130, Com_MM_OA_hp_140,Com_MM_OA_hm_140, Com_MM_OA_hp_150,Com_MM_OA_hm_150,Theta_hp,Theta_hm);
+	Ring_Analysis(*GetTrigger(),*GetTagger(),*GetRootinos(),*GetPhotons(),*GetNeutralPions(),295,305);	
 }
 
 void	PAR_Compton::ProcessScalerRead()
