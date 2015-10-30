@@ -60,6 +60,8 @@ PAR_Compton::PAR_Compton()
 	Com_MM_OA_hp_150 = new GH1("Com_MM_OA_hp_150","Rootino Missing Mass 150<Theta<160,After OA-cut-Helicity = +1", 150,700,1300);
 	Com_MM_OA_hm_150 = new GH1("Com_MM_OA_hm_150","Rootino Missing Mass 150<Theta<160,After OA-cut-Helicity = -1", 150,700,1300);
 
+	Ring_MM_hp = new GH1("ring_MM_hp","MM- Ring Analysis Applied- OA-cut-Helicity = +1", 150,700,1300);
+	Ring_MM_hm = new GH1("ring_MM_hm","MM- Ring Analysis Applied- OA-cut-Helicity = -1", 150,700,1300);
 }
 
 PAR_Compton::~PAR_Compton()
@@ -95,8 +97,9 @@ Double_t PAR_Compton::theta_C(Double_t theta )
 	return thetaC;
 }
 //--------------------------------Compton Analysis Functions starts here:-----------------------------------------
-void PAR_Compton::Ring_Analysis(const GTreeTrigger& triggertree,const GTreeTagger& taggertree,const GTreeParticle& rootinotree, const GTreeParticle& photontree,const GTreeMeson& pi0tree,Int_t en_low, Int_t en_high)
-{
+void PAR_Compton::Ring_Analysis(const GTreeTrigger& triggertree,const GTreeTagger& taggertree,const GTreeParticle& rootinotree, const GTreeParticle& photontree,const GTreeMeson& pi0tree,const GTreeTrack& tracktree,Int_t en_low, Int_t en_high, Int_t angle,GH1* ring_MM_hp, GH1* ring_MM_hm)
+{//tracktree.GetTheta(pi0tree.GetTrackIndex(0))
+	Double_t fid_cut = TMath::ACos(1+2*TMath::Cos(160*TMath::Pi()/180))*180/TMath::Pi();		
 	if(triggertree.GetNErrors()==0)
 	{
 		for (Int_t j = 0; j < GetTagger()->GetNTagged(); j++)
@@ -107,16 +110,141 @@ void PAR_Compton::Ring_Analysis(const GTreeTrigger& triggertree,const GTreeTagge
 				{
 					if ((pi0tree.GetNSubParticles(0) == 2) && (pi0tree.GetNSubPhotons(0) == 2))
        					{
-						if ( ((pi0tree.Particle(0).Theta()>= 160*TMath::Pi()/180 )&&(pi0tree.Particle(0).Theta()<=TMath::Pi())) ||((pi0tree.Particle(1).Theta()>= 160*TMath::Pi()/180 )&&(pi0tree.Particle(1).Theta()<=TMath::Pi())) ) // if one photon goes into CBHole.
+						if  (triggertree.GetHelicity() )
 						{
-							cout << "Photons have:" << pi0tree.Particle(0).Theta()*180/TMath::Pi()<< "and \t" << pi0tree.Particle(1).Theta()*180/TMath::Pi() <<" respectively \n" << endl;
+							if ( rootinotree.GetTrackIndex(0) == 0 )
+							{
+								//cout << "\n track 0 is rootino" <<endl;
+								if (tracktree.GetTheta(1) >= fid_cut && tracktree.GetTheta(1) < 160) 
+								{
+									if  (myOA_Calculator(CalcMissingP4(tracktree,2,j),rootinotree.Particle(0))<angle*TMath::Pi()/180)
+									{
+										FillMissingMass(tracktree,2,j,ring_MM_hp);
+									}
+									//cout << "\t track 1 went thru ring" << endl;
+								}
+								if (tracktree.GetTheta(2) >= fid_cut && tracktree.GetTheta(2) <= 160)
+								{
+									if  (myOA_Calculator(CalcMissingP4(tracktree,1,j),rootinotree.Particle(0))<angle*TMath::Pi()/180)
+									{
+										FillMissingMass(tracktree,1,j,ring_MM_hp);
+									}
+									//cout << "\t track 2 went thru ring" << endl;
+								}							 
+							}
+							else if ( rootinotree.GetTrackIndex(0) == 1 )
+							{
+								
+								//cout << "\n track 1 is rootino" <<endl;
+								if (tracktree.GetTheta(0) >= fid_cut && tracktree.GetTheta(0) < 160) 
+								{
+									if  (myOA_Calculator(CalcMissingP4(tracktree,2,j),rootinotree.Particle(0))<angle*TMath::Pi()/180)
+									{
+										FillMissingMass(tracktree,2,j,ring_MM_hp);
+									}
+									//cout << "\t track 0 went thru ring " << endl;
+								}
+								if (tracktree.GetTheta(2) >= fid_cut && tracktree.GetTheta(2) <= 160)
+								{
+									if  (myOA_Calculator(CalcMissingP4(tracktree,0,j),rootinotree.Particle(0))<angle*TMath::Pi()/180)
+									{
+										FillMissingMass(tracktree,0,j,ring_MM_hp);
+									}
+									//cout << "\t track 2 went thru ring" << endl;
+								}
+							}
+							else if ( rootinotree.GetTrackIndex(0) == 2 )
+							{
+								//cout << "\n track 2 is rootino" <<endl;
+								if (tracktree.GetTheta(1) >= fid_cut && tracktree.GetTheta(1) < 160) 
+								{
+									if  (myOA_Calculator(CalcMissingP4(tracktree,0,j),rootinotree.Particle(0))<angle*TMath::Pi()/180)
+									{
+										FillMissingMass(tracktree,0,j,ring_MM_hp);
+									}
+									//cout << "\t track 1 went thru ring " << endl;
+								}
+								if (tracktree.GetTheta(0) >= fid_cut && tracktree.GetTheta(0) <= 160)
+								{
+									if  (myOA_Calculator(CalcMissingP4(tracktree,1,j),rootinotree.Particle(0))<angle*TMath::Pi()/180)
+									{
+										FillMissingMass(tracktree,1,j,ring_MM_hp);
+									}
+									//cout << "\t track 0 went thru ring " << endl;
+								}
+							}
+	
 						}
-						
+						if  (!triggertree.GetHelicity() )
+						{
+							if ( rootinotree.GetTrackIndex(0) == 0 )
+							{
+								//cout << "\n track 0 is rootino" <<endl;
+								if (tracktree.GetTheta(1) >= fid_cut && tracktree.GetTheta(1) < 160) 
+								{
+									if  (myOA_Calculator(CalcMissingP4(tracktree,2,j),rootinotree.Particle(0))<angle*TMath::Pi()/180)
+									{
+										FillMissingMass(tracktree,2,j,ring_MM_hm);
+									}
+									//cout << "\t track 1 went thru ring" << endl;
+								}
+								if (tracktree.GetTheta(2) >= fid_cut && tracktree.GetTheta(2) <= 160)
+								{
+									if  (myOA_Calculator(CalcMissingP4(tracktree,1,j),rootinotree.Particle(0))<angle*TMath::Pi()/180)
+									{
+										FillMissingMass(tracktree,1,j,ring_MM_hm);
+									}
+									//cout << "\t track 2 went thru ring" << endl;
+								}							 
+							}
+							else if ( rootinotree.GetTrackIndex(0) == 1 )
+							{
+								
+								//cout << "\n track 1 is rootino" <<endl;
+								if (tracktree.GetTheta(0) >= fid_cut && tracktree.GetTheta(0) < 160) 
+								{
+									if  (myOA_Calculator(CalcMissingP4(tracktree,2,j),rootinotree.Particle(0))<angle*TMath::Pi()/180)
+									{
+										FillMissingMass(tracktree,2,j,ring_MM_hm);
+									}
+									//cout << "\t track 0 went thru ring " << endl;
+								}
+								if (tracktree.GetTheta(2) >= fid_cut && tracktree.GetTheta(2) <= 160)
+								{
+									if  (myOA_Calculator(CalcMissingP4(tracktree,0,j),rootinotree.Particle(0))<angle*TMath::Pi()/180)
+									{
+										FillMissingMass(tracktree,0,j,ring_MM_hm);
+									}
+									//cout << "\t track 2 went thru ring" << endl;
+								}
+							}
+							else if ( rootinotree.GetTrackIndex(0) == 2 )
+							{
+								//cout << "\n track 2 is rootino" <<endl;
+								if (tracktree.GetTheta(1) >= fid_cut && tracktree.GetTheta(1) < 160) 
+								{
+									if  (myOA_Calculator(CalcMissingP4(tracktree,0,j),rootinotree.Particle(0))<angle*TMath::Pi()/180)
+									{
+										FillMissingMass(tracktree,0,j,ring_MM_hm);
+									}
+									//cout << "\t track 1 went thru ring " << endl;
+								}
+								if (tracktree.GetTheta(0) >= fid_cut && tracktree.GetTheta(0) <= 160)
+								{
+									if  (myOA_Calculator(CalcMissingP4(tracktree,1,j),rootinotree.Particle(0))<angle*TMath::Pi()/180)
+									{
+										FillMissingMass(tracktree,1,j,ring_MM_hm);
+									}
+									//cout << "\t track 0 went thru ring " << endl;
+								}
+							}
+	
+						}
 					}
-				}	
-			}
-		}
-	}
+				}		
+			}	
+		}	
+	}	
 }
 
 
@@ -349,7 +477,7 @@ void	PAR_Compton::ProcessEvent()
 
     }***/
 	Test_Compton(*GetTrigger(),*GetTagger(),*GetRootinos(),*GetPhotons(),15,295,305,Com_MM_hp,Com_MM_hm,Com_MM_OA_hp_0,Com_MM_OA_hm_0, Com_MM_OA_hp_10,Com_MM_OA_hm_10, Com_MM_OA_hp_20,Com_MM_OA_hm_20, Com_MM_OA_hp_30,Com_MM_OA_hm_30, Com_MM_OA_hp_40,Com_MM_OA_hm_40, Com_MM_OA_hp_50,Com_MM_OA_hm_50, Com_MM_OA_hp_60,Com_MM_OA_hm_60, Com_MM_OA_hp_70,Com_MM_OA_hm_70, Com_MM_OA_hp_80,Com_MM_OA_hm_80, Com_MM_OA_hp_90,Com_MM_OA_hm_90, Com_MM_OA_hp_100,Com_MM_OA_hm_100, Com_MM_OA_hp_110,Com_MM_OA_hm_110, Com_MM_OA_hp_120,Com_MM_OA_hm_120, Com_MM_OA_hp_130,Com_MM_OA_hm_130, Com_MM_OA_hp_140,Com_MM_OA_hm_140, Com_MM_OA_hp_150,Com_MM_OA_hm_150,Theta_hp,Theta_hm);
-	Ring_Analysis(*GetTrigger(),*GetTagger(),*GetRootinos(),*GetPhotons(),*GetNeutralPions(),295,305);	
+	Ring_Analysis(*GetTrigger(),*GetTagger(),*GetRootinos(),*GetPhotons(),*GetNeutralPions(),*GetTracks(),295,305,15,Ring_MM_hp,Ring_MM_hm);	
 }
 
 void	PAR_Compton::ProcessScalerRead()

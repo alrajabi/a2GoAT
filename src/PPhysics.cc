@@ -355,7 +355,30 @@ TLorentzVector PPhysics::CalcMissingP4(const GTreeParticle& tree, Int_t particle
 
 	return missingp4;
 }
+//-----------------------GTreeTrack-------------------------------------
+void PPhysics::FillMissingMass(const GTreeTrack& tree, Int_t track_index, Int_t tagger_index, GH1* gHist, Bool_t TaggerBinning)
+{
+    if(RejectTagged(tagger_index)) return;
 
+    // calc particle time diff
+    time = GetTagger()->GetTaggedTime(tagger_index) - tree.GetTime(track_index);
+    
+    // calc missing p4
+    missingp4 = CalcMissingP4(tree, track_index,tagger_index);
+
+   // Fill GH1
+   if(TaggerBinning)   gHist->Fill(missingp4.M(),time, GetTagger()->GetTaggedChannel(tagger_index));
+   else gHist->Fill(missingp4.M(),time);
+
+}
+TLorentzVector PPhysics::CalcMissingP4(const GTreeTrack& tree, Int_t track_index, Int_t tagger_index)
+{
+    particle	= tree.GetVector(track_index);
+    beam 		= TLorentzVector(0.,0.,GetTagger()->GetTaggedEnergy(tagger_index),GetTagger()->GetTaggedEnergy(tagger_index));
+	missingp4 	= beam + target - particle;						
+
+	return missingp4;
+}
 void PPhysics::FillBeamAsymmetry(const GTreeParticle& tree, Int_t particle_index, GH1* gHist, Bool_t TaggerBinning, Double_t MM_min, Double_t MM_max)
 {
     for (Int_t i = 0; i < GetTagger()->GetNTagged(); i++)
