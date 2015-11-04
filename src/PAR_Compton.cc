@@ -111,7 +111,7 @@ PAR_Compton::PAR_Compton()
 	CBRing_MM_OA_hp_150 = new GH1("CBRing_MM_OA_hp_150","Rootino MM-CBRing Analysis 150<Theta<160,After OA-cut-Helicity = +1", 700,600,1300);
 	CBRing_MM_OA_hm_150 = new GH1("CBRing_MM_OA_hm_150","Rootino MM-CBRing Analysis 150<Theta<160,After OA-cut-Helicity = -1", 700,600,1300);
 	CBRing_IM = new GH1("CBRing_IM","Ring Pi0 IM", 250,0,250);
-
+	/***
 	TAPS_Ring_MM_hp = new GH1("TAPS_Ring_MM_hp","MM- TAPS Ring Analysis Applied- OA-cut-Helicity = +1", 150,700,1300);
 	TAPS_Ring_MM_hm = new GH1("TAPS_Ring_MM_hm","MM- TAPS Ring Analysis Applied- OA-cut-Helicity = -1", 150,700,1300);
 
@@ -163,7 +163,7 @@ PAR_Compton::PAR_Compton()
 	TAPS_Ring_MM_OA_hp_150 = new GH1("TAPS_Ring_MM_OA_hp_150","Rootino MM-TAPS Ring Analysis 150<Theta<160,After OA-cut-Helicity = +1", 700,600,1300);
 	TAPS_Ring_MM_OA_hm_150 = new GH1("TAPS_Ring_MM_OA_hm_150","Rootino MM-TAPS Ring Analysis 150<Theta<160,After OA-cut-Helicity = -1", 700,600,1300);
 
-	TAPS_Ring_IM = new GH1("TAPS_Ring_IM","TAPS Ring Pi0 IM", 250,0,250);
+	TAPS_Ring_IM = new GH1("TAPS_Ring_IM","TAPS Ring Pi0 IM", 250,0,250);***/
 }
 
 PAR_Compton::~PAR_Compton()
@@ -199,11 +199,12 @@ Double_t PAR_Compton::theta_C(Double_t theta )
 	return thetaC;
 }
 //--------------------------------Compton Analysis Functions starts here:-----------------------------------------
-void PAR_Compton::Ring_Test(const GTreeTrigger& triggertree,const GTreeTagger& taggertree,const GTreeParticle& rootinotree, const GTreeParticle& photontree,const GTreeMeson& pi0tree,const GTreeTrack& tracktree,Int_t en_low, Int_t en_high, Int_t angle,GH1* cbring_MM_hp, GH1* cbring_MM_hm,GH1* cbring_MM_OA_hp_0,GH1* cbring_MM_OA_hm_0, GH1* cbring_MM_OA_hp_10,GH1* cbring_MM_OA_hm_10, GH1* cbring_MM_OA_hp_20,GH1* cbring_MM_OA_hm_20, GH1* cbring_MM_OA_hp_30,GH1* cbring_MM_OA_hm_30, GH1* cbring_MM_OA_hp_40,GH1* cbring_MM_OA_hm_40, GH1* cbring_MM_OA_hp_50,GH1* cbring_MM_OA_hm_50, GH1* cbring_MM_OA_hp_60,GH1* cbring_MM_OA_hm_60, GH1* cbring_MM_OA_hp_70,GH1* cbring_MM_OA_hm_70, GH1* cbring_MM_OA_hp_80,GH1* cbring_MM_OA_hm_80, GH1* cbring_MM_OA_hp_90,GH1* cbring_MM_OA_hm_90, GH1* cbring_MM_OA_hp_100,GH1* cbring_MM_OA_hm_100, GH1* cbring_MM_OA_hp_110,GH1* cbring_MM_OA_hm_110, GH1* cbring_MM_OA_hp_120,GH1* cbring_MM_OA_hm_120, GH1* cbring_MM_OA_hp_130,GH1* cbring_MM_OA_hm_130, GH1* cbring_MM_OA_hp_140,GH1* cbring_MM_OA_hm_140, GH1* cbring_MM_OA_hp_150,GH1* cbring_MM_OA_hm_150,GH1* cbring_IM,GH1* taps_ring_MM_hp,GH1* taps_ring_MM_hm,GH1* taps_ring_MM_OA_hp_0,GH1* taps_ring_MM_OA_hm_0, GH1* taps_ring_MM_OA_hp_10,GH1* taps_ring_MM_OA_hm_10, GH1* taps_ring_MM_OA_hp_20,GH1* taps_ring_MM_OA_hm_20, GH1* taps_ring_MM_OA_hp_30,GH1* taps_ring_MM_OA_hm_30, GH1* taps_ring_MM_OA_hp_40,GH1* taps_ring_MM_OA_hm_40, GH1* taps_ring_MM_OA_hp_50,GH1* taps_ring_MM_OA_hm_50, GH1* taps_ring_MM_OA_hp_60,GH1* taps_ring_MM_OA_hm_60, GH1* taps_ring_MM_OA_hp_70,GH1* taps_ring_MM_OA_hm_70, GH1* taps_ring_MM_OA_hp_80,GH1* taps_ring_MM_OA_hm_80, GH1* taps_ring_MM_OA_hp_90,GH1* taps_ring_MM_OA_hm_90, GH1* taps_ring_MM_OA_hp_100,GH1* taps_ring_MM_OA_hm_100, GH1* taps_ring_MM_OA_hp_110,GH1* taps_ring_MM_OA_hm_110, GH1* taps_ring_MM_OA_hp_120,GH1* taps_ring_MM_OA_hm_120, GH1* taps_ring_MM_OA_hp_130,GH1* taps_ring_MM_OA_hm_130, GH1* taps_ring_MM_OA_hp_140,GH1* taps_ring_MM_OA_hm_140, GH1* taps_ring_MM_OA_hp_150,GH1* taps_ring_MM_OA_hm_150,GH1* taps_ring_IM)
+void PAR_Compton::Ring_Test(const GTreeTrigger& triggertree,const GTreeTagger& taggertree,const GTreeParticle& rootinotree, const GTreeParticle& photontree,const GTreeMeson& pi0tree,const GTreeTrack& tracktree,Int_t en_low, Int_t en_high, Int_t angle,GH1* cbring_MM_hp, GH1* cbring_MM_hm,GH1* cbring_MM_OA_hp_0,GH1* cbring_MM_OA_hm_0, GH1* cbring_MM_OA_hp_10,GH1* cbring_MM_OA_hm_10, GH1* cbring_MM_OA_hp_20,GH1* cbring_MM_OA_hm_20, GH1* cbring_MM_OA_hp_30,GH1* cbring_MM_OA_hm_30, GH1* cbring_MM_OA_hp_40,GH1* cbring_MM_OA_hm_40, GH1* cbring_MM_OA_hp_50,GH1* cbring_MM_OA_hm_50, GH1* cbring_MM_OA_hp_60,GH1* cbring_MM_OA_hm_60, GH1* cbring_MM_OA_hp_70,GH1* cbring_MM_OA_hm_70, GH1* cbring_MM_OA_hp_80,GH1* cbring_MM_OA_hm_80, GH1* cbring_MM_OA_hp_90,GH1* cbring_MM_OA_hm_90, GH1* cbring_MM_OA_hp_100,GH1* cbring_MM_OA_hm_100, GH1* cbring_MM_OA_hp_110,GH1* cbring_MM_OA_hm_110, GH1* cbring_MM_OA_hp_120,GH1* cbring_MM_OA_hm_120, GH1* cbring_MM_OA_hp_130,GH1* cbring_MM_OA_hm_130, GH1* cbring_MM_OA_hp_140,GH1* cbring_MM_OA_hm_140, GH1* cbring_MM_OA_hp_150,GH1* cbring_MM_OA_hm_150,GH1* cbring_IM)//,GH1* taps_ring_MM_hp,GH1* taps_ring_MM_hm,GH1* taps_ring_MM_OA_hp_0,GH1* taps_ring_MM_OA_hm_0, GH1* taps_ring_MM_OA_hp_10,GH1* taps_ring_MM_OA_hm_10, GH1* taps_ring_MM_OA_hp_20,GH1* taps_ring_MM_OA_hm_20, GH1* taps_ring_MM_OA_hp_30,GH1* taps_ring_MM_OA_hm_30, GH1* taps_ring_MM_OA_hp_40,GH1* taps_ring_MM_OA_hm_40, GH1* taps_ring_MM_OA_hp_50,GH1* taps_ring_MM_OA_hm_50, GH1* taps_ring_MM_OA_hp_60,GH1* taps_ring_MM_OA_hm_60, GH1* taps_ring_MM_OA_hp_70,GH1* taps_ring_MM_OA_hm_70, GH1* taps_ring_MM_OA_hp_80,GH1* taps_ring_MM_OA_hm_80, GH1* taps_ring_MM_OA_hp_90,GH1* taps_ring_MM_OA_hm_90, GH1* taps_ring_MM_OA_hp_100,GH1* taps_ring_MM_OA_hm_100, GH1* taps_ring_MM_OA_hp_110,GH1* taps_ring_MM_OA_hm_110, GH1* taps_ring_MM_OA_hp_120,GH1* taps_ring_MM_OA_hm_120, GH1* taps_ring_MM_OA_hp_130,GH1* taps_ring_MM_OA_hm_130, GH1* taps_ring_MM_OA_hp_140,GH1* taps_ring_MM_OA_hm_140, GH1* taps_ring_MM_OA_hp_150,GH1* taps_ring_MM_OA_hm_150,GH1* taps_ring_IM)
 {//tracktree.GetTheta(pi0tree.GetTrackIndex(0))
 	Double_t cb_fid_cut = TMath::ACos(1+2*TMath::Cos(150*TMath::Pi()/180))*180/TMath::Pi();	
 	Double_t OA_Angle = angle*TMath::Pi()/180;
 	Double_t taps_fid_cut = TMath::ACos(-1+2*TMath::Cos(6*TMath::Pi()/180))*180/TMath::Pi();
+	Double_t for_edge_cut = TMath::ACos(2*TMath::Cos(25*TMath::Pi()/180)-TMath::Cos(20*TMath::Pi()/180))*180/TMath::Pi();
 	if(triggertree.GetNErrors()==0)
 	{
 		for (Int_t j = 0; j < GetTagger()->GetNTagged(); j++)
@@ -212,10 +213,9 @@ void PAR_Compton::Ring_Test(const GTreeTrigger& triggertree,const GTreeTagger& t
 			{
 				if ((pi0tree.GetNParticles() != 0) && (pi0tree.GetNSubParticles(0) == 2) && (pi0tree.GetNSubPhotons(0) == 2) ) // check if a pi0 was detected and it is a good pi0
 				{
-					FillMass(pi0tree,0,j,cbring_IM);
 					for (int i=0; i < (int)pi0tree.GetTrackIndexList(0).size(); i++)
 					{
-						if ((tracktree.GetTheta(pi0tree.GetTrackIndexList(0)[i]) >= cb_fid_cut) && (tracktree.GetTheta(pi0tree.GetTrackIndexList(0)[i]) < 150))	
+						if ((tracktree.GetTheta(pi0tree.GetTrackIndexList(0)[i]) >= cb_fid_cut && tracktree.GetTheta(pi0tree.GetTrackIndexList(0)[i]) < 150)||(tracktree.GetTheta(pi0tree.GetTrackIndexList(0)[i])<= taps_fid_cut && tracktree.GetTheta(pi0tree.GetTrackIndexList(0)[i])>6)||(tracktree.GetTheta(pi0tree.GetTrackIndexList(0)[i])<= for_edge_cut && tracktree.GetTheta(pi0tree.GetTrackIndexList(0)[i])>25))	
 						{
 							FillMass(pi0tree,0,j,cbring_IM);
 							Int_t y = (i==0) ? i+1 : i-1;
@@ -357,8 +357,8 @@ void PAR_Compton::Ring_Test(const GTreeTrigger& triggertree,const GTreeTagger& t
 									}
 								}	
 							}
-						}///////
-						else if (tracktree.GetTheta(pi0tree.GetTrackIndexList(0)[i])<= taps_fid_cut)
+						}/***
+						else if ((tracktree.GetTheta(pi0tree.GetTrackIndexList(0)[i])<= taps_fid_cut && tracktree.GetTheta(pi0tree.GetTrackIndexList(0)[i])>6)||(tracktree.GetTheta(pi0tree.GetTrackIndexList(0)[i])<= for_edge_cut && tracktree.GetTheta(pi0tree.GetTrackIndexList(0)[i])>25) )
 						{
 							FillMass(pi0tree,0,j,taps_ring_IM);
 							Int_t l = (i==0) ? i+1 : i-1;
@@ -502,7 +502,7 @@ void PAR_Compton::Ring_Test(const GTreeTrigger& triggertree,const GTreeTagger& t
 								}						
 							}
 
-						}						
+						}	***/					
 					}
 				}
 			}
@@ -891,7 +891,7 @@ void	PAR_Compton::ProcessEvent()
     }***/
 	Test_Compton(*GetTrigger(),*GetTagger(),*GetRootinos(),*GetPhotons(),15,285,305,Com_MM_hp,Com_MM_hm,Com_MM_OA_hp_0,Com_MM_OA_hm_0, Com_MM_OA_hp_10,Com_MM_OA_hm_10, Com_MM_OA_hp_20,Com_MM_OA_hm_20, Com_MM_OA_hp_30,Com_MM_OA_hm_30, Com_MM_OA_hp_40,Com_MM_OA_hm_40, Com_MM_OA_hp_50,Com_MM_OA_hm_50, Com_MM_OA_hp_60,Com_MM_OA_hm_60, Com_MM_OA_hp_70,Com_MM_OA_hm_70, Com_MM_OA_hp_80,Com_MM_OA_hm_80, Com_MM_OA_hp_90,Com_MM_OA_hm_90, Com_MM_OA_hp_100,Com_MM_OA_hm_100, Com_MM_OA_hp_110,Com_MM_OA_hm_110, Com_MM_OA_hp_120,Com_MM_OA_hm_120, Com_MM_OA_hp_130,Com_MM_OA_hm_130, Com_MM_OA_hp_140,Com_MM_OA_hm_140, Com_MM_OA_hp_150,Com_MM_OA_hm_150,Theta_hp,Theta_hm);
 	//Ring_Analysis(*GetTrigger(),*GetTagger(),*GetRootinos(),*GetPhotons(),*GetNeutralPions(),*GetTracks(),295,305,15,Ring_MM_hp,Ring_MM_hm);	
-	Ring_Test(*GetTrigger(),*GetTagger(),*GetRootinos(),*GetPhotons(),*GetNeutralPions(),*GetTracks(),295,305,15,CBRing_MM_hp,CBRing_MM_hm,CBRing_MM_OA_hp_0,CBRing_MM_OA_hm_0, CBRing_MM_OA_hp_10,CBRing_MM_OA_hm_10, CBRing_MM_OA_hp_20,CBRing_MM_OA_hm_20, CBRing_MM_OA_hp_30,CBRing_MM_OA_hm_30, CBRing_MM_OA_hp_40,CBRing_MM_OA_hm_40, CBRing_MM_OA_hp_50,CBRing_MM_OA_hm_50, CBRing_MM_OA_hp_60,CBRing_MM_OA_hm_60, CBRing_MM_OA_hp_70,CBRing_MM_OA_hm_70, CBRing_MM_OA_hp_80,CBRing_MM_OA_hm_80, CBRing_MM_OA_hp_90,CBRing_MM_OA_hm_90, CBRing_MM_OA_hp_100,CBRing_MM_OA_hm_100, CBRing_MM_OA_hp_110,CBRing_MM_OA_hm_110, CBRing_MM_OA_hp_120,CBRing_MM_OA_hm_120, CBRing_MM_OA_hp_130,CBRing_MM_OA_hm_130, CBRing_MM_OA_hp_140,CBRing_MM_OA_hm_140,CBRing_MM_OA_hp_150,CBRing_MM_OA_hm_150,CBRing_IM,TAPS_Ring_MM_hp,TAPS_Ring_MM_hm,TAPS_Ring_MM_OA_hp_0,TAPS_Ring_MM_OA_hm_0, TAPS_Ring_MM_OA_hp_10,TAPS_Ring_MM_OA_hm_10, TAPS_Ring_MM_OA_hp_20,TAPS_Ring_MM_OA_hm_20, TAPS_Ring_MM_OA_hp_30,TAPS_Ring_MM_OA_hm_30, TAPS_Ring_MM_OA_hp_40,TAPS_Ring_MM_OA_hm_40, TAPS_Ring_MM_OA_hp_50,TAPS_Ring_MM_OA_hm_50, TAPS_Ring_MM_OA_hp_60,TAPS_Ring_MM_OA_hm_60, TAPS_Ring_MM_OA_hp_70,TAPS_Ring_MM_OA_hm_70, TAPS_Ring_MM_OA_hp_80,TAPS_Ring_MM_OA_hm_80, TAPS_Ring_MM_OA_hp_90,TAPS_Ring_MM_OA_hm_90, TAPS_Ring_MM_OA_hp_100,TAPS_Ring_MM_OA_hm_100, TAPS_Ring_MM_OA_hp_110,TAPS_Ring_MM_OA_hm_110, TAPS_Ring_MM_OA_hp_120,TAPS_Ring_MM_OA_hm_120, TAPS_Ring_MM_OA_hp_130,TAPS_Ring_MM_OA_hm_130, TAPS_Ring_MM_OA_hp_140,TAPS_Ring_MM_OA_hm_140, TAPS_Ring_MM_OA_hp_150,TAPS_Ring_MM_OA_hm_150,TAPS_Ring_IM);
+	Ring_Test(*GetTrigger(),*GetTagger(),*GetRootinos(),*GetPhotons(),*GetNeutralPions(),*GetTracks(),285,305,15,CBRing_MM_hp,CBRing_MM_hm,CBRing_MM_OA_hp_0,CBRing_MM_OA_hm_0, CBRing_MM_OA_hp_10,CBRing_MM_OA_hm_10, CBRing_MM_OA_hp_20,CBRing_MM_OA_hm_20, CBRing_MM_OA_hp_30,CBRing_MM_OA_hm_30, CBRing_MM_OA_hp_40,CBRing_MM_OA_hm_40, CBRing_MM_OA_hp_50,CBRing_MM_OA_hm_50, CBRing_MM_OA_hp_60,CBRing_MM_OA_hm_60, CBRing_MM_OA_hp_70,CBRing_MM_OA_hm_70, CBRing_MM_OA_hp_80,CBRing_MM_OA_hm_80, CBRing_MM_OA_hp_90,CBRing_MM_OA_hm_90, CBRing_MM_OA_hp_100,CBRing_MM_OA_hm_100, CBRing_MM_OA_hp_110,CBRing_MM_OA_hm_110, CBRing_MM_OA_hp_120,CBRing_MM_OA_hm_120, CBRing_MM_OA_hp_130,CBRing_MM_OA_hm_130, CBRing_MM_OA_hp_140,CBRing_MM_OA_hm_140,CBRing_MM_OA_hp_150,CBRing_MM_OA_hm_150,CBRing_IM);//,TAPS_Ring_MM_hp,TAPS_Ring_MM_hm,TAPS_Ring_MM_OA_hp_0,TAPS_Ring_MM_OA_hm_0, TAPS_Ring_MM_OA_hp_10,TAPS_Ring_MM_OA_hm_10, TAPS_Ring_MM_OA_hp_20,TAPS_Ring_MM_OA_hm_20, TAPS_Ring_MM_OA_hp_30,TAPS_Ring_MM_OA_hm_30, TAPS_Ring_MM_OA_hp_40,TAPS_Ring_MM_OA_hm_40, TAPS_Ring_MM_OA_hp_50,TAPS_Ring_MM_OA_hm_50, TAPS_Ring_MM_OA_hp_60,TAPS_Ring_MM_OA_hm_60, TAPS_Ring_MM_OA_hp_70,TAPS_Ring_MM_OA_hm_70, TAPS_Ring_MM_OA_hp_80,TAPS_Ring_MM_OA_hm_80, TAPS_Ring_MM_OA_hp_90,TAPS_Ring_MM_OA_hm_90, TAPS_Ring_MM_OA_hp_100,TAPS_Ring_MM_OA_hm_100, TAPS_Ring_MM_OA_hp_110,TAPS_Ring_MM_OA_hm_110, TAPS_Ring_MM_OA_hp_120,TAPS_Ring_MM_OA_hm_120, TAPS_Ring_MM_OA_hp_130,TAPS_Ring_MM_OA_hm_130, TAPS_Ring_MM_OA_hp_140,TAPS_Ring_MM_OA_hm_140, TAPS_Ring_MM_OA_hp_150,TAPS_Ring_MM_OA_hm_150,TAPS_Ring_IM);
 }
 
 void	PAR_Compton::ProcessScalerRead()
