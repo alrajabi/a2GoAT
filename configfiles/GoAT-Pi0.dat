@@ -31,7 +31,7 @@ Do-Particle-Reconstruction: 1
 #Cut-TAPS-PSA:           configfiles/cuts/TAPS_PSA.root Hadron
 
 Do-Meson-Reconstruction: 1
-Cut-IM-Width-Pi0: 35 
+Cut-IM-Width-Pi0: 35
 Cut-IM-Width-Eta: 44
 Cut-IM-Width-Eta-Prime: 60
 
@@ -55,7 +55,7 @@ SortRaw-CBEnergySum:	80+
 
 # Sort on reconstructed particle properties
 #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-Sort-NParticles: 	2+
+Sort-NParticles: 	3-
 
 #		Type		Number	Theta-min 	Theta-max
 #Sort-Particle:	neutralPions	1=	0		180

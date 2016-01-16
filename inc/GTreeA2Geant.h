@@ -36,7 +36,7 @@ public:
 
 protected:
 
-        // Brach memories
+        // Branch memories
        Int_t           fnhits;
        Int_t           fnpart;
        Int_t           fntaps;
@@ -69,8 +69,8 @@ protected:
        Float_t         mposy[GEANT_MAX_MWPCHITS];
        Float_t         mposz[GEANT_MAX_MWPCHITS];
        Float_t         emwpc[GEANT_MAX_MWPCHITS];
-       Long64_t        mc_evt_id;
-       Long64_t        mc_rnd_id;
+     //  Long64_t        mc_evt_id;
+      // Long64_t        mc_rnd_id;
 
 
     virtual void    SetBranchAdresses();

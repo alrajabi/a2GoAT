@@ -74,38 +74,38 @@ if [ "$1" = "$S2" ];then
 fi
 if [ "$1" = "$S3" ];then
 	if [ "$2" = "$S5" ];then
-		mv /home/al/output/split1/archive/*.root /home/al/output/split1
-		mv /home/al/output/split2/archive/*.root /home/al/output/split2
-		mv /home/al/output/split3/archive/*.root /home/al/output/split3
-		mv /home/al/output/split4/archive/*.root /home/al/output/split4
-		mv /home/al/output/split5/archive/*.root /home/al/output/split5
-		mv /home/al/output/split6/archive/*.root /home/al/output/split6
+		#mv /home/al/output/split1/archive/*.root /home/al/output/split1
+		#mv /home/al/output/split2/archive/*.root /home/al/output/split2
+		#mv /home/al/output/split3/archive/*.root /home/al/output/split3
+		#mv /home/al/output/split4/archive/*.root /home/al/output/split4
+		#mv /home/al/output/split5/archive/*.root /home/al/output/split5
+		#mv /home/al/output/split6/archive/*.root /home/al/output/split6
 		if [ "$3" = "$S6" ];then
-			rm /home/al/analysis/1st_step/oneH/1/*.root
-			rm /home/al/analysis/1st_step/oneH/2/*.root
-			rm /home/al/analysis/1st_step/oneH/3/*.root
-			rm /home/al/analysis/1st_step/oneH/4/*.root
-			rm /home/al/analysis/1st_step/zeroH/5/*.root
-			rm /home/al/analysis/1st_step/zeroH/6/*.root	
+			#rm /home/al/analysis/1st_step/oneH/1/*.root
+			#rm /home/al/analysis/1st_step/oneH/2/*.root
+			#rm /home/al/analysis/1st_step/oneH/3/*.root
+			#rm /home/al/analysis/1st_step/oneH/4/*.root
+			#rm /home/al/analysis/1st_step/zeroH/5/*.root
+			#rm /home/al/analysis/1st_step/zeroH/6/*.root	
 			./runGoat.sh /home/al/output/split1 /home/al/analysis/1st_step/1 &
-			./runGoat.sh /home/al/output/split2 /home/al/analysis/1st_step/2 &
-			./runGoat.sh /home/al/output/split3 /home/al/analysis/1st_step/3 &
-			./runGoat.sh /home/al/output/split4 /home/al/analysis/1st_step/4 &
-			./runGoat.sh /home/al/output/split5 /home/al/analysis/1st_step/5 &
-			./runGoat.sh /home/al/output/split6 /home/al/analysis/1st_step/6 &
+			#./runGoat.sh /home/al/output/split2 /home/al/analysis/1st_step/2 &
+			#./runGoat.sh /home/al/output/split3 /home/al/analysis/1st_step/3 &
+			#./runGoat.sh /home/al/output/split4 /home/al/analysis/1st_step/4 &
+			#./runGoat.sh /home/al/output/split5 /home/al/analysis/1st_step/5 &
+			#./runGoat.sh /home/al/output/split6 /home/al/analysis/1st_step/6 &
 		elif [ "$3" = "$S7" ];then
-			rm /home/al/analysis/compton/1st_step/oneH/1/*.root
-			rm /home/al/analysis/compton/1st_step/oneH/2/*.root
-			rm /home/al/analysis/compton/1st_step/oneH/3/*.root
-			rm /home/al/analysis/compton/1st_step/oneH/4/*.root
-			rm /home/al/analysis/compton/1st_step/zeroH/5/*.root
-			rm /home/al/analysis/compton/1st_step/zeroH/6/*.root
-			./runGoat.sh /home/al/output/split1 /home/al/analysis/compton/1st_step/1 &
-			./runGoat.sh /home/al/output/split2 /home/al/analysis/compton/1st_step/2 &
-			./runGoat.sh /home/al/output/split3 /home/al/analysis/compton/1st_step/3 &
-			./runGoat.sh /home/al/output/split4 /home/al/analysis/compton/1st_step/4 &
-			./runGoat.sh /home/al/output/split5 /home/al/analysis/compton/1st_step/5 &
-			./runGoat.sh /home/al/output/split6 /home/al/analysis/compton/1st_step/6 &
+			#rm /home/al/analysis/compton/1st_step/oneH/1/*.root
+			#rm /home/al/analysis/compton/1st_step/oneH/2/*.root
+			#rm /home/al/analysis/compton/1st_step/oneH/3/*.root
+			#rm /home/al/analysis/compton/1st_step/oneH/4/*.root
+			#rm /home/al/analysis/compton/1st_step/zeroH/5/*.root
+			#rm /home/al/analysis/compton/1st_step/zeroH/6/*.root
+			./runGoat.sh /media/al/MainzBackup/Butanol2014/AcquOutput /home/al/analysis/compton/Butanol/1st_step &
+			./runGoat.sh /media/al/MainzBackup/CarbonOutput /home/al/analysis/compton/Carbon/1st_step &
+			#./runGoat.sh /home/al/output/split3 /home/al/analysis/compton/1st_step/3 &
+			#./runGoat.sh /home/al/output/split4 /home/al/analysis/compton/1st_step/4 &
+			#./runGoat.sh /home/al/output/split5 /home/al/analysis/compton/1st_step/5 &
+			#./runGoat.sh /home/al/output/split6 /home/al/analysis/compton/1st_step/6 &
 		fi
 	elif [ "$2" = "$S4" ];then
 		mv /media/al/MainzBackup/output/split1/archive/*.root /media/al/MainzBackup/output/split1

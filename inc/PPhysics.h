@@ -29,6 +29,7 @@ private:
 	TLorentzVector target;
 	TLorentzVector particle;
 	TLorentzVector missingp4;
+	TLorentzVector particle2;
 	
 	Double_t time;
 	Bool_t 	Prompt;
@@ -69,11 +70,12 @@ public:
 	void	FillMissingMass(const GTreeParticle& tree, Int_t particle_index, GH1* gHist, Bool_t TaggerBinning = kFALSE);
 	void 	FillMissingMass(const GTreeParticle& tree, Int_t particle_index, Int_t tagger_index, GH1* gHist, Bool_t TaggerBinning = kFALSE);
 	void FillMissingMass(const GTreeTrack& tree, Int_t track_index, Int_t tagger_index, GH1* gHist, Bool_t TaggerBinning = kFALSE);
-
+	void FillMissingMass(const GTreeTrack& tree, Int_t track_index, Int_t tagger_index,Double_t theta,Double_t shifted_theta, GH1* gHist, Bool_t TaggerBinning = kFALSE);
     Double_t CalcMissingMass(const GTreeParticle &tree, Int_t particle_index, Int_t tagger_index);
     Double_t CalcMissingEnergy(const GTreeParticle &tree, Int_t particle_index, Int_t tagger_index);
     TLorentzVector CalcMissingP4(const GTreeParticle &tree, Int_t particle_index, Int_t tagger_index);
     TLorentzVector CalcMissingP4(const GTreeTrack& tree, Int_t track_index, Int_t tagger_index);
+    TLorentzVector CalcMissingP4(const GTreeTrack& tree, Int_t track_index, Int_t tagger_index,Double_t theta,Double_t shifted_theta); 	
 	void 	FillBeamAsymmetry(const GTreeParticle& tree, Int_t particle_index, GH1* gHist, Bool_t TaggerBinning = kFALSE, Double_t MM_min = -100000, Double_t MM_max = 100000);
 	void 	FillBeamAsymmetry(const GTreeParticle& tree, Int_t particle_index, Int_t tagger_index, GH1* gHist, Bool_t TaggerBinning = kFALSE, Double_t MM_min = -100000, Double_t MM_max = 100000);
 

@@ -83,6 +83,8 @@ public:
     const	Double_t*       GetTheta()                          const	{return theta;}
     inline  Double_t        GetTheta(const Int_t index)         const;
     inline  Double_t        GetThetaRad(const Int_t index)      const;
+           // Double_t       GetCosTheta()                          const	{return TMath::Cos(theta * TMath::DegToRad());}
+    inline  Double_t        GetCosTheta(const Int_t index)         const;
     const	Double_t*       GetTime()                           const	{return time;}
             Double_t        GetTime(const Int_t index)          const	{return time[index];}
     inline  TLorentzVector	GetVector(const Int_t index)        const;
@@ -156,7 +158,10 @@ Double_t GTreeTrack::GetThetaRad(const Int_t index) const
         return 0;
     }
 }
-
+Double_t GTreeTrack::GetCosTheta(const Int_t index) const
+{
+	return TMath::Cos(GetTheta(index) * TMath::DegToRad());
+}
 TLorentzVector	GTreeTrack::GetVector(const Int_t index) const
 {
     Double_t th = GetThetaRad(index);

@@ -37,8 +37,8 @@ void GTreeA2Geant::SetBranchAdresses()
     inputTree->SetBranchAddress("mposy",mposy);
     inputTree->SetBranchAddress("mposz",mposz);
     inputTree->SetBranchAddress("emwpc",emwpc);
-    inputTree->SetBranchAddress("mc_evt_id",&mc_evt_id);
-    inputTree->SetBranchAddress("mc_rnd_id",&mc_evt_id);
+ //   inputTree->SetBranchAddress("mc_evt_id",&mc_evt_id);
+ //   inputTree->SetBranchAddress("mc_rnd_id",&mc_evt_id);
 }
 
 void GTreeA2Geant::SetBranches()
@@ -130,9 +130,9 @@ GTreeA2Geant::GTreeA2Geant(GTreeManager *Manager):
     mposx(),
     mposy(),
     mposz(),
-    emwpc(),
-    mc_evt_id(0),
-    mc_rnd_id(0)
+    emwpc() //,
+ //   mc_evt_id(0),
+ //   mc_rnd_id(0)
 {
 }
 
@@ -475,6 +475,6 @@ void GTreeA2Geant::Clear()
     zero(mposy);
     zero(mposz);
     zero(emwpc);
-    mc_evt_id = 0;
-    mc_rnd_id = 0;
+  //  mc_evt_id = 0;
+  //  mc_rnd_id = 0;
 }
