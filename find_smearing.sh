@@ -7,4 +7,5 @@ rm GoAT_input.root
 hadd GoAT_input.root Acqu_SAID.root A2G4_SAID.root
 cd ~/analysis/a2GoAT
 ./newStartover.sh MC pi0 runGoAT Jan11
-
+wait 15
+./newStartover.sh MC pi0 runAR Jan11

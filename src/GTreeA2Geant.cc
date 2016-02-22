@@ -435,7 +435,12 @@ TLorentzVector GTreeA2Geant::GetTrueVector(const UInt_t n) const throw(std::out_
 
     return lv;
 }
-
+Float_t GTreeA2Geant::GetTrueTheta(const UInt_t n) const throw(std::out_of_range)
+{
+	TLorentzVector gamma_track;
+	gamma_track = GetTrueVector(n);
+	return gamma_track.Theta() * TMath::RadToDeg();
+}
 template <class T>
 void zero( T& data ) {
     memset( data, 0, sizeof(data) );

@@ -69,6 +69,8 @@ public:
 	void	FillMissingMass(const GTreeParticle& tree, GH1* gHist, Bool_t TaggerBinning = kFALSE);
 	void	FillMissingMass(const GTreeParticle& tree, Int_t particle_index, GH1* gHist, Bool_t TaggerBinning = kFALSE);
 	void 	FillMissingMass(const GTreeParticle& tree, Int_t particle_index, Int_t tagger_index, GH1* gHist, Bool_t TaggerBinning = kFALSE);
+	void 	FillMissingMass(const TLorentzVector& v, Int_t tagger_index, GH1* gHist, Bool_t TaggerBinning = kFALSE);
+	TLorentzVector 	CalcMissingP4(const TLorentzVector& v, Int_t tagger_index);
 	void FillMissingMass(const GTreeTrack& tree, Int_t track_index, Int_t tagger_index, GH1* gHist, Bool_t TaggerBinning = kFALSE);
 	void FillMissingMass(const GTreeTrack& tree, Int_t track_index, Int_t tagger_index,Double_t theta,Double_t shifted_theta, GH1* gHist, Bool_t TaggerBinning = kFALSE);
     Double_t CalcMissingMass(const GTreeParticle &tree, Int_t particle_index, Int_t tagger_index);

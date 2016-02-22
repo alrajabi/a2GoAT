@@ -139,7 +139,7 @@ public:
     virtual UInt_t      GetNTrueParticles() const;
     virtual UInt_t      GetTrueID( const UInt_t n ) const throw (std::out_of_range);
     virtual TLorentzVector GetTrueVector( const UInt_t n ) const throw (std::out_of_range);
-
+    virtual Float_t GetTrueTheta(const UInt_t n) const throw(std::out_of_range);
     virtual void        Clear();
 
 };

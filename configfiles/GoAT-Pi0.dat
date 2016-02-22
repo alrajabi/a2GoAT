@@ -31,7 +31,7 @@ Do-Particle-Reconstruction: 1
 #Cut-TAPS-PSA:           configfiles/cuts/TAPS_PSA.root Hadron
 
 Do-Meson-Reconstruction: 1
-Cut-IM-Width-Pi0: 35
+Cut-IM-Width-Pi0: 15
 Cut-IM-Width-Eta: 44
 Cut-IM-Width-Eta-Prime: 60
 
@@ -58,8 +58,8 @@ SortRaw-CBEnergySum:	80+
 Sort-NParticles: 	3-
 
 #		Type		Number	Theta-min 	Theta-max
-#Sort-Particle:	neutralPions	1=	0		180
-Sort-Particle:	charged		1= 	0		180
+Sort-Particle:	neutralPions	1=	0		180
+#Sort-Particle:	charged		1= 	0		180
 
 # Note: (I'll put this here while we don't have a manual)
 # the charged and neutral particle cuts are additional 

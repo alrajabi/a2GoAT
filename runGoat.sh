@@ -6,6 +6,6 @@ for i in $DIRECTORY/Acqu_CBTaggTAPS_*.root; do
 	#echo $i
     #./build/bin/goat -f $i -D ../1st_step -p Acqu_CBTaggTAPS -P GoATTrees configfiles/GoAT-Pi0.dat 
 	#./build/bin/goat -f $i -D "$2" -p Acqu_CBTaggTAPS -P GoATTrees configfiles/GoAT-Pi0.dat
-	./build/bin/goat -f $i -D "$2" -p Acqu -P GoATTrees configfiles/GoAT-Pi0.dat
-	mv $i "$1"/archive
+	./build/bin/goat -f $i -D "$2" -p Acqu_CBTaggTAPS -P GoATTrees configfiles/GoAT-Pi0.dat
+	mv $i "$3"
 done
