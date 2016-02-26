@@ -55,7 +55,7 @@ SortRaw-CBEnergySum:	80+
 
 # Sort on reconstructed particle properties
 #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-Sort-NParticles: 	3-
+Sort-NParticles: 	2-
 
 #		Type		Number	Theta-min 	Theta-max
 Sort-Particle:	neutralPions	1=	0		180
