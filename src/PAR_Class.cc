@@ -5,10 +5,10 @@ PAR_Class::PAR_Class()
 	//pi0 Eff Revisited Hists: (Added Jan26,2016)
     Mgg_all_theta = new GH1("Mgg_all_theta","Mgg for 0 <Theta < 180 with cut on MM",250,0,250);
     //Rootino_Mass = new GH1("Rootino_Mass","Mass of Rootino",125,0,1250);
-    NChargedOA_hp	= new GH2("NChargedOA_hp",	"NC Prime at OA,E_k vs. Proton #Theta-Helicity=+1" ,75,0, 150,68,19,155);
-    NChargedOA_hm	= new GH2("NChargedOA_hm",	"NC Prime at OA,E_k vs. Proton #Theta-Helicity=-1" ,75,0, 150,68,19,155);
-    Denom_hp 	= new GH2("Denom_hp",	"Denom, E_k vs. Proton #Theta-Helicity=+1" ,75,0, 150,68,19,155);
-    Denom_hm 	= new GH2("Denom_hm",	"Denom, E_k vs. Proton #Theta-Helicity=-1" ,75,0, 150,68,19,155);
+    NChargedOA_hp	= new GH2("NChargedOA_hp",	"NC Prime at OA,E_k vs. Proton #Theta-Helicity=+1" ,75,0, 150,27,20,155);
+    NChargedOA_hm	= new GH2("NChargedOA_hm",	"NC Prime at OA,E_k vs. Proton #Theta-Helicity=-1" ,75,0, 150,27,20,155);
+    Denom_hp 	= new GH2("Denom_hp",	"Denom, E_k vs. Proton #Theta-Helicity=+1" ,75,0, 150,27,20,155);
+    Denom_hm 	= new GH2("Denom_hm",	"Denom, E_k vs. Proton #Theta-Helicity=-1" ,75,0, 150,27,20,155);
     Test_denom	= new GH1("Test_denom","eff denom",75,0,150);
     Test_num	= new GH1("Test_num","eff num",75,0,150);
 /***
@@ -299,7 +299,7 @@ void PAR_Class::Eff_rev(const GTreeParticle& rootinotree,const GTreeMeson& pi0tr
 						Mytime=GetTagger()->GetTaggedTime(j)-pi0tree.GetTime(0);	
 						E_k = CalcMissingEnergy(pi0tree,0,j)-CalcMissingMass(pi0tree, 0,j);
 						FillMass(pi0tree,0,j,mgg_all_theta);
-						if((CalcMissingP4(pi0tree,0,j).Theta()>45*TMath::Pi()/180) && (CalcMissingP4(pi0tree,0,j).Theta()<50*TMath::Pi()/180))
+						if((CalcMissingP4(pi0tree,0,j).Theta()>30*TMath::Pi()/180) && (CalcMissingP4(pi0tree,0,j).Theta()<35*TMath::Pi()/180))
 						{
 							test_denom->Fill(E_k,Mytime);
 							if (rootinotree.GetNParticles()==1)

@@ -1,7 +1,7 @@
 #include "PAR_Compton.h"
 
 PAR_Compton::PAR_Compton()
-{ /***
+{ 
      //Compton Hists:
     Com_MM_hp = new GH1("Com_MM_hp","Rootino Missing Mass-Helicity = +1", 150,700,1300);
     //Com_pMass = new GH1("Com_pMass","Rootino Mass",180,0,180);  	
@@ -13,39 +13,54 @@ PAR_Compton::PAR_Compton()
     	Theta_hm = new GH1("Theta_hm","Yield for 0<Photon.Theta<180-Helicity=-1",18,0,180);
 
 	
-	Com_MM_OA_hp_124_149 = new GH1("Com_MM_OA_hp_124_149","Ring Missing Mass 123.86<Theta<149.00,After OA-cut-Helicity = +1", 150,700,1300);
-	Com_MM_OA_hm_124_149 = new GH1("Com_MM_OA_hm_124_149","Ring Missing Mass 123.86<Theta<149.00,After OA-cut-Helicity = -1", 150,700,1300);
-	Com_MM_OA_hp_105_124 = new GH1("Com_MM_OA_hp_105_124","Ring Missing Mass 104.90<Theta<123.86,After OA-cut-Helicity = +1", 150,700,1300);
-	Com_MM_OA_hm_105_124 = new GH1("Com_MM_OA_hm_105_124","Ring Missing Mass 104.90<Theta<123.86,After OA-cut-Helicity = -1", 150,700,1300);
-	Com_MM_OA_hp_88_105 = new GH1("Com_MM_OA_hp_88_105","Ring Missing Mass 87.55<Theta<104.90,After OA-cut-Helicity = +1", 150,700,1300);
-	Com_MM_OA_hm_88_105 = new GH1("Com_MM_OA_hm_88_105","Ring Missing Mass 87.55<Theta<104.90,After OA-cut-Helicity = -1", 150,700,1300);
-	Com_MM_OA_hp_70_88 = new GH1("Com_MM_OA_hp_70_88","Ring Missing Mass 69.95<Theta<87.55,After OA-cut-Helicity = +1", 150,700,1300);
-	Com_MM_OA_hm_70_88 = new GH1("Com_MM_OA_hm_70_88","Ring Missing Mass 69.95<Theta<87.55,After OA-cut-Helicity = -1", 150,700,1300);
-	Com_MM_OA_hp_50_70 = new GH1("Com_MM_OA_hp_50_70","Ring Missing Mass 50.00<Theta<69.95,After OA-cut-Helicity = +1", 150,700,1300);
+	Com_MM_OA_hp_130_149 = new GH1("Com_MM_OA_hp_130_149","Ring Missing Mass 130<Theta<149,After OA-cut-Helicity = +1", 150,700,1300);
+	Com_MM_OA_hm_130_149 = new GH1("Com_MM_OA_hm_130_149","Ring Missing Mass 130<Theta<149,After OA-cut-Helicity = -1", 150,700,1300);
+	Com_MM_OA_hp_110_130 = new GH1("Com_MM_OA_hp_110_130","Ring Missing Mass 110<Theta<130,After OA-cut-Helicity = +1", 150,700,1300);
+	Com_MM_OA_hm_110_130 = new GH1("Com_MM_OA_hm_105_124","Ring Missing Mass 110<Theta<130,After OA-cut-Helicity = -1", 150,700,1300);
+	Com_MM_OA_hp_90_110 = new GH1("Com_MM_OA_hp_90_110","Ring Missing Mass 90<Theta<110,After OA-cut-Helicity = +1", 150,700,1300);
+	Com_MM_OA_hm_90_110 = new GH1("Com_MM_OA_hm_90_110","Ring Missing Mass 90<Theta<110,After OA-cut-Helicity = -1", 150,700,1300);
+	Com_MM_OA_hp_70_90 = new GH1("Com_MM_OA_hp_70_90","Ring Missing Mass 70<Theta<90,After OA-cut-Helicity = +1", 150,700,1300);
+	Com_MM_OA_hm_70_90 = new GH1("Com_MM_OA_hm_70_90","Ring Missing Mass 70<Theta<90,After OA-cut-Helicity = -1", 150,700,1300);
+	/***Com_MM_OA_hp_50_70 = new GH1("Com_MM_OA_hp_50_70","Ring Missing Mass 50.00<Theta<69.95,After OA-cut-Helicity = +1", 150,700,1300);
 	Com_MM_OA_hm_50_70 = new GH1("Com_MM_OA_hm_50_70","Ring Missing Mass 50.00<Theta<69.95,After OA-cut-Helicity = -1", 150,700,1300);
 	Com_MM_OA_hp_19_50 = new GH1("Com_MM_OA_hp_19_50","Ring Missing Mass 19.47<Theta<50.00,After OA-cut-Helicity = +1", 150,700,1300);
 	Com_MM_OA_hm_19_50 = new GH1("Com_MM_OA_hm_19_50","Ring Missing Mass 19.47<Theta<50.00,After OA-cut-Helicity = -1", 150,700,1300);
-
- ***/ /***
+	***/
+ 
 	//Ring Analysis Hists:
 	CBRing_MM_hp = new GH1("CBRing_MM_hp","Ring Missing Mass-Helicity = +1", 150,700,1300);
 	CBRing_MM_hm = new GH1("CBRing_MM_hm","Ring Missing Mass-Helicity = -1", 150,700,1300);
 	CBRing_IM = new GH1("CBRing_IM","Ring Pi0 IM", 250,0,250);
 	
-	CBRing_MM_OA_hp_124_149 = new GH1("CBRing_MM_OA_hp_124_149","Ring Missing Mass 123.86<Theta<149.00,After OA-cut-Helicity = +1", 150,700,1300);
-	CBRing_MM_OA_hm_124_149 = new GH1("CBRing_MM_OA_hm_124_149","Ring Missing Mass 123.86<Theta<149.00,After OA-cut-Helicity = -1", 150,700,1300);
-	CBRing_MM_OA_hp_105_124 = new GH1("CBRing_MM_OA_hp_105_124","Ring Missing Mass 104.90<Theta<123.86,After OA-cut-Helicity = +1", 150,700,1300);
-	CBRing_MM_OA_hm_105_124 = new GH1("CBRing_MM_OA_hm_105_124","Ring Missing Mass 104.90<Theta<123.86,After OA-cut-Helicity = -1", 150,700,1300);
-	CBRing_MM_OA_hp_88_105 = new GH1("CBRing_MM_OA_hp_88_105","Ring Missing Mass 87.55<Theta<104.90,After OA-cut-Helicity = +1", 150,700,1300);
-	CBRing_MM_OA_hm_88_105 = new GH1("CBRing_MM_OA_hm_88_105","Ring Missing Mass 87.55<Theta<104.90,After OA-cut-Helicity = -1", 150,700,1300);
-	CBRing_MM_OA_hp_70_88 = new GH1("CBRing_MM_OA_hp_70_88","Ring Missing Mass 69.95<Theta<87.55,After OA-cut-Helicity = +1", 150,700,1300);
-	CBRing_MM_OA_hm_70_88 = new GH1("CBRing_MM_OA_hm_70_88","Ring Missing Mass 69.95<Theta<87.55,After OA-cut-Helicity = -1", 150,700,1300);
-	CBRing_MM_OA_hp_50_70 = new GH1("CBRing_MM_OA_hp_50_70","Ring Missing Mass 50.00<Theta<69.95,After OA-cut-Helicity = +1", 150,700,1300);
+	CBRing_MM_OA_hp_130_149 = new GH1("CBRing_MM_OA_hp_130_149","Ring Missing Mass 130<Theta<149,After OA-cut-Helicity = +1", 150,700,1300);
+	CBRing_MM_OA_hm_130_149 = new GH1("CBRing_MM_OA_hm_130_149","Ring Missing Mass 130<Theta<149,After OA-cut-Helicity = -1", 150,700,1300);
+	CBRing_MM_OA_hp_110_130 = new GH1("CBRing_MM_OA_hp_110_130","Ring Missing Mass 110<Theta<130,After OA-cut-Helicity = +1", 150,700,1300);
+	CBRing_MM_OA_hm_110_130 = new GH1("CBRing_MM_OA_hm_110_130","Ring Missing Mass 110<Theta<130,After OA-cut-Helicity = -1", 150,700,1300);
+	CBRing_MM_OA_hp_90_110 = new GH1("CBRing_MM_OA_hp_90_110","Ring Missing Mass 90<Theta<110,After OA-cut-Helicity = +1", 150,700,1300);
+	CBRing_MM_OA_hm_90_110 = new GH1("CBRing_MM_OA_hm_90_110","Ring Missing Mass 90<Theta<110,After OA-cut-Helicity = -1", 150,700,1300);
+	CBRing_MM_OA_hp_70_90 = new GH1("CBRing_MM_OA_hp_70_90","Ring Missing Mass 70<Theta<90,After OA-cut-Helicity = +1", 150,700,1300);
+	CBRing_MM_OA_hm_70_90 = new GH1("CBRing_MM_OA_hm_70_90","Ring Missing Mass 70<Theta<90,After OA-cut-Helicity = -1", 150,700,1300);
+	/***CBRing_MM_OA_hp_50_70 = new GH1("CBRing_MM_OA_hp_50_70","Ring Missing Mass 50.00<Theta<69.95,After OA-cut-Helicity = +1", 150,700,1300);
 	CBRing_MM_OA_hm_50_70 = new GH1("CBRing_MM_OA_hm_50_70","Ring Missing Mass 50.00<Theta<69.95,After OA-cut-Helicity = -1", 150,700,1300);
 	CBRing_MM_OA_hp_19_50 = new GH1("CBRing_MM_OA_hp_19_50","Ring Missing Mass 19.47<Theta<50.00,After OA-cut-Helicity = +1", 150,700,1300);
 	CBRing_MM_OA_hm_19_50 = new GH1("CBRing_MM_OA_hm_19_50","Ring Missing Mass 19.47<Theta<50.00,After OA-cut-Helicity = -1", 150,700,1300);
+	***/
+	CBFRing_MM_hp = new GH1("CBFRing_MM_hp","FRing Missing Mass-Helicity = +1", 150,700,1300);
+	CBFRing_MM_hm = new GH1("CBFRing_MM_hm","FRing Missing Mass-Helicity = -1", 150,700,1300);
+	CBFRing_IM = new GH1("CBFRing_IM","FRing Pi0 IM", 250,0,250);
 	
-***/ 
+	CBFRing_MM_OA_hp_130_149 = new GH1("CBFRing_MM_OA_hp_130_149","Ring Missing Mass 130<Theta<149,After OA-cut-Helicity = +1", 150,700,1300);
+	CBFRing_MM_OA_hm_130_149 = new GH1("CBFRing_MM_OA_hm_130_149","Ring Missing Mass 130<Theta<149,After OA-cut-Helicity = -1", 150,700,1300);
+	CBFRing_MM_OA_hp_110_130 = new GH1("CBFRing_MM_OA_hp_110_130","Ring Missing Mass 110<Theta<130,After OA-cut-Helicity = +1", 150,700,1300);
+	CBFRing_MM_OA_hm_110_130 = new GH1("CBFRing_MM_OA_hm_110_130","Ring Missing Mass 110<Theta<130,After OA-cut-Helicity = -1", 150,700,1300);
+	CBFRing_MM_OA_hp_90_110 = new GH1("CBFRing_MM_OA_hp_90_110","Ring Missing Mass 90<Theta<110,After OA-cut-Helicity = +1", 150,700,1300);
+	CBFRing_MM_OA_hm_90_110 = new GH1("CBFRing_MM_OA_hm_90_110","Ring Missing Mass 90<Theta<110,After OA-cut-Helicity = -1", 150,700,1300);
+	CBFRing_MM_OA_hp_70_90 = new GH1("CBFRing_MM_OA_hp_70_90","Ring Missing Mass 70<Theta<90,After OA-cut-Helicity = +1", 150,700,1300);
+	CBFRing_MM_OA_hm_70_90 = new GH1("CBFRing_MM_OA_hm_70_90","Ring Missing Mass 70<Theta<90,After OA-cut-Helicity = -1", 150,700,1300);
+	/***CBFRing_MM_OA_hp_50_70 = new GH1("CBFRing_MM_OA_hp_50_70","FRing Missing Mass 50.00<Theta<69.95,After OA-cut-Helicity = +1", 150,700,1300);
+	CBFRing_MM_OA_hm_50_70 = new GH1("CBFRing_MM_OA_hm_50_70","FRing Missing Mass 50.00<Theta<69.95,After OA-cut-Helicity = -1", 150,700,1300);
+	CBFRing_MM_OA_hp_19_50 = new GH1("CBFRing_MM_OA_hp_19_50","FRing Missing Mass 19.47<Theta<50.00,After OA-cut-Helicity = +1", 150,700,1300);
+	CBFRing_MM_OA_hm_19_50 = new GH1("CBFRing_MM_OA_hm_19_50","FRing Missing Mass 19.47<Theta<50.00,After OA-cut-Helicity = -1", 150,700,1300);***/
 	 //Find Holes Hists:
 	//CosTheta_Phi = new GH2("CosTheta_Phi","Pi0 Photons Cos#theta vs. #phi",180,-1,1,360,-180,180);
 	//CosTheta_Phi = new GH2("CosTheta_Phi","Pi0 Photons Cos#theta vs. #phi",180,-1,1,360,-180,180);
@@ -53,11 +68,11 @@ PAR_Compton::PAR_Compton()
 	//CosTheta_Phi_MM = new GH2("CosTheta_Phi_MM","Pi0 Photons Cos#theta vs. #phi with MM-cut",180,-1,1,360,-180,180);
 	//Pi0_IM = new GH1("Pi0_IM", "Pi0 Invariant Mass", 180,0,180);
 	
-	//MC Hists:
+	/*** //MC Hists:
 	Com_MM_hp = new GH1("Com_MM_hp","MC Rootino Missing Mass-Helicity = +1", 200,500,1300);
    	Com_MM_hm = new GH1("Com_MM_hm","MC Rootino Missing Mass-Helicity = -1", 200,500,1300);	
 	Com_MM_hp2 = new GH1("Com_MM_hp2","MC MissingMass, based on other pi0 photon", 200,500,1300);
-		
+		***/
 }
 
 PAR_Compton::~PAR_Compton()
@@ -143,94 +158,123 @@ Double_t PAR_Compton::ps_thetaNew1(Double_t theta, Double_t theta_0, Double_t q)
 
 //--------------------------------Compton Analysis Functions starts here:-----------------------------------------
 
-void PAR_Compton::Ring_Test(const GTreeTrigger& triggertree,const GTreeTagger& taggertree,const GTreeParticle& rootinotree, const GTreeParticle& photontree,const GTreeMeson& pi0tree,const GTreeTrack& tracktree,Int_t en_low, Int_t en_high, Int_t angle,GH1* cbring_MM_hp, GH1* cbring_MM_hm,GH1* cbring_MM_OA_hp_124_149,GH1* cbring_MM_OA_hm_124_149,GH1* cbring_MM_OA_hp_105_124,GH1* cbring_MM_OA_hm_105_124,GH1* cbring_MM_OA_hp_88_105,GH1* cbring_MM_OA_hm_88_105,GH1* cbring_MM_OA_hp_70_88,GH1* cbring_MM_OA_hm_70_88,GH1* cbring_MM_OA_hp_50_70,GH1* cbring_MM_OA_hm_50_70,GH1* cbring_MM_OA_hp_19_50,GH1* cbring_MM_OA_hm_19_50,GH1* cbring_IM)
+void PAR_Compton::Ring_Test(const GTreeTrigger& triggertree,const GTreeTagger& taggertree,const GTreeParticle& rootinotree, const GTreeParticle& photontree,const GTreeMeson& pi0tree,const GTreeTrack& tracktree,Int_t en_low, Int_t en_high, Int_t angle,GH1* cbring_MM_hp, GH1* cbring_MM_hm,GH1* cbring_MM_OA_hp_130_149,GH1* cbring_MM_OA_hm_130_149,GH1* cbring_MM_OA_hp_110_130,GH1* cbring_MM_OA_hm_110_130,GH1* cbring_MM_OA_hp_90_110,GH1* cbring_MM_OA_hm_90_110,GH1* cbring_MM_OA_hp_70_90,GH1* cbring_MM_OA_hm_70_90,GH1* cbring_IM,GH1* cbfring_MM_hp, GH1* cbfring_MM_hm,GH1* cbfring_MM_OA_hp_130_149,GH1* cbfring_MM_OA_hm_130_149,GH1* cbfring_MM_OA_hp_110_130,GH1* cbfring_MM_OA_hm_110_130,GH1* cbfring_MM_OA_hp_90_110,GH1* cbfring_MM_OA_hm_90_110,GH1* cbfring_MM_OA_hp_70_90,GH1* cbfring_MM_OA_hm_70_90,GH1* cbfring_IM)
 {//tracktree.GetTheta(pi0tree.GetTrackIndex(0))
 	//cosringlow= -0.8572
 	//costapsringhi = 0.9945  we use 0.9428  0.3
 	Double_t cb_ring_alpha = 0.5;
-	//Double_t taps_ring_alpha = 1.0;
+	Double_t taps_ring_alpha = 1.0;
 	Double_t cb_ring_low = TMath::ACos(cb_ring_alpha+(1+cb_ring_alpha)*TMath::Cos(155*TMath::Pi()/180))*180/TMath::Pi();
 	Double_t OA_Angle = angle*TMath::Pi()/180;
-	//Double_t for_fid_cut_hi = 6.01;
-	//Double_t taps_ring_hi = TMath::ACos(-1*taps_ring_alpha+(1+taps_ring_alpha)*TMath::Cos(for_fid_cut_hi*TMath::Pi()/180))*180/TMath::Pi();
+	Double_t for_fid_cut_hi = 6.01;
+	Double_t taps_ring_hi = TMath::ACos(-1*taps_ring_alpha+(1+taps_ring_alpha)*TMath::Cos(for_fid_cut_hi*TMath::Pi()/180))*180/TMath::Pi();
 	//Double_t for_edge_cut = TMath::ACos(2*TMath::Cos(25*TMath::Pi()/180)-TMath::Cos(20*TMath::Pi()/180))*180/TMath::Pi();
 	Double_t back_fid_cut_low = 154.89;
+	Int_t y;
 	if(triggertree.GetNErrors()==0)
 	{
 		for (Int_t j = 0; j < GetTagger()->GetNTagged(); j++)
 		{
 			if ((taggertree.GetTaggedEnergy(j)>=en_low)&&( taggertree.GetTaggedEnergy(j)<en_high))
 			{
-				if ((pi0tree.GetNParticles() != 0) && (pi0tree.GetNSubParticles(0) == 2) && (pi0tree.GetNSubPhotons(0) == 2) && (CalcMissingMass(pi0tree,0,j)<970) && (CalcMissingMass(pi0tree,0,j)>920)) //MM cut on pi0) ) // check if a pi0 was detected and it is a good pi0
+				if ((pi0tree.GetNParticles() != 0) && (pi0tree.GetNSubParticles(0) == 2) && (pi0tree.GetNSubPhotons(0) == 2) && (CalcMissingMass(pi0tree,0,j)<970) && (CalcMissingMass(pi0tree,0,j)>910)) //MM cut on pi0) ) // check if a pi0 was detected and it is a good pi0
 				{
 					for (int i=0; i < (int)pi0tree.GetTrackIndexList(0).size(); i++)
 					{
 						if (tracktree.GetTheta(pi0tree.GetTrackIndexList(0)[i]) >= cb_ring_low && tracktree.GetTheta(pi0tree.GetTrackIndexList(0)[i]) < back_fid_cut_low)
-						//if(tracktree.GetTheta(pi0tree.GetTrackIndexList(0)[i])<= taps_ring_hi && tracktree.GetTheta(pi0tree.GetTrackIndexList(0)[i])>for_fid_cut_hi)	
+						
 						{
 							FillMass(pi0tree,0,j,cbring_IM);
-							Int_t y = (i==0) ? pi0tree.GetTrackIndexList(0)[i+1] : pi0tree.GetTrackIndexList(0)[i-1];
+							y = (i==0) ? pi0tree.GetTrackIndexList(0)[i+1] : pi0tree.GetTrackIndexList(0)[i-1];
 							if  (myOA_Calculator(CalcMissingP4(tracktree,y,j),rootinotree.Particle(0)) < OA_Angle)
 							{
 								if  (triggertree.GetHelicity() )
 								{
 									FillMissingMass(tracktree,y,j,cbring_MM_hp);
-									if ((tracktree.GetCosTheta(y)>=-0.8572)&&(tracktree.GetCosTheta(y)<-0.5572))
+									if ((tracktree.GetTheta(y)>=70)&&(tracktree.GetTheta(y)<90))
 									{
-										FillMissingMass(tracktree,y,j,cbring_MM_OA_hp_124_149);
+										FillMissingMass(tracktree,y,j,cbring_MM_OA_hp_70_90);
 									}
-									else if ((tracktree.GetCosTheta(y)>=-0.5572)&&(tracktree.GetCosTheta(y)<-0.2572))
+									else if ((tracktree.GetTheta(y)>=90)&&(tracktree.GetTheta(y)<110))
 									{
-										FillMissingMass(tracktree,y,j,cbring_MM_OA_hp_105_124);
+										FillMissingMass(tracktree,y,j,cbring_MM_OA_hp_90_110);
 									}
-									else if ((tracktree.GetCosTheta(y)>=-0.2572)&&(tracktree.GetCosTheta(y)<0.0428))
+									else if ((tracktree.GetTheta(y)>=110)&&(tracktree.GetTheta(y)<130))
 									{
-										FillMissingMass(tracktree,y,j,cbring_MM_OA_hp_88_105);
+										FillMissingMass(tracktree,y,j,cbring_MM_OA_hp_110_130);
 									}
-									else if ((tracktree.GetCosTheta(y)>=0.0428)&&(tracktree.GetCosTheta(y)<0.3428))
+									else if ((tracktree.GetTheta(y)>=130)&&(tracktree.GetTheta(y)<149))
 									{
-										FillMissingMass(tracktree,y,j,cbring_MM_OA_hp_70_88);
-									}
-									else if ((tracktree.GetCosTheta(y)>=0.3428)&&(tracktree.GetCosTheta(y)<0.6428))
-									{
-										FillMissingMass(tracktree,y,j,cbring_MM_OA_hp_50_70);
-									}
-									else if ((tracktree.GetCosTheta(y)>=0.6428)&&(tracktree.GetCosTheta(y)<0.9428))
-									{
-										FillMissingMass(tracktree,y,j,cbring_MM_OA_hp_19_50);
-									}
-																		
-								}
-								else if (!triggertree.GetHelicity() ) 									{
+										FillMissingMass(tracktree,y,j,cbring_MM_OA_hp_130_149);
+									}																}
+								else if (!triggertree.GetHelicity() ) 													{
 									FillMissingMass(tracktree,y,j,cbring_MM_hm);
-									if ((tracktree.GetCosTheta(y)>=-0.8572)&&(tracktree.GetCosTheta(y)<-0.5572))
+									if ((tracktree.GetTheta(y)>=70)&&(tracktree.GetTheta(y)<90))
 									{
-										FillMissingMass(tracktree,y,j,cbring_MM_OA_hm_124_149);
+										FillMissingMass(tracktree,y,j,cbring_MM_OA_hm_70_90);
 									}
-									else if ((tracktree.GetCosTheta(y)>=-0.5572)&&(tracktree.GetCosTheta(y)<-0.2572))
+									else if ((tracktree.GetTheta(y)>=90)&&(tracktree.GetTheta(y)<110))
 									{
-										FillMissingMass(tracktree,y,j,cbring_MM_OA_hm_105_124);
+										FillMissingMass(tracktree,y,j,cbring_MM_OA_hm_90_110);
 									}
-									else if ((tracktree.GetCosTheta(y)>=-0.2572)&&(tracktree.GetCosTheta(y)<0.0428))
+									else if ((tracktree.GetTheta(y)>=110)&&(tracktree.GetTheta(y)<130))
 									{
-										FillMissingMass(tracktree,y,j,cbring_MM_OA_hm_88_105);
+										FillMissingMass(tracktree,y,j,cbring_MM_OA_hm_110_130);
 									}
-									else if ((tracktree.GetCosTheta(y)>=0.0428)&&(tracktree.GetCosTheta(y)<0.3428))
+									else if ((tracktree.GetTheta(y)>=130)&&(tracktree.GetTheta(y)<149))
 									{
-										FillMissingMass(tracktree,y,j,cbring_MM_OA_hm_70_88);
+										FillMissingMass(tracktree,y,j,cbring_MM_OA_hm_130_149);
 									}
-									else if ((tracktree.GetCosTheta(y)>=0.3428)&&(tracktree.GetCosTheta(y)<0.6428))
-									{
-										FillMissingMass(tracktree,y,j,cbring_MM_OA_hm_50_70);
-									}
-									else if ((tracktree.GetCosTheta(y)>=0.6428)&&(tracktree.GetCosTheta(y)<0.9428))
-									{
-										FillMissingMass(tracktree,y,j,cbring_MM_OA_hm_19_50);
-									}
-									
 								}	
 							}
-						}				
+						}
+						else if(tracktree.GetTheta(pi0tree.GetTrackIndexList(0)[i])<= taps_ring_hi && tracktree.GetTheta(pi0tree.GetTrackIndexList(0)[i])>for_fid_cut_hi)	
+						{
+							FillMass(pi0tree,0,j,cbfring_IM);
+							y = (i==0) ? pi0tree.GetTrackIndexList(0)[i+1] : pi0tree.GetTrackIndexList(0)[i-1];
+							if  (myOA_Calculator(CalcMissingP4(tracktree,y,j),rootinotree.Particle(0)) < OA_Angle)
+							{
+								if  (triggertree.GetHelicity() )
+								{
+									FillMissingMass(tracktree,y,j,cbfring_MM_hp);
+									if ((tracktree.GetTheta(y)>=70)&&(tracktree.GetTheta(y)<90))
+									{
+										FillMissingMass(tracktree,y,j,cbfring_MM_OA_hp_70_90);
+									}
+									else if ((tracktree.GetTheta(y)>=90)&&(tracktree.GetTheta(y)<110))
+									{
+										FillMissingMass(tracktree,y,j,cbfring_MM_OA_hp_90_110);
+									}
+									else if ((tracktree.GetTheta(y)>=110)&&(tracktree.GetTheta(y)<130))
+									{
+										FillMissingMass(tracktree,y,j,cbfring_MM_OA_hp_110_130);
+									}
+									else if ((tracktree.GetTheta(y)>=130)&&(tracktree.GetTheta(y)<149))
+									{
+										FillMissingMass(tracktree,y,j,cbfring_MM_OA_hp_130_149);
+									}
+								}
+								else if (!triggertree.GetHelicity() ) 													{
+									FillMissingMass(tracktree,y,j,cbfring_MM_hm);
+									if ((tracktree.GetTheta(y)>=70)&&(tracktree.GetTheta(y)<90))
+									{
+										FillMissingMass(tracktree,y,j,cbfring_MM_OA_hm_70_90);
+									}
+									else if ((tracktree.GetTheta(y)>=90)&&(tracktree.GetTheta(y)<110))
+									{
+										FillMissingMass(tracktree,y,j,cbfring_MM_OA_hm_90_110);
+									}
+									else if ((tracktree.GetTheta(y)>=110)&&(tracktree.GetTheta(y)<130))
+									{
+										FillMissingMass(tracktree,y,j,cbfring_MM_OA_hm_110_130);
+									}
+									else if ((tracktree.GetTheta(y)>=130)&&(tracktree.GetTheta(y)<149))
+									{
+										FillMissingMass(tracktree,y,j,cbfring_MM_OA_hm_130_149);
+									}
+								}	
+							}
+						}
 					}
 				}
 			}
@@ -239,31 +283,31 @@ void PAR_Compton::Ring_Test(const GTreeTrigger& triggertree,const GTreeTagger& t
 }		
 
 //--------------------------------------------------including phase shift -------------------------------------------
-void PAR_Compton::Ring_Test_with_ps(const GTreeTrigger& triggertree,const GTreeTagger& taggertree,const GTreeParticle& rootinotree, const GTreeParticle& photontree,const GTreeMeson& pi0tree,const GTreeTrack& tracktree,Int_t en_low, Int_t en_high, Int_t angle,GH1* cbring_MM_hp, GH1* cbring_MM_hm,GH1* cbring_MM_OA_hp_124_149,GH1* cbring_MM_OA_hm_124_149,GH1* cbring_MM_OA_hp_105_124,GH1* cbring_MM_OA_hm_105_124,GH1* cbring_MM_OA_hp_88_105,GH1* cbring_MM_OA_hm_88_105,GH1* cbring_MM_OA_hp_70_88,GH1* cbring_MM_OA_hm_70_88,GH1* cbring_MM_OA_hp_50_70,GH1* cbring_MM_OA_hm_50_70,GH1* cbring_MM_OA_hp_19_50,GH1* cbring_MM_OA_hm_19_50,GH1* cbring_IM)
+void PAR_Compton::Ring_Test_with_ps(const GTreeTrigger& triggertree,const GTreeTagger& taggertree,const GTreeParticle& rootinotree, const GTreeParticle& photontree,const GTreeMeson& pi0tree,const GTreeTrack& tracktree,Int_t en_low, Int_t en_high, Int_t angle,GH1* cbring_MM_hp, GH1* cbring_MM_hm,GH1* cbring_MM_OA_hp_130_149,GH1* cbring_MM_OA_hm_130_149,GH1* cbring_MM_OA_hp_110_130,GH1* cbring_MM_OA_hm_110_130,GH1* cbring_MM_OA_hp_90_110,GH1* cbring_MM_OA_hm_90_110,GH1* cbring_MM_OA_hp_70_90,GH1* cbring_MM_OA_hm_70_90,GH1* cbring_IM,GH1* cbfring_MM_hp, GH1* cbfring_MM_hm,GH1* cbfring_MM_OA_hp_130_149,GH1* cbfring_MM_OA_hm_130_149,GH1* cbfring_MM_OA_hp_110_130,GH1* cbfring_MM_OA_hm_110_130,GH1* cbfring_MM_OA_hp_90_110,GH1* cbfring_MM_OA_hm_90_110,GH1* cbfring_MM_OA_hp_70_90,GH1* cbfring_MM_OA_hm_70_90,GH1* cbfring_IM)
 {//tracktree.GetTheta(pi0tree.GetTrackIndex(0))
-	//Double_t cb_ring_alpha = 0.5;
+	Double_t cb_ring_alpha = 0.5;
 	Double_t taps_ring_alpha = 1.0;
-	//Double_t cb_ring_low = TMath::ACos(cb_ring_alpha+(1+cb_ring_alpha)*TMath::Cos(155*TMath::Pi()/180))*180/TMath::Pi();
+	Double_t cb_ring_low = TMath::ACos(cb_ring_alpha+(1+cb_ring_alpha)*TMath::Cos(155*TMath::Pi()/180))*180/TMath::Pi();
 	Double_t OA_Angle = angle*TMath::Pi()/180;
 	Double_t for_fid_cut_hi = 6.01;
 	Double_t taps_ring_hi = TMath::ACos(-1*taps_ring_alpha+(1+taps_ring_alpha)*TMath::Cos(for_fid_cut_hi*TMath::Pi()/180))*180/TMath::Pi();
 	//Double_t for_edge_cut = TMath::ACos(2*TMath::Cos(25*TMath::Pi()/180)-TMath::Cos(20*TMath::Pi()/180))*180/TMath::Pi();
-	//Double_t back_fid_cut_low = 154.89;
+	Double_t back_fid_cut_low = 154.89;
+	Int_t y;
 	if(triggertree.GetNErrors()==0)
 	{
 		for (Int_t j = 0; j < GetTagger()->GetNTagged(); j++)
 		{
 			if ((taggertree.GetTaggedEnergy(j)>=en_low)&&( taggertree.GetTaggedEnergy(j)<en_high))
 			{
-				if ((pi0tree.GetNParticles() != 0) && (pi0tree.GetNSubParticles(0) == 2) && (pi0tree.GetNSubPhotons(0) == 2) && (CalcMissingMass(pi0tree,0,j)<970) && (CalcMissingMass(pi0tree,0,j)>920)) // check if a pi0 was detected and it is a good pi0
+				if ((pi0tree.GetNParticles() != 0) && (pi0tree.GetNSubParticles(0) == 2) && (pi0tree.GetNSubPhotons(0) == 2) && (CalcMissingMass(pi0tree,0,j)<970) && (CalcMissingMass(pi0tree,0,j)>910)) // check if a pi0 was detected and it is a good pi0
 				{
 					for (int i=0; i < (int)pi0tree.GetTrackIndexList(0).size(); i++)
 					{
-						//if (tracktree.GetTheta(pi0tree.GetTrackIndexList(0)[i]) >= cb_ring_low && tracktree.GetTheta(pi0tree.GetTrackIndexList(0)[i]) < back_fid_cut_low)
-						if(tracktree.GetTheta(pi0tree.GetTrackIndexList(0)[i])<= taps_ring_hi && tracktree.GetTheta(pi0tree.GetTrackIndexList(0)[i])>for_fid_cut_hi)	
+						if (tracktree.GetTheta(pi0tree.GetTrackIndexList(0)[i]) >= cb_ring_low && tracktree.GetTheta(pi0tree.GetTrackIndexList(0)[i]) < back_fid_cut_low)
 						{
 							FillMass(pi0tree,0,j,cbring_IM);
-							Int_t y = (i==0) ? pi0tree.GetTrackIndexList(0)[i+1] : pi0tree.GetTrackIndexList(0)[i-1];
+							y = (i==0) ? pi0tree.GetTrackIndexList(0)[i+1] : pi0tree.GetTrackIndexList(0)[i-1];
 							if  (myOA_Calculator(CalcMissingP4(tracktree,y,j),rootinotree.Particle(0)) < OA_Angle)
 							{
 								Double_t oldTheta = tracktree.GetTheta(y);
@@ -271,62 +315,93 @@ void PAR_Compton::Ring_Test_with_ps(const GTreeTrigger& triggertree,const GTreeT
 								if  (triggertree.GetHelicity() )
 								{
 									FillMissingMass(tracktree,y,j,oldTheta,newTheta,cbring_MM_hp);
-									if ((tracktree.GetCosTheta(y)>=-0.8572)&&(tracktree.GetCosTheta(y)<-0.5572))
+									if ((tracktree.GetTheta(y)>=70)&&(tracktree.GetTheta(y)<90))
 									{
-										FillMissingMass(tracktree,y,j,oldTheta,newTheta,cbring_MM_OA_hp_124_149);
+										FillMissingMass(tracktree,y,j,oldTheta,newTheta,cbring_MM_OA_hp_70_90);
 									}
-									else if ((tracktree.GetCosTheta(y)>=-0.5572)&&(tracktree.GetCosTheta(y)<-0.2572))
+									else if ((tracktree.GetTheta(y)>=90)&&(tracktree.GetTheta(y)<110))
 									{
-										FillMissingMass(tracktree,y,j,oldTheta,newTheta,cbring_MM_OA_hp_105_124);
+										FillMissingMass(tracktree,y,j,oldTheta,newTheta,cbring_MM_OA_hp_90_110);
 									}
-									else if ((tracktree.GetCosTheta(y)>=-0.2572)&&(tracktree.GetCosTheta(y)<0.0428))
+									else if ((tracktree.GetTheta(y)>=110)&&(tracktree.GetTheta(y)<130))
 									{
-										FillMissingMass(tracktree,y,j,oldTheta,newTheta,cbring_MM_OA_hp_88_105);
+										FillMissingMass(tracktree,y,j,oldTheta,newTheta,cbring_MM_OA_hp_110_130);
 									}
-									else if ((tracktree.GetCosTheta(y)>=0.0428)&&(tracktree.GetCosTheta(y)<0.3428))
+									else if ((tracktree.GetTheta(y)>=130)&&(tracktree.GetTheta(y)<149))
 									{
-										FillMissingMass(tracktree,y,j,oldTheta,newTheta,cbring_MM_OA_hp_70_88);
+										FillMissingMass(tracktree,y,j,oldTheta,newTheta,cbring_MM_OA_hp_130_149);
 									}
-									else if ((tracktree.GetCosTheta(y)>=0.3428)&&(tracktree.GetCosTheta(y)<0.6428))
-									{
-										FillMissingMass(tracktree,y,j,oldTheta,newTheta,cbring_MM_OA_hp_50_70);
-									}
-									else if ((tracktree.GetCosTheta(y)>=0.6428)&&(tracktree.GetCosTheta(y)<0.9428))
-									{
-										FillMissingMass(tracktree,y,j,oldTheta,newTheta,cbring_MM_OA_hp_19_50);
-									}
-																		
 								}
-								else if (!triggertree.GetHelicity() ) 									{
+								else if (!triggertree.GetHelicity() ) 													{
 									FillMissingMass(tracktree,y,j,cbring_MM_hm);
-									if ((tracktree.GetCosTheta(y)>=-0.8572)&&(tracktree.GetCosTheta(y)<-0.5572))
+									if ((tracktree.GetTheta(y)>=70)&&(tracktree.GetTheta(y)<90))
 									{
-										FillMissingMass(tracktree,y,j,oldTheta,newTheta,cbring_MM_OA_hm_124_149);
+										FillMissingMass(tracktree,y,j,oldTheta,newTheta,cbring_MM_OA_hm_70_90);
 									}
-									else if ((tracktree.GetCosTheta(y)>=-0.5572)&&(tracktree.GetCosTheta(y)<-0.2572))
+									else if ((tracktree.GetTheta(y)>=90)&&(tracktree.GetTheta(y)<110))
 									{
-										FillMissingMass(tracktree,y,j,oldTheta,newTheta,cbring_MM_OA_hm_105_124);
+										FillMissingMass(tracktree,y,j,oldTheta,newTheta,cbring_MM_OA_hm_90_110);
 									}
-									else if ((tracktree.GetCosTheta(y)>=-0.2572)&&(tracktree.GetCosTheta(y)<0.0428))
+									else if ((tracktree.GetTheta(y)>=110)&&(tracktree.GetTheta(y)<130))
 									{
-										FillMissingMass(tracktree,y,j,oldTheta,newTheta,cbring_MM_OA_hm_88_105);
+										FillMissingMass(tracktree,y,j,oldTheta,newTheta,cbring_MM_OA_hm_110_130);
 									}
-									else if ((tracktree.GetCosTheta(y)>=0.0428)&&(tracktree.GetCosTheta(y)<0.3428))
+									else if ((tracktree.GetTheta(y)>=130)&&(tracktree.GetTheta(y)<149))
 									{
-										FillMissingMass(tracktree,y,j,oldTheta,newTheta,cbring_MM_OA_hm_70_88);
+										FillMissingMass(tracktree,y,j,oldTheta,newTheta,cbring_MM_OA_hm_130_149);
 									}
-									else if ((tracktree.GetCosTheta(y)>=0.3428)&&(tracktree.GetCosTheta(y)<0.6428))
-									{
-										FillMissingMass(tracktree,y,j,oldTheta,newTheta,cbring_MM_OA_hm_50_70);
-									}
-									else if ((tracktree.GetCosTheta(y)>=0.6428)&&(tracktree.GetCosTheta(y)<0.9428))
-									{
-										FillMissingMass(tracktree,y,j,oldTheta,newTheta,cbring_MM_OA_hm_19_50);
-									}
-									
 								}	
 							}
-						}				
+						}
+						if(tracktree.GetTheta(pi0tree.GetTrackIndexList(0)[i])<= taps_ring_hi && tracktree.GetTheta(pi0tree.GetTrackIndexList(0)[i])>for_fid_cut_hi)
+						{
+							FillMass(pi0tree,0,j,cbfring_IM);
+							y = (i==0) ? pi0tree.GetTrackIndexList(0)[i+1] : pi0tree.GetTrackIndexList(0)[i-1];
+							if  (myOA_Calculator(CalcMissingP4(tracktree,y,j),rootinotree.Particle(0)) < OA_Angle)
+							{
+								Double_t oldTheta = tracktree.GetTheta(y);
+								Double_t newTheta = ps_thetaNew1(oldTheta, ps_theta0(taggertree.GetTaggedEnergy(j),tracktree.GetVector(y).E()),tracktree.GetVector(y).E());
+								if  (triggertree.GetHelicity() )
+								{
+									FillMissingMass(tracktree,y,j,oldTheta,newTheta,cbfring_MM_hp);
+									if ((tracktree.GetTheta(y)>=70)&&(tracktree.GetTheta(y)<90))
+									{
+										FillMissingMass(tracktree,y,j,oldTheta,newTheta,cbfring_MM_OA_hp_70_90);
+									}
+									else if ((tracktree.GetTheta(y)>=90)&&(tracktree.GetTheta(y)<110))
+									{
+										FillMissingMass(tracktree,y,j,oldTheta,newTheta,cbfring_MM_OA_hp_90_110);
+									}
+									else if ((tracktree.GetTheta(y)>=110)&&(tracktree.GetTheta(y)<130))
+									{
+										FillMissingMass(tracktree,y,j,oldTheta,newTheta,cbfring_MM_OA_hp_110_130);
+									}
+									else if ((tracktree.GetTheta(y)>=130)&&(tracktree.GetTheta(y)<149))
+									{
+										FillMissingMass(tracktree,y,j,oldTheta,newTheta,cbfring_MM_OA_hp_130_149);
+									}												
+								}
+								else if (!triggertree.GetHelicity() ) 													{
+									FillMissingMass(tracktree,y,j,cbring_MM_hm);
+									if ((tracktree.GetTheta(y)>=70)&&(tracktree.GetTheta(y)<90))
+									{
+										FillMissingMass(tracktree,y,j,oldTheta,newTheta,cbfring_MM_OA_hm_70_90);
+									}
+									else if ((tracktree.GetTheta(y)>=90)&&(tracktree.GetTheta(y)<110))
+									{
+										FillMissingMass(tracktree,y,j,oldTheta,newTheta,cbfring_MM_OA_hm_90_110);
+									}
+									else if ((tracktree.GetTheta(y)>=110)&&(tracktree.GetTheta(y)<130))
+									{
+										FillMissingMass(tracktree,y,j,oldTheta,newTheta,cbfring_MM_OA_hm_110_130);
+									}
+									else if ((tracktree.GetTheta(y)>=130)&&(tracktree.GetTheta(y)<149))
+									{
+										FillMissingMass(tracktree,y,j,oldTheta,newTheta,cbfring_MM_OA_hm_130_149);
+									}
+								}	
+							}
+						}					
 					}
 				}
 			}
@@ -334,7 +409,7 @@ void PAR_Compton::Ring_Test_with_ps(const GTreeTrigger& triggertree,const GTreeT
 	}
 }		
 
-void PAR_Compton::Test_Compton(const GTreeTrigger& triggertree,const GTreeTagger& taggertree,const GTreeParticle& rootinotree, const GTreeParticle& photontree,Int_t angle,Int_t en_low, Int_t en_high,GH1* com_MM_hp,GH1* com_MM_hm,GH1* com_MM_OA_hp_124_149,GH1* com_MM_OA_hm_124_149,GH1* com_MM_OA_hp_105_124,GH1* com_MM_OA_hm_105_124,GH1* com_MM_OA_hp_88_105,GH1* com_MM_OA_hm_88_105,GH1* com_MM_OA_hp_70_88,GH1* com_MM_OA_hm_70_88,GH1* com_MM_OA_hp_50_70,GH1* com_MM_OA_hm_50_70,GH1* com_MM_OA_hp_19_50,GH1* com_MM_OA_hm_19_50,GH1* theta_hp,GH1* theta_hm)
+void PAR_Compton::Test_Compton(const GTreeTrigger& triggertree,const GTreeTagger& taggertree,const GTreeParticle& rootinotree, const GTreeParticle& photontree,Int_t angle,Int_t en_low, Int_t en_high,GH1* com_MM_hp,GH1* com_MM_hm,GH1* com_MM_OA_hp_130_149,GH1* com_MM_OA_hm_130_149,GH1* com_MM_OA_hp_110_130,GH1* com_MM_OA_hm_110_130,GH1* com_MM_OA_hp_90_110,GH1* com_MM_OA_hm_90_110,GH1* com_MM_OA_hp_70_90,GH1* com_MM_OA_hm_70_90,GH1* theta_hp,GH1* theta_hm)
 {
 	Double_t Mytime;	
 	if(triggertree.GetNErrors()==0)
@@ -348,7 +423,7 @@ void PAR_Compton::Test_Compton(const GTreeTrigger& triggertree,const GTreeTagger
 					Mytime=GetTagger()->GetTaggedTime(j)-photontree.GetTime(i);	
 					if (triggertree.GetHelicity() ) // now if the helicity is 1
 					{	
-						if ((CalcMissingMass(photontree,0,j)<940)&&(CalcMissingMass(photontree,0,j)>900))
+						if ((CalcMissingMass(photontree,0,j)<970)&&(CalcMissingMass(photontree,0,j)>910))
 						{
 							theta_hp->Fill(photontree.GetTheta(0),Mytime);
 						}
@@ -357,36 +432,29 @@ void PAR_Compton::Test_Compton(const GTreeTrigger& triggertree,const GTreeTagger
 						if  (myOA_Calculator(CalcMissingP4(photontree,i,j),rootinotree.Particle(0))<angle*TMath::Pi()/180)
 						{
 							FillMissingMass(photontree,i,j,com_MM_hp);
-							if ((photontree.GetCosTheta(0)>=-0.8572)&&(photontree.GetCosTheta(0)<-0.5572))
+							if ((photontree.GetTheta(0)>=70)&&(photontree.GetTheta(0)<90))
 							{
-								FillMissingMass(photontree,i,j,com_MM_OA_hp_124_149);
+								FillMissingMass(photontree,i,j,com_MM_OA_hp_70_90);
 							}
-							else if ((photontree.GetCosTheta(0)>=-0.5572)&&(photontree.GetCosTheta(0)<-0.2572))
+							else if ((photontree.GetTheta(0)>=90)&&(photontree.GetTheta(0)<110))
 							{
-								FillMissingMass(photontree,i,j,com_MM_OA_hp_105_124);
+								FillMissingMass(photontree,i,j,com_MM_OA_hp_90_110);
 							}
-							else if ((photontree.GetCosTheta(0)>=-0.2572)&&(photontree.GetCosTheta(0)<0.0428))
+							else if ((photontree.GetTheta(0)>=110)&&(photontree.GetTheta(0)<130))
 							{
-								FillMissingMass(photontree,i,j,com_MM_OA_hp_88_105);
+								FillMissingMass(photontree,i,j,com_MM_OA_hp_110_130);
 							}
-							else if ((photontree.GetCosTheta(0)>=0.0428)&&(photontree.GetCosTheta(0)<0.3428))
+							else if ((photontree.GetTheta(0)>=130)&&(photontree.GetTheta(0)<149))
 							{
-								FillMissingMass(photontree,i,j,com_MM_OA_hp_70_88);
+								FillMissingMass(photontree,i,j,com_MM_OA_hp_130_149);
 							}
-							else if ((photontree.GetCosTheta(0)>=0.3428)&&(photontree.GetCosTheta(0)<0.6428))
-							{
-								FillMissingMass(photontree,i,j,com_MM_OA_hp_50_70);
-							}
-							else if ((photontree.GetCosTheta(0)>=0.6428)&&(photontree.GetCosTheta(0)<0.9428))
-							{
-								FillMissingMass(photontree,i,j,com_MM_OA_hp_19_50);
-							}
+
 													
 						}		
 					}
 					else if (!triggertree.GetHelicity() ) // now if the helicity is 0
 					{
-						if ((CalcMissingMass(photontree,0,j)<940)&&(CalcMissingMass(photontree,0,j)>900))
+						if ((CalcMissingMass(photontree,0,j)<970)&&(CalcMissingMass(photontree,0,j)>910))
 						{
 							theta_hm->Fill(photontree.GetTheta(0),Mytime);
 						}
@@ -395,29 +463,21 @@ void PAR_Compton::Test_Compton(const GTreeTrigger& triggertree,const GTreeTagger
 						if  (myOA_Calculator(CalcMissingP4(photontree,i,j),rootinotree.Particle(0))<angle*TMath::Pi()/180)
 						{
 							FillMissingMass(photontree,i,j,com_MM_hm);
-							if ((photontree.GetCosTheta(0)>=-0.8572)&&(photontree.GetCosTheta(0)<-0.5572))
+							if ((photontree.GetTheta(0)>=70)&&(photontree.GetTheta(0)<90))
 							{
-								FillMissingMass(photontree,i,j,com_MM_OA_hm_124_149);
+								FillMissingMass(photontree,i,j,com_MM_OA_hm_70_90);
 							}
-							else if ((photontree.GetCosTheta(0)>=-0.5572)&&(photontree.GetCosTheta(0)<-0.2572))
+							else if ((photontree.GetTheta(0)>=90)&&(photontree.GetTheta(0)<110))
 							{
-								FillMissingMass(photontree,i,j,com_MM_OA_hm_105_124);
+								FillMissingMass(photontree,i,j,com_MM_OA_hm_90_110);
 							}
-							else if ((photontree.GetCosTheta(0)>=-0.2572)&&(photontree.GetCosTheta(0)<0.0428))
+							else if ((photontree.GetTheta(0)>=110)&&(photontree.GetTheta(0)<130))
 							{
-								FillMissingMass(photontree,i,j,com_MM_OA_hm_88_105);
+								FillMissingMass(photontree,i,j,com_MM_OA_hm_110_130);
 							}
-							else if ((photontree.GetCosTheta(0)>=0.0428)&&(photontree.GetCosTheta(0)<0.3428))
+							else if ((photontree.GetTheta(0)>=130)&&(photontree.GetTheta(0)<149))
 							{
-								FillMissingMass(photontree,i,j,com_MM_OA_hm_70_88);
-							}
-							else if ((photontree.GetCosTheta(0)>=0.3428)&&(photontree.GetCosTheta(0)<0.6428))
-							{
-								FillMissingMass(photontree,i,j,com_MM_OA_hm_50_70);
-							}
-							else if ((photontree.GetCosTheta(0)>=0.6428)&&(photontree.GetCosTheta(0)<0.9428))
-							{
-								FillMissingMass(photontree,i,j,com_MM_OA_hm_19_50);
+								FillMissingMass(photontree,i,j,com_MM_OA_hm_130_149);
 							}
 									
 
@@ -614,12 +674,12 @@ void	PAR_Compton::ProcessEvent()
         }
 
     }***/
-	//Test_Compton(*GetTrigger(),*GetTagger(),*GetRootinos(),*GetPhotons(),15,285,305,Com_MM_hp,Com_MM_hm,Com_MM_OA_hp_124_149,Com_MM_OA_hm_124_149,Com_MM_OA_hp_105_124,Com_MM_OA_hm_105_124,Com_MM_OA_hp_88_105,Com_MM_OA_hm_88_105,Com_MM_OA_hp_70_88,Com_MM_OA_hm_70_88,Com_MM_OA_hp_50_70,Com_MM_OA_hm_50_70,Com_MM_OA_hp_19_50,Com_MM_OA_hm_19_50,Theta_hp,Theta_hm);	
-	//Ring_Test(*GetTrigger(),*GetTagger(),*GetRootinos(),*GetPhotons(),*GetNeutralPions(),*GetTracks(),285,305,15,CBRing_MM_hp,CBRing_MM_hm,CBRing_MM_OA_hp_124_149,CBRing_MM_OA_hm_124_149,CBRing_MM_OA_hp_105_124,CBRing_MM_OA_hm_105_124,CBRing_MM_OA_hp_88_105,CBRing_MM_OA_hm_88_105,CBRing_MM_OA_hp_70_88,CBRing_MM_OA_hm_70_88,CBRing_MM_OA_hp_50_70,CBRing_MM_OA_hm_50_70,CBRing_MM_OA_hp_19_50,CBRing_MM_OA_hm_19_50,CBRing_IM);
-	//Ring_Test_with_ps(*GetTrigger(),*GetTagger(),*GetRootinos(),*GetPhotons(),*GetNeutralPions(),*GetTracks(),285,305,15,CBRing_MM_hp,CBRing_MM_hm,CBRing_MM_OA_hp_124_149,CBRing_MM_OA_hm_124_149,CBRing_MM_OA_hp_105_124,CBRing_MM_OA_hm_105_124,CBRing_MM_OA_hp_88_105,CBRing_MM_OA_hm_88_105,CBRing_MM_OA_hp_70_88,CBRing_MM_OA_hm_70_88,CBRing_MM_OA_hp_50_70,CBRing_MM_OA_hm_50_70,CBRing_MM_OA_hp_19_50,CBRing_MM_OA_hm_19_50,CBRing_IM);
+	Test_Compton(*GetTrigger(),*GetTagger(),*GetRootinos(),*GetPhotons(),15,285,305,Com_MM_hp,Com_MM_hm,Com_MM_OA_hp_130_149,Com_MM_OA_hm_130_149,Com_MM_OA_hp_110_130,Com_MM_OA_hm_110_130,Com_MM_OA_hp_90_110,Com_MM_OA_hm_90_110,Com_MM_OA_hp_70_90,Com_MM_OA_hm_70_90,Theta_hp,Theta_hm);	
+	//Ring_Test(*GetTrigger(),*GetTagger(),*GetRootinos(),*GetPhotons(),*GetNeutralPions(),*GetTracks(),285,305,15,CBRing_MM_hp,CBRing_MM_hm,CBRing_MM_OA_hp_130_149,CBRing_MM_OA_hm_130_149,CBRing_MM_OA_hp_110_130,CBRing_MM_OA_hm_110_130,CBRing_MM_OA_hp_90_110,CBRing_MM_OA_hm_90_110,CBRing_MM_OA_hp_70_90,CBRing_MM_OA_hm_70_90,CBRing_IM,CBFRing_MM_hp,CBFRing_MM_hm,CBFRing_MM_OA_hp_130_149,CBFRing_MM_OA_hm_130_149,CBFRing_MM_OA_hp_110_130,CBFRing_MM_OA_hm_110_130,CBFRing_MM_OA_hp_90_110,CBFRing_MM_OA_hm_90_110,CBFRing_MM_OA_hp_70_90,CBFRing_MM_OA_hm_70_90,CBFRing_IM);
+	Ring_Test_with_ps(*GetTrigger(),*GetTagger(),*GetRootinos(),*GetPhotons(),*GetNeutralPions(),*GetTracks(),285,305,15,CBRing_MM_hp,CBRing_MM_hm,CBRing_MM_OA_hp_130_149,CBRing_MM_OA_hm_130_149,CBRing_MM_OA_hp_110_130,CBRing_MM_OA_hm_110_130,CBRing_MM_OA_hp_90_110,CBRing_MM_OA_hm_90_110,CBRing_MM_OA_hp_70_90,CBRing_MM_OA_hm_70_90,CBRing_IM,CBFRing_MM_hp,CBFRing_MM_hm,CBFRing_MM_OA_hp_130_149,CBFRing_MM_OA_hm_130_149,CBFRing_MM_OA_hp_110_130,CBFRing_MM_OA_hm_110_130,CBFRing_MM_OA_hp_90_110,CBFRing_MM_OA_hm_90_110,CBFRing_MM_OA_hp_70_90,CBFRing_MM_OA_hm_70_90,CBFRing_IM);
 	//Find_Holes(*GetNeutralPions(),*GetTracks(),*GetTagger(),*GetDetectorHits(),285,305,CosTheta_Phi,CosTheta_Phi_MM, Pi0_IM);
 	//Check_CB_Elements(*GetNeutralPions(),*GetTracks(),*GetTagger(),*GetDetectorHits(),285,305);
-	
+	/*** MC settings
 	TFile *f = new TFile("eff.root");
 	TH2F* LookUp = (TH2F*)f->Get("rootino_eff");
 	MC_Pi0_background(*GetTrigger(),*GetTagger(),*GetRootinos(),*GetPhotons(),*GetGeant(),15,285,315,Com_MM_hp,Com_MM_hp2,Com_MM_hm,LookUp);
@@ -627,7 +687,7 @@ void	PAR_Compton::ProcessEvent()
 
 	//Find_Holes_MC(*GetNeutralPions(),*GetTagger(),*GetTracks(),205,305,CosTheta_Phi);//,CosTheta_Phi_MM, Pi0_IM);
 
-	f->Close();
+	f->Close();***/
 }
 
 void	PAR_Compton::ProcessScalerRead()
