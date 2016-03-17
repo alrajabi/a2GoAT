@@ -278,13 +278,8 @@ void PAR_Class::Eff(const GTreeParticle& rootinotree,const GTreeMeson& pi0tree, 
 void PAR_Class::Eff_rev(const GTreeParticle& rootinotree,const GTreeMeson& pi0tree,const GTreeTagger& taggertree,const GTreeTrigger& triggertree, Float_t angle,Int_t en_low, Int_t en_high,GH2* denom_hp,GH2* ncoa_hp,GH2* denom_hm,GH2* ncoa_hm,GH1* mgg_all_theta, GH1* test_denom,GH1* test_num)
 {
 	Double_t Mytime;
-	Float_t E_k=0;
-	Float_t Th;	
-	//Int_t theta0; 
-	//Int_t theta1;
-	//for (theta0 = 19; theta0<=153; theta0 = theta0+2)
-	//{
-	//	theta1 = theta0 + 2;	
+	Float_t E_k;
+	Float_t Th;		
 		for (Int_t j = 0; j < GetTagger()->GetNTagged(); j++)
 		{
 			//cout << Th << "  was theta" << endl;	
@@ -292,20 +287,22 @@ void PAR_Class::Eff_rev(const GTreeParticle& rootinotree,const GTreeMeson& pi0tr
 			{
         			if ((pi0tree.GetNSubParticles(0) == 2) && (pi0tree.GetNSubPhotons(0) == 2))
        				{	
-					Th = CalcMissingP4(pi0tree,0,j).Theta()*180/TMath::Pi();
+
 				//MM_b4_cut->Fill(CalcMissingMass(pi0tree, 0,j));	//Not done now for saving time.
 					if (CalcMissingMass(pi0tree,0,j)<970 && CalcMissingMass(pi0tree,0,j)>910)//Select events based on MissMass.	
 					{
+						Th = CalcMissingP4(pi0tree,0,j).Theta()*TMath::RadToDeg();
 						Mytime=GetTagger()->GetTaggedTime(j)-pi0tree.GetTime(0);	
 						E_k = CalcMissingEnergy(pi0tree,0,j)-CalcMissingMass(pi0tree, 0,j);
 						FillMass(pi0tree,0,j,mgg_all_theta);
-						if((CalcMissingP4(pi0tree,0,j).Theta()>30*TMath::Pi()/180) && (CalcMissingP4(pi0tree,0,j).Theta()<35*TMath::Pi()/180))
+						if((CalcMissingP4(pi0tree,0,j).Theta()>30*TMath::DegToRad()) && (CalcMissingP4(pi0tree,0,j).Theta()<35*TMath::DegToRad()))
 						{
 							test_denom->Fill(E_k,Mytime);
 							if (rootinotree.GetNParticles()==1)
 							{
-								if (myOA_Calculator(CalcMissingP4(pi0tree,0,j),rootinotree.Particle(0))<angle*TMath::Pi()/180)
+								if (myOA_Calculator(CalcMissingP4(pi0tree,0,j),rootinotree.Particle(0))<angle*TMath::DegToRad())
 								{
+									//cout << myOA_Calculator(CalcMissingP4(pi0tree,0,j),rootinotree.Particle(0))*TMath::RadToDeg() << "   is angle between two vectors" <<endl;	
 									test_num->Fill(E_k,Mytime);
 								}
 							}
@@ -317,7 +314,7 @@ void PAR_Class::Eff_rev(const GTreeParticle& rootinotree,const GTreeMeson& pi0tr
 
 							if (rootinotree.GetNParticles()==1)
 							{
-								if (myOA_Calculator(CalcMissingP4(pi0tree,0,j),rootinotree.Particle(0))<angle*TMath::Pi()/180)
+								if (myOA_Calculator(CalcMissingP4(pi0tree,0,j),rootinotree.Particle(0))<angle*TMath::DegToRad())
 								{
 									ncoa_hp->Fill(E_k,Th,Mytime);
 								}
@@ -330,7 +327,7 @@ void PAR_Class::Eff_rev(const GTreeParticle& rootinotree,const GTreeMeson& pi0tr
 
 							if (rootinotree.GetNParticles() ==1)
 							{
-								if (myOA_Calculator(CalcMissingP4(pi0tree,0,j),rootinotree.Particle(0))<angle*TMath::Pi()/180)
+								if (myOA_Calculator(CalcMissingP4(pi0tree,0,j),rootinotree.Particle(0))<angle*TMath::DegToRad())
 								{
 									ncoa_hm->Fill(E_k,Th,Mytime);
 									
@@ -664,7 +661,7 @@ void	PAR_Class::ProcessEvent()
     }***/
 	//Eff(*GetRootinos(),*GetNeutralPions(), 50,55, 15, incDenom,Denom,NCharged,NChargedOA,Mgg_all_theta,Mgg_0, Mgg_10, Mgg_20, Mgg_30,Mgg_40, Mgg_50, Mgg_60, Mgg_70, Mgg_80, Mgg_90, Mgg_100, Mgg_110, Mgg_120, Mgg_130);
        // Pi0_Asym(*GetTrigger(),*GetTagger(),*GetNeutralPions(),235,245,Theta_hp,Theta_hm,Mgg_hp_0,Mgg_hm_0, Mgg_hp_10,Mgg_hm_10, Mgg_hp_20,Mgg_hm_20,Mgg_hp_30,Mgg_hm_30,Mgg_hp_40,Mgg_hm_40,Mgg_hp_50,Mgg_hm_50,Mgg_hp_60,Mgg_hm_60, Mgg_hp_70,Mgg_hm_70,Mgg_hp_80,Mgg_hm_80, Mgg_hp_90,Mgg_hm_90,Mgg_hp_100,Mgg_hm_100,Mgg_hp_110,Mgg_hm_110,Mgg_hp_120,Mgg_hm_120,Mgg_hp_130,Mgg_hm_130,Mgg_hp_140,Mgg_hm_140, Mgg_hp_150,Mgg_hm_150,Mgg_hp_160,Mgg_hm_160,Mgg_hp_170,Mgg_hm_170);
-	Eff_rev(*GetRootinos(),*GetNeutralPions(),*GetTagger(),*GetTrigger(),15,285,305,Denom_hp,NChargedOA_hp,Denom_hm,NChargedOA_hm,Mgg_all_theta,Test_denom,Test_num);
+	Eff_rev(*GetRootinos(),*GetNeutralPions(),*GetTagger(),*GetTrigger(),15,305,325,Denom_hp,NChargedOA_hp,Denom_hm,NChargedOA_hm,Mgg_all_theta,Test_denom,Test_num);
 	//Carbon_SF(*GetTrigger(),*GetTagger(),*GetNeutralPions(),285,305,Theta_hp,Theta_hm,Pi0_MM_hp,Pi0_MM_hm,Pi0_MM_hp_19_36,Pi0_MM_hm_19_36,Pi0_MM_hp_36_53,Pi0_MM_hm_36_53,Pi0_MM_hp_53_70,Pi0_MM_hm_53_70,Pi0_MM_hp_70_87,Pi0_MM_hm_70_87,Pi0_MM_hp_87_104,Pi0_MM_hm_87_104,Pi0_MM_hp_104_121,Pi0_MM_hm_104_121,Pi0_MM_hp_121_138,Pi0_MM_hm_121_138,Pi0_MM_hp_138_155,Pi0_MM_hm_138_155);
 
 }
