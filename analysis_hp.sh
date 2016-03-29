@@ -62,29 +62,31 @@ elif [ "$1" = "$S8" ];then
 	fi	
 elif [ "$1" = "$S1" ];then
 	if [ "$2" = "$S6" ];then
-		mv ~/results/Pi0_GoAT_Output/Butanol/oneH/1/*.root /media/al/myPassport/Pi0_GoAT_Output/Butanol/1
-		mv ~/results/Pi0_GoAT_Output/Butanol/oneH/2/*.root /media/al/myPassport/Pi0_GoAT_Output/Butanol/2
-		mv ~/results/Pi0_GoAT_Output/Butanol/oneH/3/*.root /media/al/myPassport/Pi0_GoAT_Output/Butanol/3
-		mv ~/results//Pi0_GoAT_Output/Butanol/zeroH/4/*.root /media/al/myPassport/Pi0_GoAT_Output/Butanol/4
-		mv ~/results//Pi0_GoAT_Output/Carbon/archive/1/*.root /media/al/myPassport/Pi0_GoAT_Output/Carbon/1
-		mv ~/results//Pi0_GoAT_Output/Carbon/archive/2/*.root /media/al/myPassport/Pi0_GoAT_Output/Carbon/2
-		mv ~/results/Pi0_GoAT_Output/Carbon/archive/3/*.root /media/al/myPassport/Pi0_GoAT_Output/Carbon/3
-		mv ~/results/Pi0_GoAT_Output/Carbon/archive/4/*.root /media/al/myPassport/Pi0_GoAT_Output/Carbon/4
+		mv ~/results/Pi0_GoAT_Output/Butanol/oneH/1/*.root ~/results/Pi0_GoAT_Output/Butanol/1
+		mv ~/results/Pi0_GoAT_Output/Butanol/oneH/2/*.root ~/results/Pi0_GoAT_Output/Butanol/2
+		mv ~/results/Pi0_GoAT_Output/Butanol/oneH/3/*.root ~/results/Pi0_GoAT_Output/Butanol/3
+		mv ~/results/Pi0_GoAT_Output/Butanol/zeroH/4/*.root ~/results/Pi0_GoAT_Output/Butanol/4
+		mv ~/results/Pi0_GoAT_Output/Carbon/archive/1/*.root ~/results/Pi0_GoAT_Output/Carbon/1
+		mv ~/results/Pi0_GoAT_Output/Carbon/archive/2/*.root ~/results/Pi0_GoAT_Output/Carbon/2
+		mv ~/results/Pi0_GoAT_Output/Carbon/archive/3/*.root ~/results/Pi0_GoAT_Output/Carbon/3
+		mv ~/results/Pi0_GoAT_Output/Carbon/archive/4/*.root ~/results/Pi0_GoAT_Output/Carbon/4
 		rm ~/results/AR_Pi0_Output/Butanol/oneH/*.root
 		rm ~/results/AR_Pi0_Output/Butanol/zeroH/*.root
-		rm ~/results//AR_Pi0_Output/Carbon/*.root
+		rm ~/results/AR_Pi0_Output/Carbon/*.root
 	elif [ "$2" = "$S7" ];then
-		mv /media/al/myPassport/Compton_GoAT_Output/Butanol/1/archive/*.root /media/al/myPassport/Compton_GoAT_Output/Butanol/1
-		mv /media/al/myPassport/Compton_GoAT_Output/Butanol/2/archive/*.root /media/al/myPassport/Compton_GoAT_Output/Butanol/2
-		mv /media/al/myPassport/Compton_GoAT_Output/Butanol/3/archive/*.root /media/al/myPassport/Compton_GoAT_Output/Butanol/3
-		mv /media/al/myPassport/Compton_GoAT_Output/Butanol/4/archive/*.root /media/al/myPassport/Compton_GoAT_Output/Butanol/4
-		mv /media/al/myPassport/Compton_GoAT_Output/Carbon/1/archive/*.root /media/al/myPassport/Compton_GoAT_Output/Carbon/1
-		mv /media/al/myPassport/Compton_GoAT_Output/Carbon/2/archive/*.root /media/al/myPassport/Compton_GoAT_Output/Carbon/2
-		mv /media/al/myPassport/Compton_GoAT_Output/Carbon/3/archive/*.root /media/al/myPassport/Compton_GoAT_Output/Carbon/3
-		mv /media/al/myPassport/Compton_GoAT_Output/Carbon/4/archive/*.root /media/al/myPassport/Compton_GoAT_Output/Carbon/4
-		rm /media/al/myPassport/AR_Compton_Output/Butanol/oneH/*.root
-		rm /media/al/myPassport/AR_Compton_Output/Butanol/zeroH/*.root
-		rm /media/al/myPassport/AR_Compton_Output/Carbon/*.root
+		mv ~/usb/2015_bin/compton/Butanol/1/archive/*.root ~/usb/2015_bin/compton/Butanol/1
+		mv ~/usb/2015_bin/compton/Butanol/2/archive/*.root ~/usb/2015_bin/compton/Butanol/2
+		mv ~/usb/2015_bin/compton/Butanol/3/archive/*.root ~/usb/2015_bin/compton/Butanol/3
+		mv ~/usb/2015_bin/compton/Butanol/4/archive/*.root ~/usb/2015_bin/compton/Butanol/4
+		mv ~/usb/2015_bin/compton/Butanol/5/archive/*.root ~/usb/2015_bin/compton/Butanol/5
+                mv ~/usb/2015_bin/compton/Butanol/6/archive/*.root ~/usb/2015_bin/compton/Butanol/6
+		mv ~/results/Compton_GoAT_Output/Carbon/1/archive/*.root ~/results/Compton_GoAT_Output/Carbon/1
+		mv ~/results/Compton_GoAT_Output/Carbon/2/archive/*.root ~/results/Compton_GoAT_Output/Carbon/2
+		mv ~/results/Compton_GoAT_Output/Carbon/3/archive/*.root ~/results/Compton_GoAT_Output/Carbon/3
+		mv ~/results/Compton_GoAT_Output/Carbon/4/archive/*.root ~/results/Compton_GoAT_Output/Carbon/4
+		rm /dev/extra/oneH/*.root
+		rm /dev/extra/zeroH/*.root
+		rm /dev/extra/Carbon/*.root
 	else 
 		echo "Sorry you picked wrong options"
 	fi		
@@ -92,27 +94,29 @@ elif [ "$1" = "$S1" ];then
 elif [ "$1" = "$S2" ];then
 	if [ "$2" = "$S6" ];then
 		if [ "$3" = "$S5" ];then	
-			./runMyClass.sh /media/al/myPassport/Pi0_GoAT_Output/Butanol/1 /media/al/myPassport/AR_Pi0_Output/Butanol/oneH /media/al/myPassport/Pi0_GoAT_Output/Butanol/oneH/1 AR_Class& 
-                        ./runMyClass.sh /media/al/myPassport/Pi0_GoAT_Output/Butanol/2 /media/al/myPassport/AR_Pi0_Output/Butanol/oneH /media/al/myPassport/Pi0_GoAT_Output/Butanol/oneH/2 AR_Class& 
-                        ./runMyClass.sh /media/al/myPassport/Pi0_GoAT_Output/Butanol/3 /media/al/myPassport/AR_Pi0_Output/Butanol/oneH /media/al/myPassport/Pi0_GoAT_Output/Butanol/oneH/3 AR_Class& 
-                        ./runMyClass.sh /media/al/myPassport/Pi0_GoAT_Output/Butanol/4 /media/al/myPassport/AR_Pi0_Output/Butanol/zeroH /media/al/myPassport/Pi0_GoAT_Output/Butanol/zeroH/4 AR_Class&
+			./runMyClass.sh ~/results/Pi0_GoAT_Output/Butanol/1 /dev/extra/Butanol/zeroH ~/results/Pi0_GoAT_Output/Butanol/1/archive AR_Class& 
+                        ./runMyClass.sh ~/results/Pi0_GoAT_Output/Butanol/2 /dev/extra/Butanol/zeroH ~/results/Pi0_GoAT_Output/Butanol/2/archive AR_Class& 
+                        ./runMyClass.sh ~/results/Pi0_GoAT_Output/Butanol/3 /dev/extra/Butanol/zeroH ~/results/Pi0_GoAT_Output/Butanol/3/archive AR_Class& 
+                        ./runMyClass.sh ~/results/Pi0_GoAT_Output/Butanol/4 /dev/extra/Butanol/zeroH ~/results/Pi0_GoAT_Output/Butanol/4/archive AR_Class&
 		elif [ "$3" = "$S4" ];then
-			./runMyClass.sh /media/al/myPassport/Pi0_GoAT_Output/Carbon/1 /media/al/myPassport/AR_Pi0_Output/Carbon /media/al/myPassport/Pi0_GoAT_Output/Carbon/1/archive AR_Class&
-			./runMyClass.sh /media/al/myPassport/Pi0_GoAT_Output/Carbon/2 /media/al/myPassport/AR_Pi0_Output/Carbon /media/al/myPassport/Pi0_GoAT_Output/Carbon/2/archive AR_Class&
-                        ./runMyClass.sh /media/al/myPassport/Pi0_GoAT_Output/Carbon/3 /media/al/myPassport/AR_Pi0_Output/Carbon /media/al/myPassport/Pi0_GoAT_Output/Carbon/3/archive AR_Class&
-                        ./runMyClass.sh /media/al/myPassport/Pi0_GoAT_Output/Carbon/4 /media/al/myPassport/AR_Pi0_Output/Carbon /media/al/myPassport/Pi0_GoAT_Output/Carbon/4/archive AR_Class&         
+			./runMyClass.sh ~/results/Pi0_GoAT_Output/Carbon/1 ~/results/AR_Pi0_Output/Carbon ~/results/Pi0_GoAT_Output/Carbon/1/archive AR_Class&
+			./runMyClass.sh ~/results/Pi0_GoAT_Output/Carbon/2 ~/results/AR_Pi0_Output/Carbon ~/results/Pi0_GoAT_Output/Carbon/2/archive AR_Class&
+                        ./runMyClass.sh ~/results/Pi0_GoAT_Output/Carbon/3 ~/results/AR_Pi0_Output/Carbon ~/results/Pi0_GoAT_Output/Carbon/3/archive AR_Class&
+                        ./runMyClass.sh ~/results/Pi0_GoAT_Output/Carbon/4 ~/results/AR_Pi0_Output/Carbon ~/results/Pi0_GoAT_Output/Carbon/4/archive AR_Class&         
 		fi
 	elif [ "$2" = "$S7" ];then
 		if [ "$3" = "$S5" ];then	
-			./runMyClass.sh /media/al/myPassport/Compton_GoAT_Output/Butanol/1 /media/al/myPassport/AR_Compton_Output/Butanol/oneH /media/al/myPassport/Compton_GoAT_Output/Butanol/1/archive AR_Compton& 
-                        ./runMyClass.sh /media/al/myPassport/Compton_GoAT_Output/Butanol/2 /media/al/myPassport/AR_Compton_Output/Butanol/oneH /media/al/myPassport/Compton_GoAT_Output/Butanol/2/archive AR_Compton& 
-                        ./runMyClass.sh /media/al/myPassport/Compton_GoAT_Output/Butanol/3 /media/al/myPassport/AR_Compton_Output/Butanol/oneH /media/al/myPassport/Compton_GoAT_Output/Butanol/3/archive AR_Compton& 
-                        ./runMyClass.sh /media/al/myPassport/Compton_GoAT_Output/Butanol/4 /media/al/myPassport/AR_Compton_Output/Butanol/zeroH /media/al/myPassport/Compton_GoAT_Output/Butanol/4/archive AR_Compton&
+			./runMyClass.sh ~/usb/2015_bin/compton/Butanol/1 /dev/extra/Butanol/oneH ~/usb/2015_bin/compton/Butanol/1/archive AR_Compton& 
+                        ./runMyClass.sh ~/usb/2015_bin/compton/Butanol/2 /dev/extra/Butanol/oneH ~/usb/2015_bin/compton/Butanol/2/archive AR_Compton& 
+                        ./runMyClass.sh ~/usb/2015_bin/compton/Butanol/3 /dev/extra/Butanol/oneH ~/usb/2015_bin/compton/Butanol/3/archive AR_Compton& 
+                        #./runMyClass.sh ~/usb/2015_bin/compton/Butanol/4 /dev/extra/Butanol/zeroH ~/usb/2015_bin/compton/Butanol/4/archive AR_Compton&
+			#./runMyClass.sh ~/usb/2015_bin/compton/Butanol/5 /dev/extra/Butanol/zeroH ~/usb/2015_bin/compton/Butanol/5/archive AR_Compton &
+                        #./runMyClass.sh ~/usb/2015_bin/compton/Butanol/6 /dev/extra/Butanol/zeroH ~/usb/2015_bin/compton/Butanol/6/archive AR_Compton &
 		elif [ "$3" = "$S4" ];then
-			./runMyClass.sh /media/al/myPassport/Compton_GoAT_Output/Carbon/1 /media/al/myPassport/AR_Compton_Output/Carbon /media/al/myPassport/Compton_GoAT_Output/Carbon/1/archive AR_Compton&
-			./runMyClass.sh /media/al/myPassport/Compton_GoAT_Output/Carbon/2 /media/al/myPassport/AR_Compton_Output/Carbon /media/al/myPassport/Compton_GoAT_Output/Carbon/2/archive AR_Compton&
-                        ./runMyClass.sh /media/al/myPassport/Compton_GoAT_Output/Carbon/3 /media/al/myPassport/AR_Compton_Output/Carbon /media/al/myPassport/Compton_GoAT_Output/Carbon/3/archive AR_Compton&
-                        ./runMyClass.sh /media/al/myPassport/Compton_GoAT_Output/Carbon/4 /media/al/myPassport/AR_Compton_Output/Carbon /media/al/myPassport/Compton_GoAT_Output/Carbon/4/archive AR_Compton&         
+			./runMyClass.sh ~/results/Compton_GoAT_Output/Carbon/1 ~/results/AR_Compton_Output/Carbon ~/results/Compton_GoAT_Output/Carbon/1/archive AR_Compton&
+			./runMyClass.sh ~/results/Compton_GoAT_Output/Carbon/2 ~/results/AR_Compton_Output/Carbon ~/results/Compton_GoAT_Output/Carbon/2/archive AR_Compton&
+                        ./runMyClass.sh ~/results/Compton_GoAT_Output/Carbon/3 ~/results/AR_Compton_Output/Carbon ~/results/Compton_GoAT_Output/Carbon/3/archive AR_Compton&
+                        ./runMyClass.sh ~/results/Compton_GoAT_Output/Carbon/4 ~/results/AR_Compton_Output/Carbon ~/results/Compton_GoAT_Output/Carbon/4/archive AR_Compton&         
 		fi
 	else 
 		echo "Sorry you picked wrong options"
@@ -121,27 +125,35 @@ elif [ "$1" = "$S2" ];then
 elif [ "$1" = "$S3" ];then
 	if [ "$2" = "$S6" ];then
 		if [ "$3" = "$S4" ];then
-			./runGoat.sh /media/al/750gb/CarbonOutput/1 /media/al/myPassport/Pi0_GoAT_Output/Carbon/1 /media/al/750gb/CarbonOutput/archive/1 GoAT-Pi0.dat &
-			./runGoat.sh /media/al/750gb/CarbonOutput/2 /media/al/myPassport/Pi0_GoAT_Output/Carbon/2 /media/al/750gb/CarbonOutput/archive/2 GoAT-Pi0.dat &
-              	        ./runGoat.sh /media/al/750gb/CarbonOutput/3 /media/al/myPassport/Pi0_GoAT_Output/Carbon/3 /media/al/750gb/CarbonOutput/archive/3 GoAT-Pi0.dat &
-                	./runGoat.sh /media/al/750gb/CarbonOutput/4 /media/al/myPassport/Pi0_GoAT_Output/Carbon/4 /media/al/750gb/CarbonOutput/archive/4 GoAT-Pi0.dat &
+			./runGoat.sh /media/al/750gb/CarbonOutput/1 ~/results/Pi0_GoAT_Output/Carbon/1 /media/al/750gb/CarbonOutput/archive/1 GoAT-Pi0.dat &
+			./runGoat.sh /media/al/750gb/CarbonOutput/2 ~/results/Pi0_GoAT_Output/Carbon/2 /media/al/750gb/CarbonOutput/archive/2 GoAT-Pi0.dat &
+              	        ./runGoat.sh /media/al/750gb/CarbonOutput/3 ~/results/Pi0_GoAT_Output/Carbon/3 /media/al/750gb/CarbonOutput/archive/3 GoAT-Pi0.dat &
+                	./runGoat.sh /media/al/750gb/CarbonOutput/4 ~/results/Pi0_GoAT_Output/Carbon/4 /media/al/750gb/CarbonOutput/archive/4 GoAT-Pi0.dat &
 		elif [ "$3" = "$S5" ];then
-			./runGoat.sh /media/al/MainzBackup/Butanol2014/AcquOutput/split1 /media/al/myPassport/Pi0_GoAT_Output/Butanol/1 /media/al/MainzBackup/Butanol2014/AcquOutput/split1/archive GoAT-Pi0.dat &
-                	./runGoat.sh /media/al/MainzBackup/Butanol2014/AcquOutput/split2 /media/al/myPassport/Pi0_GoAT_Output/Butanol/2 /media/al/MainzBackup/Butanol2014/AcquOutput/split2/archive GoAT-Pi0.dat &
-                	./runGoat.sh /media/al/MainzBackup/Butanol2014/AcquOutput/split3 /media/al/myPassport/Pi0_GoAT_Output/Butanol/3 /media/al/MainzBackup/Butanol2014/AcquOutput/split3/archive GoAT-Pi0.dat &
-                	./runGoat.sh /media/al/MainzBackup/Butanol2014/AcquOutput/split4 /media/al/myPassport/Pi0_GoAT_Output/Butanol/4 /media/al/MainzBackup/Butanol2014/AcquOutput/split4/archive GoAT-Pi0.dat &
+			#./runGoat.sh ~/Acqu_output/archive ~/usb/2015_bin/pi0 ~/Acqu_output/archive/archive GoAT-Pi0.dat &
+			./runGoat.sh ~/Acqu_output/archive/1 ~/results/Pi0_GoAT_Output ~/Acqu_output/archive/archive GoAT-Pi0.dat &
+                        ./runGoat.sh ~/Acqu_output/archive/2 ~/results/Pi0_GoAT_Output ~/Acqu_output/archive/archive GoAT-Pi0.dat &
+                        ./runGoat.sh ~/Acqu_output/archive/3 ~/results/Pi0_GoAT_Output ~/Acqu_output/archive/archive GoAT-Pi0.dat &
+                        ./runGoat.sh ~/Acqu_output/archive/4 ~/results/Pi0_GoAT_Output ~/Acqu_output/archive/archive GoAT-Pi0.dat &
+                	#./runGoat.sh /media/al/MainzBackup/Butanol2014/AcquOutput/split2 ~/results/Pi0_GoAT_Output/Butanol/2 /media/al/MainzBackup/Butanol2014/AcquOutput/split2/archive GoAT-Pi0.dat &
+                	#./runGoat.sh /media/al/MainzBackup/Butanol2014/AcquOutput/split3 ~/results/Pi0_GoAT_Output/Butanol/3 /media/al/MainzBackup/Butanol2014/AcquOutput/split3/archive GoAT-Pi0.dat &
+                	#./runGoat.sh /media/al/MainzBackup/Butanol2014/AcquOutput/split4 ~/results/Pi0_GoAT_Output/Butanol/4 /media/al/MainzBackup/Butanol2014/AcquOutput/split4/archive GoAT-Pi0.dat &
 		fi
 	elif [ "$2" = "$S7" ];then
 		if [ "$3" = "$S4" ];then
-			./runGoat.sh /media/al/750gb/CarbonOutput/1 /media/al/myPassport/Compton_GoAT_Output/Carbon/1 /media/al/750gb/CarbonOutput/archive/1 GoAT-Compton.dat &
-			./runGoat.sh /media/al/750gb/CarbonOutput/2 /media/al/myPassport/Compton_GoAT_Output/Carbon/2 /media/al/750gb/CarbonOutput/archive/2 GoAT-Compton.dat &
-              	        ./runGoat.sh /media/al/750gb/CarbonOutput/3 /media/al/myPassport/Compton_GoAT_Output/Carbon/3 /media/al/750gb/CarbonOutput/archive/3 GoAT-Compton.dat &
-                	./runGoat.sh /media/al/750gb/CarbonOutput/4 /media/al/myPassport/Compton_GoAT_Output/Carbon/4 /media/al/750gb/CarbonOutput/archive/4 GoAT-Compton.dat &
+			./runGoat.sh /media/al/750gb/CarbonOutput/1 ~/results/Compton_GoAT_Output/Carbon/1 /media/al/750gb/CarbonOutput/archive/1 GoAT-Compton.dat &
+			./runGoat.sh /media/al/750gb/CarbonOutput/2 ~/results/Compton_GoAT_Output/Carbon/2 /media/al/750gb/CarbonOutput/archive/2 GoAT-Compton.dat &
+              	        ./runGoat.sh /media/al/750gb/CarbonOutput/3 ~/results/Compton_GoAT_Output/Carbon/3 /media/al/750gb/CarbonOutput/archive/3 GoAT-Compton.dat &
+                	./runGoat.sh /media/al/750gb/CarbonOutput/4 ~/results/Compton_GoAT_Output/Carbon/4 /media/al/750gb/CarbonOutput/archive/4 GoAT-Compton.dat &
 		elif [ "$3" = "$S5" ];then
-			./runGoat.sh /media/al/MainzBackup/Butanol2014/AcquOutput/split1 /media/al/myPassport/Compton_GoAT_Output/Butanol/1 /media/al/MainzBackup/Butanol2014/AcquOutput/split1/archive GoAT-Compton.dat &
-			./runGoat.sh /media/al/MainzBackup/Butanol2014/AcquOutput/split2 /media/al/myPassport/Compton_GoAT_Output/Butanol/2 /media/al/MainzBackup/Butanol2014/AcquOutput/split2/archive GoAT-Compton.dat &
-			./runGoat.sh /media/al/MainzBackup/Butanol2014/AcquOutput/split3 /media/al/myPassport/Compton_GoAT_Output/Butanol/3 /media/al/MainzBackup/Butanol2014/AcquOutput/split3/archive GoAT-Compton.dat &
-			./runGoat.sh /media/al/MainzBackup/Butanol2014/AcquOutput/split4 /media/al/myPassport/Compton_GoAT_Output/Butanol/4 /media/al/MainzBackup/Butanol2014/AcquOutput/split4/archive GoAT-Compton.dat &
+			./runGoat.sh ~/Acqu_output/1 ~/usb/2015_bin/compton ~/Acqu_output/archive/1 GoAT-Compton.dat &
+			./runGoat.sh ~/Acqu_output/2 ~/usb/2015_bin/compton ~/Acqu_output/archive/2 GoAT-Compton.dat &
+			./runGoat.sh ~/Acqu_output/3 ~/usb/2015_bin/compton ~/Acqu_output/archive/3 GoAT-Compton.dat &
+			./runGoat.sh ~/Acqu_output/4 ~/usb/2015_bin/compton ~/Acqu_output/archive/4 GoAT-Compton.dat &
+
+			#./runGoat.sh /media/al/MainzBackup/Butanol2014/AcquOutput/split2 ~/results/Compton_GoAT_Output/Butanol/2 /media/al/MainzBackup/Butanol2014/AcquOutput/split2/archive GoAT-Compton.dat &
+			#./runGoat.sh /media/al/MainzBackup/Butanol2014/AcquOutput/split3 ~/results/Compton_GoAT_Output/Butanol/3 /media/al/MainzBackup/Butanol2014/AcquOutput/split3/archive GoAT-Compton.dat &
+			#./runGoat.sh /media/al/MainzBackup/Butanol2014/AcquOutput/split4 ~/results/Compton_GoAT_Output/Butanol/4 /media/al/MainzBackup/Butanol2014/AcquOutput/split4/archive GoAT-Compton.dat &
 		fi
 	fi
 else 
