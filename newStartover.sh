@@ -36,45 +36,86 @@ elif [ "$1" = "$S9" ];then
 			./build/bin/AR_Compton  -f ../a2geant/compton/"$4"/GoATTrees.root -P MainGoAT -D ../a2geant/compton/"$4"/ configfiles/Physics-Pi0.dat
 		fi
 	else 
-		echo "Sorry you picked wrong options"
+		 echo "Sorry you picked wrong options"
 	fi
 elif [ "$1" = "$S8" ];then
 	if [ "$2" = "$S7" ];then
-		cd /media/al/myPassport/AR_Compton_Output/Butanol/oneH/
-    		$ROOTSYS/bin/hadd MainGoAT_comp_oneH.root *.root
-  		mv MainGoAT_comp_oneH.root /home/al/analysis/TestEnv/"$3"/
-		cd /media/al/myPassport/AR_Compton_Output/Butanol/zeroH/
-        	$ROOTSYS/bin/hadd MainGoAT_comp_zeroH.root *.root
-		mv MainGoAT_comp_zeroH.root /home/al/analysis/TestEnv/"$3"/
-		cd /media/al/myPassport/AR_Compton_Output/Carbon/
-        	$ROOTSYS/bin/hadd MainGoAT_comp_carbon.root *.root
-		mv MainGoAT_comp_carbon.root /home/al/analysis/TestEnv/"$3"/
+		 if [ "$3" = "$S10" ];then
+			cd ~/results/Compton_AR_output/2014/Butanol/oneH/
+    			$ROOTSYS/bin/hadd MainGoAT_comp_2014_oneH.root *.root
+  			mv MainGoAT_comp_2014_oneH.root /home/al/results/"$4"/
+			cd ~/results/Compton_AR_output/2014/Butanol/zeroH/
+        		$ROOTSYS/bin/hadd MainGoAT_comp_2014_zeroH.root *.root
+			mv MainGoAT_comp_2014_zeroH.root /home/al/results/"$4"/
+			cd ~/results/Compton_AR_output/2014/Carbon/
+        		$ROOTSYS/bin/hadd MainGoAT_comp_2014_carbon.root *.root
+			mv MainGoAT_comp_2014_carbon.root /home/al/results/"$4"/
+		elif [ "$3" = "$S11" ];then
+			cd ~/results/Compton_AR_output/oneH/
+                        $ROOTSYS/bin/hadd MainGoAT_comp_2015_oneH.root *.root
+                        mv MainGoAT_comp_2015_oneH.root /home/al/results/"$4"/
+                        cd ~/results/Compton_AR_output/zeroH/
+                        $ROOTSYS/bin/hadd MainGoAT_comp_2015_zeroH.root *.root
+                        mv MainGoAT_comp_2015_zeroH.root /home/al/results/"$4"/
+                        cd ~/results/Compton_AR_output/Carbon/
+                        $ROOTSYS/bin/hadd MainGoAT_comp_2015_carbon.root *.root
+                        mv MainGoAT_comp_2015_carbon.root /home/al/results/"$4"/
+		fi
 	elif [ "$2" = "$S6" ];then
-                cd /media/al/myPassport/AR_Pi0_Output/Butanol/oneH/
-                $ROOTSYS/bin/hadd MainGoAT_pi0_oneH.root *.root
-                mv MainGoAT_pi0_oneH.root /home/al/analysis/TestEnv/"$3"/
-                cd /media/al/myPassport/AR_Pi0_Output/Butanol/zeroH/
-                $ROOTSYS/bin/hadd MainGoAT_pi0_zeroH.root *.root
-                mv MainGoAT_pi0_zeroH.root /home/al/analysis/TestEnv/"$3"/
-                cd /media/al/myPassport/AR_Pi0_Output/Carbon/
-                $ROOTSYS/bin/hadd MainGoAT_pi0_carbon.root *.root
-                mv MainGoAT_pi0_carbon.root /home/al/analysis/TestEnv/"$3"/
+		if [ "$3" = "$S10" ];then
+               	 	cd ~/results/Pi0_AR_output/2014/Butanol/oneH/
+                	$ROOTSYS/bin/hadd MainGoAT_pi0_2014_oneH.root *.root
+                	mv MainGoAT_pi0_2014_oneH.root /home/al/results/"$4"/
+               	 	cd ~/results/Pi0_AR_output/2014/Butanol/zeroH/
+                	$ROOTSYS/bin/hadd MainGoAT_pi0_2014_zeroH.root *.root
+                	mv MainGoAT_pi0_2014_zeroH.root /home/al/results/"$4"/
+                	cd ~/results/Pi0_AR_output/2014/Carbon/
+                	$ROOTSYS/bin/hadd MainGoAT_pi0_2014_carbon.root *.root
+                	mv MainGoAT_pi0_2014_carbon.root /home/al/results/"$4"/
+		elif [ "$3" = "$S11" ];then
+			cd ~/results/Pi0_AR_output/2015/Butanol/oneH/
+                	$ROOTSYS/bin/hadd MainGoAT_pi0_2015_oneH.root *.root
+                	mv MainGoAT_pi0_2015_oneH.root /home/al/results/"$4"/
+               	 	cd ~/results/Pi0_AR_output/2015/Butanol/zeroH/
+                	$ROOTSYS/bin/hadd MainGoAT_pi0_2015_zeroH.root *.root
+                	mv MainGoAT_pi0_2015_zeroH.root /home/al/results/"$4"/
+                	cd ~/results/Pi0_AR_output/2015/Carbon/
+                	$ROOTSYS/bin/hadd MainGoAT_pi0_2015_carbon.root *.root
+                	mv MainGoAT_pi0_2015_carbon.root /home/al/results/"$4"/
+		fi
 	else
 		echo "Sorry wrong options"
 	fi	
 elif [ "$1" = "$S1" ];then
 	if [ "$2" = "$S6" ];then
-		mv /media/al/myPassport/Pi0_GoAT_Output/Butanol/oneH/1/*.root /media/al/myPassport/Pi0_GoAT_Output/Butanol/1
-		mv /media/al/myPassport/Pi0_GoAT_Output/Butanol/oneH/2/*.root /media/al/myPassport/Pi0_GoAT_Output/Butanol/2
-		mv /media/al/myPassport/Pi0_GoAT_Output/Butanol/oneH/3/*.root /media/al/myPassport/Pi0_GoAT_Output/Butanol/3
-		mv /media/al/myPassport/Pi0_GoAT_Output/Butanol/zeroH/4/*.root /media/al/myPassport/Pi0_GoAT_Output/Butanol/4
-		mv /media/al/myPassport/Pi0_GoAT_Output/Carbon/archive/1/*.root /media/al/myPassport/Pi0_GoAT_Output/Carbon/1
-		mv /media/al/myPassport/Pi0_GoAT_Output/Carbon/archive/2/*.root /media/al/myPassport/Pi0_GoAT_Output/Carbon/2
-		mv /media/al/myPassport/Pi0_GoAT_Output/Carbon/archive/3/*.root /media/al/myPassport/Pi0_GoAT_Output/Carbon/3
-		mv /media/al/myPassport/Pi0_GoAT_Output/Carbon/archive/4/*.root /media/al/myPassport/Pi0_GoAT_Output/Carbon/4
-		rm /media/al/myPassport/AR_Pi0_Output/Butanol/oneH/*.root
-		rm /media/al/myPassport/AR_Pi0_Output/Butanol/zeroH/*.root
-		rm /media/al/myPassport/AR_Pi0_Output/Carbon/*.root
+		if [ "$3" = "$S10" ];then
+			mv ~/usb/Pi0_GoAT_Output/Butanol/oneH/1/*.root ~/usb/Pi0_GoAT_Output/Butanol/1
+			mv ~/usb/Pi0_GoAT_Output/Butanol/oneH/2/*.root ~/usb/Pi0_GoAT_Output/Butanol/2
+			mv ~/usb/Pi0_GoAT_Output/Butanol/oneH/3/*.root ~/usb/Pi0_GoAT_Output/Butanol/3
+			mv ~/usb/Pi0_GoAT_Output/Butanol/zeroH/4/*.root ~/usb/Pi0_GoAT_Output/Butanol/4
+			mv ~/usb/Pi0_GoAT_Output/Carbon/1/archive/*.root ~/usb/Pi0_GoAT_Output/Carbon/1
+			mv ~/usb/Pi0_GoAT_Output/Carbon/2/archive/*.root ~/usb/Pi0_GoAT_Output/Carbon/2
+			mv ~/usb/Pi0_GoAT_Output/Carbon/3/archive/*.root ~/usb/Pi0_GoAT_Output/Carbon/3
+			mv ~/usb/Pi0_GoAT_Output/Carbon/4/archive/*.root ~/usb/Pi0_GoAT_Output/Carbon/4
+			rm ~/results/Pi0_AR_output/2014/Butanol/oneH/*.root
+			rm ~/results/Pi0_AR_output/2014/Butanol/zeroH/*.root
+			rm ~/results/Pi0_AR_output/2014/Butanol/Carbon/*.root
+		elif [ "$3" = "$S11" ];then
+			mv ~/usb/2015_bin/pi0/Butanol/oneH/1/*.root ~/usb/2015_bin/pi0/Butanol/1
+			mv ~/usb/2015_bin/pi0/Butanol/oneH/2/*.root ~/usb/2015_bin/pi0/Butanol/2
+			mv ~/usb/2015_bin/pi0/Butanol/oneH/3/*.root ~/usb/2015_bin/pi0/Butanol/3
+			mv ~/results/Pi0_GoAT_Output/Butanol/zeroH/1/*.root ~/results/Pi0_GoAT_Output/Butanol/1
+			mv ~/results/Pi0_GoAT_Output/Butanol/zeroH/2/*.root ~/results/Pi0_GoAT_Output/Butanol/2
+			mv ~/results/Pi0_GoAT_Output/Butanol/zeroH/3/*.root ~/results/Pi0_GoAT_Output/Butanol/3
+			mv ~/results/Pi0_GoAT_Output/Butanol/zeroH/4/*.root ~/results/Pi0_GoAT_Output/Butanol/4
+			mv ~/usb/Pi0_GoAT_Output/2015/Carbon/1/archive/*.root ~/usb/Pi0_GoAT_Output/2015/Carbon/1
+			mv ~/usb/Pi0_GoAT_Output/2015/Carbon/2/archive/*.root ~/usb/Pi0_GoAT_Output/2015/Carbon/2
+			mv ~/usb/Pi0_GoAT_Output/2015/Carbon/3/archive/*.root ~/usb/Pi0_GoAT_Output/2015/Carbon/3
+			mv ~/usb/Pi0_GoAT_Output/2015/Carbon/4/archive/*.root ~/usb/Pi0_GoAT_Output/2015/Carbon/4		
+			rm ~/results/Pi0_AR_output/Butanol/oneH/*.root ### check dictation
+			rm ~/results/Pi0_AR_output/Butanol/zeroH/*.root
+			rm ~/results/Pi0_AR_output/Carbon/*.root	
+		fi	
 	elif [ "$2" = "$S7" ];then
 		if [ "$3" = "$S10" ];then
 			mv ~/usb/Compton_GoAT_Output/Butanol/1/archive/*.root ~/usb/Compton_GoAT_Output/Butanol/1
@@ -111,16 +152,35 @@ elif [ "$1" = "$S1" ];then
 #fi
 elif [ "$1" = "$S2" ];then
 	if [ "$2" = "$S6" ];then
-		if [ "$3" = "$S5" ];then	
-			./runMyClass.sh /media/al/myPassport/Pi0_GoAT_Output/Butanol/1 /media/al/myPassport/AR_Pi0_Output/Butanol/oneH /media/al/myPassport/Pi0_GoAT_Output/Butanol/oneH/1 AR_Class& 
-                        ./runMyClass.sh /media/al/myPassport/Pi0_GoAT_Output/Butanol/2 /media/al/myPassport/AR_Pi0_Output/Butanol/oneH /media/al/myPassport/Pi0_GoAT_Output/Butanol/oneH/2 AR_Class& 
-                        ./runMyClass.sh /media/al/myPassport/Pi0_GoAT_Output/Butanol/3 /media/al/myPassport/AR_Pi0_Output/Butanol/oneH /media/al/myPassport/Pi0_GoAT_Output/Butanol/oneH/3 AR_Class& 
-                        ./runMyClass.sh /media/al/myPassport/Pi0_GoAT_Output/Butanol/4 /media/al/myPassport/AR_Pi0_Output/Butanol/zeroH /media/al/myPassport/Pi0_GoAT_Output/Butanol/zeroH/4 AR_Class&
+		if [ "$3" = "$S5" ];then
+			if [ "$4" = "$S10" ];then	
+				./runMyClass.sh ~/usb/Pi0_GoAT_Output/Butanol/1 ~/results/Pi0_AR_output/2014/Butanol/oneH ~/usb/Pi0_GoAT_Output/Butanol/oneH/1 AR_Class& 
+                        	./runMyClass.sh ~/usb/Pi0_GoAT_Output/Butanol/2 ~/results/Pi0_AR_output/2014/Butanol/oneH ~/usb/Pi0_GoAT_Output/Butanol/oneH/2 AR_Class& 
+                        	./runMyClass.sh ~/usb/Pi0_GoAT_Output/Butanol/3 ~/results/Pi0_AR_output/2014/Butanol/oneH ~/usb/Pi0_GoAT_Output/Butanol/oneH/3 AR_Class& 
+                        	./runMyClass.sh ~/usb/Pi0_GoAT_Output/Butanol/4 ~/results/Pi0_AR_output/2014/Butanol/zeroH ~/usb/Pi0_GoAT_Output/Butanol/zeroH/4 AR_Class& 
+			elif [ "$4" = "$S11" ];then 
+				####oneH is on wdmypassport
+				./runMyClass.sh ~/usb/2015_bin/pi0/Butanol/1 ~/results/Pi0_AR_output/2015/Butanol/oneH ~/usb/2015_bin/pi0/Butanol/oneH/1 AR_Class& 
+                        	./runMyClass.sh ~/usb/2015_bin/pi0/Butanol/2 ~/results/Pi0_AR_output/2015/Butanol/oneH ~/usb/2015_bin/pi0/Butanol/oneH/2 AR_Class& 
+                        	./runMyClass.sh ~/usb/2015_bin/pi0/Butanol/3 ~/results/Pi0_AR_output/2015/Butanol/oneH ~/usb/2015_bin/pi0/Butanol/oneH/3 AR_Class& 
+                        	####oneH is on server ~/results/Pi_GoAT_Output/Butanol/
+				./runMyClass.sh ~/results/Pi0_GoAT_Output/Butanol/1 ~/results/Pi0_AR_output/2015/Butanol/zeroH ~/results/Pi0_GoAT_Output/Butanol/zeroH/1 AR_Class& 
+				./runMyClass.sh ~/results/Pi0_GoAT_Output/Butanol/2 ~/results/Pi0_AR_output/2015/Butanol/zeroH ~/results/Pi0_GoAT_Output/Butanol/zeroH/2 AR_Class& 
+				./runMyClass.sh ~/results/Pi0_GoAT_Output/Butanol/3 ~/results/Pi0_AR_output/2015/Butanol/zeroH ~/results/Pi0_GoAT_Output/Butanol/zeroH/3 AR_Class& 
+				./runMyClass.sh ~/results/Pi0_GoAT_Output/Butanol/4 ~/results/Pi0_AR_output/2015/Butanol/zeroH ~/results/Pi0_GoAT_Output/Butanol/zeroH/4 AR_Class& 
+			fi
 		elif [ "$3" = "$S4" ];then
-			./runMyClass.sh /media/al/myPassport/Pi0_GoAT_Output/Carbon/1 /media/al/myPassport/AR_Pi0_Output/Carbon /media/al/myPassport/Pi0_GoAT_Output/Carbon/1/archive AR_Class&
-			./runMyClass.sh /media/al/myPassport/Pi0_GoAT_Output/Carbon/2 /media/al/myPassport/AR_Pi0_Output/Carbon /media/al/myPassport/Pi0_GoAT_Output/Carbon/2/archive AR_Class&
-                        ./runMyClass.sh /media/al/myPassport/Pi0_GoAT_Output/Carbon/3 /media/al/myPassport/AR_Pi0_Output/Carbon /media/al/myPassport/Pi0_GoAT_Output/Carbon/3/archive AR_Class&
-                        ./runMyClass.sh /media/al/myPassport/Pi0_GoAT_Output/Carbon/4 /media/al/myPassport/AR_Pi0_Output/Carbon /media/al/myPassport/Pi0_GoAT_Output/Carbon/4/archive AR_Class&         
+			if [ "$4" = "$S10" ];then
+				./runMyClass.sh ~/usb/Pi0_GoAT_Output/Carbon/1 ~/results/Pi0_AR_output/2014/Carbon ~/usb/Pi0_GoAT_Output/Carbon/1/archive AR_Class&
+				./runMyClass.sh ~/usb/Pi0_GoAT_Output/Carbon/2 ~/results/Pi0_AR_output/2014/Carbon ~/usb/Pi0_GoAT_Output/Carbon/2/archive AR_Class&
+                        	./runMyClass.sh ~/usb/Pi0_GoAT_Output/Carbon/3 ~/results/Pi0_AR_output/2014/Carbon ~/usb/Pi0_GoAT_Output/Carbon/3/archive AR_Class&
+                        	./runMyClass.sh ~/usb/Pi0_GoAT_Output/Carbon/4 ~/results/Pi0_AR_output/2014/Carbon ~/usb/Pi0_GoAT_Output/Carbon/4/archive AR_Class&         
+			elif [ "$4" = "$S11" ];then
+				./runMyClass.sh ~/results/Pi0_GoAT_Output/Carbon/1 ~/results/Pi0_AR_output/2015/Carbon ~/usb/Pi0_GoAT_Output/2015/Carbon/1/archive AR_Class& 
+				./runMyClass.sh ~/results/Pi0_GoAT_Output/Carbon/2 ~/results/Pi0_AR_output/2015/Carbon ~/usb/Pi0_GoAT_Output/2015/Carbon/2/archive AR_Class& 
+				./runMyClass.sh ~/results/Pi0_GoAT_Output/Carbon/3 ~/results/Pi0_AR_output/2015/Carbon ~/usb/Pi0_GoAT_Output/2015/Carbon/3/archive AR_Class& 
+				./runMyClass.sh ~/results/Pi0_GoAT_Output/Carbon/4 ~/results/Pi0_AR_output/2015/Carbon ~/usb/Pi0_GoAT_Output/2015/Carbon/4/archive AR_Class& 
+			fi	
 		fi
 	elif [ "$2" = "$S7" ];then
 		if [ "$3" = "$S5" ];then
@@ -145,14 +205,11 @@ elif [ "$1" = "$S2" ];then
                         	./runMyClass.sh ~/usb/Compton_GoAT_Output/Carbon/3 ~/results/Compton_AR_output/2014/Carbon ~/usb/Compton_GoAT_Output/Carbon/3/archive AR_Compton& 
                         	./runMyClass.sh ~/usb/Compton_GoAT_Output/Carbon/4 ~/results/Compton_AR_output/2014/Carbon ~/usb/Compton_GoAT_Output/Carbon/4/archive AR_Compton&
 				
-			elif [ "$4" = "$S11" ];then
+			elif [ "$4" = "$S11" ];then #### not done yet:
 				./runMyClass.sh ~/usb/2015_bin/compton/Carbon/1 ~/results/Compton_AR_output/Carbon ~/usb/2015_bin/compton/Carbon/1/archive AR_Compton& 
                         	./runMyClass.sh ~/usb/2015_bin/compton/Carbon/2 ~/results/Compton_AR_output/Carbon ~/usb/2015_bin/compton/Carbon/2/archive AR_Compton& 
                         	./runMyClass.sh ~/usb/2015_bin/compton/Carbon/3 ~/results/Compton_AR_output/Carbon ~/usb/2015_bin/compton/Carbon/3/archive AR_Compton& 
-                       		#./runMyClass.sh ~/usb/2015_bin/compton/Carbon/4 ~/results/Compton_AR_output/Carbon ~/usb/2015_bin/compton/Carbon/4/archive AR_Compton&
-				#./runMyClass.sh ~/usb/2015_bin/compton/Carbon/5 ~/results/Compton_AR_output/Carbon ~/usb/2015_bin/compton/Carbon/5/archive AR_Compton &
-                        	#./runMyClass.sh ~/usb/2015_bin/compton/Carbon/6 ~/results/Compton_AR_output/Carbon ~/usb/2015_bin/compton/Carbon/6/archive AR_Compton &
-			fi        
+                  	fi        
 		fi
 	else 
 		echo "Sorry you picked wrong options"

@@ -480,6 +480,16 @@ void PPhysics::FillTime(const GTreeParticle& tree, Int_t particle_index, GH1* gH
 		gHist->Fill(time);
 	}
 }
+//-------------------------AR FillTime function for recording time of tracks----------------------
+void PPhysics::FillTime(const GTreeTrack& tree, Int_t track_index, Int_t tagger_index,GH1* gHist)
+{
+	if(!RejectTagged(tagger_index))
+	{
+		time = GetTagger()->GetTaggedTime(tagger_index) - tree.GetTime(track_index);
+		gHist->Fill(time);
+	}
+}
+//--------------------------------------------------------------------------------------------------
 
 void PPhysics::FillTimeCut(const GTreeParticle& tree, GH1* gHist)
 {

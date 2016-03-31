@@ -83,6 +83,7 @@ public:
 
 	void 	FillTime(const GTreeParticle& tree, GH1* gHist);
 	void 	FillTime(const GTreeParticle& tree, Int_t particle_index, GH1* gHist);
+	void    FillTime(const GTreeTrack& tree, Int_t track_index, Int_t tagger_index,GH1* gHist);
 	void 	FillTimeCut(const GTreeParticle& tree, GH1* gHist);
 	void 	FillTimeCut(const GTreeParticle& tree, Int_t particle_index, GH1* gHist);
 
