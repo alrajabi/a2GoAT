@@ -71,18 +71,21 @@ private:
     GH1*	CBFRing_MM_hm;
    
     GH1*	CBFRing_IM;
+
+    GH1*	CBFRing_MM_OA_hp_140_155;
+    GH1*	CBFRing_MM_OA_hm_140_155;
 	
-    GH1*	CBFRing_MM_OA_hp_130_149;
-    GH1*	CBFRing_MM_OA_hm_130_149;
+    GH1*	CBFRing_MM_OA_hp_125_140;
+    GH1*	CBFRing_MM_OA_hm_125_140;
 
-    GH1*	CBFRing_MM_OA_hp_110_130;
-    GH1*	CBFRing_MM_OA_hm_110_130;
+    GH1*	CBFRing_MM_OA_hp_110_125;
+    GH1*	CBFRing_MM_OA_hm_110_125;
 
-    GH1*	CBFRing_MM_OA_hp_90_110;
-    GH1*	CBFRing_MM_OA_hm_90_110;
+    GH1*	CBFRing_MM_OA_hp_95_110;
+    GH1*	CBFRing_MM_OA_hm_95_110;
 
-    GH1*	CBFRing_MM_OA_hp_70_90;
-    GH1*	CBFRing_MM_OA_hm_70_90;
+    GH1*	CBFRing_MM_OA_hp_70_95;
+    GH1*	CBFRing_MM_OA_hm_70_95;
 
     GH1*	CBFRing_MM_OA_hp_50_70;
     GH1*	CBFRing_MM_OA_hm_50_70;
@@ -97,6 +100,7 @@ private:
 protected:
     virtual Bool_t  Start();
     virtual void Test_Compton(const GTreeTrigger& triggertree,const GTreeTagger& taggertree,const GTreeParticle& rootinotree, const GTreeParticle& photontree,Int_t angle,Int_t en_low, Int_t en_high,GH1* time_comp,GH1* com_MM_hp,GH1* com_MM_hm,GH1* com_MM_OA_hp_140_155,GH1* com_MM_OA_hm_140_155,GH1* com_MM_OA_hp_125_140,GH1* com_MM_OA_hm_125_140,GH1* com_MM_OA_hp_110_125,GH1* com_MM_OA_hm_110_125,GH1* com_MM_OA_hp_95_110,GH1* com_MM_OA_hm_95_110,GH1* com_MM_OA_hp_70_95,GH1* com_MM_OA_hm_70_95,GH1* com_MM_OA_hp_50_70,GH1* com_MM_OA_hm_50_70,GH1* com_MM_OA_hp_19_50,GH1* com_MM_OA_hm_19_50,GH1* theta_hp,GH1* theta_hm);
+    virtual void Ring_forward_only(const GTreeTrigger& triggertree,const GTreeTagger& taggertree,const GTreeParticle& rootinotree, const GTreeParticle& photontree,const GTreeMeson& pi0tree,const GTreeTrack& tracktree,Int_t en_low, Int_t en_high, Int_t angle,GH1* time_ring,GH1* cbfring_MM_hp, GH1* cbfring_MM_hm,GH1* cbfring_MM_OA_hp_140_155,GH1* cbfring_MM_OA_hm_140_155,GH1* cbfring_MM_OA_hp_125_140,GH1* cbfring_MM_OA_hm_125_140,GH1* cbfring_MM_OA_hp_110_125,GH1* cbfring_MM_OA_hm_110_125,GH1* cbfring_MM_OA_hp_95_110,GH1* cbfring_MM_OA_hm_95_110,GH1* cbfring_MM_OA_hp_70_95,GH1* cbfring_MM_OA_hm_70_95,GH1* cbfring_MM_OA_hp_50_70,GH1* cbfring_MM_OA_hm_50_70,GH1* cbfring_MM_OA_hp_19_50,GH1* cbfring_MM_OA_hm_19_50,GH1* cbfring_IM);
     virtual void Ring_Test(const GTreeTrigger& triggertree,const GTreeTagger& taggertree,const GTreeParticle& rootinotree, const GTreeParticle& photontree,const GTreeMeson& pi0tree,const GTreeTrack& tracktree,Int_t en_low, Int_t en_high, Int_t angle,GH1* time_ring,GH1* cbring_MM_hp, GH1* cbring_MM_hm,GH1* cbring_MM_OA_hp_130_149,GH1* cbring_MM_OA_hm_130_149,GH1* cbring_MM_OA_hp_110_130,GH1* cbring_MM_OA_hm_110_130,GH1* cbring_MM_OA_hp_90_110,GH1* cbring_MM_OA_hm_90_110,GH1* cbring_MM_OA_hp_70_90,GH1* cbring_MM_OA_hm_70_90,GH1* cbring_MM_OA_hp_50_70,GH1* cbring_MM_OA_hm_50_70,GH1* cbring_MM_OA_hp_19_50,GH1* cbring_MM_OA_hm_19_50,GH1* cbring_IM,GH1* cbfring_MM_hp, GH1* cbfring_MM_hm,GH1* cbfring_MM_OA_hp_130_149,GH1* cbfring_MM_OA_hm_130_149,GH1* cbfring_MM_OA_hp_110_130,GH1* cbfring_MM_OA_hm_110_130,GH1* cbfring_MM_OA_hp_90_110,GH1* cbfring_MM_OA_hm_90_110,GH1* cbfring_MM_OA_hp_70_90,GH1* cbfring_MM_OA_hm_70_90,GH1* cbfring_MM_OA_hp_50_70,GH1* cbfring_MM_OA_hm_50_70,GH1* cbfring_MM_OA_hp_19_50,GH1* cbfring_MM_OA_hm_19_50,GH1* cbfring_IM);
     virtual void Ring_Test_with_ps(const GTreeTrigger& triggertree,const GTreeTagger& taggertree,const GTreeParticle& rootinotree, const GTreeParticle& photontree,const GTreeMeson& pi0tree,const GTreeTrack& tracktree,Int_t en_low, Int_t en_high, Int_t angle,GH1* time_ring,GH1* cbring_MM_hp, GH1* cbring_MM_hm,GH1* cbring_MM_OA_hp_130_149,GH1* cbring_MM_OA_hm_130_149,GH1* cbring_MM_OA_hp_110_130,GH1* cbring_MM_OA_hm_110_130,GH1* cbring_MM_OA_hp_90_110,GH1* cbring_MM_OA_hm_90_110,GH1* cbring_MM_OA_hp_70_90,GH1* cbring_MM_OA_hm_70_90,GH1* cbring_MM_OA_hp_50_70,GH1* cbring_MM_OA_hm_50_70,GH1* cbring_MM_OA_hp_19_50,GH1* cbring_MM_OA_hm_19_50,GH1* cbring_IM,GH1* cbfring_MM_hp, GH1* cbfring_MM_hm,GH1* cbfring_MM_OA_hp_130_149,GH1* cbfring_MM_OA_hm_130_149,GH1* cbfring_MM_OA_hp_110_130,GH1* cbfring_MM_OA_hm_110_130,GH1* cbfring_MM_OA_hp_90_110,GH1* cbfring_MM_OA_hm_90_110,GH1* cbfring_MM_OA_hp_70_90,GH1* cbfring_MM_OA_hm_70_90,GH1* cbfring_MM_OA_hp_50_70,GH1* cbfring_MM_OA_hm_50_70,GH1* cbfring_MM_OA_hp_19_50,GH1* cbfring_MM_OA_hm_19_50,GH1* cbfring_IM);
     virtual void MC_Pi0_background(const GTreeTrigger& triggertree,const GTreeTagger& taggertree,const GTreeParticle& rootinotree,const GTreeParticle& photontree, const GTreeA2Geant a2geant, Int_t angle,Int_t en_low, Int_t en_high,GH1* com_MM_hp,GH1* com_MM_hp2,GH1* com_MM_hm,TH2F* lookup);

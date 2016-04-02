@@ -42,13 +42,13 @@ elif [ "$1" = "$S8" ];then
 	if [ "$2" = "$S7" ];then
 		 if [ "$3" = "$S10" ];then
 			cd ~/results/Compton_AR_output/2014/Butanol/oneH/
-    			$ROOTSYS/bin/hadd MainGoAT_comp_2014_oneH.root *.root
+    			$ROOTSYS/bin/hadd MainGoAT_comp_2014_oneH.root Scaled_*.root
   			mv MainGoAT_comp_2014_oneH.root /home/al/results/"$4"/
 			cd ~/results/Compton_AR_output/2014/Butanol/zeroH/
-        		$ROOTSYS/bin/hadd MainGoAT_comp_2014_zeroH.root *.root
+        		$ROOTSYS/bin/hadd MainGoAT_comp_2014_zeroH.root Scaled_*.root
 			mv MainGoAT_comp_2014_zeroH.root /home/al/results/"$4"/
 			cd ~/results/Compton_AR_output/2014/Carbon/
-        		$ROOTSYS/bin/hadd MainGoAT_comp_2014_carbon.root *.root
+        		$ROOTSYS/bin/hadd MainGoAT_comp_2014_carbon.root Scaled_*.root
 			mv MainGoAT_comp_2014_carbon.root /home/al/results/"$4"/
 		elif [ "$3" = "$S11" ];then
 			cd ~/results/Compton_AR_output/oneH/
@@ -142,8 +142,8 @@ elif [ "$1" = "$S1" ];then
 			mv ~/usb/2015_bin/compton/Carbon/4/archive/*.root ~/usb/2015_bin/compton/Carbon/4
 			mv ~/usb/2015_bin/compton/Carbon/5/archive/*.root ~/usb/2015_bin/compton/Carbon/5
 			mv ~/usb/2015_bin/compton/Carbon/6/archive/*.root ~/usb/2015_bin/compton/Carbon/6
-			rm ~/results/Compton_AR_output/Butanol/oneH/*.root
-			rm ~/results/Compton_AR_output/Butanol/zeroH/*.root
+			rm ~/results/Compton_AR_output/oneH/*.root
+			rm ~/results/Compton_AR_output/zeroH/*.root
 			rm ~/results/Compton_AR_output/Carbon/*.root
 		fi
 	else 
