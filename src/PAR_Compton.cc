@@ -1,7 +1,7 @@
 #include "PAR_Compton.h"
 
 PAR_Compton::PAR_Compton()
-{ 
+{ /***
     Time_Comp 	= new GH1("Time_Comp", 	"time", 	1400, -700, 700);
 	
      //Compton Hists:
@@ -28,10 +28,10 @@ PAR_Compton::PAR_Compton()
 	Com_MM_OA_hm_50_70 = new GH1("Com_MM_OA_hm_50_70","Ring Missing Mass 50.00<Theta<69.95,After OA-cut-Helicity = -1", 150,700,1300);
 	Com_MM_OA_hp_19_50 = new GH1("Com_MM_OA_hp_19_50","Ring Missing Mass 19.47<Theta<50.00,After OA-cut-Helicity = +1", 150,700,1300);
 	Com_MM_OA_hm_19_50 = new GH1("Com_MM_OA_hm_19_50","Ring Missing Mass 19.47<Theta<50.00,After OA-cut-Helicity = -1", 150,700,1300);
-	
+***/	
  /***
 	//Ring Analysis Hists:
-        Time_Ring 	= new GH1("Time_Ring", 	"time", 	1400, -700, 700); 
+        
 	CBRing_MM_hp = new GH1("CBRing_MM_hp","Ring Missing Mass-Helicity = +1", 150,700,1300);
 	CBRing_MM_hm = new GH1("CBRing_MM_hm","Ring Missing Mass-Helicity = -1", 150,700,1300);
 	CBRing_IM = new GH1("CBRing_IM","Ring Pi0 IM", 250,0,250);
@@ -49,6 +49,7 @@ PAR_Compton::PAR_Compton()
 	CBRing_MM_OA_hp_19_50 = new GH1("CBRing_MM_OA_hp_19_50","Ring Missing Mass 19.47<Theta<50.00,After OA-cut-Helicity = +1", 150,700,1300);
 	CBRing_MM_OA_hm_19_50 = new GH1("CBRing_MM_OA_hm_19_50","Ring Missing Mass 19.47<Theta<50.00,After OA-cut-Helicity = -1", 150,700,1300);
 	***/
+	/***Time_Ring 	= new GH1("Time_Ring", 	"time", 	1400, -700, 700);
 	CBFRing_MM_hp = new GH1("CBFRing_MM_hp","FRing Missing Mass-Helicity = +1", 150,700,1300);
 	CBFRing_MM_hm = new GH1("CBFRing_MM_hm","FRing Missing Mass-Helicity = -1", 150,700,1300);
 	CBFRing_IM = new GH1("CBFRing_IM","FRing Pi0 IM", 250,0,250);
@@ -62,10 +63,10 @@ PAR_Compton::PAR_Compton()
 	CBFRing_MM_OA_hm_95_110 = new GH1("CBFRing_MM_OA_hm_95_110","Ring Missing Mass 95<Theta<110,After OA-cut-Helicity = -1", 150,700,1300);
 	CBFRing_MM_OA_hp_70_95 = new GH1("CBFRing_MM_OA_hp_70_95","Ring Missing Mass 70<Theta<95,After OA-cut-Helicity = +1", 150,700,1300);
 	CBFRing_MM_OA_hm_70_95 = new GH1("CBFRing_MM_OA_hm_70_95","Ring Missing Mass 70<Theta<95,After OA-cut-Helicity = -1", 150,700,1300);
-	CBFRing_MM_OA_hp_50_70 = new GH1("CBFRing_MM_OA_hp_50_70","FRing Missing Mass 50.00<Theta<69.95,After OA-cut-Helicity = +1", 150,700,1300);
-	CBFRing_MM_OA_hm_50_70 = new GH1("CBFRing_MM_OA_hm_50_70","FRing Missing Mass 50.00<Theta<69.95,After OA-cut-Helicity = -1", 150,700,1300);
+	CBFRing_MM_OA_hp_50_70 = new GH1("CBFRing_MM_OA_hp_50_70","FRing Missing Mass 50.00<Theta<70,After OA-cut-Helicity = +1", 150,700,1300);
+	CBFRing_MM_OA_hm_50_70 = new GH1("CBFRing_MM_OA_hm_50_70","FRing Missing Mass 50.00<Theta<70,After OA-cut-Helicity = -1", 150,700,1300);
 	CBFRing_MM_OA_hp_19_50 = new GH1("CBFRing_MM_OA_hp_19_50","FRing Missing Mass 19.47<Theta<50.00,After OA-cut-Helicity = +1", 150,700,1300);
-	CBFRing_MM_OA_hm_19_50 = new GH1("CBFRing_MM_OA_hm_19_50","FRing Missing Mass 19.47<Theta<50.00,After OA-cut-Helicity = -1", 150,700,1300);
+	CBFRing_MM_OA_hm_19_50 = new GH1("CBFRing_MM_OA_hm_19_50","FRing Missing Mass 19.47<Theta<50.00,After OA-cut-Helicity = -1", 150,700,1300);***/
 	 //Find Holes Hists:
 	//CosTheta_Phi = new GH2("CosTheta_Phi","Pi0 Photons Cos#theta vs. #phi",180,-1,1,360,-180,180);
 	//CosTheta_Phi = new GH2("CosTheta_Phi","Pi0 Photons Cos#theta vs. #phi",180,-1,1,360,-180,180);
@@ -73,11 +74,11 @@ PAR_Compton::PAR_Compton()
 	//CosTheta_Phi_MM = new GH2("CosTheta_Phi_MM","Pi0 Photons Cos#theta vs. #phi with MM-cut",180,-1,1,360,-180,180);
 	//Pi0_IM = new GH1("Pi0_IM", "Pi0 Invariant Mass", 180,0,180);
 	
-	/*** //MC Hists:
+	 //MC Hists:
 	Com_MM_hp = new GH1("Com_MM_hp","MC Rootino Missing Mass-Helicity = +1", 200,500,1300);
    	Com_MM_hm = new GH1("Com_MM_hm","MC Rootino Missing Mass-Helicity = -1", 200,500,1300);	
 	Com_MM_hp2 = new GH1("Com_MM_hp2","MC MissingMass, based on other pi0 photon", 200,500,1300);
-		***/
+		
 }
 
 PAR_Compton::~PAR_Compton()
@@ -749,7 +750,8 @@ void PAR_Compton::MC_Pi0_background(const GTreeTrigger& triggertree,const GTreeT
 					Th = CalcMissingP4(photontree,i,j).Theta()*TMath::RadToDeg();
 					Rnd = MyRnd->Rndm();
 					//cout << "Event has Ek= "<<Ek<<"  and Th= "<<Th<<"  with Rnd= "<< Rnd<< "\n"<<endl; 
-					if (Rnd <= lookup->GetBinContent((Int_t)(((Int_t)Ek)/2)+1,(Int_t)(((Int_t)Th-19)/2)+1))//means we accept it
+					//if (Rnd <= lookup->GetBinContent((Int_t)(((Int_t)Ek)/2)+1,(Int_t)(((Int_t)Th-19)/2)+1))//means we accept it
+					if (Rnd <= lookup->GetBinContent(lookup->FindBin(Ek,Th)))
 					{
 						FillMissingMass(photontree,i,j,com_MM_hm);
 					}
@@ -834,21 +836,21 @@ void	PAR_Compton::ProcessEvent()
         }
 
     }***/
-	Test_Compton(*GetTrigger(),*GetTagger(),*GetRootinos(),*GetPhotons(),15,285,305,Time_Comp,Com_MM_hp,Com_MM_hm,Com_MM_OA_hp_140_155,Com_MM_OA_hm_140_155,Com_MM_OA_hp_125_140,Com_MM_OA_hm_125_140,Com_MM_OA_hp_110_125,Com_MM_OA_hm_110_125,Com_MM_OA_hp_95_110,Com_MM_OA_hm_95_110,Com_MM_OA_hp_70_95,Com_MM_OA_hm_70_95,Com_MM_OA_hp_50_70,Com_MM_OA_hm_50_70,Com_MM_OA_hp_19_50,Com_MM_OA_hm_19_50,Theta_hp,Theta_hm);	
-	Ring_forward_only(*GetTrigger(),*GetTagger(),*GetRootinos(),*GetPhotons(),*GetNeutralPions(),*GetTracks(),285,305,15,Time_Ring,CBFRing_MM_hp,CBFRing_MM_hm,CBFRing_MM_OA_hp_140_155,CBFRing_MM_OA_hm_140_155,CBFRing_MM_OA_hp_125_140,CBFRing_MM_OA_hm_125_140,CBFRing_MM_OA_hp_110_125,CBFRing_MM_OA_hm_110_125,CBFRing_MM_OA_hp_95_110,CBFRing_MM_OA_hm_95_110,CBFRing_MM_OA_hp_70_95,CBFRing_MM_OA_hm_70_95,CBFRing_MM_OA_hp_50_70,CBFRing_MM_OA_hm_50_70,CBFRing_MM_OA_hp_19_50,CBFRing_MM_OA_hm_19_50,CBFRing_IM);	
+	//Test_Compton(*GetTrigger(),*GetTagger(),*GetRootinos(),*GetPhotons(),15,285,305,Time_Comp,Com_MM_hp,Com_MM_hm,Com_MM_OA_hp_140_155,Com_MM_OA_hm_140_155,Com_MM_OA_hp_125_140,Com_MM_OA_hm_125_140,Com_MM_OA_hp_110_125,Com_MM_OA_hm_110_125,Com_MM_OA_hp_95_110,Com_MM_OA_hm_95_110,Com_MM_OA_hp_70_95,Com_MM_OA_hm_70_95,Com_MM_OA_hp_50_70,Com_MM_OA_hm_50_70,Com_MM_OA_hp_19_50,Com_MM_OA_hm_19_50,Theta_hp,Theta_hm);	
+	//Ring_forward_only(*GetTrigger(),*GetTagger(),*GetRootinos(),*GetPhotons(),*GetNeutralPions(),*GetTracks(),285,305,15,Time_Ring,CBFRing_MM_hp,CBFRing_MM_hm,CBFRing_MM_OA_hp_140_155,CBFRing_MM_OA_hm_140_155,CBFRing_MM_OA_hp_125_140,CBFRing_MM_OA_hm_125_140,CBFRing_MM_OA_hp_110_125,CBFRing_MM_OA_hm_110_125,CBFRing_MM_OA_hp_95_110,CBFRing_MM_OA_hm_95_110,CBFRing_MM_OA_hp_70_95,CBFRing_MM_OA_hm_70_95,CBFRing_MM_OA_hp_50_70,CBFRing_MM_OA_hm_50_70,CBFRing_MM_OA_hp_19_50,CBFRing_MM_OA_hm_19_50,CBFRing_IM);	
 	//Ring_Test(*GetTrigger(),*GetTagger(),*GetRootinos(),*GetPhotons(),*GetNeutralPions(),*GetTracks(),285,305,15,Time_Ring,CBRing_MM_hp,CBRing_MM_hm,CBRing_MM_OA_hp_130_149,CBRing_MM_OA_hm_130_149,CBRing_MM_OA_hp_110_130,CBRing_MM_OA_hm_110_130,CBRing_MM_OA_hp_90_110,CBRing_MM_OA_hm_90_110,CBRing_MM_OA_hp_70_90,CBRing_MM_OA_hm_70_90,CBRing_MM_OA_hp_50_70,CBRing_MM_OA_hm_50_70,CBRing_MM_OA_hp_19_50,CBRing_MM_OA_hm_19_50,CBRing_IM,CBFRing_MM_hp,CBFRing_MM_hm,CBFRing_MM_OA_hp_130_149,CBFRing_MM_OA_hm_130_149,CBFRing_MM_OA_hp_110_130,CBFRing_MM_OA_hm_110_130,CBFRing_MM_OA_hp_90_110,CBFRing_MM_OA_hm_90_110,CBFRing_MM_OA_hp_70_90,CBFRing_MM_OA_hm_70_90,CBFRing_MM_OA_hp_50_70,CBFRing_MM_OA_hm_50_70,CBFRing_MM_OA_hp_19_50,CBFRing_MM_OA_hm_19_50,CBFRing_IM);
 	//Ring_Test_with_ps(*GetTrigger(),*GetTagger(),*GetRootinos(),*GetPhotons(),*GetNeutralPions(),*GetTracks(),285,305,15,Time_Ring,CBRing_MM_hp,CBRing_MM_hm,CBRing_MM_OA_hp_130_149,CBRing_MM_OA_hm_130_149,CBRing_MM_OA_hp_110_130,CBRing_MM_OA_hm_110_130,CBRing_MM_OA_hp_90_110,CBRing_MM_OA_hm_90_110,CBRing_MM_OA_hp_70_90,CBRing_MM_OA_hm_70_90,CBRing_MM_OA_hp_50_70,CBRing_MM_OA_hm_50_70,CBRing_MM_OA_hp_19_50,CBRing_MM_OA_hm_19_50,CBRing_IM,CBFRing_MM_hp,CBFRing_MM_hm,CBFRing_MM_OA_hp_130_149,CBFRing_MM_OA_hm_130_149,CBFRing_MM_OA_hp_110_130,CBFRing_MM_OA_hm_110_130,CBFRing_MM_OA_hp_90_110,CBFRing_MM_OA_hm_90_110,CBFRing_MM_OA_hp_70_90,CBFRing_MM_OA_hm_70_90,CBFRing_MM_OA_hp_50_70,CBFRing_MM_OA_hm_50_70,CBFRing_MM_OA_hp_19_50,CBFRing_MM_OA_hm_19_50,CBFRing_IM);
 	//Find_Holes(*GetNeutralPions(),*GetTracks(),*GetTagger(),*GetDetectorHits(),285,305,CosTheta_Phi,CosTheta_Phi_MM, Pi0_IM);
 	//Check_CB_Elements(*GetNeutralPions(),*GetTracks(),*GetTagger(),*GetDetectorHits(),285,305);
-	/*** MC settings
-	TFile *f = new TFile("eff.root");
-	TH2F* LookUp = (TH2F*)f->Get("rootino_eff");
+	//MC settings
+	TFile *f = new TFile("Eff.root");
+	TH2F* LookUp = (TH2F*)f->Get("eff");
 	MC_Pi0_background(*GetTrigger(),*GetTagger(),*GetRootinos(),*GetPhotons(),*GetGeant(),15,285,315,Com_MM_hp,Com_MM_hp2,Com_MM_hm,LookUp);
 
 
 	//Find_Holes_MC(*GetNeutralPions(),*GetTagger(),*GetTracks(),205,305,CosTheta_Phi);//,CosTheta_Phi_MM, Pi0_IM);
 
-	f->Close();***/
+	f->Close();
 }
 
 void	PAR_Compton::ProcessScalerRead()

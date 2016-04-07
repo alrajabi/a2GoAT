@@ -218,10 +218,10 @@ elif [ "$1" = "$S2" ];then
 elif [ "$1" = "$S3" ];then
 	if [ "$2" = "$S6" ];then
 		if [ "$3" = "$S4" ];then
-			./runGoat.sh /media/al/750gb/CarbonOutput/1 /media/al/myPassport/Pi0_GoAT_Output/Carbon/1 /media/al/750gb/CarbonOutput/archive/1 GoAT-Pi0.dat &
-			./runGoat.sh /media/al/750gb/CarbonOutput/2 /media/al/myPassport/Pi0_GoAT_Output/Carbon/2 /media/al/750gb/CarbonOutput/archive/2 GoAT-Pi0.dat &
-              	        ./runGoat.sh /media/al/750gb/CarbonOutput/3 /media/al/myPassport/Pi0_GoAT_Output/Carbon/3 /media/al/750gb/CarbonOutput/archive/3 GoAT-Pi0.dat &
-                	./runGoat.sh /media/al/750gb/CarbonOutput/4 /media/al/myPassport/Pi0_GoAT_Output/Carbon/4 /media/al/750gb/CarbonOutput/archive/4 GoAT-Pi0.dat &
+			./runGoat.sh /media/al/750gb/CarbonOutput/1 ~/analysis/carbon2014/1 /media/al/750gb/CarbonOutput/archive/1 GoAT-Pi0.dat &
+			./runGoat.sh /media/al/750gb/CarbonOutput/2 ~/analysis/carbon2014/2 /media/al/750gb/CarbonOutput/archive/2 GoAT-Pi0.dat &
+              	        ./runGoat.sh /media/al/750gb/CarbonOutput/3 ~/analysis/carbon2014/3 /media/al/750gb/CarbonOutput/archive/3 GoAT-Pi0.dat &
+                	./runGoat.sh /media/al/750gb/CarbonOutput/4 ~/analysis/carbon2014/4 /media/al/750gb/CarbonOutput/archive/4 GoAT-Pi0.dat &
 		elif [ "$3" = "$S5" ];then
 			./runGoat.sh /media/al/MainzBackup/Butanol2014/AcquOutput/split1 /media/al/myPassport/Pi0_GoAT_Output/Butanol/1 /media/al/MainzBackup/Butanol2014/AcquOutput/split1/archive GoAT-Pi0.dat &
                 	./runGoat.sh /media/al/MainzBackup/Butanol2014/AcquOutput/split2 /media/al/myPassport/Pi0_GoAT_Output/Butanol/2 /media/al/MainzBackup/Butanol2014/AcquOutput/split2/archive GoAT-Pi0.dat &
