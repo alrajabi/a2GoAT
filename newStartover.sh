@@ -20,21 +20,10 @@ if [ "$1" = "$S0" ];then
 #fi  
 elif [ "$1" = "$S9" ];then
 	
-	if [ "$2" = "$S6" ];then
-		if [ "$3" = "$S3" ];then
-			#cd ~/analysis/a2geant/"$2"/"$4"
-			#hadd GoAT_input.root Acqu_*.root A2G4_*.root
-			#cd ~/analysis/a2GoAT
-			./build/bin/goat -f ../a2geant/pi0/"$4"/GoAT_input.root -D ../a2geant/pi0/"$4"/ -p GoAT_input -P GoATTrees configfiles/GoAT-Pi0.dat	
-		elif [ "$3" = "$S2" ];then
-			./build/bin/AR_Compton  -f ../a2geant/pi0/"$4"/GoATTrees.root -p GoATTrees -P MainGoAT -D ../a2geant/pi0/"$4"/ configfiles/Physics-Pi0.dat
-		fi
-	elif [ "$2" = "$S7" ];then
-		if [ "$3" = "$S3" ];then
-			./build/bin/goat -f ../a2geant/compton/"$4"/Acqu.root -D ../a2geant/compton/"$4"/ -p Acqu -P GoATTrees configfiles/GoAT-Pi0.dat	
-		elif [ "$3" = "$S2" ];then
-			./build/bin/AR_Compton  -f ../a2geant/compton/"$4"/GoATTrees.root -P MainGoAT -D ../a2geant/compton/"$4"/ configfiles/Physics-Pi0.dat
-		fi
+	if [ "$2" = "$S3" ];then
+		./runGoat_MC.sh ~/results/MC/Acqu ~/results/MC/GoAT 
+	elif [ "$2" = "$S2" ];then
+		./runMyClass_MC.sh ~/results/MC/GoAT ~/results/MC/AR_output AR_MC
 	else 
 		 echo "Sorry you picked wrong options"
 	fi
@@ -171,10 +160,10 @@ elif [ "$1" = "$S2" ];then
 			fi
 		elif [ "$3" = "$S4" ];then
 			if [ "$4" = "$S10" ];then
-				./runMyClass14p.sh ~/analysis/carbon2014/1 ~/analysis/carbon2014/1 ~/analysis/carbon2014/1/archive AR_Class&
-				./runMyClass14p.sh ~/usb/Pi0_GoAT_Output/Carbon/2 ~/results/Pi0_AR_output/2014/Carbon ~/usb/Pi0_GoAT_Output/Carbon/2/archive AR_Class&
-                        	./runMyClass14p.sh ~/usb/Pi0_GoAT_Output/Carbon/3 ~/results/Pi0_AR_output/2014/Carbon ~/usb/Pi0_GoAT_Output/Carbon/3/archive AR_Class&
-                        	./runMyClass14p.sh ~/usb/Pi0_GoAT_Output/Carbon/4 ~/results/Pi0_AR_output/2014/Carbon ~/usb/Pi0_GoAT_Output/Carbon/4/archive AR_Class&         
+				./runMyClass14p.sh ~/analysis/carbon2014/1 ~/analysis/carbon2014/output ~/analysis/carbon2014/archive/1 AR_Class&
+				./runMyClass14p.sh ~/analysis/carbon2014/2 ~/analysis/carbon2014/output ~/analysis/carbon2014/archive/2 AR_Class&
+                        	./runMyClass14p.sh ~/analysis/carbon2014/3 ~/analysis/carbon2014/output ~/analysis/carbon2014/archive/3 AR_Class&
+                        	./runMyClass14p.sh ~/analysis/carbon2014/4 ~/analysis/carbon2014/output ~/analysis/carbon2014/archive/4 AR_Class&         
 			elif [ "$4" = "$S11" ];then
 				./runMyClass15p.sh ~/results/Pi0_GoAT_Output/Carbon/1 ~/results/Pi0_AR_output/2015/Carbon ~/usb/Pi0_GoAT_Output/2015/Carbon/1/archive AR_Class& 
 				./runMyClass15p.sh ~/results/Pi0_GoAT_Output/Carbon/2 ~/results/Pi0_AR_output/2015/Carbon ~/usb/Pi0_GoAT_Output/2015/Carbon/2/archive AR_Class& 
