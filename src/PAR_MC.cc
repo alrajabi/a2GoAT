@@ -14,9 +14,9 @@ PAR_MC::PAR_MC()
     MM		= new GH1("MM", 	"MM", 	 	400,   800, 1200);     
     MM_2g	= new GH1("MM_2g", 	"MM_2g", 	400,   800, 1200);
 
-    Com_MM_hp = new GH1("Com_MM_hp","MC Rootino Missing Mass-Helicity = +1", 200,500,1300);
-    Com_MM_hm = new GH1("Com_MM_hm","MC Rootino Missing Mass-Helicity = -1", 200,500,1300);	
-    Com_MM_hp2 = new GH1("Com_MM_hp2","MC MissingMass, based on other pi0 photon", 200,500,1300);
+    Com_MM = new GH1("Com_MM","MC Rootino Missing Mass", 200,500,1300);
+    Com_OA = new GH1("Com_OA","MC OA between Rootino and missing P off of #pi^{0}", 180,0,180);	
+    Com_OA_Eff = new GH1("Com_OA_Eff","MC OA between Rootino and missing P off of #pi^{0},weighted by Eff ", 180,0,180);	
 	
     //Find Holes Hists:
     //CosTheta_Phi = new GH2("CosTheta_Phi","Pi0 Photons Cos#theta vs. #phi",180,-1,1,360,-180,180);
@@ -43,37 +43,43 @@ Bool_t	PAR_MC::Init()
     cout << "--------------------------------------------------" << endl;
 	return kTRUE;
 }
-void PAR_MC::Pi0_background(const GTreeTrigger& triggertree,const GTreeTagger& taggertree,const GTreeParticle& rootinotree,const GTreeParticle& photontree,const GTreeA2Geant a2geant,Int_t angle,Int_t en_low, Int_t en_high,GH1* com_MM_hp,GH1* com_MM_hp2,GH1* com_MM_hm,TH2F* lookup)
+Double_t PAR_MC::myOA_Calculator(const TLorentzVector& t1, const TLorentzVector& t2 )
+{
+	 TVector3 p1 = t1.Vect();
+	 TVector3 p2 = t2.Vect();
+	//Double_t cosinoos =p1*p2/(p1.Mag()*p2.Mag()) ;
+	//return cosinoos;
+	return p1.Angle(p2);
+}
+void PAR_MC::Pi0_background(const GTreeTrigger& triggertree,const GTreeTagger& taggertree,const GTreeParticle& rootinotree,const GTreeParticle& photontree,const GTreeA2Geant a2geant,Int_t angle,Int_t en_low, Int_t en_high,GH1* com_MM,GH1* com_OA,GH1* com_OA_Eff,TH2F* lookup)
 {
 	Double_t Ek;
 	Double_t Th;
 	Double_t Rnd;
-	//Int_t track_size = (int)pi0tree.GetTrackIndexList(0).size();	
-	//cout << "Rootino # is:   " << rootinotree.GetNParticles() << "   Photon # is:    " << photontree.GetNParticles() <<"\n" << endl;
 	if(triggertree.GetNErrors()==0)
 	{
 		for (Int_t j = 0; j < GetTagger()->GetNTagged(); j++)
 		{
-			//if ((pi0tree.GetNParticles() != 0) && (rootinotree.GetNParticles() != 0)&& (pi0tree.GetNSubParticles(0) == 2) && (pi0tree.GetNSubPhotons(0) == 2)) // check if a pio photon goes to a hole and we have one rootino
-			//cout << "one good compton found" << endl;
 			if ((taggertree.GetTaggedEnergy(j)>=en_low)&&( taggertree.GetTaggedEnergy(j)<en_high) && (photontree.GetNParticles() == 1))
 
-			//&& (myOA_Calculator(CalcMissingP4(photontree,i,j),rootinotree.Particle(l))<angle*TMath::Pi()/180) )		
+			//&& (myOA_Calculator(CalcMissingP4(photontree,i,j),rootinotree.Particle(l))<angle*TMath::Pi()/180) )//OA-cut	
 			{
 				//Int_t num_mc_track = a2geant.GetNTrueParticles();
 				//cout << "# of pts is:  " << num_mc_track << "\n" << endl;	
-				//for (int l=2; l < 4; l++)
+				//for (int l=0; l < num_mc_track; l++)
 				for (int i=0; i< photontree.GetNParticles(); i++)
 				{
 					//cout << TMath::Abs(a2geant.GetTrueVector(l).Mag())*1000 <<  "\n" << endl;
-					//cout << l <<"  was l and theta of the track is: " << a2geant.GetTrueTheta(l) << "  with mass    "<< TMath::Abs(a2geant.GetTrueVector(l).Mag())*1000 <<"\n" <<endl;
+					//cout <<  "l was" << l <<" and theta of the track is: " << a2geant.GetTrueTheta(l) << "  with mass    "<< TMath::Abs(a2geant.GetTrueVector(l).Mag())*1000 <<"\n" <<endl;
 					//if ( a2geant.GetTrueTheta(l) > 155 && photontree.GetNParticles()==1)
 					//{
 						//Int_t y = (l==2) ? 3 : 2 ;
 						//cout << "particle #  " << l << "   just passed the backward hole, and it is actually a " << a2geant.GetTrueID(l)<< "\n" << endl;
-						//TLorentzVector missP = a2geant.GetTrueVector(y);
-						//cout << "Missing Mass is:  " << CalcMissingP4(missP,j).M() << "\n" << endl;
-						//FillMissingMass(missP,j,com_MM_hp2);
+					TLorentzVector origPi0 = a2geant.GetTrueVector(1);
+					TLorentzVector missP_pi0 = CalcMissingP4(origPi0,j);
+					TLorentzVector missP_comp = CalcMissingP4(photontree,i,j);
+					com_OA->Fill(myOA_Calculator(missP_pi0,missP_comp)*TMath::RadToDeg());
+					//cout << "OA is:  " << myOA_Calculator(missP_pi0,missP_comp)*TMath::RadToDeg() << "\n" << endl;	
 						//for (int i=0; i < photontree.GetNParticles(); i++)
 						//{
 							//cout << photontree.GetNParticles() <<" of photons with theta of:  " << photontree.GetTheta(i) <<"   theta of proton is:  "<< rootinotree.GetTheta(0) <<"\n" << endl;
@@ -90,16 +96,12 @@ void PAR_MC::Pi0_background(const GTreeTrigger& triggertree,const GTreeTagger& t
 					Ek = CalcMissingP4(photontree,i,j).E() - CalcMissingP4(photontree,i,j).M();
 					Th = CalcMissingP4(photontree,i,j).Theta()*TMath::RadToDeg();
 					Rnd = MyRnd->Rndm();
-					//cout << "Event has Ek= "<<Ek<<"  and Th= "<<Th<<"  with Rnd= "<< Rnd<< "\n"<<endl; 
-					//if (Rnd <= lookup->GetBinContent((Int_t)(((Int_t)Ek)/2)+1,(Int_t)(((Int_t)Th-19)/2)+1))//means we accept it
 					if (Rnd <= lookup->GetBinContent(lookup->FindBin(Ek,Th)))
 					{
-						FillMissingMass(photontree,i,j,com_MM_hm);
+						FillMissingMass(photontree,i,j,com_MM);
+						com_OA_Eff->Fill(myOA_Calculator(missP_pi0,missP_comp)*TMath::RadToDeg());
 					}
-							//}
-					
-						//}
-					//}
+						
 				}				
 				
 			}
@@ -179,7 +181,7 @@ void	PAR_MC::ProcessEvent()
     }
 	TFile *f = new TFile("Eff.root");
 	TH2F* LookUp = (TH2F*)f->Get("eff");
-	Pi0_background(*GetTrigger(),*GetTagger(),*GetRootinos(),*GetPhotons(),*GetGeant(),15,285,315,Com_MM_hp,Com_MM_hp2,Com_MM_hm,LookUp);
+	Pi0_background(*GetTrigger(),*GetTagger(),*GetRootinos(),*GetPhotons(),*GetGeant(),15,285,315,Com_MM,Com_OA,Com_OA_Eff,LookUp);
 
 
 	//Find_Holes(*GetNeutralPions(),*GetTagger(),*GetTracks(),205,305,CosTheta_Phi);//,CosTheta_Phi_MM, Pi0_IM);

@@ -23,9 +23,9 @@ private:
     GH1*	MM;
     GH1*	MM_2g;
 
-    GH1*	Com_MM_hp;
-    GH1*	Com_MM_hp2;
-    GH1*	Com_MM_hm;	
+    GH1*	Com_MM;
+    GH1*	Com_OA_Eff;
+    GH1*	Com_OA;	
 
     GH2*	CosTheta_Phi;	
     GH1*	CosPhotons;
@@ -33,7 +33,8 @@ private:
     GH1*	Pi0_IM;	
 protected:
     virtual Bool_t  Start();
-    virtual void Pi0_background(const GTreeTrigger& triggertree,const GTreeTagger& taggertree,const GTreeParticle& rootinotree,const GTreeParticle& photontree, const GTreeA2Geant a2geant, Int_t angle,Int_t en_low, Int_t en_high,GH1* com_MM_hp,GH1* com_MM_hp2,GH1* com_MM_hm,TH2F* lookup);
+    virtual Double_t myOA_Calculator(const TLorentzVector& t1, const TLorentzVector& t2 );
+    virtual void Pi0_background(const GTreeTrigger& triggertree,const GTreeTagger& taggertree,const GTreeParticle& rootinotree,const GTreeParticle& photontree, const GTreeA2Geant a2geant, Int_t angle,Int_t en_low, Int_t en_high,GH1* com_MM,GH1* com_OA,GH1* com_OA_Eff,TH2F* lookup);
     virtual void Find_Holes(const GTreeMeson& pi0tree,const GTreeTagger& taggertree,const GTreeTrack& tracktree,Int_t en_low, Int_t en_high,GH2* cos_phi);//,GH2* cos_phi_mm,GH1* pi0_im);
     virtual void    ProcessEvent();
     virtual void	ProcessScalerRead();
