@@ -1,4 +1,5 @@
 #include "PAR_MC.h"
+#include "EffLookUp.h"
 
 PAR_MC::PAR_MC()
 { 
@@ -51,7 +52,8 @@ Double_t PAR_MC::myOA_Calculator(const TLorentzVector& t1, const TLorentzVector&
 	//return cosinoos;
 	return p1.Angle(p2);
 }
-void PAR_MC::Pi0_background(const GTreeTrigger& triggertree,const GTreeTagger& taggertree,const GTreeParticle& rootinotree,const GTreeParticle& photontree,const GTreeA2Geant a2geant,Int_t angle,Int_t en_low, Int_t en_high,GH1* com_MM,GH1* com_OA,GH1* com_OA_Eff,TH2F* lookup)
+
+void PAR_MC::Pi0_background(const GTreeTrigger& triggertree,const GTreeTagger& taggertree,const GTreeParticle& rootinotree,const GTreeParticle& photontree,const GTreeA2Geant a2geant,Int_t angle,Int_t en_low, Int_t en_high,GH1* com_MM,GH1* com_OA,GH1* com_OA_Eff)
 {
 	Double_t Ek;
 	Double_t Th;
@@ -96,7 +98,8 @@ void PAR_MC::Pi0_background(const GTreeTrigger& triggertree,const GTreeTagger& t
 					Ek = CalcMissingP4(photontree,i,j).E() - CalcMissingP4(photontree,i,j).M();
 					Th = CalcMissingP4(photontree,i,j).Theta()*TMath::RadToDeg();
 					Rnd = MyRnd->Rndm();
-					if (Rnd <= lookup->GetBinContent(lookup->FindBin(Ek,Th)))
+					//if (Rnd <= eff->GetBinContent(lookup->FindBin(Ek,Th)))
+					if (Rnd <= eff[TMath::CeilNint(Ek/2)-1][TMath::CeilNint((Th-20)/5)-1])				
 					{
 						FillMissingMass(photontree,i,j,com_MM);
 						com_OA_Eff->Fill(myOA_Calculator(missP_pi0,missP_comp)*TMath::RadToDeg());
@@ -179,15 +182,16 @@ void	PAR_MC::ProcessEvent()
         }
 
     }
-	TFile *f = new TFile("Eff.root");
-	TH2F* LookUp = (TH2F*)f->Get("eff");
-	Pi0_background(*GetTrigger(),*GetTagger(),*GetRootinos(),*GetPhotons(),*GetGeant(),15,285,315,Com_MM,Com_OA,Com_OA_Eff,LookUp);
+	//TFile *f = new TFile("Eff.root");
+	//cout << "opening file ......." << endl;
+	//TH2F* LookUp = (TH2F*)f->Get("eff");
+	Pi0_background(*GetTrigger(),*GetTagger(),*GetRootinos(),*GetPhotons(),*GetGeant(),15,285,315,Com_MM,Com_OA,Com_OA_Eff);
 
 
 	//Find_Holes(*GetNeutralPions(),*GetTagger(),*GetTracks(),205,305,CosTheta_Phi);//,CosTheta_Phi_MM, Pi0_IM);
 
-	f->Close();
-
+	//f->Close();
+	//cout << "Closing file ......." << endl;
 
 }
 
