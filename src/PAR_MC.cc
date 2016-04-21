@@ -16,6 +16,8 @@ PAR_MC::PAR_MC()
     MM_2g	= new GH1("MM_2g", 	"MM_2g", 	400,   800, 1200);
 
     Com_MM = new GH1("Com_MM","MC Rootino Missing Mass", 200,500,1300);
+    Pi0_MM = new GH1("Pi0_MM","MC Pi0 Missing Mass", 200,500,1300);
+    Pi0_MM_OA = new GH1("Pi0_MM_OA","MC Pi0 Missing Mass,after OA cut", 200,500,1300);
     Com_OA = new GH1("Com_OA","MC OA between Rootino and missing P off of #pi^{0}", 180,0,180);	
     Com_OA_Eff = new GH1("Com_OA_Eff","MC OA between Rootino and missing P off of #pi^{0},weighted by Eff ", 180,0,180);	
 	
@@ -53,13 +55,12 @@ Double_t PAR_MC::myOA_Calculator(const TLorentzVector& t1, const TLorentzVector&
 	return p1.Angle(p2);
 }
 
-void PAR_MC::Pi0_background(const GTreeTrigger& triggertree,const GTreeTagger& taggertree,const GTreeParticle& rootinotree,const GTreeParticle& photontree,const GTreeA2Geant a2geant,Int_t angle,Int_t en_low, Int_t en_high,GH1* com_MM,GH1* com_OA,GH1* com_OA_Eff)
+void PAR_MC::Pi0_background(const GTreeTagger& taggertree,const GTreeParticle& rootinotree,const GTreeParticle& photontree,const GTreeA2Geant a2geant,Int_t angle,Int_t en_low, Int_t en_high,GH1* com_MM,GH1* pi0_MM,GH1* pi0_MM_OA,GH1* com_OA,GH1* com_OA_Eff)
 {
 	Double_t Ek;
 	Double_t Th;
 	Double_t Rnd;
-	if(triggertree.GetNErrors()==0)
-	{
+	
 		for (Int_t j = 0; j < GetTagger()->GetNTagged(); j++)
 		{
 			if ((taggertree.GetTaggedEnergy(j)>=en_low)&&( taggertree.GetTaggedEnergy(j)<en_high) && (photontree.GetNParticles() == 1))
@@ -77,6 +78,7 @@ void PAR_MC::Pi0_background(const GTreeTrigger& triggertree,const GTreeTagger& t
 					//{
 						//Int_t y = (l==2) ? 3 : 2 ;
 						//cout << "particle #  " << l << "   just passed the backward hole, and it is actually a " << a2geant.GetTrueID(l)<< "\n" << endl;
+					
 					TLorentzVector origPi0 = a2geant.GetTrueVector(1);
 					TLorentzVector missP_pi0 = CalcMissingP4(origPi0,j);
 					TLorentzVector missP_comp = CalcMissingP4(photontree,i,j);
@@ -95,25 +97,28 @@ void PAR_MC::Pi0_background(const GTreeTrigger& triggertree,const GTreeTagger& t
 							//{
 					TRandom3* MyRnd = new TRandom3(0);
 					//MyRnd->SetSeed(6678);
-					Ek = CalcMissingP4(photontree,i,j).E() - CalcMissingP4(photontree,i,j).M();
-					Th = CalcMissingP4(photontree,i,j).Theta()*TMath::RadToDeg();
+					//Ek = CalcMissingP4(photontree,i,j).E() - CalcMissingP4(photontree,i,j).M();
+					//Th = CalcMissingP4(photontree,i,j).Theta()*TMath::RadToDeg();
+					Ek = missP_pi0.E() - missP_pi0.M();
+					Th = missP_pi0.Theta()*TMath::RadToDeg();
 					Rnd = MyRnd->Rndm();
 					//if (Rnd <= eff->GetBinContent(lookup->FindBin(Ek,Th)))
 					if (Rnd <= eff[TMath::CeilNint(Ek/2)-1][TMath::CeilNint((Th-20)/5)-1])				
 					{
 						FillMissingMass(photontree,i,j,com_MM);
+						FillMissingMass(origPi0,j,pi0_MM);
 						com_OA_Eff->Fill(myOA_Calculator(missP_pi0,missP_comp)*TMath::RadToDeg());
+						if ((rootinotree.GetNParticles()==1) && (myOA_Calculator(CalcMissingP4(photontree,i,j),rootinotree.Particle(0))<15*TMath::Pi()/180) )
+						{
+							FillMissingMass(origPi0,j,pi0_MM_OA);
+						}
 					}
 						
-				}				
+				} 				
 				
 			}
 		}
 		
-		
-	}
-
-
 }
 void PAR_MC::Find_Holes(const GTreeMeson& pi0tree,const GTreeTagger& taggertree,const GTreeTrack& tracktree,Int_t en_low, Int_t en_high,GH2* cos_phi)//,GH2* cos_phi_mm,GH1* pi0_im)
 {
@@ -185,7 +190,7 @@ void	PAR_MC::ProcessEvent()
 	//TFile *f = new TFile("Eff.root");
 	//cout << "opening file ......." << endl;
 	//TH2F* LookUp = (TH2F*)f->Get("eff");
-	Pi0_background(*GetTrigger(),*GetTagger(),*GetRootinos(),*GetPhotons(),*GetGeant(),15,285,315,Com_MM,Com_OA,Com_OA_Eff);
+	Pi0_background(*GetTagger(),*GetRootinos(),*GetPhotons(),*GetGeant(),15,285,305,Com_MM,Pi0_MM,Pi0_MM_OA,Com_OA,Com_OA_Eff);
 
 
 	//Find_Holes(*GetNeutralPions(),*GetTagger(),*GetTracks(),205,305,CosTheta_Phi);//,CosTheta_Phi_MM, Pi0_IM);
