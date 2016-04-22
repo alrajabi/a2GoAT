@@ -79,7 +79,7 @@ void PAR_MC::Pi0_background(const GTreeTagger& taggertree,const GTreeParticle& r
 						//Int_t y = (l==2) ? 3 : 2 ;
 						//cout << "particle #  " << l << "   just passed the backward hole, and it is actually a " << a2geant.GetTrueID(l)<< "\n" << endl;
 					
-					TLorentzVector origPi0 = a2geant.GetTrueVector(1);
+					TLorentzVector origPi0 = a2geant.GetTrueVector(1)*1000;
 					TLorentzVector missP_pi0 = CalcMissingP4(origPi0,j);
 					TLorentzVector missP_comp = CalcMissingP4(photontree,i,j);
 					com_OA->Fill(myOA_Calculator(missP_pi0,missP_comp)*TMath::RadToDeg());
@@ -101,6 +101,7 @@ void PAR_MC::Pi0_background(const GTreeTagger& taggertree,const GTreeParticle& r
 					//Th = CalcMissingP4(photontree,i,j).Theta()*TMath::RadToDeg();
 					Ek = missP_pi0.E() - missP_pi0.M();
 					Th = missP_pi0.Theta()*TMath::RadToDeg();
+					//cout << origPi0.E() << "  Ek= " << Ek << "  Th = "<< Th << "\t" << origPi0.Theta()*TMath::RadToDeg() <<endl;
 					Rnd = MyRnd->Rndm();
 					//if (Rnd <= eff->GetBinContent(lookup->FindBin(Ek,Th)))
 					if (Rnd <= eff[TMath::CeilNint(Ek/2)-1][TMath::CeilNint((Th-20)/5)-1])				
@@ -108,7 +109,7 @@ void PAR_MC::Pi0_background(const GTreeTagger& taggertree,const GTreeParticle& r
 						FillMissingMass(photontree,i,j,com_MM);
 						FillMissingMass(origPi0,j,pi0_MM);
 						com_OA_Eff->Fill(myOA_Calculator(missP_pi0,missP_comp)*TMath::RadToDeg());
-						if ((rootinotree.GetNParticles()==1) && (myOA_Calculator(CalcMissingP4(photontree,i,j),rootinotree.Particle(0))<15*TMath::Pi()/180) )
+						if ((rootinotree.GetNParticles()==1) && (myOA_Calculator(CalcMissingP4(photontree,i,j),rootinotree.Particle(0))<15*TMath::DegToRad()) )
 						{
 							FillMissingMass(origPi0,j,pi0_MM_OA);
 						}

@@ -12,8 +12,9 @@
 class	PAR_Class  : public PPhysics
 {
 private:
-    GH1*	Time_Pi0;
+
   //pi0 Eff Revisited (Added on Jan26,2016)
+    GH3*	OA_Table;
     GH1* 	Time_Eff;
     GH1*	OA;
     GH2*	NChargedOA_hp;
@@ -32,6 +33,7 @@ private:
     GH1*	Denom_60_70;
     GH1*	Num_60_70;
    //Carbon SF Revisited (Added on Feb12,2016)
+    GH1*	Time_Pi0;
     GH1* 	 Pi0_MM_hp_19_50;
     GH1* 	 Pi0_MM_hm_19_50;
     GH1* 	 Pi0_MM_hp_50_70;
@@ -116,7 +118,7 @@ protected:
     virtual Bool_t  Start();
     virtual void Eff(const GTreeParticle& rootinotree,const GTreeMeson& pi0tree, Int_t theta0, Int_t theta1, Float_t angle,GH1* inclusive_denom,GH1* denom,GH1* nc,GH1* ncoa,GH1* mgg_all_theta,GH1* mgg_0,GH1* mgg_10,GH1* mgg_20,GH1* mgg_30,GH1* mgg_40, GH1* mgg_50, GH1* mgg_60, GH1* mgg_70, GH1* mgg_80, GH1* mgg_90, GH1* mgg_100, GH1* mgg_110, GH1* mgg_120, GH1* mgg_130) ;	
     virtual void Pi0_Asym(const GTreeTrigger& triggertree,const GTreeTagger& taggertree,const GTreeMeson& pi0tree,Int_t en_low,Int_t en_high,GH1* theta_hp,GH1* theta_hm,GH1* mgg_hp_0,GH1* mgg_hm_0, GH1* mgg_hp_10,GH1* mgg_hm_10, GH1* mgg_hp_20,GH1* mgg_hm_20, GH1* mgg_hp_30,GH1* mgg_hm_30, GH1* mgg_hp_40,GH1* mgg_hm_40, GH1* mgg_hp_50,GH1* mgg_hm_50, GH1* mgg_hp_60,GH1* mgg_hm_60, GH1* mgg_hp_70,GH1* mgg_hm_70, GH1* mgg_hp_80,GH1* mgg_hm_80, GH1* mgg_hp_90,GH1* mgg_hm_90, GH1* mgg_hp_100,GH1* mgg_hm_100, GH1* mgg_hp_110,GH1* mgg_hm_110, GH1* mgg_hp_120,GH1* mgg_hm_120, GH1* mgg_hp_130,GH1* mgg_hm_130, GH1* mgg_hp_140,GH1* mgg_hm_140, GH1* mgg_hp_150,GH1* mgg_hm_150, GH1* mgg_hp_160,GH1* mgg_hm_160, GH1* mgg_hp_170,GH1* mgg_hm_170); 
-    virtual void Eff_rev(const GTreeParticle& rootinotree,const GTreeMeson& pi0tree,const GTreeTagger& taggertree,const GTreeTrigger& triggertree, Float_t angle,Int_t en_low, Int_t en_high,GH1* time_eff,GH2* denom_hp,GH2* ncoa_hp,GH2* denom_hm,GH2* ncoa_hm,GH1* mgg_all_theta, GH1* denom_19_30,GH1* num_19_30, GH1* denom_30_40,GH1* num_30_40, GH1* denom_40_50,GH1* num_40_50, GH1* denom_50_60,GH1* num_50_60, GH1* denom_60_70,GH1* num_60_70, GH1* oa);	
+    virtual void Eff_rev(const GTreeParticle& rootinotree,const GTreeMeson& pi0tree,const GTreeTagger& taggertree,const GTreeTrigger& triggertree, Float_t angle,Int_t en_low, Int_t en_high,GH1* time_eff,GH3* oa_table,GH2* denom_hp,GH2* ncoa_hp,GH2* denom_hm,GH2* ncoa_hm,GH1* mgg_all_theta, GH1* denom_19_30,GH1* num_19_30, GH1* denom_30_40,GH1* num_30_40, GH1* denom_40_50,GH1* num_40_50, GH1* denom_50_60,GH1* num_50_60, GH1* denom_60_70,GH1* num_60_70, GH1* oa);	
     virtual void Carbon_SF(const GTreeTrigger& triggertree,const GTreeTagger& taggertree,const GTreeMeson& pi0tree,Int_t en_low,Int_t en_high,GH1* theta_hp,GH1* theta_hm,GH1* time_pi0,GH1* mgg,GH1* pi0_MM_hp,GH1* pi0_MM_hm,GH1* pi0_MM_hp_19_50,GH1* pi0_MM_hm_19_50,GH1* pi0_MM_hp_50_70,GH1* pi0_MM_hm_50_70,GH1* pi0_MM_hp_70_95,GH1* pi0_MM_hm_70_95,GH1* pi0_MM_hp_95_110,GH1* pi0_MM_hm_95_110,GH1* pi0_MM_hp_110_125,GH1* pi0_MM_hm_110_125,GH1* pi0_MM_hp_125_140,GH1* pi0_MM_hm_125_140,GH1* pi0_MM_hp_140_155,GH1* pi0_MM_hm_140_155);
     virtual Double_t myOA_Calculator(const TLorentzVector& t1, const TLorentzVector& t2 );
     virtual void    ProcessEvent();
