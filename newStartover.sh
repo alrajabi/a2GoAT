@@ -101,9 +101,9 @@ elif [ "$1" = "$S1" ];then
 			mv ~/usb/Pi0_GoAT_Output/2015/Carbon/2/archive/*.root ~/usb/Pi0_GoAT_Output/2015/Carbon/2
 			mv ~/usb/Pi0_GoAT_Output/2015/Carbon/3/archive/*.root ~/usb/Pi0_GoAT_Output/2015/Carbon/3
 			mv ~/usb/Pi0_GoAT_Output/2015/Carbon/4/archive/*.root ~/usb/Pi0_GoAT_Output/2015/Carbon/4		
-			rm ~/results/Pi0_AR_output/Butanol/oneH/*.root ### check dictation
-			rm ~/results/Pi0_AR_output/Butanol/zeroH/*.root
-			rm ~/results/Pi0_AR_output/Carbon/*.root	
+			rm ~/results/Pi0_AR_output/2015/Butanol/oneH/*.root ### check dictation
+			rm ~/results/Pi0_AR_output/2015/Butanol/zeroH/*.root
+			rm ~/results/Pi0_AR_output/2015/Carbon/*.root	
 		fi	
 	elif [ "$2" = "$S7" ];then
 		if [ "$3" = "$S10" ];then
@@ -153,6 +153,7 @@ elif [ "$1" = "$S2" ];then
                         	./runMyClass15p.sh ~/usb/2015_bin/pi0/Butanol/2 ~/results/Pi0_AR_output/2015/Butanol/oneH ~/usb/2015_bin/pi0/Butanol/oneH/2 AR_Class& 
                         	./runMyClass15p.sh ~/usb/2015_bin/pi0/Butanol/3 ~/results/Pi0_AR_output/2015/Butanol/oneH ~/usb/2015_bin/pi0/Butanol/oneH/3 AR_Class& 
                         	####oneH is on server ~/results/Pi_GoAT_Output/Butanol/
+				./runMyClass15p.sh ~/results/Pi0_GoAT_Output/Butanol/0 ~/results/Pi0_AR_output/2015/Butanol/zeroH ~/results/Pi0_GoAT_Output/Butanol/zeroH/0 AR_Class& 
 				./runMyClass15p.sh ~/results/Pi0_GoAT_Output/Butanol/1 ~/results/Pi0_AR_output/2015/Butanol/zeroH ~/results/Pi0_GoAT_Output/Butanol/zeroH/1 AR_Class& 
 				./runMyClass15p.sh ~/results/Pi0_GoAT_Output/Butanol/2 ~/results/Pi0_AR_output/2015/Butanol/zeroH ~/results/Pi0_GoAT_Output/Butanol/zeroH/2 AR_Class& 
 				./runMyClass15p.sh ~/results/Pi0_GoAT_Output/Butanol/3 ~/results/Pi0_AR_output/2015/Butanol/zeroH ~/results/Pi0_GoAT_Output/Butanol/zeroH/3 AR_Class& 

@@ -12,7 +12,7 @@
 class	PAR_Class  : public PPhysics
 {
 private:
-
+    TH1*	TaggerAccScal;
   //pi0 Eff Revisited (Added on Jan26,2016)
     GH3*	OA_Table;
     GH1* 	Time_Eff;

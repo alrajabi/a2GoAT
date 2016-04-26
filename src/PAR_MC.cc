@@ -104,7 +104,7 @@ void PAR_MC::Pi0_background(const GTreeTagger& taggertree,const GTreeParticle& r
 					//cout << origPi0.E() << "  Ek= " << Ek << "  Th = "<< Th << "\t" << origPi0.Theta()*TMath::RadToDeg() <<endl;
 					Rnd = MyRnd->Rndm();
 					//if (Rnd <= eff->GetBinContent(lookup->FindBin(Ek,Th)))
-					if (Rnd <= eff[TMath::CeilNint(Ek/2)-1][TMath::CeilNint((Th-20)/5)-1])				
+					if (Rnd <= eff_without_OA[TMath::CeilNint(Ek/2)-1][TMath::CeilNint((Th-20)/5)-1])				
 					{
 						FillMissingMass(photontree,i,j,com_MM);
 						FillMissingMass(origPi0,j,pi0_MM);
