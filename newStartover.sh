@@ -97,10 +97,7 @@ elif [ "$1" = "$S1" ];then
 			mv ~/results/Pi0_GoAT_Output/Butanol/zeroH/2/*.root ~/results/Pi0_GoAT_Output/Butanol/2
 			mv ~/results/Pi0_GoAT_Output/Butanol/zeroH/3/*.root ~/results/Pi0_GoAT_Output/Butanol/3
 			mv ~/results/Pi0_GoAT_Output/Butanol/zeroH/4/*.root ~/results/Pi0_GoAT_Output/Butanol/4
-			mv ~/usb/Pi0_GoAT_Output/2015/Carbon/1/archive/*.root ~/usb/Pi0_GoAT_Output/2015/Carbon/1
-			mv ~/usb/Pi0_GoAT_Output/2015/Carbon/2/archive/*.root ~/usb/Pi0_GoAT_Output/2015/Carbon/2
-			mv ~/usb/Pi0_GoAT_Output/2015/Carbon/3/archive/*.root ~/usb/Pi0_GoAT_Output/2015/Carbon/3
-			mv ~/usb/Pi0_GoAT_Output/2015/Carbon/4/archive/*.root ~/usb/Pi0_GoAT_Output/2015/Carbon/4		
+			mv ~/usb/2015_bin/pi0/Carbon/archive/*.root ~/usb/2015_bin/pi0/Carbon
 			rm ~/results/Pi0_AR_output/2015/Butanol/oneH/*.root ### check dictation
 			rm ~/results/Pi0_AR_output/2015/Butanol/zeroH/*.root
 			rm ~/results/Pi0_AR_output/2015/Carbon/*.root	
@@ -166,10 +163,10 @@ elif [ "$1" = "$S2" ];then
                         	./runMyClass14p.sh ~/analysis/carbon2014/3 ~/analysis/carbon2014/output ~/analysis/carbon2014/archive/3 AR_Class&
                         	./runMyClass14p.sh ~/analysis/carbon2014/4 ~/analysis/carbon2014/output ~/analysis/carbon2014/archive/4 AR_Class&         
 			elif [ "$4" = "$S11" ];then
-				./runMyClass15p.sh ~/results/Pi0_GoAT_Output/Carbon/1 ~/results/Pi0_AR_output/2015/Carbon ~/usb/Pi0_GoAT_Output/2015/Carbon/1/archive AR_Class& 
-				./runMyClass15p.sh ~/results/Pi0_GoAT_Output/Carbon/2 ~/results/Pi0_AR_output/2015/Carbon ~/usb/Pi0_GoAT_Output/2015/Carbon/2/archive AR_Class& 
-				./runMyClass15p.sh ~/results/Pi0_GoAT_Output/Carbon/3 ~/results/Pi0_AR_output/2015/Carbon ~/usb/Pi0_GoAT_Output/2015/Carbon/3/archive AR_Class& 
-				./runMyClass15p.sh ~/results/Pi0_GoAT_Output/Carbon/4 ~/results/Pi0_AR_output/2015/Carbon ~/usb/Pi0_GoAT_Output/2015/Carbon/4/archive AR_Class& 
+				./runMyClass15p.sh ~/usb/2015_bin/pi0/Carbon ~/results/Pi0_AR_output/2015/Carbon ~/usb/2015_bin/pi0/Carbon/archive AR_Class& 
+				#./runMyClass15p.sh ~/results/Pi0_GoAT_Output/Carbon/2 ~/results/Pi0_AR_output/2015/Carbon ~/usb/Pi0_GoAT_Output/2015/Carbon/2/archive AR_Class& 
+				#./runMyClass15p.sh ~/results/Pi0_GoAT_Output/Carbon/3 ~/results/Pi0_AR_output/2015/Carbon ~/usb/Pi0_GoAT_Output/2015/Carbon/3/archive AR_Class& 
+				#./runMyClass15p.sh ~/results/Pi0_GoAT_Output/Carbon/4 ~/results/Pi0_AR_output/2015/Carbon ~/usb/Pi0_GoAT_Output/2015/Carbon/4/archive AR_Class& 
 			fi	
 		fi
 	elif [ "$2" = "$S7" ];then

@@ -4,8 +4,8 @@
 #
 # Set prompt and random windows (standard library and GH1 library)
 Set-Prompt-Cut: 8 14
-Add-Random-Cut: -250 -40
-Add-Random-Cut: 50 225
+Add-Random-Cut: -250 -50
+Add-Random-Cut: 50 160
 
 # Set target mass (for standard physics library)
 Target-Mass: 938.272

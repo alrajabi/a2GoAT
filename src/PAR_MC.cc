@@ -2,7 +2,7 @@
 #include "EffLookUp.h"
 
 PAR_MC::PAR_MC()
-{ 
+{ /***
     time 	= new GH1("time", 	"time", 	1400, -700, 700);
     time_cut 	= new GH1("time_cut", 	"time_cut", 	1400, -700, 700);
 
@@ -21,6 +21,24 @@ PAR_MC::PAR_MC()
     Com_OA = new GH1("Com_OA","MC OA between Rootino and missing P off of #pi^{0}", 180,0,180);	
     Com_OA_Eff = new GH1("Com_OA_Eff","MC OA between Rootino and missing P off of #pi^{0},weighted by Eff ", 180,0,180);	
 	
+***/
+    //pi0 Eff Revisited Hists: (Added May3,2016)
+    Time_Eff 	= new GH1("Time_Eff", 	"time", 	1400, -700, 700);    
+    //Mgg_all_theta = new GH1("Mgg_all_theta","Mgg for 0 <Theta < 180 with cut on MM",250,0,250);
+    OA		= new GH1("OA",	"Opening Angle " ,180,0, 180);
+   // Missing_Mass = new GH1("Missing_Mass","Mass of Rootino",125,0,1250);
+    NChargedOA	= new GH2("NChargedOA",	"NC Prime at OA,E_k vs. Proton #Theta-Helicity=+1" ,75,0, 150,27,20,155);
+    Denom 	= new GH2("Denom",	"Denom, #E_{k} vs. Proton #Theta-Helicity=+1" ,75,0, 150,27,20,155);
+    Denom_19_30	= new GH1("Denom_19_30","#epsilon, denom for 19 <#Theta < 30",75,0,150);
+    Num_19_30	= new GH1("Num_19_30","#epsilon, num. for 19 <#Theta < 30",75,0,150);
+    Denom_30_40	= new GH1("Denom_30_40","#epsilon, denom for 30 <#Theta < 40",75,0,150);
+    Num_30_40	= new GH1("Num_30_40","#epsilon, num. for 30 <#Theta < 40",75,0,150);
+    Denom_40_50	= new GH1("Denom_40_50","#epsilon, denom for 40 <#Theta < 50",75,0,150);
+    Num_40_50	= new GH1("Num_40_50","#epsilon, num. for 40 <#Theta < 50",75,0,150);
+    Denom_50_60	= new GH1("Denom_50_60","#epsilon, denom for 50 <#Theta < 60",75,0,150);
+    Num_50_60	= new GH1("Num_50_60","#epsilon, num. for 50 <#Theta < 60",75,0,150);
+    Denom_60_70	= new GH1("Denom_60_70","#epsilon, denom for 60 <#Theta < 70",75,0,150);
+    Num_60_70	= new GH1("Num_60_70","#epsilon, num. for 60 <#Theta < 70",75,0,150); 
     //Find Holes Hists:
     //CosTheta_Phi = new GH2("CosTheta_Phi","Pi0 Photons Cos#theta vs. #phi",180,-1,1,360,-180,180);
     //CosTheta_Phi = new GH2("CosTheta_Phi","Pi0 Photons Cos#theta vs. #phi",180,-1,1,360,-180,180);
@@ -121,6 +139,98 @@ void PAR_MC::Pi0_background(const GTreeTagger& taggertree,const GTreeParticle& r
 		}
 		
 }
+//-----------------------------------Eff revisited, Jan 26 2016 ----------------------------------------------------
+void PAR_MC::Eff_rev(const GTreeParticle& rootinotree,const GTreeMeson& pi0tree,const GTreeTagger& taggertree, Float_t angle,GH1* time_eff,GH2* denom,GH2* ncoa,GH1* denom_19_30,GH1* num_19_30, GH1* denom_30_40,GH1* num_30_40, GH1* denom_40_50,GH1* num_40_50, GH1* denom_50_60,GH1* num_50_60, GH1* denom_60_70,GH1* num_60_70, GH1* oa)
+{
+	Double_t Mytime;
+	Double_t E_k;
+	Double_t Th;		
+		for (Int_t j = 0; j < GetTagger()->GetNTagged(); j++)
+		{
+			//cout << Th << "  was theta" << endl;	
+			if((pi0tree.GetNSubParticles(0) == 2) && (pi0tree.GetNSubPhotons(0) == 2)&& (pi0tree.GetNParticles()!=0))
+			{
+        			if (CalcMissingMass(pi0tree,0,j)<970 && CalcMissingMass(pi0tree,0,j)>910)//Select events based on MissMass.	
+				{
+				//cout << ".Theta()*TMath::RadToDeg() gives: " << CalcMissingP4(pi0tree,0,j).Theta()*TMath::RadToDeg() << endl;
+					Th = CalcMissingP4(pi0tree,0,j).Theta()*TMath::RadToDeg();
+					Mytime=GetTagger()->GetTaggedTime(j)-pi0tree.GetTime(0);
+					time_eff->Fill(Mytime);	
+					E_k = CalcMissingEnergy(pi0tree,0,j)-CalcMissingMass(pi0tree, 0,j);
+					denom->Fill(E_k,Th,Mytime);
+					if (rootinotree.GetNParticles()==1){						
+						oa->Fill(myOA_Calculator(CalcMissingP4(pi0tree,0,j),rootinotree.Particle(0))*TMath::RadToDeg(),Mytime);
+						//oa_table->Fill(E_k,Th,myOA_Calculator(CalcMissingP4(pi0tree,0,j),rootinotree.Particle(0))*TMath::RadToDeg(),Mytime);
+						if (myOA_Calculator(CalcMissingP4(pi0tree,0,j),rootinotree.Particle(0))<angle*TMath::DegToRad())
+						{
+							ncoa->Fill(E_k,Th,Mytime);
+						}
+									
+					}
+					if((Th >= 19) && (Th < 30))
+					{	
+						denom_19_30->Fill(E_k,Mytime);
+						if (rootinotree.GetNParticles()==1)
+						{
+							if (myOA_Calculator(CalcMissingP4(pi0tree,0,j),rootinotree.Particle(0))<angle*TMath::DegToRad())
+							{
+								num_19_30->Fill(E_k,Mytime);
+							}
+						}
+					}	
+					else if((Th >= 30) && (Th < 40))
+					{
+						denom_30_40->Fill(E_k,Mytime);
+						if (rootinotree.GetNParticles()==1)
+						{
+							if (myOA_Calculator(CalcMissingP4(pi0tree,0,j),rootinotree.Particle(0))<angle*TMath::DegToRad())
+							{
+								num_30_40->Fill(E_k,Mytime);
+							}
+						}
+					}
+					else if((Th >= 40) && (Th < 50))
+					{
+						denom_40_50->Fill(E_k,Mytime);
+						if (rootinotree.GetNParticles()==1)
+						{
+							if (myOA_Calculator(CalcMissingP4(pi0tree,0,j),rootinotree.Particle(0))<angle*TMath::DegToRad())
+							{
+								num_40_50->Fill(E_k,Mytime);
+							}
+						}
+					}
+					else if((Th >= 50) && (Th < 60))
+					{
+						denom_50_60->Fill(E_k,Mytime);
+						if (rootinotree.GetNParticles()==1)
+						{
+							if (myOA_Calculator(CalcMissingP4(pi0tree,0,j),rootinotree.Particle(0))<angle*TMath::DegToRad())
+							{
+								num_50_60->Fill(E_k,Mytime);
+							}
+						}
+					}
+					else if((Th >= 60) && (Th < 70))
+					{
+						denom_60_70->Fill(E_k,Mytime);
+						if (rootinotree.GetNParticles()==1)
+						{
+							if (myOA_Calculator(CalcMissingP4(pi0tree,0,j),rootinotree.Particle(0))<angle*TMath::DegToRad())
+							{
+								num_60_70->Fill(E_k,Mytime);
+							}
+						}
+					}					
+				}
+			}
+		}	
+	//}	
+						
+		
+	
+}
+//-----------------------------------
 void PAR_MC::Find_Holes(const GTreeMeson& pi0tree,const GTreeTagger& taggertree,const GTreeTrack& tracktree,Int_t en_low, Int_t en_high,GH2* cos_phi)//,GH2* cos_phi_mm,GH1* pi0_im)
 {
 	//Double_t Mytime;
@@ -188,16 +298,9 @@ void	PAR_MC::ProcessEvent()
         }
 
     }
-	//TFile *f = new TFile("Eff.root");
-	//cout << "opening file ......." << endl;
-	//TH2F* LookUp = (TH2F*)f->Get("eff");
-	Pi0_background(*GetTagger(),*GetRootinos(),*GetPhotons(),*GetGeant(),15,285,305,Com_MM,Pi0_MM,Pi0_MM_OA,Com_OA,Com_OA_Eff);
-
-
-	//Find_Holes(*GetNeutralPions(),*GetTagger(),*GetTracks(),205,305,CosTheta_Phi);//,CosTheta_Phi_MM, Pi0_IM);
-
-	//f->Close();
-	//cout << "Closing file ......." << endl;
+	
+	//Pi0_background(*GetTagger(),*GetRootinos(),*GetPhotons(),*GetGeant(),15,285,305,Com_MM,Pi0_MM,Pi0_MM_OA,Com_OA,Com_OA_Eff);
+        Eff_rev(*GetRootinos(),*GetNeutralPions(),*GetTagger(),150,Time_Eff,Denom,NChargedOA,Denom_19_30,Num_19_30, Denom_30_40, Num_30_40, Denom_40_50, Num_40_50, Denom_50_60, Num_50_60, Denom_60_70, Num_60_70,OA);
 
 }
 
