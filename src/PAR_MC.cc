@@ -2,7 +2,7 @@
 #include "EffLookUp.h"
 
 PAR_MC::PAR_MC()
-{ /***
+{ 
     time 	= new GH1("time", 	"time", 	1400, -700, 700);
     time_cut 	= new GH1("time_cut", 	"time_cut", 	1400, -700, 700);
 
@@ -14,14 +14,14 @@ PAR_MC::PAR_MC()
   
     MM		= new GH1("MM", 	"MM", 	 	400,   800, 1200);     
     MM_2g	= new GH1("MM_2g", 	"MM_2g", 	400,   800, 1200);
-
+/***
     Com_MM = new GH1("Com_MM","MC Rootino Missing Mass", 200,500,1300);
     Pi0_MM = new GH1("Pi0_MM","MC Pi0 Missing Mass", 200,500,1300);
     Pi0_MM_OA = new GH1("Pi0_MM_OA","MC Pi0 Missing Mass,after OA cut", 200,500,1300);
     Com_OA = new GH1("Com_OA","MC OA between Rootino and missing P off of #pi^{0}", 180,0,180);	
     Com_OA_Eff = new GH1("Com_OA_Eff","MC OA between Rootino and missing P off of #pi^{0},weighted by Eff ", 180,0,180);	
-	
-***/
+	***/
+
     //pi0 Eff Revisited Hists: (Added May3,2016)
     Time_Eff 	= new GH1("Time_Eff", 	"time", 	1400, -700, 700);    
     //Mgg_all_theta = new GH1("Mgg_all_theta","Mgg for 0 <Theta < 180 with cut on MM",250,0,250);
@@ -139,8 +139,8 @@ void PAR_MC::Pi0_background(const GTreeTagger& taggertree,const GTreeParticle& r
 		}
 		
 }
-//-----------------------------------Eff revisited, Jan 26 2016 ----------------------------------------------------
-void PAR_MC::Eff_rev(const GTreeParticle& rootinotree,const GTreeMeson& pi0tree,const GTreeTagger& taggertree, Float_t angle,GH1* time_eff,GH2* denom,GH2* ncoa,GH1* denom_19_30,GH1* num_19_30, GH1* denom_30_40,GH1* num_30_40, GH1* denom_40_50,GH1* num_40_50, GH1* denom_50_60,GH1* num_50_60, GH1* denom_60_70,GH1* num_60_70, GH1* oa)
+//-----------------------------------Eff revisited, May 3 2016 ----------------------------------------------------
+void PAR_MC::Eff_rev(const GTreeParticle& rootinotree,const GTreeMeson& pi0tree,Float_t angle,GH1* time_eff,GH2* denom,GH2* ncoa,GH1* denom_19_30,GH1* num_19_30, GH1* denom_30_40,GH1* num_30_40, GH1* denom_40_50,GH1* num_40_50, GH1* denom_50_60,GH1* num_50_60, GH1* denom_60_70,GH1* num_60_70, GH1* oa)
 {
 	Double_t Mytime;
 	Double_t E_k;
@@ -148,13 +148,14 @@ void PAR_MC::Eff_rev(const GTreeParticle& rootinotree,const GTreeMeson& pi0tree,
 		for (Int_t j = 0; j < GetTagger()->GetNTagged(); j++)
 		{
 			//cout << Th << "  was theta" << endl;	
-			if((pi0tree.GetNSubParticles(0) == 2) && (pi0tree.GetNSubPhotons(0) == 2)&& (pi0tree.GetNParticles()!=0))
+			if(pi0tree.GetNParticles()!=0)
 			{
-        			if (CalcMissingMass(pi0tree,0,j)<970 && CalcMissingMass(pi0tree,0,j)>910)//Select events based on MissMass.	
+        			if ((pi0tree.GetNSubParticles(0) == 2) && (pi0tree.GetNSubPhotons(0) == 2) && (CalcMissingMass(pi0tree,0,j)<970) && (CalcMissingMass(pi0tree,0,j)>910))//Select events based on MissMass.	
 				{
 				//cout << ".Theta()*TMath::RadToDeg() gives: " << CalcMissingP4(pi0tree,0,j).Theta()*TMath::RadToDeg() << endl;
 					Th = CalcMissingP4(pi0tree,0,j).Theta()*TMath::RadToDeg();
 					Mytime=GetTagger()->GetTaggedTime(j)-pi0tree.GetTime(0);
+					//cout << Mytime << endl;
 					time_eff->Fill(Mytime);	
 					E_k = CalcMissingEnergy(pi0tree,0,j)-CalcMissingMass(pi0tree, 0,j);
 					denom->Fill(E_k,Th,Mytime);
@@ -300,7 +301,7 @@ void	PAR_MC::ProcessEvent()
     }
 	
 	//Pi0_background(*GetTagger(),*GetRootinos(),*GetPhotons(),*GetGeant(),15,285,305,Com_MM,Pi0_MM,Pi0_MM_OA,Com_OA,Com_OA_Eff);
-        Eff_rev(*GetRootinos(),*GetNeutralPions(),*GetTagger(),150,Time_Eff,Denom,NChargedOA,Denom_19_30,Num_19_30, Denom_30_40, Num_30_40, Denom_40_50, Num_40_50, Denom_50_60, Num_50_60, Denom_60_70, Num_60_70,OA);
+        Eff_rev(*GetRootinos(),*GetNeutralPions(),150,Time_Eff,Denom,NChargedOA,Denom_19_30,Num_19_30, Denom_30_40, Num_30_40, Denom_40_50, Num_40_50, Denom_50_60, Num_50_60, Denom_60_70, Num_60_70,OA);
 
 }
 

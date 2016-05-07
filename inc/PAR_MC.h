@@ -54,7 +54,7 @@ protected:
     virtual Double_t myOA_Calculator(const TLorentzVector& t1, const TLorentzVector& t2 );
     virtual void Pi0_background(const GTreeTagger& taggertree,const GTreeParticle& rootinotree,const GTreeParticle& photontree, const GTreeA2Geant a2geant, Int_t angle,Int_t en_low, Int_t en_high,GH1* com_MM,GH1* pi0_MM,GH1* pi0_MM_OA,GH1* com_OA,GH1* com_OA_Eff);//,TH2F* lookup);
     virtual void Find_Holes(const GTreeMeson& pi0tree,const GTreeTagger& taggertree,const GTreeTrack& tracktree,Int_t en_low, Int_t en_high,GH2* cos_phi);//,GH2* cos_phi_mm,GH1* pi0_im);
-    virtual void Eff_rev(const GTreeParticle& rootinotree,const GTreeMeson& pi0tree,const GTreeTagger& taggertree, Float_t angle,GH1* time_eff,GH2* denom,GH2* ncoa,GH1* denom_19_30,GH1* num_19_30, GH1* denom_30_40,GH1* num_30_40, GH1* denom_40_50,GH1* num_40_50, GH1* denom_50_60,GH1* num_50_60, GH1* denom_60_70,GH1* num_60_70, GH1* oa);
+    virtual void Eff_rev(const GTreeParticle& rootinotree,const GTreeMeson& pi0tree, Float_t angle,GH1* time_eff,GH2* denom,GH2* ncoa,GH1* denom_19_30,GH1* num_19_30, GH1* denom_30_40,GH1* num_30_40, GH1* denom_40_50,GH1* num_40_50, GH1* denom_50_60,GH1* num_50_60, GH1* denom_60_70,GH1* num_60_70, GH1* oa);
     virtual void    ProcessEvent();
     virtual void	ProcessScalerRead();
     virtual Bool_t    Write();

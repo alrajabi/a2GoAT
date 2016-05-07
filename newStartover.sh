@@ -125,9 +125,9 @@ elif [ "$1" = "$S1" ];then
 			mv ~/usb/2015_bin/compton/Carbon/1/archive/*.root ~/usb/2015_bin/compton/Carbon/1
 			mv ~/usb/2015_bin/compton/Carbon/2/archive/*.root ~/usb/2015_bin/compton/Carbon/2
 			mv ~/usb/2015_bin/compton/Carbon/3/archive/*.root ~/usb/2015_bin/compton/Carbon/3
-			mv ~/usb/2015_bin/compton/Carbon/4/archive/*.root ~/usb/2015_bin/compton/Carbon/4
-			mv ~/usb/2015_bin/compton/Carbon/5/archive/*.root ~/usb/2015_bin/compton/Carbon/5
-			mv ~/usb/2015_bin/compton/Carbon/6/archive/*.root ~/usb/2015_bin/compton/Carbon/6
+			#mv ~/usb/2015_bin/compton/Carbon/4/archive/*.root ~/usb/2015_bin/compton/Carbon/4
+			#mv ~/usb/2015_bin/compton/Carbon/5/archive/*.root ~/usb/2015_bin/compton/Carbon/5
+			#mv ~/usb/2015_bin/compton/Carbon/6/archive/*.root ~/usb/2015_bin/compton/Carbon/6
 			rm ~/results/Compton_AR_output/oneH/*.root
 			rm ~/results/Compton_AR_output/zeroH/*.root
 			rm ~/results/Compton_AR_output/Carbon/*.root
@@ -146,27 +146,27 @@ elif [ "$1" = "$S2" ];then
                         	./runMyClass14p.sh ~/usb/Pi0_GoAT_Output/Butanol/4 ~/results/Pi0_AR_output/2014/Butanol/zeroH ~/usb/Pi0_GoAT_Output/Butanol/zeroH/4 AR_Class& 
 			elif [ "$4" = "$S11" ];then 
 				####oneH is on wdmypassport
-				./runMyClass15p.sh ~/usb/2015_bin/pi0/Butanol/1 ~/results/Pi0_AR_output/2015/Butanol/oneH ~/usb/2015_bin/pi0/Butanol/oneH/1 AR_Class& 
-                        	./runMyClass15p.sh ~/usb/2015_bin/pi0/Butanol/2 ~/results/Pi0_AR_output/2015/Butanol/oneH ~/usb/2015_bin/pi0/Butanol/oneH/2 AR_Class& 
-                        	./runMyClass15p.sh ~/usb/2015_bin/pi0/Butanol/3 ~/results/Pi0_AR_output/2015/Butanol/oneH ~/usb/2015_bin/pi0/Butanol/oneH/3 AR_Class& 
+				./runMyClassHP15p.sh ~/usb/2015_bin/pi0/Butanol/1 ~/results/Pi0_AR_output/2015/Butanol/oneH ~/usb/2015_bin/pi0/Butanol/oneH/1 AR_Class& 
+                        	./runMyClassHP15p.sh ~/usb/2015_bin/pi0/Butanol/2 ~/results/Pi0_AR_output/2015/Butanol/oneH ~/usb/2015_bin/pi0/Butanol/oneH/2 AR_Class& 
+                        	./runMyClassHP15p.sh ~/usb/2015_bin/pi0/Butanol/3 ~/results/Pi0_AR_output/2015/Butanol/oneH ~/usb/2015_bin/pi0/Butanol/oneH/3 AR_Class& 
                         	####oneH is on server ~/results/Pi_GoAT_Output/Butanol/
-				./runMyClass15p.sh ~/results/Pi0_GoAT_Output/Butanol/0 ~/results/Pi0_AR_output/2015/Butanol/zeroH ~/results/Pi0_GoAT_Output/Butanol/zeroH/0 AR_Class& 
-				./runMyClass15p.sh ~/results/Pi0_GoAT_Output/Butanol/1 ~/results/Pi0_AR_output/2015/Butanol/zeroH ~/results/Pi0_GoAT_Output/Butanol/zeroH/1 AR_Class& 
-				./runMyClass15p.sh ~/results/Pi0_GoAT_Output/Butanol/2 ~/results/Pi0_AR_output/2015/Butanol/zeroH ~/results/Pi0_GoAT_Output/Butanol/zeroH/2 AR_Class& 
-				./runMyClass15p.sh ~/results/Pi0_GoAT_Output/Butanol/3 ~/results/Pi0_AR_output/2015/Butanol/zeroH ~/results/Pi0_GoAT_Output/Butanol/zeroH/3 AR_Class& 
-				./runMyClass15p.sh ~/results/Pi0_GoAT_Output/Butanol/4 ~/results/Pi0_AR_output/2015/Butanol/zeroH ~/results/Pi0_GoAT_Output/Butanol/zeroH/4 AR_Class& 
+				./runMyClassHM15p.sh ~/results/Pi0_GoAT_Output/Butanol/0 ~/results/Pi0_AR_output/2015/Butanol/zeroH ~/results/Pi0_GoAT_Output/Butanol/zeroH/0 AR_Class& 
+				./runMyClassHM15p.sh ~/results/Pi0_GoAT_Output/Butanol/1 ~/results/Pi0_AR_output/2015/Butanol/zeroH ~/results/Pi0_GoAT_Output/Butanol/zeroH/1 AR_Class& 
+				./runMyClassHM15p.sh ~/results/Pi0_GoAT_Output/Butanol/2 ~/results/Pi0_AR_output/2015/Butanol/zeroH ~/results/Pi0_GoAT_Output/Butanol/zeroH/2 AR_Class& 
+				./runMyClassHM15p.sh ~/results/Pi0_GoAT_Output/Butanol/3 ~/results/Pi0_AR_output/2015/Butanol/zeroH ~/results/Pi0_GoAT_Output/Butanol/zeroH/3 AR_Class& 
+				./runMyClassHM15p.sh ~/results/Pi0_GoAT_Output/Butanol/4 ~/results/Pi0_AR_output/2015/Butanol/zeroH ~/results/Pi0_GoAT_Output/Butanol/zeroH/4 AR_Class& 
 			fi
 		elif [ "$3" = "$S4" ];then
 			if [ "$4" = "$S10" ];then
-				./runMyClass14p.sh ~/analysis/carbon2014/1 ~/analysis/carbon2014/output ~/analysis/carbon2014/archive/1 AR_Class&
-				./runMyClass14p.sh ~/analysis/carbon2014/2 ~/analysis/carbon2014/output ~/analysis/carbon2014/archive/2 AR_Class&
-                        	./runMyClass14p.sh ~/analysis/carbon2014/3 ~/analysis/carbon2014/output ~/analysis/carbon2014/archive/3 AR_Class&
-                        	./runMyClass14p.sh ~/analysis/carbon2014/4 ~/analysis/carbon2014/output ~/analysis/carbon2014/archive/4 AR_Class&         
+				./runMyCarb14p.sh ~/analysis/carbon2014/1 ~/analysis/carbon2014/output ~/analysis/carbon2014/archive/1 AR_Class&
+				./runMyCarb14p.sh ~/analysis/carbon2014/2 ~/analysis/carbon2014/output ~/analysis/carbon2014/archive/2 AR_Class&
+                        	./runMyCarb14p.sh ~/analysis/carbon2014/3 ~/analysis/carbon2014/output ~/analysis/carbon2014/archive/3 AR_Class&
+                        	./runMyCarb14p.sh ~/analysis/carbon2014/4 ~/analysis/carbon2014/output ~/analysis/carbon2014/archive/4 AR_Class&         
 			elif [ "$4" = "$S11" ];then
-				./runMyClass15p.sh ~/usb/2015_bin/pi0/Carbon ~/results/Pi0_AR_output/2015/Carbon ~/usb/2015_bin/pi0/Carbon/archive AR_Class& 
-				#./runMyClass15p.sh ~/results/Pi0_GoAT_Output/Carbon/2 ~/results/Pi0_AR_output/2015/Carbon ~/usb/Pi0_GoAT_Output/2015/Carbon/2/archive AR_Class& 
-				#./runMyClass15p.sh ~/results/Pi0_GoAT_Output/Carbon/3 ~/results/Pi0_AR_output/2015/Carbon ~/usb/Pi0_GoAT_Output/2015/Carbon/3/archive AR_Class& 
-				#./runMyClass15p.sh ~/results/Pi0_GoAT_Output/Carbon/4 ~/results/Pi0_AR_output/2015/Carbon ~/usb/Pi0_GoAT_Output/2015/Carbon/4/archive AR_Class& 
+				./runMyCarb15p.sh ~/usb/2015_bin/pi0/Carbon ~/results/Pi0_AR_output/2015/Carbon ~/usb/2015_bin/pi0/Carbon/archive AR_Class& 
+				#./runMyCarb15p.sh ~/results/Pi0_GoAT_Output/Carbon/2 ~/results/Pi0_AR_output/2015/Carbon ~/usb/Pi0_GoAT_Output/2015/Carbon/2/archive AR_Class& 
+				#./runMyCarb15p.sh ~/results/Pi0_GoAT_Output/Carbon/3 ~/results/Pi0_AR_output/2015/Carbon ~/usb/Pi0_GoAT_Output/2015/Carbon/3/archive AR_Class& 
+				#./runMyCarb15p.sh ~/results/Pi0_GoAT_Output/Carbon/4 ~/results/Pi0_AR_output/2015/Carbon ~/usb/Pi0_GoAT_Output/2015/Carbon/4/archive AR_Class& 
 			fi	
 		fi
 	elif [ "$2" = "$S7" ];then
@@ -178,24 +178,24 @@ elif [ "$1" = "$S2" ];then
                         	./runMyClass14c.sh ~/usb/Compton_GoAT_Output/Butanol/4 ~/results/Compton_AR_output/2014/Butanol/zeroH ~/usb/Compton_GoAT_Output/Butanol/4/archive AR_Compton&
 				
 			elif [ "$4" = "$S11" ];then
-				./runMyClass15c.sh ~/usb/2015_bin/compton/Butanol/1 ~/results/Compton_AR_output/oneH ~/usb/2015_bin/compton/Butanol/1/archive AR_Compton& 
-                        	./runMyClass15c.sh ~/usb/2015_bin/compton/Butanol/2 ~/results/Compton_AR_output/oneH ~/usb/2015_bin/compton/Butanol/2/archive AR_Compton& 
-                        	./runMyClass15c.sh ~/usb/2015_bin/compton/Butanol/3 ~/results/Compton_AR_output/oneH ~/usb/2015_bin/compton/Butanol/3/archive AR_Compton& 
-                       		#./runMyClass15c.sh ~/usb/2015_bin/compton/Butanol/4 ~/results/Compton_AR_output/zeroH ~/usb/2015_bin/compton/Butanol/4/archive AR_Compton&
-				#./runMyClass15c.sh ~/usb/2015_bin/compton/Butanol/5 ~/results/Compton_AR_output/zeroH ~/usb/2015_bin/compton/Butanol/5/archive AR_Compton &
-                        	#./runMyClass15c.sh ~/usb/2015_bin/compton/Butanol/6 ~/results/Compton_AR_output/zeroH ~/usb/2015_bin/compton/Butanol/6/archive AR_Compton &
+				#./runMyClassHP15c.sh ~/usb/2015_bin/compton/Butanol/1 ~/results/Compton_AR_output/oneH ~/usb/2015_bin/compton/Butanol/1/archive AR_Compton& 
+                        	#./runMyClassHP15c.sh ~/usb/2015_bin/compton/Butanol/2 ~/results/Compton_AR_output/oneH ~/usb/2015_bin/compton/Butanol/2/archive AR_Compton& 
+                        	#./runMyClassHP15c.sh ~/usb/2015_bin/compton/Butanol/3 ~/results/Compton_AR_output/oneH ~/usb/2015_bin/compton/Butanol/3/archive AR_Compton& 
+                       		./runMyClassHM15c.sh ~/usb/2015_bin/compton/Butanol/4 ~/results/Compton_AR_output/zeroH ~/usb/2015_bin/compton/Butanol/4/archive AR_Compton&
+				./runMyClassHM15c.sh ~/usb/2015_bin/compton/Butanol/5 ~/results/Compton_AR_output/zeroH ~/usb/2015_bin/compton/Butanol/5/archive AR_Compton &
+                        	./runMyClassHM15c.sh ~/usb/2015_bin/compton/Butanol/6 ~/results/Compton_AR_output/zeroH ~/usb/2015_bin/compton/Butanol/6/archive AR_Compton &
 			fi
 		elif [ "$3" = "$S4" ];then
 			if [ "$4" = "$S10" ];then	
-				./runMyClass14c.sh ~/usb/Compton_GoAT_Output/Carbon/1 ~/results/Compton_AR_output/2014/Carbon ~/usb/Compton_GoAT_Output/Carbon/1/archive AR_Compton& 
-                       		./runMyClass14c.sh ~/usb/Compton_GoAT_Output/Carbon/2 ~/results/Compton_AR_output/2014/Carbon ~/usb/Compton_GoAT_Output/Carbon/2/archive AR_Compton& 
-                        	./runMyClass14c.sh ~/usb/Compton_GoAT_Output/Carbon/3 ~/results/Compton_AR_output/2014/Carbon ~/usb/Compton_GoAT_Output/Carbon/3/archive AR_Compton& 
-                        	./runMyClass14c.sh ~/usb/Compton_GoAT_Output/Carbon/4 ~/results/Compton_AR_output/2014/Carbon ~/usb/Compton_GoAT_Output/Carbon/4/archive AR_Compton&
+				./runMyCarb14c.sh ~/usb/Compton_GoAT_Output/Carbon/1 ~/results/Compton_AR_output/2014/Carbon ~/usb/Compton_GoAT_Output/Carbon/1/archive AR_Compton& 
+                       		./runMyCarb14c.sh ~/usb/Compton_GoAT_Output/Carbon/2 ~/results/Compton_AR_output/2014/Carbon ~/usb/Compton_GoAT_Output/Carbon/2/archive AR_Compton& 
+                        	./runMyCarb14c.sh ~/usb/Compton_GoAT_Output/Carbon/3 ~/results/Compton_AR_output/2014/Carbon ~/usb/Compton_GoAT_Output/Carbon/3/archive AR_Compton& 
+                        	./runMyCarb14c.sh ~/usb/Compton_GoAT_Output/Carbon/4 ~/results/Compton_AR_output/2014/Carbon ~/usb/Compton_GoAT_Output/Carbon/4/archive AR_Compton&
 				
-			elif [ "$4" = "$S11" ];then #### not done yet:
-				./runMyClass15c.sh ~/usb/2015_bin/compton/Carbon/1 ~/results/Compton_AR_output/Carbon ~/usb/2015_bin/compton/Carbon/1/archive AR_Compton& 
-                        	./runMyClass15c.sh ~/usb/2015_bin/compton/Carbon/2 ~/results/Compton_AR_output/Carbon ~/usb/2015_bin/compton/Carbon/2/archive AR_Compton& 
-                        	./runMyClass15c.sh ~/usb/2015_bin/compton/Carbon/3 ~/results/Compton_AR_output/Carbon ~/usb/2015_bin/compton/Carbon/3/archive AR_Compton& 
+			elif [ "$4" = "$S11" ];then 
+				./runMyCarb15c.sh ~/usb/2015_bin/compton/Carbon/1 ~/results/Compton_AR_output/Carbon ~/usb/2015_bin/compton/Carbon/1/archive AR_Compton& 
+                        	./runMyCarb15c.sh ~/usb/2015_bin/compton/Carbon/2 ~/results/Compton_AR_output/Carbon ~/usb/2015_bin/compton/Carbon/2/archive AR_Compton& 
+                        	./runMyCarb15c.sh ~/usb/2015_bin/compton/Carbon/3 ~/results/Compton_AR_output/Carbon ~/usb/2015_bin/compton/Carbon/3/archive AR_Compton& 
                   	fi        
 		fi
 	else 

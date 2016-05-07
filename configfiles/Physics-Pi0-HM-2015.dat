@@ -1,11 +1,11 @@
 #=======================================================================
 # Config file for a Pi0 Analysis of GoAT-Trees
 #=======================================================================
-# Butanol 2014 data
+#
 # Set prompt and random windows (standard library and GH1 library)
-Set-Prompt-Cut: -9 2
-Add-Random-Cut: -380 -60
-Add-Random-Cut: 60 200
+Set-Prompt-Cut: -3 9
+Add-Random-Cut: -380 -50
+Add-Random-Cut: 60 500
 
 # Set target mass (for standard physics library)
 Target-Mass: 938.272
